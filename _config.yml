@@ -1,6 +1,6 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
-title: Premium Leaving Certificate Higher Level Maths Notes from TPSA
+title: Electoral Redistricting and COTHROM Project Explanation from TPSA
 author: The Problem Solving Association C.L.G.
 logo: logo.png
 
@@ -21,13 +21,13 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/MichaelAJMitchell/Ecnetica  # Online location of your book
+  url: https://github.com/farrencc/COTHROM_education  # Online location of your book
   path_to_book: ./  # Optional path to your book, relative to the repository root
   branch: jb  # Which branch of the repository should be used when creating links (optional)
 
 # HTML settings - NO GitHub buttons
 html:
- # baseurl: /Ecnetica/
+ # baseurl: /COTHROM_education/
   extra_footer: "Copyright-info"
   extra_css:
     - "_static/style.css"
@@ -58,7 +58,7 @@ sphinx:
       logo:
         image_light: "logo.png"
         image_dark: "logo.png"
-        text: "Ecnetica"
+        text: "COTHROM"
       
       # Sidebar configuration
       primary_sidebar_end: []
