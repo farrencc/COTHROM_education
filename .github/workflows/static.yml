@@ -36,6 +36,29 @@ jobs:
         sudo apt -f install ./drawio-amd64-23.1.5.deb
         pip install -r requirements.txt
         
+
+    # DEBUGGING 
+    - name: Debug file structure
+      run: |
+        echo "=== Root directory ==="
+        ls -la
+        echo ""
+        echo "=== _toc.yml content ==="
+        cat _toc.yml
+        echo ""
+        echo "=== Checking for content directory ==="
+        ls -la content/ || echo "No content directory!"
+        echo ""
+        echo "=== Checking for content/index ==="
+        ls -la content/index* || echo "No content/index file!"
+        echo ""
+        echo "=== All files in content ==="
+        find content -type f || echo "No files found"
+        echo ""
+        echo "=== All directories in content ==="
+        find content -type d || echo "No directories found"
+
+
     # Build the book
     - name: Build the book
       run: |
