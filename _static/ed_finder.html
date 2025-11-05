@@ -92,7 +92,7 @@
             font-size: 15px;
         }
 
-        input[type="text"] {
+        input[type="text"], select {
             width: 100%;
             padding: 12px 16px;
             font-size: 16px;
@@ -101,7 +101,7 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        input[type="text"]:focus {
+        input[type="text"]:focus, select:focus {
             outline: none;
             border-color: #3DDC84;
             box-shadow: 0 0 0 3px rgba(61, 220, 132, 0.1);
@@ -128,6 +128,11 @@
 
         .find-button:active {
             transform: translateY(0);
+        }
+
+        .find-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .results-box {
@@ -260,22 +265,46 @@
             margin-bottom: 4px;
         }
 
+        .error-message {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
         .map-placeholder {
             display: none;
             background: #e9ecef;
             border: 2px dashed #9B7DC8;
             border-radius: 8px;
             height: 400px;
-            display: flex;
             align-items: center;
             justify-content: center;
             color: #6c757d;
             font-size: 14px;
             margin-bottom: 20px;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .map-placeholder.show {
             display: flex;
+        }
+
+        .ed-selector {
+            display: none;
+        }
+
+        .ed-selector.show {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -307,21 +336,33 @@
                     <label for="search-address">Search by Address/Eircode</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" id="search-map" name="search-method" value="map">
-                    <label for="search-map">Browse Map</label>
+                    <input type="radio" id="search-ed" name="search-method" value="ed">
+                    <label for="search-ed">Browse by ED Name</label>
                 </div>
             </div>
         </div>
 
         <div class="input-section" id="address-input">
             <label for="address-field">Enter your address or Eircode:</label>
-            <input type="text" id="address-field" placeholder="e.g., 123 Main Street, Dublin or D06 XY12">
+            <input type="text" id="address-field" placeholder="e.g., 123 Main Street, Dublin or D06 XY12" list="address-suggestions">
+            <datalist id="address-suggestions"></datalist>
+        </div>
+
+        <div class="input-section ed-selector" id="ed-selector">
+            <label for="ed-select">Select an Electoral Division:</label>
+            <select id="ed-select">
+                <option value="">Choose an ED...</option>
+            </select>
         </div>
 
         <button class="find-button" onclick="findED()">Find My ED</button>
 
+        <div class="error-message" id="error-message"></div>
+
         <div class="map-placeholder" id="map-placeholder">
-            🗺️ Interactive map would appear here
+            <span style="font-size: 48px;">🗺️</span>
+            <span>Interactive map functionality coming soon</span>
+            <span style="font-size: 12px; margin-top: 8px;">This will show a clickable map of Ireland with all ED boundaries</span>
         </div>
 
         <div class="results-box" id="results">
@@ -331,7 +372,7 @@
                 <div class="result-icon">📍</div>
                 <div class="result-content">
                     <div class="result-label">Electoral Division</div>
-                    <div class="result-value" id="ed-name">Rathmines West C</div>
+                    <div class="result-value" id="ed-name">-</div>
                 </div>
             </div>
 
@@ -339,7 +380,7 @@
                 <div class="result-icon">🏛️</div>
                 <div class="result-content">
                     <div class="result-label">County</div>
-                    <div class="result-value" id="county">Dublin</div>
+                    <div class="result-value" id="county">-</div>
                 </div>
             </div>
 
@@ -347,7 +388,7 @@
                 <div class="result-icon">🗳️</div>
                 <div class="result-content">
                     <div class="result-label">Current Constituency</div>
-                    <div class="result-value" id="constituency">Dublin Bay South</div>
+                    <div class="result-value" id="constituency">-</div>
                 </div>
             </div>
 
@@ -355,7 +396,7 @@
                 <div class="result-icon">👥</div>
                 <div class="result-content">
                     <div class="result-label">Population (Census 2022)</div>
-                    <div class="result-value" id="population">1,234 people</div>
+                    <div class="result-value" id="population">-</div>
                 </div>
             </div>
 
@@ -363,7 +404,7 @@
                 <div class="result-icon">🏘️</div>
                 <div class="result-content">
                     <div class="result-label">Households</div>
-                    <div class="result-value" id="households">487</div>
+                    <div class="result-value" id="households">-</div>
                 </div>
             </div>
 
@@ -374,48 +415,178 @@
         </div>
 
         <div class="tip-box">
-            <strong>💡 Don't have your Eircode handy?</strong>
+            <strong>💡 About this demo tool</strong>
             <ul>
-                <li>Use the map browser to zoom into your area and click</li>
-                <li>Or search by landmark (e.g., "Trinity College Dublin")</li>
-                <li>The tool will show you the ED boundaries visually</li>
+                <li><strong>Sample data:</strong> This tool contains demonstration data for several Dublin EDs</li>
+                <li><strong>Try searching:</strong> "Rathmines", "Sandymount", "Ballsbridge", or "D06 XY12"</li>
+                <li><strong>Future functionality:</strong> Full database with all 3,440 EDs across Ireland</li>
+                <li><strong>Map integration:</strong> Interactive map with clickable ED boundaries (coming soon)</li>
             </ul>
         </div>
     </div>
 
     <script>
-        // Toggle between address search and map view
+        let edData = null;
+        let currentED = null;
+
+        // Load ED data
+        async function loadData() {
+            try {
+                const response = await fetch('sample_ed_data.json');
+                edData = await response.json();
+                populateDatalist();
+                populateEDSelector();
+            } catch (error) {
+                console.error('Error loading ED data:', error);
+                showError('Error loading data. Using fallback sample data.');
+                // Fallback sample data
+                edData = {
+                    electoralDivisions: [
+                        {name: "Rathmines West C", county: "Dublin", constituency: "Dublin Bay South", population: 1234, households: 487},
+                        {name: "Sandymount West", county: "Dublin", constituency: "Dublin Bay South", population: 2145, households: 892}
+                    ],
+                    searchableAddresses: [
+                        {address: "Rathmines, Dublin", eircode: "D06", ed: "Rathmines West C"}
+                    ]
+                };
+                populateDatalist();
+                populateEDSelector();
+            }
+        }
+
+        function populateDatalist() {
+            const datalist = document.getElementById('address-suggestions');
+            datalist.innerHTML = '';
+
+            edData.searchableAddresses.forEach(addr => {
+                const option = document.createElement('option');
+                option.value = addr.address + (addr.eircode ? ' (' + addr.eircode + ')' : '');
+                datalist.appendChild(option);
+            });
+        }
+
+        function populateEDSelector() {
+            const select = document.getElementById('ed-select');
+            select.innerHTML = '<option value="">Choose an ED...</option>';
+
+            const sortedEDs = [...edData.electoralDivisions].sort((a, b) => a.name.localeCompare(b.name));
+            sortedEDs.forEach(ed => {
+                const option = document.createElement('option');
+                option.value = ed.name;
+                option.textContent = `${ed.name} (${ed.county})`;
+                select.appendChild(option);
+            });
+        }
+
+        // Toggle between search methods
         document.querySelectorAll('input[name="search-method"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 const addressInput = document.getElementById('address-input');
+                const edSelector = document.getElementById('ed-selector');
                 const mapPlaceholder = document.getElementById('map-placeholder');
+                const errorMessage = document.getElementById('error-message');
+
+                errorMessage.classList.remove('show');
 
                 if (this.value === 'address') {
                     addressInput.style.display = 'block';
+                    edSelector.classList.remove('show');
                     mapPlaceholder.classList.remove('show');
-                } else {
+                } else if (this.value === 'ed') {
                     addressInput.style.display = 'none';
-                    mapPlaceholder.classList.add('show');
+                    edSelector.classList.add('show');
+                    mapPlaceholder.classList.remove('show');
                 }
             });
         });
 
         function findED() {
-            // In a real implementation, this would call an API or search a database
-            // For now, we'll show the example results
+            const method = document.querySelector('input[name="search-method"]:checked').value;
+            let searchTerm = '';
+
+            if (method === 'address') {
+                searchTerm = document.getElementById('address-field').value.trim();
+                if (!searchTerm) {
+                    showError('Please enter an address or Eircode to search.');
+                    return;
+                }
+                searchByAddress(searchTerm);
+            } else {
+                searchTerm = document.getElementById('ed-select').value;
+                if (!searchTerm) {
+                    showError('Please select an Electoral Division from the dropdown.');
+                    return;
+                }
+                searchByEDName(searchTerm);
+            }
+        }
+
+        function searchByAddress(searchTerm) {
+            const found = edData.searchableAddresses.find(addr =>
+                addr.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                (addr.eircode && addr.eircode.toLowerCase().includes(searchTerm.toLowerCase()))
+            );
+
+            if (found) {
+                const ed = edData.electoralDivisions.find(e => e.name === found.ed);
+                if (ed) {
+                    displayResults(ed);
+                } else {
+                    showError(`Address found but ED data not available for "${found.ed}". Try another search.`);
+                }
+            } else {
+                showError(`No ED found for "${searchTerm}". Try: "Rathmines", "Sandymount", or "D06"`);
+            }
+        }
+
+        function searchByEDName(edName) {
+            const ed = edData.electoralDivisions.find(e => e.name === edName);
+            if (ed) {
+                displayResults(ed);
+            } else {
+                showError(`Electoral Division "${edName}" not found in database.`);
+            }
+        }
+
+        function displayResults(ed) {
+            currentED = ed;
+            document.getElementById('error-message').classList.remove('show');
+
+            document.getElementById('ed-name').textContent = ed.name;
+            document.getElementById('county').textContent = ed.county;
+            document.getElementById('constituency').textContent = ed.constituency;
+            document.getElementById('population').textContent = ed.population.toLocaleString() + ' people';
+            document.getElementById('households').textContent = ed.households.toLocaleString();
+
             const results = document.getElementById('results');
             results.classList.add('show');
-
-            // Scroll to results
             results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+            document.getElementById('results').classList.remove('show');
+        }
+
         function showOnMap() {
-            alert('This would open the ED Boundary Viewer showing your Electoral Division highlighted on the map.');
+            if (currentED) {
+                // In a real implementation, this would load the boundary viewer
+                const message = `This would open the ED Boundary Viewer showing:\n\n` +
+                    `📍 ${currentED.name}\n` +
+                    `🗺️ Boundaries highlighted on interactive map\n` +
+                    ${currentED.neighbors ? `\n🔗 Neighbors: ${Object.values(currentED.neighbors).join(', ')}` : ''};
+                alert(message);
+            }
         }
 
         function showHistory() {
-            alert('This would open the ED History Timeline showing how your Electoral Division has changed constituencies over time.');
+            if (currentED && currentED.history) {
+                window.location.href = `ed_history_timeline.html?ed=${encodeURIComponent(currentED.name)}`;
+            } else {
+                alert(`Historical constituency data for ${currentED ? currentED.name : 'this ED'} will be available in the full version.`);
+            }
         }
 
         // Allow Enter key to trigger search
@@ -424,6 +595,9 @@
                 findED();
             }
         });
+
+        // Load data on page load
+        loadData();
     </script>
 </body>
 </html>

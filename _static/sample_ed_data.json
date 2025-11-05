@@ -1,0 +1,127 @@
+{
+  "electoralDivisions": [
+    {
+      "name": "Rathmines West C",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 1234,
+      "households": 487,
+      "area_km2": 0.25,
+      "neighbors": {
+        "north": "Rathmines West B",
+        "east": "Rathmines East A",
+        "south": "Ranelagh",
+        "west": "Harold's Cross"
+      },
+      "history": [
+        {"period": "1980-1990", "constituency": "Dublin South-Central", "seats": 5},
+        {"period": "1990-2007", "constituency": "Dublin South-Central", "seats": 5},
+        {"period": "2007-2017", "constituency": "Dublin Bay South", "seats": 4},
+        {"period": "2017-2023", "constituency": "Dublin Bay South", "seats": 4, "current": true},
+        {"period": "2023+", "constituency": "Dublin Rathdown", "seats": 5, "recommended": true}
+      ]
+    },
+    {
+      "name": "Sandymount West",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 2145,
+      "households": 892,
+      "area_km2": 0.42,
+      "neighbors": {
+        "north": "Sandymount East",
+        "east": "Irishtown",
+        "south": "Merrion",
+        "west": "Ballsbridge"
+      }
+    },
+    {
+      "name": "Ballsbridge",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 1987,
+      "households": 823,
+      "area_km2": 0.38
+    },
+    {
+      "name": "Donnybrook",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 1856,
+      "households": 745,
+      "area_km2": 0.35
+    },
+    {
+      "name": "Pembroke East B",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 1743,
+      "households": 698,
+      "area_km2": 0.31
+    },
+    {
+      "name": "Dartry",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 1689,
+      "households": 654,
+      "area_km2": 0.29
+    },
+    {
+      "name": "Irishtown",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 423,
+      "households": 187,
+      "area_km2": 0.12
+    },
+    {
+      "name": "Ringsend",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 398,
+      "households": 165,
+      "area_km2": 0.11
+    },
+    {
+      "name": "Merrion",
+      "county": "Dublin",
+      "constituency": "Dublin Bay South",
+      "population": 287,
+      "households": 124,
+      "area_km2": 0.08
+    },
+    {
+      "name": "Dingle Urban",
+      "county": "Kerry",
+      "constituency": "Kerry",
+      "population": 1542,
+      "households": 678,
+      "area_km2": 45.3
+    },
+    {
+      "name": "Tralee Urban",
+      "county": "Kerry",
+      "constituency": "Kerry",
+      "population": 2876,
+      "households": 1234,
+      "area_km2": 52.7
+    },
+    {
+      "name": "Galway City Central",
+      "county": "Galway",
+      "constituency": "Galway West",
+      "population": 1945,
+      "households": 823,
+      "area_km2": 0.28
+    }
+  ],
+  "searchableAddresses": [
+    {"address": "123 Main Street, Rathmines, Dublin", "eircode": "D06 XY12", "ed": "Rathmines West C"},
+    {"address": "45 Palmerston Road, Rathmines, Dublin", "eircode": "D06 AB34", "ed": "Rathmines West C"},
+    {"address": "78 Sandymount Road, Dublin", "eircode": "D04 CD56", "ed": "Sandymount West"},
+    {"address": "12 Ballsbridge Avenue, Dublin", "eircode": "D04 EF78", "ed": "Ballsbridge"},
+    {"address": "Trinity College Dublin", "landmark": true, "ed": "Trinity"},
+    {"address": "Grafton Street, Dublin", "landmark": true, "ed": "Royal Exchange A"}
+  ]
+}
