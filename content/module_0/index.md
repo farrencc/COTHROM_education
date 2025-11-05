@@ -13,7 +13,7 @@ Most Irish citizens don't realize that some votes effectively carry more weight 
 In this module, you'll learn:
 
 - **Why your vote might not count equally** compared to voters in other constituencies
-- **How to find your Electoral District** and understand your place in the system
+- **How to find your Electoral Division** and understand your place in the system
 - **What drives boundary changes** and why your area might be affected next
 - **How the 2023 controversy** broke with decades of precedent
 
@@ -27,7 +27,7 @@ Your representation in Dáil Éireann depends on constituency boundaries. When t
 
 ### 2. Where Am I in the System?
 
-Every address in Ireland falls within a specific Electoral District. Understanding your ED is the first step to understanding redistricting.
+Every address in Ireland falls within a specific Electoral Division. Understanding your ED is the first step to understanding redistricting.
 
 [Explore Lesson 2: Find Your ED →](find_your_ed.md)
 
