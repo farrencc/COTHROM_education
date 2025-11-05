@@ -1,25 +1,11 @@
-   format: jb-book
-   root: content/index
-   parts:
-     - caption: Getting Started
-       chapters:
-       - file: content/module_0/index
-         sections:
-         - file: content/module_0/why_this_matters
-         - file: content/module_0/find_your_ed
-         - file: content/module_0/boundaries_and_you
-     
-     - caption: Module 1 - Understanding the Basics
-       chapters:
-       - file: content/module_1/index
-         sections:
-         - file: content/module_1/irish_electoral_system
-         - file: content/module_1/reading_maps
-         - file: content/module_1/fair_representation 
-     
-     - caption: Interactive Tools
-       chapters:
-       - file: content/interactive/ed_finder
-       - file: content/interactive/map_comparison
-       - file: content/interactive/parameter_explorer
-       - file: content/interactive/build_scenario
+ format: jb-book
+root: content/index
+parts:
+  - caption: Getting Started
+    chapters:
+    - file: content/module_0/index
+      sections:
+      - file: content/module_0/why_this_matters
+      - file: content/module_0/find_your_ed
+      - file: content/module_0/boundaries_and_you 
+
