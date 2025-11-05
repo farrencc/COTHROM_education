@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COTHROM Representation Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .input-section {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            color: #34495e;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        select:hover {
+            border-color: #3498db;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #2980b9;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .results-section {
+            display: none;
+        }
+
+        .results-section.show {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 24px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .seat-shortage-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .seat-shortage-banner .main-stat {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        .seat-shortage-banner .label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .seat-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        .seat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .seat-box.deserved {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .seat-box.assigned {
+            border-color: #e74c3c;
+            background: #fff5f5;
+        }
+
+        .seat-box .number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .seat-box .label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .vs-indicator {
+            font-size: 24px;
+            font-weight: 700;
+            color: #95a5a6;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .stat-card .result-label {
+            color: #5a6c7d;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-card .result-value {
+            color: #2c3e50;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .variance-comparison {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .variance-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .variance-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .variance-label {
+            font-weight: 600;
+            color: #34495e;
+            flex: 1;
+        }
+
+        .variance-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .variance-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .variance-over {
+            background: #fee;
+            color: #c33;
+        }
+
+        .variance-under {
+            background: #efe;
+            color: #3a3;
+        }
+
+        .info-note {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .vote-weight-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .vote-weight-box .label {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .vote-weight-box .value {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .explanation-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+
+        .explanation-box h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .explanation-box p {
+            color: #34495e;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .explanation-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .explanation-box strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .methodology-toggle {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .toggle-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        .toggle-button:hover {
+            background: #2980b9;
+        }
+
+        .methodology-content {
+            display: none;
+            margin-top: 16px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .methodology-content.show {
+            display: block;
+        }
+
+        .methodology-content h4 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .methodology-content p {
+            color: #34495e;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .methodology-content .formula {
+            background: white;
+            padding: 12px;
+            border-left: 3px solid #3498db;
+            font-family: 'Courier New', monospace;
+            margin: 12px 0;
+            border-radius: 4px;
+        }
+
+        .ranking-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .ranking-badge.good {
+            background: #27ae60;
+        }
+
+        .ranking-badge.moderate {
+            background: #f39c12;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-container {
+                padding: 20px;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .seat-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .vs-indicator {
+                transform: rotate(90deg);
+            }
+
+            .seat-shortage-banner .main-stat {
+                font-size: 36px;
+            }
+
+            .vote-weight-box .value {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Your Representation Calculator</h2>
+        <div class="subtitle">Based on COTHROM Electoral Fairness Framework</div>
+
+        <div class="input-section">
+            <label for="constituency-select">Select your constituency:</label>
+            <select id="constituency-select">
+                <option value="">Choose your constituency...</option>
+            </select>
+        </div>
+
+        <div id="results" class="results-section">
+            <!-- Seat Shortage Banner -->
+            <div class="seat-shortage-banner" id="shortage-banner">
+                <div class="label">SEAT SHORTAGE/SURPLUS</div>
+                <div class="main-stat" id="seat-difference">-</div>
+                <div class="label" id="shortage-label">seats short of fair representation</div>
+            </div>
+
+            <!-- Seat Comparison -->
+            <div class="section-header">SEAT ANALYSIS</div>
+            <div class="seat-comparison">
+                <div class="seat-box deserved">
+                    <div class="number" id="seats-deserved">-</div>
+                    <div class="label">Seats Deserved<br>(Seat Equivalent)</div>
+                </div>
+                <div class="vs-indicator">vs</div>
+                <div class="seat-box assigned">
+                    <div class="number" id="seats-assigned">-</div>
+                    <div class="label">Seats Actually<br>Assigned</div>
+                </div>
+            </div>
+
+            <!-- Population Stats -->
+            <div class="section-header">POPULATION & REPRESENTATION</div>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="result-label">Constituency Population</div>
+                    <div class="result-value" id="population">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="result-label">National Ratio</div>
+                    <div class="result-value" id="national-ratio">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="result-label">People per TD (Actual)</div>
+                    <div class="result-value" id="people-per-td">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="result-label">National Average</div>
+                    <div class="result-value" id="national-avg">-</div>
+                </div>
+            </div>
+
+            <!-- Variance Comparison -->
+            <div class="section-header">VARIANCE COMPARISON</div>
+            <div class="variance-comparison">
+                <div class="variance-row">
+                    <span class="variance-label">Traditional Variance (Commission Method)</span>
+                    <span>
+                        <span class="variance-value" id="variance-traditional">-</span>
+                        <span class="variance-badge" id="variance-badge-trad">-</span>
+                    </span>
+                </div>
+                <div class="variance-row">
+                    <span class="variance-label">Alternative Variance (COTHROM Method)</span>
+                    <span>
+                        <span class="variance-value" id="variance-alternative">-</span>
+                        <span class="variance-badge" id="variance-badge-alt">-</span>
+                    </span>
+                </div>
+                <div class="info-note">
+                    The COTHROM method provides symmetric measurement - equal over- and under-representation produce equal variance values.
+                </div>
+            </div>
+
+            <!-- Vote Weight -->
+            <div class="section-header">YOUR EFFECTIVE VOTE WEIGHT</div>
+            <div class="vote-weight-box">
+                <div class="label">Your vote counts as</div>
+                <div class="value" id="vote-weight">1.00</div>
+                <div class="label" id="vote-weight-label">votes</div>
+            </div>
+
+            <!-- Explanations -->
+            <div class="section-header">WHAT THIS MEANS</div>
+            
+            <div class="explanation-box">
+                <h3>Understanding Your Representation</h3>
+                <p id="main-explanation"></p>
+                <p id="ser-explanation"></p>
+            </div>
+
+            <div class="explanation-box">
+                <h3>Your Vote Weight</h3>
+                <p id="vote-explanation"></p>
+            </div>
+
+            <div class="explanation-box">
+                <h3>Constituency Ranking</h3>
+                <p id="ranking-explanation"></p>
+            </div>
+
+            <!-- Methodology Toggle -->
+            <div class="methodology-toggle">
+                <button class="toggle-button" onclick="toggleMethodology()">
+                    📊 Learn About the COTHROM Method
+                </button>
+                <div class="methodology-content" id="methodology-content">
+                    <h4>What is Seat Equivalent Representation (SER)?</h4>
+                    <p>The COTHROM framework introduces <strong>Seat Equivalent Representation (SER)</strong>, which directly shows how many TDs a constituency deserves based on its population.</p>
+                    
+                    <div class="formula">
+                        SER = Constituency Population ÷ National Ratio
+                    </div>
+
+                    <p>For example, if a constituency has 150,000 people and the National Ratio is 30,000 people per TD, then:</p>
+                    <div class="formula">
+                        SER = 150,000 ÷ 30,000 = 5.0 seats
+                    </div>
+
+                    <h4>Traditional vs. Alternative Variance</h4>
+                    <p><strong>Traditional Formula</strong> (used by Constituency Commissions):</p>
+                    <div class="formula">
+                        Variance = (SER - Assigned Seats) ÷ Assigned Seats × 100%
+                    </div>
+
+                    <p><strong>Alternative Formula</strong> (COTHROM proposal):</p>
+                    <div class="formula">
+                        Variance = (SER - Assigned Seats) ÷ SER × 100%
+                    </div>
+
+                    <p>The alternative formula is more symmetric - constituencies that are +5% over and -5% under the ideal both experience the same degree of voter misrepresentation. The traditional formula creates an asymmetry where under-represented voters experience greater inequality than the percentage suggests.</p>
+
+                    <h4>Why This Matters</h4>
+                    <p>The 2023 Constituency Commission recommendations resulted in <strong>15 out of 40 constituencies</strong> falling outside the traditional ±5% tolerance range - the highest number in over 40 years. This represents an unprecedented crisis in representational equality.</p>
+
+                    <p>The COTHROM framework provides tools and methodology to explore alternative boundary configurations that could achieve better equality while respecting all constitutional and legal constraints.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let constituencyData = null;
+        let allConstituencies = [];
+
+        // Load constituency data
+        async function loadData() {
+            try {
+                const response = await fetch('constituency_data.json');
+                constituencyData = await response.json();
+                populateDropdown();
+            } catch (error) {
+                console.error('Error loading constituency data:', error);
+                document.getElementById('constituency-select').innerHTML =
+                    '<option value="">Error loading data</option>';
+            }
+        }
+
+        function populateDropdown() {
+            const select = document.getElementById('constituency-select');
+
+            // Sort constituencies alphabetically
+            allConstituencies = [...constituencyData.constituencies].sort((a, b) =>
+                a.name.localeCompare(b.name)
+            );
+
+            allConstituencies.forEach(constituency => {
+                const option = document.createElement('option');
+                option.value = constituency.name;
+                option.textContent = constituency.name;
+                select.appendChild(option);
+            });
+        }
+
+        function calculateSER(population, nationalRatio) {
+            return population / nationalRatio;
+        }
+
+        function calculateTraditionalVariance(ser, assignedSeats) {
+            return ((ser - assignedSeats) / assignedSeats) * 100;
+        }
+
+        function calculateAlternativeVariance(ser, assignedSeats) {
+            return ((ser - assignedSeats) / ser) * 100;
+        }
+
+        function calculateVoteWeight(nationalAverage, peoplePerTD) {
+            return nationalAverage / peoplePerTD;
+        }
+
+        function getRankingInfo(variance) {
+            // Sort all constituencies by absolute variance to find ranking
+            const sorted = [...allConstituencies].sort((a, b) => 
+                Math.abs(b.variance) - Math.abs(a.variance)
+            );
+            
+            const rank = sorted.findIndex(c => Math.abs(c.variance) === Math.abs(variance)) + 1;
+            const total = sorted.length;
+            
+            return { rank, total };
+        }
+
+        function calculateAndDisplay(constituency) {
+            const results = document.getElementById('results');
+            
+            // Calculate National Ratio (people per TD ideal)
+            const nationalRatio = constituencyData.nationalAverage;
+            
+            // Calculate Seat Equivalent Representation
+            const ser = calculateSER(constituency.population, nationalRatio);
+            
+            // Calculate both variance methods
+            const varianceTraditional = calculateTraditionalVariance(ser, constituency.tds);
+            const varianceAlternative = calculateAlternativeVariance(ser, constituency.tds);
+            
+            // Calculate vote weight
+            const voteWeight = calculateVoteWeight(nationalRatio, constituency.peoplePerTD);
+            
+            // Calculate seat difference
+            const seatDifference = ser - constituency.tds;
+            const absSeatDiff = Math.abs(seatDifference);
+            
+            // Update Seat Shortage Banner
+            const shortageBanner = document.getElementById('shortage-banner');
+            const seatDiffElement = document.getElementById('seat-difference');
+            const shortageLabel = document.getElementById('shortage-label');
+            
+            if (seatDifference > 0) {
+                seatDiffElement.textContent = absSeatDiff.toFixed(2);
+                shortageLabel.textContent = 'seats short of fair representation';
+                shortageBanner.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
+            } else if (seatDifference < 0) {
+                seatDiffElement.textContent = absSeatDiff.toFixed(2);
+                shortageLabel.textContent = 'surplus seats beyond fair representation';
+                shortageBanner.style.background = 'linear-gradient(135deg, #27ae60 0%, #229954 100%)';
+            } else {
+                seatDiffElement.textContent = '0.00';
+                shortageLabel.textContent = 'perfectly represented!';
+                shortageBanner.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            }
+            
+            // Update Seat Comparison
+            document.getElementById('seats-deserved').textContent = ser.toFixed(2);
+            document.getElementById('seats-assigned').textContent = constituency.tds;
+            
+            // Update Population Stats
+            document.getElementById('population').textContent = constituency.population.toLocaleString();
+            document.getElementById('national-ratio').textContent = nationalRatio.toLocaleString() + ' people/TD';
+            document.getElementById('people-per-td').textContent = constituency.peoplePerTD.toLocaleString() + ' people';
+            document.getElementById('national-avg').textContent = nationalRatio.toLocaleString() + ' people';
+            
+            // Update Variance Comparison
+            const absVarTrad = Math.abs(varianceTraditional);
+            const absVarAlt = Math.abs(varianceAlternative);
+            
+            document.getElementById('variance-traditional').textContent = 
+                (varianceTraditional > 0 ? '+' : '') + varianceTraditional.toFixed(1) + '%';
+            document.getElementById('variance-alternative').textContent = 
+                (varianceAlternative > 0 ? '+' : '') + varianceAlternative.toFixed(1) + '%';
+            
+            // Update variance badges
+            const badgeTrad = document.getElementById('variance-badge-trad');
+            const badgeAlt = document.getElementById('variance-badge-alt');
+            
+            if (varianceTraditional > 0) {
+                badgeTrad.className = 'variance-badge variance-over';
+                badgeTrad.textContent = 'OVER';
+                badgeAlt.className = 'variance-badge variance-over';
+                badgeAlt.textContent = 'OVER';
+            } else if (varianceTraditional < 0) {
+                badgeTrad.className = 'variance-badge variance-under';
+                badgeTrad.textContent = 'UNDER';
+                badgeAlt.className = 'variance-badge variance-under';
+                badgeAlt.textContent = 'UNDER';
+            } else {
+                badgeTrad.className = 'variance-badge';
+                badgeTrad.textContent = 'EQUAL';
+                badgeAlt.className = 'variance-badge';
+                badgeAlt.textContent = 'EQUAL';
+            }
+            
+            // Update Vote Weight
+            document.getElementById('vote-weight').textContent = voteWeight.toFixed(3);
+            const voteWeightLabel = document.getElementById('vote-weight-label');
+            if (voteWeight > 1.05) {
+                voteWeightLabel.textContent = 'votes (MORE than average)';
+            } else if (voteWeight < 0.95) {
+                voteWeightLabel.textContent = 'votes (LESS than average)';
+            } else {
+                voteWeightLabel.textContent = 'votes (approximately equal)';
+            }
+            
+            // Generate Main Explanation
+            const mainExplanation = document.getElementById('main-explanation');
+            if (varianceTraditional > 10) {
+                mainExplanation.innerHTML = `<strong>${constituency.name}</strong> is <strong>significantly over the national average</strong> for representation. Each TD here represents <strong>${absVarTrad.toFixed(1)}% more people</strong> than they should according to the principle of equal representation. This means voters in your constituency have <strong>less democratic influence</strong> than the typical Irish voter.`;
+            } else if (varianceTraditional < -10) {
+                mainExplanation.innerHTML = `<strong>${constituency.name}</strong> is <strong>significantly under the national average</strong> for representation. Each TD here represents <strong>${absVarTrad.toFixed(1)}% fewer people</strong> than the national standard. This means voters in your constituency have <strong>more democratic influence</strong> than the typical Irish voter.`;
+            } else if (varianceTraditional > 0) {
+                mainExplanation.innerHTML = `<strong>${constituency.name}</strong> is <strong>slightly over</strong> the national average for representation. Each TD represents <strong>${absVarTrad.toFixed(1)}% more people</strong> than ideal, giving you <strong>slightly less influence</strong> than average.`;
+            } else if (varianceTraditional < 0) {
+                mainExplanation.innerHTML = `<strong>${constituency.name}</strong> is <strong>slightly under</strong> the national average for representation. Each TD represents <strong>${absVarTrad.toFixed(1)}% fewer people</strong> than ideal, giving you <strong>slightly more influence</strong> than average.`;
+            } else {
+                mainExplanation.innerHTML = `<strong>${constituency.name}</strong> has <strong>perfect representation!</strong> Your TDs represent exactly the national average number of people. Your vote carries equal weight to all other Irish voters.`;
+            }
+            
+            // SER Explanation
+            const serExplanation = document.getElementById('ser-explanation');
+            serExplanation.innerHTML = `Based on its population of <strong>${constituency.population.toLocaleString()} people</strong>, ${constituency.name} deserves <strong>${ser.toFixed(2)} seats</strong> according to the Seat Equivalent Representation calculation. However, it currently has <strong>${constituency.tds} seats</strong> assigned, creating a ${seatDifference > 0 ? 'shortage' : seatDifference < 0 ? 'surplus' : 'perfect balance'} of <strong>${Math.abs(seatDifference).toFixed(2)} seats</strong>.`;
+            
+            // Vote Explanation
+            const voteExplanation = document.getElementById('vote-explanation');
+            if (voteWeight > 1.10) {
+                voteExplanation.innerHTML = `Your vote effectively counts as <strong>${voteWeight.toFixed(2)} votes</strong> compared to the national standard of 1.00. This means you have <strong>${((voteWeight - 1) * 100).toFixed(1)}% more democratic influence</strong> than the average Irish voter. While this might sound beneficial, it represents an inequality in our democratic system - ideally, every vote should count equally.`;
+            } else if (voteWeight < 0.90) {
+                voteExplanation.innerHTML = `Your vote effectively counts as <strong>${voteWeight.toFixed(2)} votes</strong> compared to the national standard of 1.00. This means you have <strong>${((1 - voteWeight) * 100).toFixed(1)}% less democratic influence</strong> than the average Irish voter. This is a significant inequality - your voice in choosing Ireland's representatives is diminished compared to voters in better-represented constituencies.`;
+            } else if (voteWeight > 1.05) {
+                voteExplanation.innerHTML = `Your vote effectively counts as <strong>${voteWeight.toFixed(2)} votes</strong>, giving you <strong>${((voteWeight - 1) * 100).toFixed(1)}% more influence</strong> than average. While close to ideal, this still represents a measurable advantage in democratic representation.`;
+            } else if (voteWeight < 0.95) {
+                voteExplanation.innerHTML = `Your vote effectively counts as <strong>${voteWeight.toFixed(2)} votes</strong>, giving you <strong>${((1 - voteWeight) * 100).toFixed(1)}% less influence</strong> than average. This measurable disadvantage means your voice carries slightly less weight in determining who represents Ireland in Dáil Éireann.`;
+            } else {
+                voteExplanation.innerHTML = `Your vote weight of <strong>${voteWeight.toFixed(3)}</strong> is very close to the ideal of 1.00. You have <strong>nearly equal representation</strong> to the average Irish voter. This is how democracy should work - every vote counting equally.`;
+            }
+            
+            // Ranking Explanation
+            const { rank, total } = getRankingInfo(constituency.variance);
+            const rankingExplanation = document.getElementById('ranking-explanation');
+            let rankingBadge = '';
+            
+            if (rank <= 5) {
+                rankingBadge = '<span class="ranking-badge">WORST IN IRELAND</span>';
+            } else if (rank <= 10) {
+                rankingBadge = '<span class="ranking-badge moderate">BOTTOM 10</span>';
+            } else if (rank > total - 5) {
+                rankingBadge = '<span class="ranking-badge good">BEST REPRESENTED</span>';
+            }
+            
+            rankingExplanation.innerHTML = `Out of <strong>${total} constituencies</strong> in Ireland, ${constituency.name} ranks <strong>#${rank}</strong> in terms of deviation from equal representation ${rankingBadge}. ${rank <= 5 ? 'This is one of the most unequally represented constituencies in the entire country.' : rank > total - 5 ? 'This constituency has among the fairest representation in Ireland.' : 'This places it in the ' + (rank < total/2 ? 'more unequally' : 'more fairly') + ' represented half of constituencies.'}`;
+            
+            // Show results with animation
+            results.classList.add('show');
+        }
+
+        function toggleMethodology() {
+            const content = document.getElementById('methodology-content');
+            content.classList.toggle('show');
+        }
+
+        // Event listener for constituency selection
+        document.getElementById('constituency-select').addEventListener('change', function(e) {
+            const selectedName = e.target.value;
+            if (selectedName) {
+                const constituency = constituencyData.constituencies.find(c => c.name === selectedName);
+                if (constituency) {
+                    calculateAndDisplay(constituency);
+                }
+            } else {
+                document.getElementById('results').classList.remove('show');
+            }
+        });
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
