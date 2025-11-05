@@ -38,6 +38,11 @@ jobs:
         
 
     # DEBUGGING 
+    - name : Debug jupyter-book
+      run: |
+        python --version
+        pip list | grep -i jupyter
+        jupyter-book --version
     - name: Debug file structure
       run: |
         echo "=== Root directory ==="
