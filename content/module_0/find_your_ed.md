@@ -1,29 +1,29 @@
-# Find Your Electoral District
+# Find Your Electoral Division
 
 ## Why This Matters
 
 Before we can talk about how constituency boundaries affect you, you need to know **where you are** in the system.
 
-Every address in Ireland falls within a specific **Electoral District (ED)**. Your ED is the fundamental building block of the electoral system - it groups with other EDs to form your constituency.
+Every address in Ireland falls within a specific **Electoral Division (ED)**. Your ED is the fundamental building block of the electoral system - it groups with other EDs to form your constituency.
 
-**Key Question:** Do you know which Electoral District you live in, and why that matters?
+**Key Question:** Do you know which Electoral Division you live in, and why that matters?
 
 ---
 
-## What Is an Electoral District?
+## What Is an Electoral Division?
 
-Think of Electoral Districts as the **Lego blocks** of Ireland's electoral system.
+Think of Electoral Divisions as the **Lego blocks** of Ireland's electoral system.
 
 ### The Basics
 
-**Electoral Districts (EDs)** are:
+**Electoral Divisions (EDs)** are:
 - Small geographic areas with clearly defined boundaries
 - The smallest official administrative units in Ireland
 - Used by the Central Statistics Office (CSO) for census data
 - The **building blocks** for creating constituencies
 
 **The Numbers:**
-- **3,440 Electoral Districts** in total across Ireland
+- **3,440 Electoral Divisions** in total across Ireland
 - Each ED contains roughly **80-200 homes**
 - Average population per ED: **around 1,400 people**
 - EDs vary significantly in size - urban EDs are geographically smaller but have higher populations
@@ -35,7 +35,7 @@ Here's how you fit into Ireland's electoral system:
 ```
 Your Address
     ↓
-Your Electoral District (ED)
+Your Electoral Division (ED)
     ↓
 Your Constituency (groups of EDs)
     ↓
@@ -53,7 +53,7 @@ Dáil Éireann (160 TDs total)
 
 ---
 
-## Why Electoral Districts Matter
+## Why Electoral Divisions Matter
 
 EDs are more than just administrative boundaries. They're **crucial for redistricting** because:
 
@@ -88,7 +88,7 @@ This data is what the Electoral Commission uses to calculate:
 - **Projected growth** for future planning
 
 ```{important}
-**Your ED is your democratic address.** Just like your postal address determines which mail you receive, your Electoral District determines:
+**Your ED is your democratic address.** Just like your postal address determines which mail you receive, your Electoral Division determines:
 - Which constituency you vote in
 - Which TDs represent you
 - How your vote is weighted relative to others
@@ -96,39 +96,15 @@ This data is what the Electoral Commission uses to calculate:
 
 ---
 
-## Find Your Electoral District
+## Find Your Electoral Division
 
-Now let's find **your** Electoral District.
+Now let's find **your** Electoral Division.
 
 ### Interactive ED Finder
 
-**[PLACEHOLDER: ED Finder Tool]**
-
+```{raw} html
+<iframe src="../_static/ed_finder.html" width="100%" height="750px" frameborder="0" style="border: 3px solid #9B7DC8; border-radius: 12px; margin: 20px 0;"></iframe>
 ```
-┌─────────────────────────────────────────────────┐
-│  FIND YOUR ELECTORAL DISTRICT                    │
-│                                                  │
-│  Choose your search method:                      │
-│  ○ Search by Address/Eircode                    │
-│  ○ Browse Map                                   │
-│                                                  │
-│  Enter your address or Eircode:                 │
-│  [_____________________________________]         │
-│                                                  │
-│  [Find My ED]                                   │
-│                                                  │
-│  YOUR RESULTS:                                   │
-│  📍 Electoral District: Rathmines West C        │
-│  🏛️  County: Dublin                              │
-│  🗳️  Current Constituency: Dublin Bay South      │
-│  👥 Population (Census 2022): 1,234 people      │
-│  🏘️  Households: 487                             │
-│                                                  │
-│  [Show My ED on Map] [View ED History]         │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
 
 ```{tip}
 **Don't have your Eircode handy?**
@@ -213,29 +189,9 @@ ED boundaries follow:
 
 ### Visualizing Your ED
 
-**[PLACEHOLDER: ED Boundary Viewer]**
-
+```{raw} html
+<iframe src="../_static/ed_boundary_viewer.html" width="100%" height="800px" frameborder="0" style="border: 3px solid #9B7DC8; border-radius: 12px; margin: 20px 0;"></iframe>
 ```
-┌─────────────────────────────────────────────────┐
-│  ELECTORAL DISTRICT: Rathmines West C           │
-│                                                  │
-│  [Interactive Map showing:]                     │
-│  • Your ED highlighted in blue                  │
-│  • Neighboring EDs in light gray                │
-│  • Street names labeled                         │
-│  • Boundary lines clearly marked                │
-│                                                  │
-│  NEIGHBORING ELECTORAL DISTRICTS:                │
-│  • North: Rathmines West B                      │
-│  • East: Rathmines East A                       │
-│  • South: Ranelagh                              │
-│  • West: Harold's Cross                         │
-│                                                  │
-│  [Zoom In] [View in 3D] [Show Satellite]       │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
 
 ### Understanding the Borders
 
@@ -255,68 +211,17 @@ Now let's see how your ED fits into the bigger picture.
 
 ### Current Constituency Membership
 
-**[PLACEHOLDER: Constituency Composition Viewer]**
-
+```{raw} html
+<iframe src="../_static/constituency_composition.html" width="100%" height="850px" frameborder="0" style="border: 3px solid #9B7DC8; border-radius: 12px; margin: 20px 0;"></iframe>
 ```
-┌─────────────────────────────────────────────────┐
-│  CONSTITUENCY: Dublin Bay South (4 seats)       │
-│                                                  │
-│  Total Population: 132,920 (Census 2022)        │
-│  Population per TD: 33,230                      │
-│  Variance from National Average: +2.3%          │
-│                                                  │
-│  YOUR ED IN THIS CONSTITUENCY:                   │
-│  • Rathmines West C: 1,234 people (0.93%)      │
-│  • You are 1 of 123 EDs in this constituency   │
-│                                                  │
-│  LARGEST EDs IN THIS CONSTITUENCY:               │
-│  1. Sandymount West: 2,145 people               │
-│  2. Ballsbridge: 1,987 people                   │
-│  3. Donnybrook: 1,856 people                    │
-│                                                  │
-│  SMALLEST EDs IN THIS CONSTITUENCY:              │
-│  121. Irishtown: 423 people                     │
-│  122. Ringsend: 398 people                      │
-│  123. Merrion: 287 people                       │
-│                                                  │
-│  [View All EDs] [Download Data]                │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
 
 ### Historical Constituency Membership
 
 Has your ED always been in the same constituency? Let's find out.
 
-**[PLACEHOLDER: ED History Timeline]**
-
+```{raw} html
+<iframe src="../_static/ed_history_timeline.html" width="100%" height="900px" frameborder="0" style="border: 3px solid #9B7DC8; border-radius: 12px; margin: 20px 0;"></iframe>
 ```
-┌─────────────────────────────────────────────────┐
-│  CONSTITUENCY HISTORY: Rathmines West C         │
-│                                                  │
-│  1980-1990: Dublin South-Central (5 seats)      │
-│  1990-2007: Dublin South-Central (5 seats)      │
-│  2007-2017: Dublin Bay South (4 seats)          │
-│  2017-2023: Dublin Bay South (4 seats)          │
-│  2023+:     Dublin Rathdown (5 seats) ⚠️        │
-│             [RECOMMENDED, NOT YET ENACTED]      │
-│                                                  │
-│  📊 STABILITY ANALYSIS:                         │
-│  • Number of changes: 2 times in 40+ years     │
-│  • Most recent change: 2007 (16 years ago)     │
-│  • Stability rating: MODERATE                   │
-│                                                  │
-│  💡 INSIGHT:                                    │
-│  Your ED has been relatively stable, but the    │
-│  2023 recommendation would move it to a new     │
-│  constituency for the first time since 2007.    │
-│                                                  │
-│  [View Detailed Timeline] [Compare with Neighbors] │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
 
 ```{note}
 **Understanding Stability:**
@@ -329,7 +234,7 @@ Has your ED always been in the same constituency? Let's find out.
 
 ## Why Knowing Your ED Empowers You
 
-Now that you know your Electoral District, you can:
+Now that you know your Electoral Division, you can:
 
 ### 1. Track Changes That Affect You
 
@@ -448,7 +353,7 @@ Example: "Rathmines West C" means:
 ## What's Next?
 
 Now that you know:
-- ✅ What an Electoral District is
+- ✅ What an Electoral Division is
 - ✅ How to find your specific ED
 - ✅ Why your ED matters for redistricting
 
@@ -468,7 +373,7 @@ We're ready to explore **what could change** in your area:
 ```{important}
 **Remember These Points:**
 
-1. **Electoral Districts are the building blocks** - Ireland has 3,440 EDs that combine to form constituencies
+1. **Electoral Divisions are the building blocks** - Ireland has 3,440 EDs that combine to form constituencies
 
 2. **Your ED is indivisible** - It must belong entirely to one constituency; it cannot be split
 

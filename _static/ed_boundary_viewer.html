@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electoral Division Boundary Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .viewer-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #9B7DC8;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #3DDC84;
+        }
+
+        .header h2 {
+            color: #1A1A2E;
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .header .ed-name {
+            color: #9B7DC8;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .map-container {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0fdf4 100%);
+            border: 2px solid #9B7DC8;
+            border-radius: 12px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .map-placeholder-icon {
+            font-size: 64px;
+            margin-bottom: 12px;
+        }
+
+        .map-controls {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+
+        .map-control-btn {
+            background: white;
+            border: 2px solid #9B7DC8;
+            color: #9B7DC8;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-control-btn:hover {
+            background: #9B7DC8;
+            color: white;
+        }
+
+        .legend {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .legend-title {
+            color: #1A1A2E;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+
+        .legend-color.your-ed {
+            background: #9B7DC8;
+        }
+
+        .legend-color.neighbors {
+            background: #e9ecef;
+            border: 2px solid #9B7DC8;
+        }
+
+        .legend-color.boundary {
+            background: repeating-linear-gradient(
+                45deg,
+                #1A1A2E,
+                #1A1A2E 4px,
+                transparent 4px,
+                transparent 8px
+            );
+        }
+
+        .legend-color.streets {
+            background: white;
+            border: 1px solid #3DDC84;
+        }
+
+        .legend-text {
+            color: #495057;
+            font-size: 13px;
+        }
+
+        .neighbors-section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            color: #1A1A2E;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3DDC84;
+        }
+
+        .neighbors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .neighbor-card {
+            background: linear-gradient(135deg, #f8f4fc 0%, #f0fdf4 100%);
+            border: 2px solid #9B7DC8;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .neighbor-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(155, 125, 200, 0.3);
+        }
+
+        .neighbor-direction {
+            font-size: 11px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .neighbor-name {
+            color: #1A1A2E;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .action-button {
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #9B7DC8 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(155, 125, 200, 0.4);
+        }
+
+        .action-button.green {
+            background: linear-gradient(135deg, #3DDC84 0%, #2ECC71 100%);
+        }
+
+        .action-button.green:hover {
+            box-shadow: 0 4px 12px rgba(61, 220, 132, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .viewer-container {
+                padding: 20px;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .map-controls {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .neighbors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer-container">
+        <div class="header">
+            <h2>Electoral Division</h2>
+            <div class="ed-name">Rathmines West C</div>
+        </div>
+
+        <div class="map-container">
+            <div class="map-placeholder">
+                <div class="map-placeholder-icon">🗺️</div>
+                <div>Interactive map showing ED boundaries would appear here</div>
+            </div>
+            <div class="map-controls">
+                <button class="map-control-btn" onclick="zoomIn()">🔍 Zoom In</button>
+                <button class="map-control-btn" onclick="view3D()">📐 View in 3D</button>
+                <button class="map-control-btn" onclick="showSatellite()">🛰️ Show Satellite</button>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">Map Legend</div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color your-ed"></div>
+                    <span class="legend-text">Your ED highlighted</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color neighbors"></div>
+                    <span class="legend-text">Neighboring EDs</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color boundary"></div>
+                    <span class="legend-text">Boundary lines</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color streets"></div>
+                    <span class="legend-text">Street names labeled</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="neighbors-section">
+            <div class="section-title">Neighboring Electoral Divisions</div>
+            <div class="neighbors-grid">
+                <div class="neighbor-card" onclick="viewNeighbor('North')">
+                    <div class="neighbor-direction">⬆️ North</div>
+                    <div class="neighbor-name">Rathmines West B</div>
+                </div>
+                <div class="neighbor-card" onclick="viewNeighbor('East')">
+                    <div class="neighbor-direction">➡️ East</div>
+                    <div class="neighbor-name">Rathmines East A</div>
+                </div>
+                <div class="neighbor-card" onclick="viewNeighbor('South')">
+                    <div class="neighbor-direction">⬇️ South</div>
+                    <div class="neighbor-name">Ranelagh</div>
+                </div>
+                <div class="neighbor-card" onclick="viewNeighbor('West')">
+                    <div class="neighbor-direction">⬅️ West</div>
+                    <div class="neighbor-name">Harold's Cross</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="action-button green" onclick="downloadData()">📥 Download Data</button>
+            <button class="action-button" onclick="compareNeighbors()">📊 Compare Neighbors</button>
+            <button class="action-button" onclick="shareMap()">🔗 Share Map</button>
+        </div>
+    </div>
+
+    <script>
+        function zoomIn() {
+            alert('Map would zoom into show street-level detail of your Electoral Division.');
+        }
+
+        function view3D() {
+            alert('Map would switch to 3D view showing terrain and buildings within the ED boundaries.');
+        }
+
+        function showSatellite() {
+            alert('Map would switch to satellite imagery view for better geographic context.');
+        }
+
+        function viewNeighbor(direction) {
+            alert(`This would load the boundary viewer for the ${direction} neighboring Electoral Division.`);
+        }
+
+        function downloadData() {
+            alert('This would download a CSV/JSON file containing:\n- ED boundary coordinates\n- Population data\n- Constituency information\n- Historical data');
+        }
+
+        function compareNeighbors() {
+            alert('This would open a comparison view showing:\n- Population differences\n- Geographic size\n- Constituency membership\n- Changes over time');
+        }
+
+        function shareMap() {
+            alert('This would generate a shareable link to this ED boundary view.');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constituency Composition Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .composition-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #9B7DC8;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-banner {
+            background: linear-gradient(135deg, #9B7DC8 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .constituency-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .seat-count {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8f4fc 0%, #f0fdf4 100%);
+            border: 2px solid #9B7DC8;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            color: #1A1A2E;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .stat-subtext {
+            color: #6c757d;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .variance-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .variance-positive {
+            background: #3DDC84;
+            color: white;
+        }
+
+        .variance-negative {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .section-header {
+            color: #1A1A2E;
+            font-weight: 700;
+            font-size: 16px;
+            margin: 24px 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3DDC84;
+        }
+
+        .your-ed-highlight {
+            background: linear-gradient(135deg, #9B7DC8 0%, #764ba2 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .your-ed-info {
+            flex: 1;
+        }
+
+        .your-ed-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 4px;
+        }
+
+        .your-ed-name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .your-ed-stats {
+            text-align: right;
+        }
+
+        .your-ed-stat {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .ed-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .ed-category {
+            margin-bottom: 16px;
+        }
+
+        .ed-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            color: #1A1A2E;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ed-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            border-left: 3px solid #9B7DC8;
+            transition: transform 0.2s ease;
+        }
+
+        .ed-item:hover {
+            transform: translateX(4px);
+        }
+
+        .ed-item.highlight {
+            background: linear-gradient(135deg, #f8f4fc 0%, #f0fdf4 100%);
+            border-left: 3px solid #3DDC84;
+            font-weight: 600;
+        }
+
+        .ed-rank {
+            color: #6c757d;
+            font-size: 12px;
+            min-width: 24px;
+        }
+
+        .ed-name {
+            flex: 1;
+            color: #1A1A2E;
+            font-size: 13px;
+        }
+
+        .ed-population {
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .action-button {
+            padding: 12px 16px;
+            background: white;
+            color: #9B7DC8;
+            border: 2px solid #9B7DC8;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .action-button:hover {
+            background: #9B7DC8;
+            color: white;
+        }
+
+        .action-button.green {
+            color: #3DDC84;
+            border-color: #3DDC84;
+        }
+
+        .action-button.green:hover {
+            background: #3DDC84;
+            color: white;
+        }
+
+        .scrollbar-hint {
+            text-align: center;
+            color: #6c757d;
+            font-size: 12px;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .composition-container {
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .your-ed-highlight {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .your-ed-stats {
+                text-align: center;
+            }
+        }
+
+        /* Custom scrollbar */
+        .ed-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .ed-list::-webkit-scrollbar-track {
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+
+        .ed-list::-webkit-scrollbar-thumb {
+            background: #9B7DC8;
+            border-radius: 4px;
+        }
+
+        .ed-list::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="composition-container">
+        <div class="header-banner">
+            <div class="constituency-name">Dublin Bay South</div>
+            <div class="seat-count">4 seats</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Population</div>
+                <div class="stat-value">132,920</div>
+                <div class="stat-subtext">(Census 2022)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Population per TD</div>
+                <div class="stat-value">33,230</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">National Average</div>
+                <div class="stat-value">32,482</div>
+                <div class="stat-subtext">people per TD</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Variance</div>
+                <div class="stat-value">+2.3%</div>
+                <div class="variance-badge variance-negative">OVER</div>
+            </div>
+        </div>
+
+        <div class="section-header">YOUR ED IN THIS CONSTITUENCY</div>
+
+        <div class="your-ed-highlight">
+            <div class="your-ed-info">
+                <div class="your-ed-label">Electoral Division</div>
+                <div class="your-ed-name">Rathmines West C</div>
+            </div>
+            <div class="your-ed-stats">
+                <div class="your-ed-stat">1,234 people (0.93%)</div>
+                <div class="your-ed-stat">1 of 123 EDs</div>
+            </div>
+        </div>
+
+        <div class="section-header">LARGEST EDs IN THIS CONSTITUENCY</div>
+
+        <div class="ed-list">
+            <div class="ed-item">
+                <span class="ed-rank">1.</span>
+                <span class="ed-name">Sandymount West</span>
+                <span class="ed-population">2,145 people</span>
+            </div>
+            <div class="ed-item">
+                <span class="ed-rank">2.</span>
+                <span class="ed-name">Ballsbridge</span>
+                <span class="ed-population">1,987 people</span>
+            </div>
+            <div class="ed-item">
+                <span class="ed-rank">3.</span>
+                <span class="ed-name">Donnybrook</span>
+                <span class="ed-population">1,856 people</span>
+            </div>
+            <div class="ed-item">
+                <span class="ed-rank">4.</span>
+                <span class="ed-name">Pembroke East B</span>
+                <span class="ed-population">1,743 people</span>
+            </div>
+            <div class="ed-item">
+                <span class="ed-rank">5.</span>
+                <span class="ed-name">Dartry</span>
+                <span class="ed-population">1,689 people</span>
+            </div>
+        </div>
+
+        <div class="section-header">SMALLEST EDs IN THIS CONSTITUENCY</div>
+
+        <div class="ed-list">
+            <div class="ed-item">
+                <span class="ed-rank">121.</span>
+                <span class="ed-name">Irishtown</span>
+                <span class="ed-population">423 people</span>
+            </div>
+            <div class="ed-item">
+                <span class="ed-rank">122.</span>
+                <span class="ed-name">Ringsend</span>
+                <span class="ed-population">398 people</span>
+            </div>
+            <div class="ed-item">
+                <span class="ed-rank">123.</span>
+                <span class="ed-name">Merrion</span>
+                <span class="ed-population">287 people</span>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="action-button green" onclick="viewAllEDs()">View All EDs</button>
+            <button class="action-button" onclick="downloadData()">Download Data</button>
+        </div>
+    </div>
+
+    <script>
+        function viewAllEDs() {
+            alert('This would display a full sortable/filterable list of all 123 Electoral Divisions in Dublin Bay South constituency, including:\n- ED names\n- Population\n- Households\n- Geographic size\n- County location');
+        }
+
+        function downloadData() {
+            alert('This would download a CSV/JSON file containing:\n- All ED data for this constituency\n- Population statistics\n- Variance calculations\n- Historical comparisons');
+        }
+    </script>
+</body>
+</html>
