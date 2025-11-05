@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representation Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: transparent;
+            padding: 20px;
+        }
+
+        .calculator-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 24px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .input-section {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            color: #34495e;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        select:hover {
+            border-color: #3498db;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #2980b9;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .results-section {
+            display: none;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .results-section.show {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .result-item {
+            margin-bottom: 16px;
+            padding-left: 8px;
+        }
+
+        .result-label {
+            color: #5a6c7d;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .variance-indicator {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .variance-positive {
+            background: #fee;
+            color: #c33;
+        }
+
+        .variance-negative {
+            background: #efe;
+            color: #3a3;
+        }
+
+        .explanation-box {
+            background: white;
+            border-left: 4px solid #3498db;
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .explanation-box p {
+            color: #34495e;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .explanation-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .vote-weight {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 480px) {
+            .calculator-container {
+                padding: 20px;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Your Representation Right Now</h2>
+
+        <div class="input-section">
+            <label for="constituency-select">Select your constituency:</label>
+            <select id="constituency-select">
+                <option value="">Choose your constituency...</option>
+            </select>
+        </div>
+
+        <div id="results" class="results-section">
+            <div class="result-header">YOUR RESULTS</div>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="result-label">Your TDs represent</div>
+                    <div class="result-value" id="people-per-td">-</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="result-label">National average</div>
+                    <div class="result-value" id="national-avg">-</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="result-label">Your variance from average</div>
+                <div class="result-value">
+                    <span id="variance-value">-</span>
+                    <span id="variance-badge" class="variance-indicator">-</span>
+                </div>
+            </div>
+
+            <div class="vote-weight" id="vote-weight">
+                Your effective vote weight: <span id="weight-value">1.00</span>
+            </div>
+
+            <div class="explanation-box">
+                <p id="explanation-text"></p>
+                <p id="weight-explanation"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let constituencyData = null;
+
+        // Load constituency data
+        async function loadData() {
+            try {
+                const response = await fetch('constituency_data.json');
+                constituencyData = await response.json();
+                populateDropdown();
+            } catch (error) {
+                console.error('Error loading constituency data:', error);
+                document.getElementById('constituency-select').innerHTML =
+                    '<option value="">Error loading data</option>';
+            }
+        }
+
+        function populateDropdown() {
+            const select = document.getElementById('constituency-select');
+
+            // Sort constituencies alphabetically
+            const sorted = [...constituencyData.constituencies].sort((a, b) =>
+                a.name.localeCompare(b.name)
+            );
+
+            sorted.forEach(constituency => {
+                const option = document.createElement('option');
+                option.value = constituency.name;
+                option.textContent = constituency.name;
+                select.appendChild(option);
+            });
+        }
+
+        function calculateAndDisplay(constituency) {
+            const results = document.getElementById('results');
+            const peoplePerTd = document.getElementById('people-per-td');
+            const nationalAvg = document.getElementById('national-avg');
+            const varianceValue = document.getElementById('variance-value');
+            const varianceBadge = document.getElementById('variance-badge');
+            const weightValue = document.getElementById('weight-value');
+            const explanationText = document.getElementById('explanation-text');
+            const weightExplanation = document.getElementById('weight-explanation');
+
+            // Update values
+            peoplePerTd.textContent = constituency.peoplePerTD.toLocaleString() + ' people';
+            nationalAvg.textContent = constituencyData.nationalAverage.toLocaleString() + ' people';
+
+            const variance = constituency.variance;
+            const absVariance = Math.abs(variance);
+            varianceValue.textContent = (variance > 0 ? '+' : '') + variance.toFixed(1) + '%';
+
+            // Style variance badge
+            if (variance > 0) {
+                varianceBadge.className = 'variance-indicator variance-positive';
+                varianceBadge.textContent = 'OVER';
+            } else {
+                varianceBadge.className = 'variance-indicator variance-negative';
+                varianceBadge.textContent = 'UNDER';
+            }
+
+            // Calculate vote weight (inverse of the ratio)
+            const voteWeight = constituencyData.nationalAverage / constituency.peoplePerTD;
+            weightValue.textContent = voteWeight.toFixed(3);
+
+            // Generate explanation
+            if (variance > 5) {
+                explanationText.textContent = `Your constituency is significantly OVER the national average. ` +
+                    `This means your vote carries LESS weight than the typical Irish voter. ` +
+                    `Each TD in ${constituency.name} represents ${absVariance.toFixed(1)}% more people than the average.`;
+            } else if (variance < -5) {
+                explanationText.textContent = `Your constituency is significantly UNDER the national average. ` +
+                    `This means your vote carries MORE weight than the typical Irish voter. ` +
+                    `Each TD in ${constituency.name} represents ${absVariance.toFixed(1)}% fewer people than the average.`;
+            } else if (variance > 0) {
+                explanationText.textContent = `Your constituency is slightly OVER the national average. ` +
+                    `This means your vote carries slightly LESS weight than the typical Irish voter. ` +
+                    `Each TD in ${constituency.name} represents ${absVariance.toFixed(1)}% more people than the average.`;
+            } else if (variance < 0) {
+                explanationText.textContent = `Your constituency is slightly UNDER the national average. ` +
+                    `This means your vote carries slightly MORE weight than the typical Irish voter. ` +
+                    `Each TD in ${constituency.name} represents ${absVariance.toFixed(1)}% fewer people than the average.`;
+            } else {
+                explanationText.textContent = `Your constituency is exactly at the national average! ` +
+                    `Your vote carries the same weight as the typical Irish voter.`;
+            }
+
+            // Weight explanation
+            if (voteWeight > 1.05) {
+                weightExplanation.textContent = `It's like you get ${voteWeight.toFixed(2)} votes instead of 1.00 - ` +
+                    `your voice has ${((voteWeight - 1) * 100).toFixed(1)}% more influence than average.`;
+            } else if (voteWeight < 0.95) {
+                weightExplanation.textContent = `It's like you get ${voteWeight.toFixed(2)} votes instead of 1.00 - ` +
+                    `your voice has ${((1 - voteWeight) * 100).toFixed(1)}% less influence than average.`;
+            } else {
+                weightExplanation.textContent = `Your vote weight is very close to the ideal of 1.00 - ` +
+                    `you have nearly equal representation to the average Irish voter.`;
+            }
+
+            // Show results with animation
+            results.classList.add('show');
+        }
+
+        // Event listener for constituency selection
+        document.getElementById('constituency-select').addEventListener('change', function(e) {
+            const selectedName = e.target.value;
+            if (selectedName) {
+                const constituency = constituencyData.constituencies.find(c => c.name === selectedName);
+                if (constituency) {
+                    calculateAndDisplay(constituency);
+                }
+            } else {
+                document.getElementById('results').classList.remove('show');
+            }
+        });
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>

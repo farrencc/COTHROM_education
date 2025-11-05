@@ -1,0 +1,288 @@
+{
+  "constituencies": [
+    {
+      "name": "Dublin Bay North",
+      "population": 138936,
+      "tds": 5,
+      "peoplePerTD": 27787,
+      "variance": -8.5
+    },
+    {
+      "name": "Dublin Bay South",
+      "population": 139247,
+      "tds": 4,
+      "peoplePerTD": 34812,
+      "variance": 14.7
+    },
+    {
+      "name": "Dublin Central",
+      "population": 107399,
+      "tds": 3,
+      "peoplePerTD": 35800,
+      "variance": 18.0
+    },
+    {
+      "name": "Dublin Fingal",
+      "population": 186544,
+      "tds": 5,
+      "peoplePerTD": 37309,
+      "variance": 22.9
+    },
+    {
+      "name": "Dublin Mid-West",
+      "population": 107765,
+      "tds": 4,
+      "peoplePerTD": 26941,
+      "variance": -11.3
+    },
+    {
+      "name": "Dublin North-West",
+      "population": 107503,
+      "tds": 3,
+      "peoplePerTD": 35834,
+      "variance": 18.1
+    },
+    {
+      "name": "Dublin Rathdown",
+      "population": 137588,
+      "tds": 3,
+      "peoplePerTD": 45863,
+      "variance": 51.1
+    },
+    {
+      "name": "Dublin South-Central",
+      "population": 118959,
+      "tds": 4,
+      "peoplePerTD": 29740,
+      "variance": -2.1
+    },
+    {
+      "name": "Dublin South-West",
+      "population": 130530,
+      "tds": 5,
+      "peoplePerTD": 26106,
+      "variance": -14.1
+    },
+    {
+      "name": "Dublin West",
+      "population": 115049,
+      "tds": 4,
+      "peoplePerTD": 28762,
+      "variance": -5.3
+    },
+    {
+      "name": "Dún Laoghaire",
+      "population": 137877,
+      "tds": 4,
+      "peoplePerTD": 34469,
+      "variance": 13.5
+    },
+    {
+      "name": "Carlow-Kilkenny",
+      "population": 145388,
+      "tds": 5,
+      "peoplePerTD": 29078,
+      "variance": -4.2
+    },
+    {
+      "name": "Cavan-Monaghan",
+      "population": 127772,
+      "tds": 4,
+      "peoplePerTD": 31943,
+      "variance": 5.2
+    },
+    {
+      "name": "Clare",
+      "population": 118817,
+      "tds": 4,
+      "peoplePerTD": 29704,
+      "variance": -2.2
+    },
+    {
+      "name": "Cork East",
+      "population": 104627,
+      "tds": 4,
+      "peoplePerTD": 26157,
+      "variance": -13.9
+    },
+    {
+      "name": "Cork North-Central",
+      "population": 120349,
+      "tds": 4,
+      "peoplePerTD": 30087,
+      "variance": -0.9
+    },
+    {
+      "name": "Cork North-West",
+      "population": 90694,
+      "tds": 3,
+      "peoplePerTD": 30231,
+      "variance": -0.4
+    },
+    {
+      "name": "Cork South-Central",
+      "population": 153337,
+      "tds": 4,
+      "peoplePerTD": 38334,
+      "variance": 26.3
+    },
+    {
+      "name": "Cork South-West",
+      "population": 91125,
+      "tds": 3,
+      "peoplePerTD": 30375,
+      "variance": 0.1
+    },
+    {
+      "name": "Donegal",
+      "population": 159192,
+      "tds": 5,
+      "peoplePerTD": 31838,
+      "variance": 4.9
+    },
+    {
+      "name": "Galway East",
+      "population": 123237,
+      "tds": 3,
+      "peoplePerTD": 41079,
+      "variance": 35.3
+    },
+    {
+      "name": "Galway West",
+      "population": 139693,
+      "tds": 5,
+      "peoplePerTD": 27939,
+      "variance": -8.0
+    },
+    {
+      "name": "Kerry",
+      "population": 147707,
+      "tds": 5,
+      "peoplePerTD": 29541,
+      "variance": -2.7
+    },
+    {
+      "name": "Kildare North",
+      "population": 111890,
+      "tds": 4,
+      "peoplePerTD": 27973,
+      "variance": -7.9
+    },
+    {
+      "name": "Kildare South",
+      "population": 110539,
+      "tds": 3,
+      "peoplePerTD": 36846,
+      "variance": 21.4
+    },
+    {
+      "name": "Laois",
+      "population": 84697,
+      "tds": 3,
+      "peoplePerTD": 28232,
+      "variance": -7.1
+    },
+    {
+      "name": "Limerick City",
+      "population": 98979,
+      "tds": 4,
+      "peoplePerTD": 24745,
+      "variance": -18.5
+    },
+    {
+      "name": "Limerick County",
+      "population": 96108,
+      "tds": 3,
+      "peoplePerTD": 32036,
+      "variance": 5.5
+    },
+    {
+      "name": "Longford-Westmeath",
+      "population": 129296,
+      "tds": 4,
+      "peoplePerTD": 32324,
+      "variance": 6.5
+    },
+    {
+      "name": "Louth",
+      "population": 128884,
+      "tds": 5,
+      "peoplePerTD": 25777,
+      "variance": -15.1
+    },
+    {
+      "name": "Mayo",
+      "population": 130507,
+      "tds": 4,
+      "peoplePerTD": 32627,
+      "variance": 7.5
+    },
+    {
+      "name": "Meath East",
+      "population": 101041,
+      "tds": 3,
+      "peoplePerTD": 33680,
+      "variance": 10.9
+    },
+    {
+      "name": "Meath West",
+      "population": 94868,
+      "tds": 3,
+      "peoplePerTD": 31623,
+      "variance": 4.2
+    },
+    {
+      "name": "Offaly",
+      "population": 77961,
+      "tds": 3,
+      "peoplePerTD": 25987,
+      "variance": -14.4
+    },
+    {
+      "name": "Roscommon-Galway",
+      "population": 120534,
+      "tds": 3,
+      "peoplePerTD": 40178,
+      "variance": 32.4
+    },
+    {
+      "name": "Sligo-Leitrim",
+      "population": 92206,
+      "tds": 4,
+      "peoplePerTD": 23052,
+      "variance": -24.1
+    },
+    {
+      "name": "Tipperary",
+      "population": 159553,
+      "tds": 5,
+      "peoplePerTD": 31911,
+      "variance": 5.1
+    },
+    {
+      "name": "Waterford",
+      "population": 116176,
+      "tds": 4,
+      "peoplePerTD": 29044,
+      "variance": -4.4
+    },
+    {
+      "name": "Wexford",
+      "population": 149722,
+      "tds": 5,
+      "peoplePerTD": 29944,
+      "variance": -1.4
+    },
+    {
+      "name": "Wicklow",
+      "population": 142425,
+      "tds": 5,
+      "peoplePerTD": 28485,
+      "variance": -6.2
+    }
+  ],
+  "nationalAverage": 30365,
+  "totalPopulation": 5123536,
+  "totalTDs": 174,
+  "lastUpdated": "2023"
+}
