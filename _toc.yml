@@ -1,4 +1,4 @@
- format: jb-book
+format: jb-book
 root: content/index
 parts:
   - caption: Getting Started
@@ -7,5 +7,4 @@ parts:
       sections:
       - file: content/module_0/why_this_matters
       - file: content/module_0/find_your_ed
-      - file: content/module_0/boundaries_and_you 
-
+      - file: content/module_0/boundaries_and_you
