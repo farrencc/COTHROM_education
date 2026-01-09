@@ -1,0 +1,110 @@
+{
+  "download_time": "2026-01-09T17:37:42.331488",
+  "output_directory": "/home/user/COTHROM_education/data/raw",
+  "datasets": {
+    "ed_boundaries_20m": {
+      "name": "Electoral Districts Boundaries (Generalised 20m)",
+      "description": "GeoJSON boundaries for all 3,440 Electoral Districts in Ireland at 20m generalisation",
+      "source_url": "https://data-osi.opendata.arcgis.com/datasets/osi::electoral-divisions-osi-national-electoral-boundaries-generalised-20m/explore",
+      "alt_url": "https://data.gov.ie/dataset/electoral-divisions-osi-national-electoral-boundaries-generalised-20m",
+      "download": {
+        "success": true,
+        "error": null,
+        "size_bytes": 11538,
+        "checksum_md5": "afb8992f341c8a454788187c03bb0fd4",
+        "is_sample": true
+      },
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          "Sample data has 15 features (production requires 3400)"
+        ],
+        "stats": {
+          "feature_count": 15,
+          "is_sample": true,
+          "sample_properties": [
+            "CSOED_34_1",
+            "ED_ENGLISH",
+            "COUNTY",
+            "POPULATION_2022",
+            "TOTAL_AREA_KM2",
+            "OBJECTID"
+          ]
+        }
+      },
+      "using_sample": true
+    },
+    "constituency_boundaries_2023": {
+      "name": "2023 Constituency Boundaries",
+      "description": "D\u00e1il constituency boundaries from the Electoral Commission 2023 review",
+      "source_url": "https://data.gov.ie/dataset/dail-constituency-boundaries",
+      "alt_url": "https://www.electoralcommission.ie/boundary-review/",
+      "download": {
+        "success": true,
+        "error": null,
+        "size_bytes": 14458,
+        "checksum_md5": "818f1fa60b10d91b0d93169a841c6182",
+        "is_sample": true
+      },
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": [
+          "Sample data has 20 features (production requires 39)"
+        ],
+        "stats": {
+          "feature_count": 20,
+          "is_sample": true,
+          "sample_properties": [
+            "ENGLISH",
+            "COUNTY",
+            "SEATS",
+            "POPULATION_2022",
+            "TD_POP_RATIO",
+            "OBJECTID"
+          ]
+        }
+      },
+      "using_sample": true
+    },
+    "census_2022_ed_population": {
+      "name": "Census 2022 ED Population Data",
+      "description": "Population data by Electoral District from Census 2022",
+      "source_url": "https://data.cso.ie/table/FY001",
+      "alt_url": "https://data.cso.ie/",
+      "download": {
+        "success": true,
+        "error": null,
+        "size_bytes": 2360,
+        "checksum_md5": "277b64a06a8c06621f40389dca98f4d1",
+        "is_sample": true
+      },
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "stats": {
+          "type": "dict",
+          "top_level_keys": [
+            "id",
+            "label",
+            "source",
+            "updated",
+            "dimension",
+            "value",
+            "status",
+            "_metadata"
+          ]
+        }
+      },
+      "using_sample": true
+    }
+  },
+  "summary": {
+    "total": 3,
+    "successful": 0,
+    "failed": 0,
+    "using_samples": 3
+  }
+}

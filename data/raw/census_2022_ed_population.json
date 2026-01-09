@@ -1,0 +1,102 @@
+{
+  "id": "FY001",
+  "label": "Population by Electoral District - Census 2022",
+  "source": "Central Statistics Office",
+  "updated": "2023-05-23",
+  "dimension": {
+    "Electoral District": {
+      "category": {
+        "index": {
+          "01001": 0,
+          "01002": 1,
+          "02001": 2,
+          "03001": 3,
+          "04001": 4,
+          "04002": 5,
+          "07001": 6,
+          "07002": 7,
+          "07003": 8,
+          "07004": 9,
+          "07005": 10,
+          "10001": 11,
+          "13001": 12,
+          "15001": 13,
+          "16001": 14
+        },
+        "label": {
+          "01001": "Carlow Urban",
+          "01002": "Carlow Rural",
+          "02001": "Cavan",
+          "03001": "Ennis No. 1 Urban",
+          "04001": "Cork City North A",
+          "04002": "Cork City South A",
+          "07001": "Dublin City Artane A",
+          "07002": "Dublin City Artane B",
+          "07003": "Rathmines West A",
+          "07004": "Rathmines West B",
+          "07005": "Rathmines West C",
+          "10001": "Galway City East",
+          "13001": "Killarney Urban",
+          "15001": "Portlaoise Urban",
+          "16001": "Limerick City North A"
+        }
+      }
+    },
+    "County": {
+      "category": {
+        "label": {
+          "01001": "Carlow",
+          "01002": "Carlow",
+          "02001": "Cavan",
+          "03001": "Clare",
+          "04001": "Cork City",
+          "04002": "Cork City",
+          "07001": "Dublin City",
+          "07002": "Dublin City",
+          "07003": "Dublin City",
+          "07004": "Dublin City",
+          "07005": "Dublin City",
+          "10001": "Galway City",
+          "13001": "Kerry",
+          "15001": "Laois",
+          "16001": "Limerick City"
+        }
+      }
+    },
+    "Statistic": {
+      "category": {
+        "index": {
+          "POPULATION": 0
+        },
+        "label": {
+          "POPULATION": "Population"
+        }
+      }
+    }
+  },
+  "value": [
+    20504,
+    3789,
+    4356,
+    8742,
+    3456,
+    2987,
+    3254,
+    4123,
+    2876,
+    3012,
+    1234,
+    5678,
+    6543,
+    8123,
+    3456
+  ],
+  "status": [],
+  "_metadata": {
+    "is_sample": true,
+    "sample_count": 15,
+    "production_count": 3440,
+    "total_population_ireland_2022": 5149139,
+    "note": "Sample data for development. Access full dataset from CSO StatBank for production."
+  }
+}

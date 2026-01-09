@@ -11,3 +11,8 @@ venv/
 # Ignore testing generated content
 content-testing/
 content-local/
+
+# Data files
+# Sample data (<50KB) is tracked for development
+# Production data (>10MB) should be downloaded via scripts/download_datasets.py
+data/processed/
