@@ -1,0 +1,288 @@
+{
+  "version": "1.0",
+  "created": "2026-01-09T18:00:40.162054",
+  "eds": [
+    {
+      "id": "01001",
+      "name": "Carlow Urban",
+      "county": "Carlow",
+      "constituency": "Carlow-Kilkenny",
+      "population": 20504,
+      "seats": 5,
+      "centroid": [
+        -6.930099999999999,
+        52.8346
+      ]
+    },
+    {
+      "id": "01002",
+      "name": "Carlow Rural",
+      "county": "Carlow",
+      "constituency": "Carlow-Kilkenny",
+      "population": 3789,
+      "seats": 5,
+      "centroid": [
+        -6.9601,
+        52.854600000000005
+      ]
+    },
+    {
+      "id": "02001",
+      "name": "Cavan",
+      "county": "Cavan",
+      "constituency": "Cavan-Monaghan",
+      "population": 4356,
+      "seats": 5,
+      "centroid": [
+        -7.3643,
+        53.9867
+      ]
+    },
+    {
+      "id": "03001",
+      "name": "Ennis No. 1 Urban",
+      "county": "Clare",
+      "constituency": "Clare",
+      "population": 8742,
+      "seats": 4,
+      "centroid": [
+        -8.9901,
+        52.839
+      ]
+    },
+    {
+      "id": "04001",
+      "name": "Cork City North A",
+      "county": "Cork City",
+      "constituency": "Cork East",
+      "population": 3456,
+      "seats": 4,
+      "centroid": [
+        -8.4796,
+        51.897400000000005
+      ]
+    },
+    {
+      "id": "04002",
+      "name": "Cork City South A",
+      "county": "Cork City",
+      "constituency": "Cork East",
+      "population": 2987,
+      "seats": 4,
+      "centroid": [
+        -8.469600000000002,
+        51.88739999999999
+      ]
+    },
+    {
+      "id": "07001",
+      "name": "Dublin City Artane A",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay North",
+      "population": 3254,
+      "seats": 5,
+      "centroid": [
+        -6.195400000000001,
+        53.3809
+      ]
+    },
+    {
+      "id": "07002",
+      "name": "Dublin City Artane B",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay North",
+      "population": 4123,
+      "seats": 5,
+      "centroid": [
+        -6.2054,
+        53.3809
+      ]
+    },
+    {
+      "id": "07003",
+      "name": "Rathmines West A",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay South",
+      "population": 2876,
+      "seats": 4,
+      "centroid": [
+        -6.269799999999999,
+        53.321000000000005
+      ]
+    },
+    {
+      "id": "07004",
+      "name": "Rathmines West B",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay South",
+      "population": 3012,
+      "seats": 4,
+      "centroid": [
+        -6.2798,
+        53.321000000000005
+      ]
+    },
+    {
+      "id": "07005",
+      "name": "Rathmines West C",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay South",
+      "population": 1234,
+      "seats": 4,
+      "centroid": [
+        -6.269799999999999,
+        53.311
+      ]
+    },
+    {
+      "id": "10001",
+      "name": "Galway City East",
+      "county": "Galway City",
+      "constituency": "Galway West",
+      "population": 5678,
+      "seats": 5,
+      "centroid": [
+        -9.034,
+        53.270999999999994
+      ]
+    },
+    {
+      "id": "13001",
+      "name": "Killarney Urban",
+      "county": "Kerry",
+      "constituency": "Kerry",
+      "population": 6543,
+      "seats": 5,
+      "centroid": [
+        -9.5114,
+        52.05429999999999
+      ]
+    },
+    {
+      "id": "15001",
+      "name": "Portlaoise Urban",
+      "county": "Laois",
+      "constituency": "Laois-Offaly",
+      "population": 8123,
+      "seats": 5,
+      "centroid": [
+        -7.303399999999999,
+        53.030100000000004
+      ]
+    },
+    {
+      "id": "16001",
+      "name": "Limerick City North A",
+      "county": "Limerick City",
+      "constituency": "Clare",
+      "population": 3456,
+      "seats": 4,
+      "centroid": [
+        -8.6273,
+        52.666
+      ]
+    }
+  ],
+  "by_county": {
+    "Carlow": [
+      "01001",
+      "01002"
+    ],
+    "Cavan": [
+      "02001"
+    ],
+    "Clare": [
+      "03001"
+    ],
+    "Cork City": [
+      "04001",
+      "04002"
+    ],
+    "Dublin City": [
+      "07001",
+      "07002",
+      "07003",
+      "07004",
+      "07005"
+    ],
+    "Galway City": [
+      "10001"
+    ],
+    "Kerry": [
+      "13001"
+    ],
+    "Laois": [
+      "15001"
+    ],
+    "Limerick City": [
+      "16001"
+    ]
+  },
+  "by_constituency": {
+    "Carlow-Kilkenny": [
+      "01001",
+      "01002"
+    ],
+    "Cavan-Monaghan": [
+      "02001"
+    ],
+    "Clare": [
+      "03001",
+      "16001"
+    ],
+    "Cork East": [
+      "04001",
+      "04002"
+    ],
+    "Dublin Bay North": [
+      "07001",
+      "07002"
+    ],
+    "Dublin Bay South": [
+      "07003",
+      "07004",
+      "07005"
+    ],
+    "Galway West": [
+      "10001"
+    ],
+    "Kerry": [
+      "13001"
+    ],
+    "Laois-Offaly": [
+      "15001"
+    ]
+  },
+  "name_index": {
+    "carlow urban": "01001",
+    "carlow urban carlow": "01001",
+    "carlow rural": "01002",
+    "carlow rural carlow": "01002",
+    "cavan": "02001",
+    "cavan cavan": "02001",
+    "ennis no 1 urban": "03001",
+    "ennis no 1 urban clare": "03001",
+    "cork city north a": "04001",
+    "cork city north a cork city": "04001",
+    "cork city south a": "04002",
+    "cork city south a cork city": "04002",
+    "dublin city artane a": "07001",
+    "dublin city artane a dublin city": "07001",
+    "dublin city artane b": "07002",
+    "dublin city artane b dublin city": "07002",
+    "rathmines west a": "07003",
+    "rathmines west a dublin city": "07003",
+    "rathmines west b": "07004",
+    "rathmines west b dublin city": "07004",
+    "rathmines west c": "07005",
+    "rathmines west c dublin city": "07005",
+    "galway city east": "10001",
+    "galway city east galway city": "10001",
+    "killarney urban": "13001",
+    "killarney urban kerry": "13001",
+    "portlaoise urban": "15001",
+    "portlaoise urban laois": "15001",
+    "limerick city north a": "16001",
+    "limerick city north a limerick city": "16001"
+  }
+}

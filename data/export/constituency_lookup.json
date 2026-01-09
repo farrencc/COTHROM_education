@@ -1,0 +1,69 @@
+{
+  "version": "1.0",
+  "created": "2026-01-09T18:00:40.167348",
+  "constituencies": [
+    {
+      "name": "Carlow-Kilkenny",
+      "seats": 5,
+      "ed_count": 2,
+      "total_population": 24293,
+      "pop_per_seat": 4859
+    },
+    {
+      "name": "Cavan-Monaghan",
+      "seats": 5,
+      "ed_count": 1,
+      "total_population": 4356,
+      "pop_per_seat": 871
+    },
+    {
+      "name": "Clare",
+      "seats": 4,
+      "ed_count": 2,
+      "total_population": 12198,
+      "pop_per_seat": 3050
+    },
+    {
+      "name": "Cork East",
+      "seats": 4,
+      "ed_count": 2,
+      "total_population": 6443,
+      "pop_per_seat": 1611
+    },
+    {
+      "name": "Dublin Bay North",
+      "seats": 5,
+      "ed_count": 2,
+      "total_population": 7377,
+      "pop_per_seat": 1475
+    },
+    {
+      "name": "Dublin Bay South",
+      "seats": 4,
+      "ed_count": 3,
+      "total_population": 7122,
+      "pop_per_seat": 1780
+    },
+    {
+      "name": "Galway West",
+      "seats": 5,
+      "ed_count": 1,
+      "total_population": 5678,
+      "pop_per_seat": 1136
+    },
+    {
+      "name": "Kerry",
+      "seats": 5,
+      "ed_count": 1,
+      "total_population": 6543,
+      "pop_per_seat": 1309
+    },
+    {
+      "name": "Laois-Offaly",
+      "seats": 5,
+      "ed_count": 1,
+      "total_population": 8123,
+      "pop_per_seat": 1625
+    }
+  ]
+}
