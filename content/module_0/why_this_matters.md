@@ -405,7 +405,7 @@ Use this interactive calculator to discover your constituency's seat shortage or
             // Load data from external JSON file
             async function loadData() {
                 try {
-                    const response = await fetch('/_static/data/sample_constituencies.json');
+                    const response = await fetch('../../_static/data/sample_constituencies.json');
                     if (!response.ok) throw new Error('Failed to load data');
                     constituencyData = await response.json();
                     initializeCalculator();

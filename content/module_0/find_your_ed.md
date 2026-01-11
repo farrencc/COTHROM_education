@@ -104,7 +104,7 @@ Now let's find **your** Electoral District.
 
 <div style="margin: 2rem 0; border: 2px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
   <iframe
-    src="/_static/interactive/ed_finder.html"
+    src="../../_static/interactive/ed_finder.html"
     width="100%"
     height="600"
     frameborder="0"
