@@ -451,6 +451,26 @@ def generate_address_search_javascript(ed_geojson: dict) -> str:
         return foundFeature;
     }}
 
+    // Eircode routing key to area mapping
+    var EIRCODE_ROUTING_KEYS = {{
+        'D01': 'Dublin 1', 'D02': 'Dublin 2', 'D03': 'Dublin 3', 'D04': 'Dublin 4',
+        'D05': 'Dublin 5', 'D06': 'Dublin 6', 'D6W': 'Dublin 6W', 'D07': 'Dublin 7',
+        'D08': 'Dublin 8', 'D09': 'Dublin 9', 'D10': 'Dublin 10', 'D11': 'Dublin 11',
+        'D12': 'Dublin 12', 'D13': 'Dublin 13', 'D14': 'Dublin 14', 'D15': 'Dublin 15',
+        'D16': 'Dublin 16', 'D17': 'Dublin 17', 'D18': 'Dublin 18', 'D20': 'Dublin 20',
+        'D22': 'Dublin 22', 'D24': 'Dublin 24',
+        'A41': 'Swords, County Dublin', 'A42': 'Malahide, County Dublin',
+        'A94': 'Blackrock, County Dublin', 'A96': 'Dun Laoghaire, County Dublin',
+        'A98': 'Bray, County Wicklow', 'A92': 'Drogheda, County Louth',
+        'T12': 'Cork City', 'T23': 'Cork City South', 'P12': 'Cobh, County Cork',
+        'H91': 'Galway City', 'V94': 'Limerick City', 'X91': 'Waterford City',
+        'V92': 'Tralee, County Kerry', 'V93': 'Killarney, County Kerry',
+        'V95': 'Ennis, County Clare', 'R42': 'Portlaoise', 'R56': 'Tullamore',
+        'R93': 'Kilkenny City', 'R95': 'Wexford Town', 'F12': 'Sligo Town',
+        'F26': 'Castlebar, County Mayo', 'N37': 'Navan, County Meath',
+        'W12': 'Naas, County Kildare', 'W23': 'Newbridge, County Kildare'
+    }};
+
     // Address search
     async function searchAddress() {{
         if (searchMode !== 'address') return;
@@ -473,12 +493,20 @@ def generate_address_search_javascript(ed_geojson: dict) -> str:
         try {{
             // Check for Eircode format
             var eircodePattern = /^[A-Za-z]\\d{{2}}\\s?[A-Za-z0-9]{{4}}$/;
+            var cleanQuery = query.replace(/\\s/g, '').toUpperCase();
+            var isEircode = eircodePattern.test(cleanQuery);
+            var routingKey = isEircode ? cleanQuery.slice(0, 3) : null;
             var searchQuery = query;
-            if (eircodePattern.test(query.replace(/\\s/g, ''))) {{
-                searchQuery = query.replace(/\\s/g, '').toUpperCase();
-                searchQuery = searchQuery.slice(0, 3) + ' ' + searchQuery.slice(3);
-            }}
-            if (!searchQuery.toLowerCase().includes('ireland')) {{
+
+            if (isEircode) {{
+                // Use routing key to find area name
+                var areaName = EIRCODE_ROUTING_KEYS[routingKey];
+                if (areaName) {{
+                    searchQuery = areaName + ', Ireland';
+                }} else {{
+                    searchQuery = cleanQuery.slice(0, 3) + ' ' + cleanQuery.slice(3) + ', Ireland';
+                }}
+            }} else if (!searchQuery.toLowerCase().includes('ireland')) {{
                 searchQuery += ', Ireland';
             }}
 
@@ -494,7 +522,11 @@ def generate_address_search_javascript(ed_geojson: dict) -> str:
             var results = await response.json();
 
             if (!results || results.length === 0) {{
-                status.innerHTML = '<span style="color: #dc2626;">❌ Address not found. Try a different format.</span>';
+                if (isEircode) {{
+                    status.innerHTML = '<span style="color: #dc2626;">❌ Could not find Eircode area ' + routingKey + '. Try full address.</span>';
+                }} else {{
+                    status.innerHTML = '<span style="color: #dc2626;">❌ Address not found. Try a different format.</span>';
+                }}
                 btn.disabled = false;
                 return;
             }}
@@ -539,12 +571,22 @@ def generate_address_search_javascript(ed_geojson: dict) -> str:
                 mapObj.fitBounds(edLayer.getBounds(), {{ maxZoom: 13 }});
                 edLayer.openPopup();
                 updateInfoPanel(edLayer.feature.properties);
-                status.innerHTML = '<span style="color: {COLORS['green_2']};">✓ Found: ' +
-                    edLayer.feature.properties.ED_ENGLISH + ', ' +
-                    edLayer.feature.properties.COUNTY + '</span>';
+                if (isEircode) {{
+                    status.innerHTML = '<span style="color: {COLORS['green_2']};">✓ Eircode ' + routingKey + ': ' +
+                        edLayer.feature.properties.ED_ENGLISH + ', ' +
+                        edLayer.feature.properties.COUNTY + '</span>';
+                }} else {{
+                    status.innerHTML = '<span style="color: {COLORS['green_2']};">✓ Found: ' +
+                        edLayer.feature.properties.ED_ENGLISH + ', ' +
+                        edLayer.feature.properties.COUNTY + '</span>';
+                }}
             }} else {{
                 mapObj.setView([lat, lng], 12);
-                status.innerHTML = '<span style="color: #f59e0b;">⚠️ Location found but not within sample EDs</span>';
+                if (isEircode) {{
+                    status.innerHTML = '<span style="color: #f59e0b;">⚠️ Eircode ' + routingKey + ' area not in sample data</span>';
+                }} else {{
+                    status.innerHTML = '<span style="color: #f59e0b;">⚠️ Location not within sample EDs</span>';
+                }}
             }}
 
         }} catch (error) {{

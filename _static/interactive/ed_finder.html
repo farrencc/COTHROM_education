@@ -387,8 +387,8 @@
         /* Layer control */
         .layer-control {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            bottom: 20px;
+            left: 10px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
@@ -500,12 +500,11 @@
             }
 
             .layer-control {
-                top: auto;
                 bottom: 20px;
-                right: 10px;
                 left: 10px;
+                right: auto;
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 gap: 20px;
             }
 
@@ -992,24 +991,92 @@
             return null;
         }
 
+        // Eircode routing key to area mapping
+        // Routing keys (first 3 chars) map to general geographic areas
+        const EIRCODE_ROUTING_KEYS = {
+            // Dublin
+            'D01': 'Dublin 1', 'D02': 'Dublin 2', 'D03': 'Dublin 3', 'D04': 'Dublin 4',
+            'D05': 'Dublin 5', 'D06': 'Dublin 6', 'D6W': 'Dublin 6W', 'D07': 'Dublin 7',
+            'D08': 'Dublin 8', 'D09': 'Dublin 9', 'D10': 'Dublin 10', 'D11': 'Dublin 11',
+            'D12': 'Dublin 12', 'D13': 'Dublin 13', 'D14': 'Dublin 14', 'D15': 'Dublin 15',
+            'D16': 'Dublin 16', 'D17': 'Dublin 17', 'D18': 'Dublin 18', 'D20': 'Dublin 20',
+            'D22': 'Dublin 22', 'D24': 'Dublin 24',
+            // Dublin County
+            'A41': 'Swords, County Dublin', 'A42': 'Malahide, County Dublin', 'A43': 'Portmarnock, County Dublin',
+            'A44': 'Baldoyle, County Dublin', 'A45': 'Howth, County Dublin', 'A63': 'Clongriffin, Dublin',
+            'A67': 'Donabate, County Dublin', 'A75': 'Balbriggan, County Dublin', 'A82': 'Skerries, County Dublin',
+            'A83': 'Rush, County Dublin', 'A84': 'Lusk, County Dublin', 'A85': 'Garristown, County Dublin',
+            'A86': 'Oldtown, County Dublin', 'A92': 'Drogheda, County Louth', 'A91': 'Dundalk, County Louth',
+            'A94': 'Blackrock, County Dublin', 'A96': 'Dun Laoghaire, County Dublin', 'A98': 'Bray, County Wicklow',
+            // Cork
+            'T12': 'Cork City', 'T23': 'Cork City South', 'T45': 'Ballincollig, Cork',
+            'P12': 'Cobh, County Cork', 'P14': 'Midleton, County Cork', 'P17': 'Youghal, County Cork',
+            'P24': 'Bandon, County Cork', 'P25': 'Kinsale, County Cork', 'P31': 'Carrigaline, County Cork',
+            'P32': 'Crosshaven, County Cork', 'P36': 'Macroom, County Cork', 'P43': 'Skibbereen, County Cork',
+            'P47': 'Bantry, County Cork', 'P51': 'Fermoy, County Cork', 'P56': 'Mallow, County Cork',
+            'P61': 'Kanturk, County Cork', 'P67': 'Charleville, County Cork', 'P72': 'Mitchelstown, County Cork',
+            'P75': 'Millstreet, County Cork', 'P81': 'Dunmanway, County Cork', 'P85': 'Clonakilty, County Cork',
+            // Galway
+            'H91': 'Galway City', 'H54': 'Tuam, County Galway', 'H62': 'Ballinasloe, County Galway',
+            'H65': 'Loughrea, County Galway', 'H71': 'Clifden, County Galway',
+            // Limerick
+            'V94': 'Limerick City', 'V35': 'Newcastle West, County Limerick', 'V42': 'Rathkeale, County Limerick',
+            // Waterford
+            'X91': 'Waterford City', 'X35': 'Dungarvan, County Waterford', 'X42': 'Tramore, County Waterford',
+            // Kerry
+            'V92': 'Tralee, County Kerry', 'V93': 'Killarney, County Kerry', 'V23': 'Dingle, County Kerry',
+            'V31': 'Listowel, County Kerry', 'V14': 'Kenmare, County Kerry',
+            // Other major areas
+            'F12': 'Sligo Town', 'F23': 'Ballina, County Mayo', 'F26': 'Castlebar, County Mayo',
+            'F28': 'Westport, County Mayo', 'F31': 'Claremorris, County Mayo', 'F35': 'Ballyhaunis, County Mayo',
+            'F42': 'Roscommon Town', 'F45': 'Boyle, County Roscommon',
+            'F91': 'Athlone', 'F92': 'Longford Town', 'F93': 'Mullingar',
+            'R14': 'Athy, County Kildare', 'R21': 'Monasterevin, County Kildare', 'R32': 'Carlow Town',
+            'R35': 'Tullow, County Carlow', 'R42': 'Portlaoise', 'R45': 'Mountmellick, County Laois',
+            'R51': 'Birr, County Offaly', 'R56': 'Tullamore', 'R93': 'Kilkenny City', 'R95': 'Wexford Town',
+            'N37': 'Navan, County Meath', 'N39': 'Kells, County Meath', 'N41': 'Trim, County Meath',
+            'W12': 'Naas, County Kildare', 'W23': 'Newbridge, County Kildare', 'W34': 'Celbridge, County Kildare',
+            'W91': 'Arklow, County Wicklow', 'E21': 'Gorey, County Wexford', 'E25': 'New Ross, County Wexford',
+            'E32': 'Enniscorthy, County Wexford', 'E34': 'Ferns, County Wexford', 'E41': 'Rosslare, County Wexford',
+            'E45': 'Bunclody, County Wexford', 'E91': 'Wicklow Town',
+            'H12': 'Letterkenny, County Donegal', 'H14': 'Buncrana, County Donegal', 'H18': 'Ballybofey, County Donegal',
+            'H23': 'Donegal Town', 'C15': 'Monaghan Town', 'H16': 'Cavan Town',
+            'V14': 'Cahersiveen, County Kerry', 'V15': 'Kilrush, County Clare', 'V95': 'Ennis, County Clare',
+            'Y14': 'Clonmel, County Tipperary', 'Y21': 'Cashel, County Tipperary', 'Y25': 'Cahir, County Tipperary',
+            'Y34': 'Thurles, County Tipperary', 'Y35': 'Templemore, County Tipperary',
+            'E21': 'Nenagh, County Tipperary', 'E25': 'Roscrea, County Tipperary'
+        };
+
         // Geocode address using Nominatim
         async function geocodeAddress(query) {
-            // Normalize Eircode format (remove spaces, uppercase)
             let searchQuery = query.trim();
 
             // Check if it looks like an Eircode (7 characters, alphanumeric)
             const eircodePattern = /^[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}$/;
-            const isEircode = eircodePattern.test(searchQuery.replace(/\s/g, ''));
+            const cleanQuery = searchQuery.replace(/\s/g, '').toUpperCase();
+            const isEircode = eircodePattern.test(cleanQuery);
 
             if (isEircode) {
-                // Format Eircode properly (e.g., "D02X285" or "D02 X285")
-                searchQuery = searchQuery.replace(/\s/g, '').toUpperCase();
-                searchQuery = searchQuery.slice(0, 3) + ' ' + searchQuery.slice(3);
-            }
+                // Extract routing key (first 3 characters)
+                const routingKey = cleanQuery.slice(0, 3);
 
-            // Add Ireland to improve results
-            if (!searchQuery.toLowerCase().includes('ireland')) {
-                searchQuery += ', Ireland';
+                // Look up the area name for this routing key
+                const areaName = EIRCODE_ROUTING_KEYS[routingKey];
+
+                if (areaName) {
+                    // Use the area name for geocoding instead of the Eircode
+                    searchQuery = areaName + ', Ireland';
+                    console.log(`Eircode ${cleanQuery} -> searching for: ${searchQuery}`);
+                } else {
+                    // Unknown routing key, try with just the formatted Eircode
+                    searchQuery = cleanQuery.slice(0, 3) + ' ' + cleanQuery.slice(3) + ', Ireland';
+                    console.log(`Unknown Eircode routing key ${routingKey}, trying: ${searchQuery}`);
+                }
+            } else {
+                // Regular address - add Ireland if not present
+                if (!searchQuery.toLowerCase().includes('ireland')) {
+                    searchQuery += ', Ireland';
+                }
             }
 
             const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=ie&limit=5`;
@@ -1027,7 +1094,7 @@
                 }
 
                 const data = await response.json();
-                return data;
+                return { results: data, isEircode: isEircode, routingKey: isEircode ? cleanQuery.slice(0, 3) : null };
             } catch (error) {
                 console.error('Geocoding error:', error);
                 throw error;
@@ -1049,10 +1116,17 @@
             showStatus('🔍 Searching...', 'loading');
 
             try {
-                const results = await geocodeAddress(query);
+                const response = await geocodeAddress(query);
+                const results = response.results;
+                const isEircode = response.isEircode;
+                const routingKey = response.routingKey;
 
                 if (!results || results.length === 0) {
-                    showStatus('❌ Address not found. Try a different format or check spelling.', 'error');
+                    if (isEircode) {
+                        showStatus(`❌ Could not find location for Eircode area ${routingKey}. Try entering your full address instead.`, 'error');
+                    } else {
+                        showStatus('❌ Address not found. Try a different format or check spelling.', 'error');
+                    }
                     searchBtn.disabled = false;
                     return;
                 }
@@ -1105,11 +1179,19 @@
                         }
                     });
 
-                    showStatus(`✓ Found: ${edFeature.properties.ED_NAME}, ${edFeature.properties.COUNTY}`, 'success');
+                    if (isEircode) {
+                        showStatus(`✓ Eircode ${routingKey}: ${edFeature.properties.ED_NAME}, ${edFeature.properties.COUNTY}`, 'success');
+                    } else {
+                        showStatus(`✓ Found: ${edFeature.properties.ED_NAME}, ${edFeature.properties.COUNTY}`, 'success');
+                    }
                 } else {
-                    // Location found but not in any ED (might be outside Ireland or in water)
+                    // Location found but not in any ED (sample data may not cover this area)
                     map.setView([lat, lng], 12);
-                    showStatus('⚠️ Location found but not within any Electoral District. This may be outside the covered area.', 'error');
+                    if (isEircode) {
+                        showStatus(`⚠️ Eircode ${routingKey} area found, but not covered in sample data. Try a different area.`, 'error');
+                    } else {
+                        showStatus('⚠️ Location found but not within sample Electoral Districts.', 'error');
+                    }
                 }
 
             } catch (error) {
