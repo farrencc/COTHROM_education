@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electoral District Finder - Ireland</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Search Header */
+        .search-header {
+            background: linear-gradient(135deg, #27ae60 0%, #32e875 100%);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            z-index: 1000;
+        }
+
+        .search-header h1 {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .search-box input::placeholder {
+            color: #999;
+        }
+
+        .search-box .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1001;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 10px 14px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .search-result-item:hover {
+            background: #f0f9f4;
+        }
+
+        .search-result-item .ed-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .search-result-item .ed-county {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .clear-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: background 0.15s;
+        }
+
+        .clear-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Map */
+        #map {
+            flex: 1;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Info Panel */
+        .info-panel {
+            width: 320px;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .info-panel.hidden {
+            transform: translateX(100%);
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .panel-header {
+            background: linear-gradient(135deg, #27ae60 0%, #32e875 100%);
+            color: white;
+            padding: 16px;
+        }
+
+        .panel-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .panel-header .subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .panel-content {
+            padding: 16px;
+        }
+
+        .info-section {
+            margin-bottom: 16px;
+        }
+
+        .info-section h3 {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .info-card {
+            background: #f4f4f4;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row .label {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .info-row .value {
+            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .info-row .value.highlight {
+            color: #7b2cbf;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-box {
+            background: #f4f4f4;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .stat-box .number.green {
+            color: #27ae60;
+        }
+
+        .stat-box .number.purple {
+            color: #7b2cbf;
+        }
+
+        .stat-box .label {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .constituency-card {
+            background: linear-gradient(135deg, rgba(123,44,191,0.1) 0%, rgba(60,9,108,0.15) 100%);
+            border-left: 3px solid #7b2cbf;
+            border-radius: 0 8px 8px 0;
+            padding: 12px;
+        }
+
+        .constituency-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #3c096c;
+            margin-bottom: 8px;
+        }
+
+        .initial-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .initial-state .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .initial-state p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Layer control */
+        .layer-control {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            padding: 10px 14px;
+            z-index: 500;
+        }
+
+        .layer-control h4 {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .layer-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            cursor: pointer;
+        }
+
+        .layer-option input {
+            accent-color: #27ae60;
+        }
+
+        .layer-option label {
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .loading-overlay.hidden {
+            display: none;
+        }
+
+        .loading-spinner {
+            text-align: center;
+        }
+
+        .loading-spinner .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f4f4f4;
+            border-top-color: #27ae60;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-spinner p {
+            margin-top: 12px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Sample data banner */
+        .sample-banner {
+            background: #fff3cd;
+            color: #856404;
+            padding: 8px 16px;
+            font-size: 13px;
+            text-align: center;
+            border-bottom: 1px solid #ffc107;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .container {
+                height: 100vh;
+            }
+
+            .search-header {
+                padding: 10px;
+            }
+
+            .search-header h1 {
+                font-size: 14px;
+            }
+
+            .info-panel {
+                position: absolute;
+                width: 100%;
+                max-width: 320px;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+
+            .info-panel.hidden {
+                transform: translateX(100%);
+            }
+
+            .layer-control {
+                top: auto;
+                bottom: 20px;
+                right: 10px;
+                left: 10px;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .layer-control h4 {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-header h1 {
+                display: none;
+            }
+
+            .search-box {
+                max-width: none;
+            }
+        }
+
+        /* Custom popup styles */
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            padding: 0;
+        }
+
+        .leaflet-popup-content {
+            margin: 0;
+            min-width: 200px;
+        }
+
+        .custom-popup {
+            padding: 0;
+        }
+
+        .custom-popup .popup-header {
+            background: linear-gradient(135deg, #27ae60 0%, #32e875 100%);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .custom-popup .popup-header h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .custom-popup .popup-header .county {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .custom-popup .popup-body {
+            padding: 10px 14px;
+        }
+
+        .custom-popup .popup-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 12px;
+        }
+
+        .custom-popup .popup-row .label {
+            color: #666;
+        }
+
+        .custom-popup .popup-row .value {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .custom-popup .constituency-badge {
+            background: linear-gradient(135deg, rgba(123,44,191,0.15) 0%, rgba(60,9,108,0.2) 100%);
+            border-left: 2px solid #7b2cbf;
+            padding: 6px 10px;
+            margin-top: 8px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .custom-popup .constituency-badge .name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #3c096c;
+        }
+
+        .custom-popup .constituency-badge .seats {
+            font-size: 11px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sample Data Banner -->
+        <div class="sample-banner" id="sampleBanner" style="display: none;">
+            <strong>Sample Data:</strong> Showing 15 of 3,440 Electoral Districts for demonstration
+        </div>
+
+        <!-- Search Header -->
+        <div class="search-header">
+            <h1>ED Finder</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by ED name or county...">
+                <span class="search-icon">&#128269;</span>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <button class="clear-btn" id="clearBtn">Clear Selection</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Map -->
+            <div id="map"></div>
+
+            <!-- Layer Control -->
+            <div class="layer-control">
+                <h4>Layers</h4>
+                <div class="layer-option">
+                    <input type="checkbox" id="layerEDs" checked>
+                    <label for="layerEDs">Electoral Districts</label>
+                </div>
+                <div class="layer-option">
+                    <input type="checkbox" id="layerConstituencies">
+                    <label for="layerConstituencies">Constituencies</label>
+                </div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="info-panel hidden" id="infoPanel">
+                <div class="panel-header">
+                    <h2 id="panelTitle">Select an ED</h2>
+                    <div class="subtitle" id="panelSubtitle">Click on the map to view details</div>
+                </div>
+                <div class="panel-content" id="panelContent">
+                    <div class="initial-state">
+                        <div class="icon">&#128506;</div>
+                        <p>Click on any <strong style="color: #27ae60;">green area</strong> on the map to view detailed information about that Electoral District.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading map data...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            center: [53.4, -7.9],
+            zoom: 7,
+            minZoom: 6,
+            maxZoom: 18,
+            dataPath: '../data/'
+        };
+
+        // Styles
+        const STYLES = {
+            ed: {
+                default: {
+                    fillColor: '#e8e8e8',
+                    color: '#666',
+                    weight: 0.5,
+                    fillOpacity: 0.6
+                },
+                hover: {
+                    fillColor: '#b8e8b8',
+                    color: '#27ae60',
+                    weight: 2,
+                    fillOpacity: 0.7
+                },
+                selected: {
+                    fillColor: '#3b82f6',
+                    color: '#1e40af',
+                    weight: 2,
+                    fillOpacity: 0.7
+                }
+            },
+            constituency: {
+                default: {
+                    fillColor: 'transparent',
+                    color: '#dc2626',
+                    weight: 2.5,
+                    fillOpacity: 0,
+                    dashArray: '8, 4'
+                }
+            }
+        };
+
+        // Global state
+        let map = null;
+        let edLayer = null;
+        let constituencyLayer = null;
+        let selectedFeature = null;
+        let edData = null;
+        let constituencyData = null;
+        let edLookup = null;
+
+        // Initialize map
+        function initMap() {
+            map = L.map('map', {
+                center: CONFIG.center,
+                zoom: CONFIG.zoom,
+                minZoom: CONFIG.minZoom,
+                maxZoom: CONFIG.maxZoom,
+                zoomControl: true
+            });
+
+            // Add tile layer
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+        }
+
+        // Load data
+        async function loadData() {
+            try {
+                const [edsResponse, consResponse, lookupResponse] = await Promise.all([
+                    fetch(CONFIG.dataPath + 'eds_simplified.geojson'),
+                    fetch(CONFIG.dataPath + 'constituencies_2024.json'),
+                    fetch(CONFIG.dataPath + 'ed_lookup.json')
+                ]);
+
+                edData = await edsResponse.json();
+                constituencyData = await consResponse.json();
+                edLookup = await lookupResponse.json();
+
+                // Check if sample data
+                if (edData._metadata && edData._metadata.simplified) {
+                    if (edData.features.length < 100) {
+                        document.getElementById('sampleBanner').style.display = 'block';
+                    }
+                }
+
+                return true;
+            } catch (error) {
+                console.error('Error loading data:', error);
+                return false;
+            }
+        }
+
+        // Create popup content
+        function createPopupContent(props) {
+            const pop = props.POPULATION_2022 ? props.POPULATION_2022.toLocaleString() : 'N/A';
+            const households = props.HOUSEHOLDS ? props.HOUSEHOLDS.toLocaleString() : 'N/A';
+            const seats = props.CONSTITUENCY_SEATS ? `${props.CONSTITUENCY_SEATS} TDs` : 'N/A';
+
+            return `
+                <div class="custom-popup">
+                    <div class="popup-header">
+                        <h4>${props.ED_NAME || 'Unknown'}</h4>
+                        <div class="county">${props.COUNTY || ''}</div>
+                    </div>
+                    <div class="popup-body">
+                        <div class="popup-row">
+                            <span class="label">ED ID</span>
+                            <span class="value">${props.ED_ID || 'N/A'}</span>
+                        </div>
+                        <div class="popup-row">
+                            <span class="label">Population</span>
+                            <span class="value">${pop}</span>
+                        </div>
+                        <div class="popup-row">
+                            <span class="label">Households</span>
+                            <span class="value">${households}</span>
+                        </div>
+                        <div class="constituency-badge">
+                            <div class="name">${props.CONSTITUENCY_2024 || 'Unknown'}</div>
+                            <div class="seats">${seats}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Update info panel
+        function updateInfoPanel(props) {
+            const panel = document.getElementById('infoPanel');
+            const title = document.getElementById('panelTitle');
+            const subtitle = document.getElementById('panelSubtitle');
+            const content = document.getElementById('panelContent');
+
+            panel.classList.remove('hidden');
+
+            title.textContent = props.ED_NAME || 'Unknown ED';
+            subtitle.textContent = 'Electoral District Details';
+
+            const pop = props.POPULATION_2022 || 0;
+            const households = props.HOUSEHOLDS || 0;
+            const avgPop = 1495; // National average
+            const variance = ((pop - avgPop) / avgPop * 100).toFixed(1);
+            const varianceClass = variance >= 0 ? 'green' : 'purple';
+            const varianceSign = variance >= 0 ? '+' : '';
+
+            content.innerHTML = `
+                <div class="info-section">
+                    <h3>Basic Information</h3>
+                    <div class="info-card">
+                        <div class="info-row">
+                            <span class="label">ED ID</span>
+                            <span class="value">${props.ED_ID || 'N/A'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">County</span>
+                            <span class="value">${props.COUNTY || 'N/A'}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Census 2022</h3>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="number green">${pop.toLocaleString()}</div>
+                            <div class="label">Population</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="number purple">${households.toLocaleString()}</div>
+                            <div class="label">Households</div>
+                        </div>
+                    </div>
+                    <div class="info-card" style="margin-top: 10px;">
+                        <div class="info-row">
+                            <span class="label">vs National Average</span>
+                            <span class="value" style="color: ${varianceClass === 'green' ? '#27ae60' : '#7b2cbf'}">${varianceSign}${variance}%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Constituency (2024)</h3>
+                    <div class="constituency-card">
+                        <div class="constituency-name">${props.CONSTITUENCY_2024 || 'Unknown'}</div>
+                        <div class="info-row" style="margin-top: 8px; padding: 0;">
+                            <span class="label">TDs Elected</span>
+                            <span class="value highlight">${props.CONSTITUENCY_SEATS || 'N/A'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add ED layer
+        function addEDLayer() {
+            edLayer = L.geoJSON(edData, {
+                style: STYLES.ed.default,
+                onEachFeature: function(feature, layer) {
+                    const props = feature.properties;
+
+                    // Tooltip
+                    layer.bindTooltip(props.ED_NAME || 'Unknown', {
+                        permanent: false,
+                        direction: 'top',
+                        className: 'ed-tooltip'
+                    });
+
+                    // Popup
+                    layer.bindPopup(createPopupContent(props), {
+                        maxWidth: 280,
+                        className: 'ed-popup'
+                    });
+
+                    // Events
+                    layer.on({
+                        mouseover: function(e) {
+                            if (selectedFeature !== layer) {
+                                layer.setStyle(STYLES.ed.hover);
+                            }
+                        },
+                        mouseout: function(e) {
+                            if (selectedFeature !== layer) {
+                                layer.setStyle(STYLES.ed.default);
+                            }
+                        },
+                        click: function(e) {
+                            // Reset previous selection
+                            if (selectedFeature) {
+                                selectedFeature.setStyle(STYLES.ed.default);
+                            }
+
+                            // Select new
+                            selectedFeature = layer;
+                            layer.setStyle(STYLES.ed.selected);
+
+                            // Update panel
+                            updateInfoPanel(props);
+                        }
+                    });
+                }
+            }).addTo(map);
+        }
+
+        // Add constituency layer (initially hidden)
+        function addConstituencyLayer() {
+            // Create constituency GeoJSON from ED data by grouping
+            const constituencyFeatures = [];
+            const grouped = {};
+
+            // Group by constituency
+            edData.features.forEach(feature => {
+                const con = feature.properties.CONSTITUENCY_2024;
+                if (!grouped[con]) {
+                    grouped[con] = [];
+                }
+                grouped[con].push(feature);
+            });
+
+            // For now, just show ED boundaries with constituency style when toggled
+            // In production, you'd have actual constituency boundaries
+            constituencyLayer = L.geoJSON(edData, {
+                style: STYLES.constituency.default,
+                onEachFeature: function(feature, layer) {
+                    layer.bindTooltip(feature.properties.CONSTITUENCY_2024 || 'Unknown', {
+                        permanent: false,
+                        direction: 'top'
+                    });
+                }
+            });
+        }
+
+        // Search functionality
+        function setupSearch() {
+            const input = document.getElementById('searchInput');
+            const results = document.getElementById('searchResults');
+
+            input.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase().trim();
+
+                if (query.length < 2) {
+                    results.classList.remove('active');
+                    return;
+                }
+
+                // Search
+                const matches = edLookup.by_name.filter(item =>
+                    item.search_text.includes(query)
+                ).slice(0, 10);
+
+                if (matches.length === 0) {
+                    results.innerHTML = '<div class="search-result-item"><span class="ed-name">No results found</span></div>';
+                } else {
+                    results.innerHTML = matches.map(item => `
+                        <div class="search-result-item" data-id="${item.id}">
+                            <div class="ed-name">${item.name}</div>
+                            <div class="ed-county">${item.county}</div>
+                        </div>
+                    `).join('');
+                }
+
+                results.classList.add('active');
+            });
+
+            // Click on result
+            results.addEventListener('click', function(e) {
+                const item = e.target.closest('.search-result-item');
+                if (!item) return;
+
+                const edId = item.dataset.id;
+                if (!edId) return;
+
+                // Find and select the ED
+                edLayer.eachLayer(function(layer) {
+                    if (layer.feature.properties.ED_ID === edId) {
+                        // Reset previous
+                        if (selectedFeature) {
+                            selectedFeature.setStyle(STYLES.ed.default);
+                        }
+
+                        // Select
+                        selectedFeature = layer;
+                        layer.setStyle(STYLES.ed.selected);
+
+                        // Zoom to
+                        map.fitBounds(layer.getBounds(), { maxZoom: 12 });
+
+                        // Open popup
+                        layer.openPopup();
+
+                        // Update panel
+                        updateInfoPanel(layer.feature.properties);
+                    }
+                });
+
+                // Clear search
+                input.value = '';
+                results.classList.remove('active');
+            });
+
+            // Close results on outside click
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-box')) {
+                    results.classList.remove('active');
+                }
+            });
+        }
+
+        // Clear selection
+        function setupClearButton() {
+            document.getElementById('clearBtn').addEventListener('click', function() {
+                if (selectedFeature) {
+                    selectedFeature.setStyle(STYLES.ed.default);
+                    selectedFeature = null;
+                }
+
+                const panel = document.getElementById('infoPanel');
+                panel.classList.add('hidden');
+
+                map.closePopup();
+                map.setView(CONFIG.center, CONFIG.zoom);
+            });
+        }
+
+        // Layer toggles
+        function setupLayerControls() {
+            document.getElementById('layerEDs').addEventListener('change', function(e) {
+                if (e.target.checked) {
+                    map.addLayer(edLayer);
+                } else {
+                    map.removeLayer(edLayer);
+                }
+            });
+
+            document.getElementById('layerConstituencies').addEventListener('change', function(e) {
+                if (e.target.checked) {
+                    if (constituencyLayer) {
+                        map.addLayer(constituencyLayer);
+                    }
+                } else {
+                    if (constituencyLayer) {
+                        map.removeLayer(constituencyLayer);
+                    }
+                }
+            });
+        }
+
+        // Initialize
+        async function init() {
+            initMap();
+
+            const loaded = await loadData();
+
+            if (loaded) {
+                addEDLayer();
+                addConstituencyLayer();
+                setupSearch();
+                setupClearButton();
+                setupLayerControls();
+            } else {
+                alert('Failed to load map data. Please refresh the page.');
+            }
+
+            // Hide loading
+            document.getElementById('loadingOverlay').classList.add('hidden');
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>

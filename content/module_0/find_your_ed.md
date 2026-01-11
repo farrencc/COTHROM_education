@@ -102,33 +102,21 @@ Now let's find **your** Electoral District.
 
 ### Interactive ED Finder
 
-**[PLACEHOLDER: ED Finder Tool]**
+<div style="margin: 2rem 0; border: 2px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="/_static/interactive/ed_finder.html"
+    width="100%"
+    height="600"
+    frameborder="0"
+    style="display: block;"
+    title="Electoral Division Finder - Interactive Map">
+  </iframe>
+</div>
 
-```
-┌─────────────────────────────────────────────────┐
-│  FIND YOUR ELECTORAL DISTRICT                    │
-│                                                  │
-│  Choose your search method:                      │
-│  ○ Search by Address/Eircode                    │
-│  ○ Browse Map                                   │
-│                                                  │
-│  Enter your address or Eircode:                 │
-│  [_____________________________________]         │
-│                                                  │
-│  [Find My ED]                                   │
-│                                                  │
-│  YOUR RESULTS:                                   │
-│  📍 Electoral District: Rathmines West C        │
-│  🏛️  County: Dublin                              │
-│  🗳️  Current Constituency: Dublin Bay South      │
-│  👥 Population (Census 2022): 1,234 people      │
-│  🏘️  Households: 487                             │
-│                                                  │
-│  [Show My ED on Map] [View ED History]         │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+<p style="font-size: 0.9em; color: #6b7280; text-align: center; margin-top: 0.5rem;">
+  <strong>Interactive Map:</strong> Search by ED name or click any area to explore.
+  Hover for quick info, click for detailed statistics.
+</p>
 
 ```{tip}
 **Don't have your Eircode handy?**
@@ -213,29 +201,11 @@ ED boundaries follow:
 
 ### Visualizing Your ED
 
-**[PLACEHOLDER: ED Boundary Viewer]**
-
-```
-┌─────────────────────────────────────────────────┐
-│  ELECTORAL DISTRICT: Rathmines West C           │
-│                                                  │
-│  [Interactive Map showing:]                     │
-│  • Your ED highlighted in blue                  │
-│  • Neighboring EDs in light gray                │
-│  • Street names labeled                         │
-│  • Boundary lines clearly marked                │
-│                                                  │
-│  NEIGHBORING ELECTORAL DISTRICTS:                │
-│  • North: Rathmines West B                      │
-│  • East: Rathmines East A                       │
-│  • South: Ranelagh                              │
-│  • West: Harold's Cross                         │
-│                                                  │
-│  [Zoom In] [View in 3D] [Show Satellite]       │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+Use the interactive map above to explore ED boundaries. When you click on an ED:
+- The ED is highlighted in blue
+- Neighboring EDs are shown in light gray
+- Street-level detail is visible at higher zoom levels
+- Toggle the "Constituencies" layer to see how EDs group together
 
 ### Understanding the Borders
 
@@ -255,68 +225,25 @@ Now let's see how your ED fits into the bigger picture.
 
 ### Current Constituency Membership
 
-**[PLACEHOLDER: Constituency Composition Viewer]**
+When you select an ED in the interactive map above, the info panel shows:
+- **Your constituency name** and how many TDs it elects
+- **Your ED's population** relative to the national average
+- **Census 2022 data** for the Electoral District
 
-```
-┌─────────────────────────────────────────────────┐
-│  CONSTITUENCY: Dublin Bay South (4 seats)       │
-│                                                  │
-│  Total Population: 132,920 (Census 2022)        │
-│  Population per TD: 33,230                      │
-│  Variance from National Average: +2.3%          │
-│                                                  │
-│  YOUR ED IN THIS CONSTITUENCY:                   │
-│  • Rathmines West C: 1,234 people (0.93%)      │
-│  • You are 1 of 123 EDs in this constituency   │
-│                                                  │
-│  LARGEST EDs IN THIS CONSTITUENCY:               │
-│  1. Sandymount West: 2,145 people               │
-│  2. Ballsbridge: 1,987 people                   │
-│  3. Donnybrook: 1,856 people                    │
-│                                                  │
-│  SMALLEST EDs IN THIS CONSTITUENCY:              │
-│  121. Irishtown: 423 people                     │
-│  122. Ringsend: 398 people                      │
-│  123. Merrion: 287 people                       │
-│                                                  │
-│  [View All EDs] [Download Data]                │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+Toggle the "Constituencies" layer to see the constituency boundaries overlaid on the EDs.
 
 ### Historical Constituency Membership
 
-Has your ED always been in the same constituency? Let's find out.
+Has your ED always been in the same constituency? EDs can move between constituencies during redistricting:
 
-**[PLACEHOLDER: ED History Timeline]**
+**Example: Rathmines West C**
+| Period | Constituency | Seats |
+|--------|--------------|-------|
+| 1980-2007 | Dublin South-Central | 5 |
+| 2007-2023 | Dublin Bay South | 4 |
+| 2023+ | Dublin Rathdown (proposed) | 5 |
 
-```
-┌─────────────────────────────────────────────────┐
-│  CONSTITUENCY HISTORY: Rathmines West C         │
-│                                                  │
-│  1980-1990: Dublin South-Central (5 seats)      │
-│  1990-2007: Dublin South-Central (5 seats)      │
-│  2007-2017: Dublin Bay South (4 seats)          │
-│  2017-2023: Dublin Bay South (4 seats)          │
-│  2023+:     Dublin Rathdown (5 seats) ⚠️        │
-│             [RECOMMENDED, NOT YET ENACTED]      │
-│                                                  │
-│  📊 STABILITY ANALYSIS:                         │
-│  • Number of changes: 2 times in 40+ years     │
-│  • Most recent change: 2007 (16 years ago)     │
-│  • Stability rating: MODERATE                   │
-│                                                  │
-│  💡 INSIGHT:                                    │
-│  Your ED has been relatively stable, but the    │
-│  2023 recommendation would move it to a new     │
-│  constituency for the first time since 2007.    │
-│                                                  │
-│  [View Detailed Timeline] [Compare with Neighbors] │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+Most EDs are relatively stable, changing constituencies only every 15-20 years. EDs at constituency borders are more likely to be moved during redistricting.
 
 ```{note}
 **Understanding Stability:**

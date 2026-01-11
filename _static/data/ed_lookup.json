@@ -1,0 +1,271 @@
+{
+  "by_id": {
+    "01001": {
+      "name": "Carlow Urban",
+      "county": "Carlow",
+      "constituency": "Carlow-Kilkenny",
+      "population": 20504,
+      "households": 8202
+    },
+    "01002": {
+      "name": "Carlow Rural",
+      "county": "Carlow",
+      "constituency": "Carlow-Kilkenny",
+      "population": 3789,
+      "households": 1516
+    },
+    "02001": {
+      "name": "Cavan",
+      "county": "Cavan",
+      "constituency": "Cavan-Monaghan",
+      "population": 4356,
+      "households": 1742
+    },
+    "03001": {
+      "name": "Ennis No. 1 Urban",
+      "county": "Clare",
+      "constituency": "Clare",
+      "population": 8742,
+      "households": 3497
+    },
+    "04001": {
+      "name": "Cork City North A",
+      "county": "Cork City",
+      "constituency": "Cork East",
+      "population": 3456,
+      "households": 1382
+    },
+    "04002": {
+      "name": "Cork City South A",
+      "county": "Cork City",
+      "constituency": "Cork East",
+      "population": 2987,
+      "households": 1195
+    },
+    "07001": {
+      "name": "Dublin City Artane A",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay North",
+      "population": 3254,
+      "households": 1302
+    },
+    "07002": {
+      "name": "Dublin City Artane B",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay North",
+      "population": 4123,
+      "households": 1649
+    },
+    "07003": {
+      "name": "Rathmines West A",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay South",
+      "population": 2876,
+      "households": 1150
+    },
+    "07004": {
+      "name": "Rathmines West B",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay South",
+      "population": 3012,
+      "households": 1205
+    },
+    "07005": {
+      "name": "Rathmines West C",
+      "county": "Dublin City",
+      "constituency": "Dublin Bay South",
+      "population": 1234,
+      "households": 494
+    },
+    "10001": {
+      "name": "Galway City East",
+      "county": "Galway City",
+      "constituency": "Galway West",
+      "population": 5678,
+      "households": 2271
+    },
+    "13001": {
+      "name": "Killarney Urban",
+      "county": "Kerry",
+      "constituency": "Kerry",
+      "population": 6543,
+      "households": 2617
+    },
+    "15001": {
+      "name": "Portlaoise Urban",
+      "county": "Laois",
+      "constituency": "Laois-Offaly",
+      "population": 8123,
+      "households": 3249
+    },
+    "16001": {
+      "name": "Limerick City North A",
+      "county": "Limerick City",
+      "constituency": "Clare",
+      "population": 3456,
+      "households": 1382
+    }
+  },
+  "by_name": [
+    {
+      "id": "01001",
+      "name": "Carlow Urban",
+      "county": "Carlow",
+      "search_text": "carlow urban carlow"
+    },
+    {
+      "id": "01002",
+      "name": "Carlow Rural",
+      "county": "Carlow",
+      "search_text": "carlow rural carlow"
+    },
+    {
+      "id": "02001",
+      "name": "Cavan",
+      "county": "Cavan",
+      "search_text": "cavan cavan"
+    },
+    {
+      "id": "03001",
+      "name": "Ennis No. 1 Urban",
+      "county": "Clare",
+      "search_text": "ennis no. 1 urban clare"
+    },
+    {
+      "id": "04001",
+      "name": "Cork City North A",
+      "county": "Cork City",
+      "search_text": "cork city north a cork city"
+    },
+    {
+      "id": "04002",
+      "name": "Cork City South A",
+      "county": "Cork City",
+      "search_text": "cork city south a cork city"
+    },
+    {
+      "id": "07001",
+      "name": "Dublin City Artane A",
+      "county": "Dublin City",
+      "search_text": "dublin city artane a dublin city"
+    },
+    {
+      "id": "07002",
+      "name": "Dublin City Artane B",
+      "county": "Dublin City",
+      "search_text": "dublin city artane b dublin city"
+    },
+    {
+      "id": "07003",
+      "name": "Rathmines West A",
+      "county": "Dublin City",
+      "search_text": "rathmines west a dublin city"
+    },
+    {
+      "id": "07004",
+      "name": "Rathmines West B",
+      "county": "Dublin City",
+      "search_text": "rathmines west b dublin city"
+    },
+    {
+      "id": "07005",
+      "name": "Rathmines West C",
+      "county": "Dublin City",
+      "search_text": "rathmines west c dublin city"
+    },
+    {
+      "id": "10001",
+      "name": "Galway City East",
+      "county": "Galway City",
+      "search_text": "galway city east galway city"
+    },
+    {
+      "id": "13001",
+      "name": "Killarney Urban",
+      "county": "Kerry",
+      "search_text": "killarney urban kerry"
+    },
+    {
+      "id": "15001",
+      "name": "Portlaoise Urban",
+      "county": "Laois",
+      "search_text": "portlaoise urban laois"
+    },
+    {
+      "id": "16001",
+      "name": "Limerick City North A",
+      "county": "Limerick City",
+      "search_text": "limerick city north a limerick city"
+    }
+  ],
+  "by_county": {
+    "Carlow": [
+      "01001",
+      "01002"
+    ],
+    "Cavan": [
+      "02001"
+    ],
+    "Clare": [
+      "03001"
+    ],
+    "Cork City": [
+      "04001",
+      "04002"
+    ],
+    "Dublin City": [
+      "07001",
+      "07002",
+      "07003",
+      "07004",
+      "07005"
+    ],
+    "Galway City": [
+      "10001"
+    ],
+    "Kerry": [
+      "13001"
+    ],
+    "Laois": [
+      "15001"
+    ],
+    "Limerick City": [
+      "16001"
+    ]
+  },
+  "by_constituency": {
+    "Carlow-Kilkenny": [
+      "01001",
+      "01002"
+    ],
+    "Cavan-Monaghan": [
+      "02001"
+    ],
+    "Clare": [
+      "03001",
+      "16001"
+    ],
+    "Cork East": [
+      "04001",
+      "04002"
+    ],
+    "Dublin Bay North": [
+      "07001",
+      "07002"
+    ],
+    "Dublin Bay South": [
+      "07003",
+      "07004",
+      "07005"
+    ],
+    "Galway West": [
+      "10001"
+    ],
+    "Kerry": [
+      "13001"
+    ],
+    "Laois-Offaly": [
+      "15001"
+    ]
+  }
+}

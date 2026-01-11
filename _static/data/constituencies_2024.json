@@ -1,0 +1,191 @@
+{
+  "national_ratio": 32218,
+  "total_tds": 82,
+  "total_population": 2641920,
+  "constituencies": [
+    {
+      "name": "Carlow-Kilkenny",
+      "county": "Carlow/Kilkenny",
+      "tds": 5,
+      "population": 165000,
+      "variance": 11.51,
+      "ed_ids": [
+        "01001",
+        "01002"
+      ]
+    },
+    {
+      "name": "Cavan-Monaghan",
+      "county": "Cavan/Monaghan",
+      "tds": 5,
+      "population": 155000,
+      "variance": 4.75,
+      "ed_ids": [
+        "02001"
+      ]
+    },
+    {
+      "name": "Clare",
+      "county": "Clare",
+      "tds": 4,
+      "population": 132000,
+      "variance": 11.51,
+      "ed_ids": [
+        "03001",
+        "16001"
+      ]
+    },
+    {
+      "name": "Cork East",
+      "county": "Cork",
+      "tds": 4,
+      "population": 130000,
+      "variance": 9.82,
+      "ed_ids": [
+        "04001",
+        "04002"
+      ]
+    },
+    {
+      "name": "Cork North-Central",
+      "county": "Cork City",
+      "tds": 4,
+      "population": 128000,
+      "variance": 8.13,
+      "ed_ids": []
+    },
+    {
+      "name": "Cork North-West",
+      "county": "Cork",
+      "tds": 3,
+      "population": 98000,
+      "variance": 10.39,
+      "ed_ids": []
+    },
+    {
+      "name": "Cork South-Central",
+      "county": "Cork City",
+      "tds": 4,
+      "population": 131000,
+      "variance": 10.67,
+      "ed_ids": []
+    },
+    {
+      "name": "Cork South-West",
+      "county": "Cork",
+      "tds": 3,
+      "population": 96000,
+      "variance": 8.13,
+      "ed_ids": []
+    },
+    {
+      "name": "Dublin Bay North",
+      "county": "Dublin",
+      "tds": 5,
+      "population": 161000,
+      "variance": 8.81,
+      "ed_ids": [
+        "07001",
+        "07002"
+      ]
+    },
+    {
+      "name": "Dublin Bay South",
+      "county": "Dublin",
+      "tds": 4,
+      "population": 132920,
+      "variance": 12.29,
+      "ed_ids": [
+        "07003",
+        "07004",
+        "07005"
+      ]
+    },
+    {
+      "name": "Dublin Central",
+      "county": "Dublin",
+      "tds": 4,
+      "population": 125000,
+      "variance": 5.6,
+      "ed_ids": []
+    },
+    {
+      "name": "Dublin Fingal East",
+      "county": "Dublin",
+      "tds": 4,
+      "population": 130000,
+      "variance": 9.82,
+      "ed_ids": []
+    },
+    {
+      "name": "Dublin Fingal West",
+      "county": "Dublin",
+      "tds": 3,
+      "population": 99000,
+      "variance": 11.51,
+      "ed_ids": []
+    },
+    {
+      "name": "Dublin Mid-West",
+      "county": "Dublin",
+      "tds": 4,
+      "population": 134000,
+      "variance": 13.2,
+      "ed_ids": []
+    },
+    {
+      "name": "Dublin North-West",
+      "county": "Dublin",
+      "tds": 4,
+      "population": 127000,
+      "variance": 7.29,
+      "ed_ids": []
+    },
+    {
+      "name": "Galway East",
+      "county": "Galway",
+      "tds": 3,
+      "population": 97000,
+      "variance": 9.26,
+      "ed_ids": []
+    },
+    {
+      "name": "Galway West",
+      "county": "Galway",
+      "tds": 5,
+      "population": 158000,
+      "variance": 6.78,
+      "ed_ids": [
+        "10001"
+      ]
+    },
+    {
+      "name": "Kerry",
+      "county": "Kerry",
+      "tds": 5,
+      "population": 156000,
+      "variance": 5.43,
+      "ed_ids": [
+        "13001"
+      ]
+    },
+    {
+      "name": "Laois-Offaly",
+      "county": "Laois/Offaly",
+      "tds": 5,
+      "population": 159000,
+      "variance": 7.46,
+      "ed_ids": [
+        "15001"
+      ]
+    },
+    {
+      "name": "Limerick City",
+      "county": "Limerick",
+      "tds": 4,
+      "population": 128000,
+      "variance": 8.13,
+      "ed_ids": []
+    }
+  ]
+}
