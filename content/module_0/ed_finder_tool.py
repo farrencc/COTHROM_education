@@ -165,6 +165,398 @@ def calculate_ed_statistics(ed_geojson: dict, constituency_geojson: dict = None)
     }
 
 
+def generate_address_search_html() -> str:
+    """Generate the HTML for the address/Eircode search bar."""
+    return f'''
+    <div id="address-search-container" style="
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+        width: 90%;
+        max-width: 500px;
+    ">
+        <div style="
+            background: {COLORS['white']};
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+        ">
+            <!-- Search Tabs -->
+            <div style="display: flex; background: {COLORS['light_grey']};">
+                <button id="tab-ed" onclick="setSearchMode('ed')" style="
+                    flex: 1;
+                    padding: 8px;
+                    border: none;
+                    background: {COLORS['bright_green']};
+                    color: white;
+                    font-size: 12px;
+                    cursor: pointer;
+                    font-weight: 600;
+                ">ED Name</button>
+                <button id="tab-address" onclick="setSearchMode('address')" style="
+                    flex: 1;
+                    padding: 8px;
+                    border: none;
+                    background: transparent;
+                    color: #666;
+                    font-size: 12px;
+                    cursor: pointer;
+                ">Address / Eircode</button>
+            </div>
+            <!-- Search Input -->
+            <div style="display: flex; padding: 8px;">
+                <input type="text" id="search-input"
+                    placeholder="Search by ED name or county..."
+                    style="
+                        flex: 1;
+                        padding: 10px 14px;
+                        border: 1px solid #ddd;
+                        border-radius: 6px 0 0 6px;
+                        font-size: 14px;
+                        outline: none;
+                    "
+                    onkeypress="if(event.key==='Enter') searchAddress();"
+                >
+                <button id="search-btn" onclick="searchAddress()" style="
+                    padding: 10px 16px;
+                    background: {COLORS['bright_green']};
+                    color: white;
+                    border: none;
+                    border-radius: 0 6px 6px 0;
+                    cursor: pointer;
+                    font-size: 14px;
+                    display: none;
+                ">Find</button>
+            </div>
+            <!-- Search Status -->
+            <div id="search-status" style="
+                display: none;
+                padding: 10px 14px;
+                font-size: 13px;
+                border-top: 1px solid #eee;
+            "></div>
+            <!-- ED Search Results -->
+            <div id="ed-search-results" style="
+                display: none;
+                max-height: 200px;
+                overflow-y: auto;
+                border-top: 1px solid #eee;
+            "></div>
+        </div>
+    </div>
+    '''
+
+
+def generate_address_search_javascript(ed_geojson: dict) -> str:
+    """Generate JavaScript for address/Eircode search functionality."""
+    # Prepare ED data for search
+    ed_list = []
+    for feat in ed_geojson.get('features', []):
+        props = feat.get('properties', {})
+        ed_list.append({
+            'id': props.get('CSOED_34_1', ''),
+            'name': props.get('ED_ENGLISH', ''),
+            'county': props.get('COUNTY', ''),
+            'search_text': f"{props.get('ED_ENGLISH', '')} {props.get('COUNTY', '')}".lower()
+        })
+
+    ed_list_json = json.dumps(ed_list)
+
+    return f'''
+    <script>
+    // Address/Eircode Search Functionality
+    var searchMode = 'ed';
+    var edSearchData = {ed_list_json};
+    var locationMarker = null;
+    var edGeoJsonData = null;
+
+    function setSearchMode(mode) {{
+        searchMode = mode;
+        var tabEd = document.getElementById('tab-ed');
+        var tabAddr = document.getElementById('tab-address');
+        var input = document.getElementById('search-input');
+        var btn = document.getElementById('search-btn');
+        var results = document.getElementById('ed-search-results');
+        var status = document.getElementById('search-status');
+
+        results.style.display = 'none';
+        status.style.display = 'none';
+        input.value = '';
+
+        if (mode === 'ed') {{
+            tabEd.style.background = '{COLORS['bright_green']}';
+            tabEd.style.color = 'white';
+            tabEd.style.fontWeight = '600';
+            tabAddr.style.background = 'transparent';
+            tabAddr.style.color = '#666';
+            tabAddr.style.fontWeight = 'normal';
+            input.placeholder = 'Search by ED name or county...';
+            btn.style.display = 'none';
+        }} else {{
+            tabAddr.style.background = '{COLORS['bright_green']}';
+            tabAddr.style.color = 'white';
+            tabAddr.style.fontWeight = '600';
+            tabEd.style.background = 'transparent';
+            tabEd.style.color = '#666';
+            tabEd.style.fontWeight = 'normal';
+            input.placeholder = 'Enter address or Eircode (e.g., D02 X285)...';
+            btn.style.display = 'block';
+        }}
+    }}
+
+    // ED name search (instant)
+    document.addEventListener('DOMContentLoaded', function() {{
+        var input = document.getElementById('search-input');
+        if (input) {{
+            input.addEventListener('input', function(e) {{
+                if (searchMode !== 'ed') return;
+
+                var query = e.target.value.toLowerCase().trim();
+                var results = document.getElementById('ed-search-results');
+
+                if (query.length < 2) {{
+                    results.style.display = 'none';
+                    return;
+                }}
+
+                var matches = edSearchData.filter(function(item) {{
+                    return item.search_text.indexOf(query) !== -1;
+                }}).slice(0, 8);
+
+                if (matches.length === 0) {{
+                    results.innerHTML = '<div style="padding: 12px; color: #666;">No results found</div>';
+                }} else {{
+                    results.innerHTML = matches.map(function(item) {{
+                        return '<div onclick="selectED(\\'' + item.id + '\\')" style="padding: 10px 14px; border-bottom: 1px solid #eee; cursor: pointer;" onmouseover="this.style.background=\\'#f0f9f4\\'" onmouseout="this.style.background=\\'white\\'">' +
+                            '<div style="font-weight: 600; color: #333;">' + item.name + '</div>' +
+                            '<div style="font-size: 12px; color: #666;">' + item.county + '</div>' +
+                        '</div>';
+                    }}).join('');
+                }}
+                results.style.display = 'block';
+            }});
+        }}
+    }});
+
+    function selectED(edId) {{
+        document.getElementById('ed-search-results').style.display = 'none';
+        document.getElementById('search-input').value = '';
+
+        // Find the map and ED layer
+        var mapObj = null;
+        for (var key in window) {{
+            if (key.startsWith('map_') && window[key] && typeof window[key].eachLayer === 'function') {{
+                mapObj = window[key];
+                break;
+            }}
+        }}
+
+        if (mapObj) {{
+            mapObj.eachLayer(function(layer) {{
+                if (layer.feature && layer.feature.properties && layer.feature.properties.CSOED_34_1 === edId) {{
+                    mapObj.fitBounds(layer.getBounds(), {{ maxZoom: 12 }});
+                    layer.openPopup();
+                    updateInfoPanel(layer.feature.properties);
+                }}
+                if (layer.eachLayer) {{
+                    layer.eachLayer(function(sublayer) {{
+                        if (sublayer.feature && sublayer.feature.properties && sublayer.feature.properties.CSOED_34_1 === edId) {{
+                            mapObj.fitBounds(sublayer.getBounds(), {{ maxZoom: 12 }});
+                            sublayer.openPopup();
+                            updateInfoPanel(sublayer.feature.properties);
+                        }}
+                    }});
+                }}
+            }});
+        }}
+    }}
+
+    // Point in polygon detection
+    function pointInPolygon(point, polygon) {{
+        var x = point[0], y = point[1];
+        var inside = false;
+
+        for (var i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {{
+            var xi = polygon[i][0], yi = polygon[i][1];
+            var xj = polygon[j][0], yj = polygon[j][1];
+
+            if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {{
+                inside = !inside;
+            }}
+        }}
+        return inside;
+    }}
+
+    // Find ED at coordinates
+    function findEDAtPoint(lat, lng) {{
+        var point = [lng, lat];
+
+        // Find map and iterate layers
+        var mapObj = null;
+        for (var key in window) {{
+            if (key.startsWith('map_') && window[key] && typeof window[key].eachLayer === 'function') {{
+                mapObj = window[key];
+                break;
+            }}
+        }}
+
+        if (!mapObj) return null;
+
+        var foundFeature = null;
+        mapObj.eachLayer(function(layer) {{
+            if (foundFeature) return;
+            if (layer.feature && layer.feature.geometry) {{
+                var geom = layer.feature.geometry;
+                var rings = [];
+                if (geom.type === 'Polygon') {{
+                    rings = geom.coordinates;
+                }} else if (geom.type === 'MultiPolygon') {{
+                    geom.coordinates.forEach(function(poly) {{
+                        rings = rings.concat(poly);
+                    }});
+                }}
+                for (var i = 0; i < rings.length; i++) {{
+                    if (pointInPolygon(point, rings[i])) {{
+                        foundFeature = layer;
+                        return;
+                    }}
+                }}
+            }}
+            if (layer.eachLayer) {{
+                layer.eachLayer(function(sublayer) {{
+                    if (foundFeature) return;
+                    if (sublayer.feature && sublayer.feature.geometry) {{
+                        var geom = sublayer.feature.geometry;
+                        var rings = [];
+                        if (geom.type === 'Polygon') {{
+                            rings = geom.coordinates;
+                        }} else if (geom.type === 'MultiPolygon') {{
+                            geom.coordinates.forEach(function(poly) {{
+                                rings = rings.concat(poly);
+                            }});
+                        }}
+                        for (var i = 0; i < rings.length; i++) {{
+                            if (pointInPolygon(point, rings[i])) {{
+                                foundFeature = sublayer;
+                                return;
+                            }}
+                        }}
+                    }}
+                }});
+            }}
+        }});
+
+        return foundFeature;
+    }}
+
+    // Address search
+    async function searchAddress() {{
+        if (searchMode !== 'address') return;
+
+        var query = document.getElementById('search-input').value.trim();
+        var status = document.getElementById('search-status');
+        var btn = document.getElementById('search-btn');
+
+        if (query.length < 3) {{
+            status.innerHTML = '<span style="color: #dc2626;">Please enter at least 3 characters</span>';
+            status.style.display = 'block';
+            return;
+        }}
+
+        // Show loading
+        btn.disabled = true;
+        status.innerHTML = '<span style="color: #666;">🔍 Searching...</span>';
+        status.style.display = 'block';
+
+        try {{
+            // Check for Eircode format
+            var eircodePattern = /^[A-Za-z]\\d{{2}}\\s?[A-Za-z0-9]{{4}}$/;
+            var searchQuery = query;
+            if (eircodePattern.test(query.replace(/\\s/g, ''))) {{
+                searchQuery = query.replace(/\\s/g, '').toUpperCase();
+                searchQuery = searchQuery.slice(0, 3) + ' ' + searchQuery.slice(3);
+            }}
+            if (!searchQuery.toLowerCase().includes('ireland')) {{
+                searchQuery += ', Ireland';
+            }}
+
+            var url = 'https://nominatim.openstreetmap.org/search?format=json&q=' +
+                encodeURIComponent(searchQuery) + '&countrycodes=ie&limit=5';
+
+            var response = await fetch(url, {{
+                headers: {{ 'Accept': 'application/json', 'User-Agent': 'COTHROM-ED-Finder/1.0' }}
+            }});
+
+            if (!response.ok) throw new Error('Geocoding failed');
+
+            var results = await response.json();
+
+            if (!results || results.length === 0) {{
+                status.innerHTML = '<span style="color: #dc2626;">❌ Address not found. Try a different format.</span>';
+                btn.disabled = false;
+                return;
+            }}
+
+            var location = results[0];
+            var lat = parseFloat(location.lat);
+            var lng = parseFloat(location.lon);
+
+            // Find map
+            var mapObj = null;
+            for (var key in window) {{
+                if (key.startsWith('map_') && window[key] && typeof window[key].eachLayer === 'function') {{
+                    mapObj = window[key];
+                    break;
+                }}
+            }}
+
+            if (!mapObj) {{
+                status.innerHTML = '<span style="color: #dc2626;">❌ Map not ready</span>';
+                btn.disabled = false;
+                return;
+            }}
+
+            // Add/update location marker
+            if (locationMarker) {{
+                mapObj.removeLayer(locationMarker);
+            }}
+            locationMarker = L.marker([lat, lng], {{
+                icon: L.divIcon({{
+                    className: 'location-marker',
+                    html: '<div style="background: #dc2626; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>',
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8]
+                }})
+            }}).addTo(mapObj);
+            locationMarker.bindPopup('<strong>Your Location</strong><br>' + location.display_name.split(',').slice(0,3).join(', '));
+
+            // Find ED at location
+            var edLayer = findEDAtPoint(lat, lng);
+
+            if (edLayer && edLayer.feature) {{
+                mapObj.fitBounds(edLayer.getBounds(), {{ maxZoom: 13 }});
+                edLayer.openPopup();
+                updateInfoPanel(edLayer.feature.properties);
+                status.innerHTML = '<span style="color: {COLORS['green_2']};">✓ Found: ' +
+                    edLayer.feature.properties.ED_ENGLISH + ', ' +
+                    edLayer.feature.properties.COUNTY + '</span>';
+            }} else {{
+                mapObj.setView([lat, lng], 12);
+                status.innerHTML = '<span style="color: #f59e0b;">⚠️ Location found but not within sample EDs</span>';
+            }}
+
+        }} catch (error) {{
+            status.innerHTML = '<span style="color: #dc2626;">❌ Error searching. Please try again.</span>';
+        }}
+
+        btn.disabled = false;
+    }}
+    </script>
+    '''
+
+
 def generate_info_panel_html() -> str:
     """Generate the HTML for the info panel sidebar."""
     return f'''
@@ -798,6 +1190,14 @@ def create_ed_finder_map(
 
     # Calculate ED statistics for the info panel
     stats = calculate_ed_statistics(ed_geojson, constituency_geojson)
+
+    # Add address search bar HTML
+    address_search_html = generate_address_search_html()
+    m.get_root().html.add_child(folium.Element(address_search_html))
+
+    # Add address search JavaScript
+    address_search_js = generate_address_search_javascript(ed_geojson)
+    m.get_root().html.add_child(folium.Element(address_search_js))
 
     # Add info panel HTML
     info_panel_html = generate_info_panel_html()

@@ -49,13 +49,50 @@
         .search-box {
             flex: 1;
             min-width: 200px;
-            max-width: 400px;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-tabs {
+            display: flex;
+            margin-bottom: 4px;
+        }
+
+        .search-tab {
+            padding: 4px 12px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .search-tab:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-tab:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .search-tab.active {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            font-weight: 600;
+        }
+
+        .search-tab:hover:not(.active) {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .search-input-wrapper {
             position: relative;
         }
 
         .search-box input {
             width: 100%;
-            padding: 10px 40px 10px 14px;
+            padding: 10px 80px 10px 14px;
             border: none;
             border-radius: 6px;
             font-size: 14px;
@@ -69,10 +106,66 @@
 
         .search-box .search-icon {
             position: absolute;
-            right: 12px;
+            right: 50px;
             top: 50%;
             transform: translateY(-50%);
             color: #666;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 6px 12px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-btn:hover {
+            background: #219a52;
+        }
+
+        .search-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .search-status {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            padding: 8px 14px;
+            background: white;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 13px;
+            z-index: 1001;
+            display: none;
+        }
+
+        .search-status.active {
+            display: block;
+        }
+
+        .search-status.loading {
+            color: #666;
+        }
+
+        .search-status.error {
+            color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .search-status.success {
+            color: #27ae60;
+            background: #f0fdf4;
         }
 
         .search-results {
@@ -515,9 +608,17 @@
         <div class="search-header">
             <h1>ED Finder</h1>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search by ED name or county...">
-                <span class="search-icon">&#128269;</span>
+                <div class="search-tabs">
+                    <button class="search-tab active" data-mode="ed" id="tabED">ED Name</button>
+                    <button class="search-tab" data-mode="address" id="tabAddress">Address / Eircode</button>
+                </div>
+                <div class="search-input-wrapper">
+                    <input type="text" id="searchInput" placeholder="Search by ED name or county...">
+                    <span class="search-icon">&#128269;</span>
+                    <button class="search-btn" id="searchBtn" style="display: none;">Find</button>
+                </div>
                 <div class="search-results" id="searchResults"></div>
+                <div class="search-status" id="searchStatus"></div>
             </div>
             <button class="clear-btn" id="clearBtn">Clear Selection</button>
         </div>
@@ -619,6 +720,8 @@
         let edData = null;
         let constituencyData = null;
         let edLookup = null;
+        let searchMode = 'ed'; // 'ed' or 'address'
+        let locationMarker = null;
 
         // Initialize map
         function initMap() {
@@ -844,12 +947,243 @@
             });
         }
 
+        // Point in polygon detection (ray casting algorithm)
+        function pointInPolygon(point, polygon) {
+            const [x, y] = point;
+            let inside = false;
+
+            for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+                const [xi, yi] = polygon[i];
+                const [xj, yj] = polygon[j];
+
+                if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
+                    inside = !inside;
+                }
+            }
+
+            return inside;
+        }
+
+        // Find ED containing a point
+        function findEDAtPoint(lat, lng) {
+            const point = [lng, lat]; // GeoJSON uses [lng, lat]
+
+            for (const feature of edData.features) {
+                const geom = feature.geometry;
+                let rings = [];
+
+                if (geom.type === 'Polygon') {
+                    rings = geom.coordinates;
+                } else if (geom.type === 'MultiPolygon') {
+                    // Flatten MultiPolygon
+                    geom.coordinates.forEach(poly => {
+                        rings = rings.concat(poly);
+                    });
+                }
+
+                // Check each ring (first ring is exterior, rest are holes)
+                for (const ring of rings) {
+                    if (pointInPolygon(point, ring)) {
+                        return feature;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        // Geocode address using Nominatim
+        async function geocodeAddress(query) {
+            // Normalize Eircode format (remove spaces, uppercase)
+            let searchQuery = query.trim();
+
+            // Check if it looks like an Eircode (7 characters, alphanumeric)
+            const eircodePattern = /^[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}$/;
+            const isEircode = eircodePattern.test(searchQuery.replace(/\s/g, ''));
+
+            if (isEircode) {
+                // Format Eircode properly (e.g., "D02X285" or "D02 X285")
+                searchQuery = searchQuery.replace(/\s/g, '').toUpperCase();
+                searchQuery = searchQuery.slice(0, 3) + ' ' + searchQuery.slice(3);
+            }
+
+            // Add Ireland to improve results
+            if (!searchQuery.toLowerCase().includes('ireland')) {
+                searchQuery += ', Ireland';
+            }
+
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=ie&limit=5`;
+
+            try {
+                const response = await fetch(url, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'User-Agent': 'COTHROM-ED-Finder/1.0'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Geocoding service unavailable');
+                }
+
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Geocoding error:', error);
+                throw error;
+            }
+        }
+
+        // Handle address/Eircode search
+        async function handleAddressSearch(query) {
+            const status = document.getElementById('searchStatus');
+            const searchBtn = document.getElementById('searchBtn');
+
+            if (!query || query.length < 3) {
+                showStatus('Please enter at least 3 characters', 'error');
+                return;
+            }
+
+            // Show loading
+            searchBtn.disabled = true;
+            showStatus('🔍 Searching...', 'loading');
+
+            try {
+                const results = await geocodeAddress(query);
+
+                if (!results || results.length === 0) {
+                    showStatus('❌ Address not found. Try a different format or check spelling.', 'error');
+                    searchBtn.disabled = false;
+                    return;
+                }
+
+                // Use first result
+                const location = results[0];
+                const lat = parseFloat(location.lat);
+                const lng = parseFloat(location.lon);
+
+                // Add/update location marker
+                if (locationMarker) {
+                    map.removeLayer(locationMarker);
+                }
+
+                locationMarker = L.marker([lat, lng], {
+                    icon: L.divIcon({
+                        className: 'location-marker',
+                        html: '<div style="background: #dc2626; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>',
+                        iconSize: [16, 16],
+                        iconAnchor: [8, 8]
+                    })
+                }).addTo(map);
+
+                locationMarker.bindPopup(`<strong>Your Location</strong><br>${location.display_name.split(',').slice(0, 3).join(', ')}`);
+
+                // Find the ED at this location
+                const edFeature = findEDAtPoint(lat, lng);
+
+                if (edFeature) {
+                    // Find the layer for this feature
+                    edLayer.eachLayer(function(layer) {
+                        if (layer.feature.properties.ED_ID === edFeature.properties.ED_ID) {
+                            // Reset previous selection
+                            if (selectedFeature) {
+                                selectedFeature.setStyle(STYLES.ed.default);
+                            }
+
+                            // Select this ED
+                            selectedFeature = layer;
+                            layer.setStyle(STYLES.ed.selected);
+
+                            // Zoom to ED
+                            map.fitBounds(layer.getBounds(), { maxZoom: 13 });
+
+                            // Open popup
+                            layer.openPopup();
+
+                            // Update info panel
+                            updateInfoPanel(edFeature.properties);
+                        }
+                    });
+
+                    showStatus(`✓ Found: ${edFeature.properties.ED_NAME}, ${edFeature.properties.COUNTY}`, 'success');
+                } else {
+                    // Location found but not in any ED (might be outside Ireland or in water)
+                    map.setView([lat, lng], 12);
+                    showStatus('⚠️ Location found but not within any Electoral District. This may be outside the covered area.', 'error');
+                }
+
+            } catch (error) {
+                showStatus('❌ Error searching. Please try again.', 'error');
+            }
+
+            searchBtn.disabled = false;
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            const status = document.getElementById('searchStatus');
+            status.textContent = message;
+            status.className = 'search-status active ' + type;
+
+            // Auto-hide success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    status.classList.remove('active');
+                }, 5000);
+            }
+        }
+
         // Search functionality
         function setupSearch() {
             const input = document.getElementById('searchInput');
             const results = document.getElementById('searchResults');
+            const searchBtn = document.getElementById('searchBtn');
+            const status = document.getElementById('searchStatus');
+            const tabED = document.getElementById('tabED');
+            const tabAddress = document.getElementById('tabAddress');
+
+            // Tab switching
+            function setSearchMode(mode) {
+                searchMode = mode;
+                input.value = '';
+                results.classList.remove('active');
+                status.classList.remove('active');
+
+                if (mode === 'ed') {
+                    tabED.classList.add('active');
+                    tabAddress.classList.remove('active');
+                    input.placeholder = 'Search by ED name or county...';
+                    searchBtn.style.display = 'none';
+                } else {
+                    tabED.classList.remove('active');
+                    tabAddress.classList.add('active');
+                    input.placeholder = 'Enter address or Eircode (e.g., D02 X285)...';
+                    searchBtn.style.display = 'block';
+                }
+            }
+
+            tabED.addEventListener('click', () => setSearchMode('ed'));
+            tabAddress.addEventListener('click', () => setSearchMode('address'));
+
+            // Address search button click
+            searchBtn.addEventListener('click', () => {
+                handleAddressSearch(input.value);
+            });
+
+            // Enter key for address search
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && searchMode === 'address') {
+                    handleAddressSearch(input.value);
+                }
+            });
 
             input.addEventListener('input', function(e) {
+                // Only do instant search in ED mode
+                if (searchMode !== 'ed') {
+                    results.classList.remove('active');
+                    return;
+                }
+
                 const query = e.target.value.toLowerCase().trim();
 
                 if (query.length < 2) {
@@ -927,6 +1261,17 @@
                     selectedFeature.setStyle(STYLES.ed.default);
                     selectedFeature = null;
                 }
+
+                // Remove location marker if present
+                if (locationMarker) {
+                    map.removeLayer(locationMarker);
+                    locationMarker = null;
+                }
+
+                // Clear search input and status
+                document.getElementById('searchInput').value = '';
+                document.getElementById('searchResults').classList.remove('active');
+                document.getElementById('searchStatus').classList.remove('active');
 
                 const panel = document.getElementById('infoPanel');
                 panel.classList.add('hidden');
