@@ -12,6 +12,32 @@ Understanding boundary dynamics helps you anticipate changes and participate mea
 
 ---
 
+## Interactive: Why Boundaries Matter
+
+Before diving into the details, explore the key principles that make a "good" constituency map versus a "bad" one. This interactive guide explains population balance, contiguity, compactness, and county boundary considerations.
+
+<div style="margin: 2rem 0; border: 2px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_explained.html"
+    width="100%"
+    height="800"
+    frameborder="0"
+    style="display: block;"
+    title="Why Boundaries Matter - Interactive Educational Guide">
+  </iframe>
+</div>
+
+<p style="font-size: 0.9em; color: #6b7280; text-align: center; margin-top: 0.5rem;">
+  <strong>Interactive Guide:</strong> Explore population variance sliders, contiguity examples, compactness comparisons, and trade-off visualizations. Scroll within the frame to see all sections.
+</p>
+
+```{tip}
+**Want to open in a new window?**
+<a href="../../_static/interactive/boundaries_explained.html" target="_blank">Click here to open the interactive guide in a new tab</a> for a larger view.
+```
+
+---
+
 ## Boundaries Are Alive
 
 Here's something that might surprise you: **constituency boundaries in Ireland have been redrawn 10 times since 1980.**
