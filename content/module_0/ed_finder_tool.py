@@ -47,6 +47,14 @@ COLORS = {
 IRELAND_CENTER = [53.4, -7.9]
 IRELAND_ZOOM = 7
 
+# National statistics for comparisons (will be calculated from data)
+NATIONAL_STATS = {
+    "avg_population": 1495,  # ~5.15M / 3440 EDs
+    "total_population": 5149139,
+    "total_eds": 3440,
+    "total_tds": 174,
+}
+
 
 def generate_county_boundaries():
     """Generate sample county boundaries for Ireland."""
@@ -109,6 +117,424 @@ def load_geojson(filepath: Path) -> dict:
     """Load a GeoJSON file."""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
+
+
+def calculate_ed_statistics(ed_geojson: dict, constituency_geojson: dict = None) -> dict:
+    """Calculate statistics for all EDs for rankings and comparisons."""
+    features = ed_geojson.get('features', [])
+
+    # Extract populations and calculate stats
+    populations = []
+    county_populations = {}
+    constituency_populations = {}
+
+    for feat in features:
+        props = feat.get('properties', {})
+        pop = props.get('POPULATION_2022', 0) or 0
+        county = props.get('COUNTY', 'Unknown')
+        constituency = props.get('CONSTITUENCY', 'Unknown')
+
+        populations.append(pop)
+
+        if county not in county_populations:
+            county_populations[county] = []
+        county_populations[county].append(pop)
+
+        if constituency not in constituency_populations:
+            constituency_populations[constituency] = {'total': 0, 'eds': 0, 'seats': 0}
+        constituency_populations[constituency]['total'] += pop
+        constituency_populations[constituency]['eds'] += 1
+        if props.get('CONSTITUENCY_SEATS'):
+            constituency_populations[constituency]['seats'] = props.get('CONSTITUENCY_SEATS')
+
+    # Sort populations for ranking
+    sorted_pops = sorted(populations, reverse=True)
+
+    # Calculate averages
+    total_pop = sum(populations)
+    avg_pop = total_pop / len(populations) if populations else 0
+    county_avgs = {k: sum(v) / len(v) for k, v in county_populations.items()}
+
+    return {
+        'sorted_populations': sorted_pops,
+        'total_population': total_pop,
+        'avg_population': avg_pop,
+        'total_eds': len(features),
+        'county_averages': county_avgs,
+        'constituency_stats': constituency_populations
+    }
+
+
+def generate_info_panel_html() -> str:
+    """Generate the HTML for the info panel sidebar."""
+    return f'''
+    <div id="ed-info-panel" style="
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        width: 340px;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        background: {COLORS['white']};
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    ">
+        <!-- Panel Header -->
+        <div id="panel-header" style="
+            background: linear-gradient(135deg, {COLORS['green_2']} 0%, {COLORS['bright_green']} 100%);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px 12px 0 0;
+        ">
+            <h2 id="ed-name" style="margin: 0; font-size: 18px; font-weight: 600;">
+                Select an Electoral District
+            </h2>
+            <p id="ed-subtitle" style="margin: 4px 0 0 0; font-size: 12px; opacity: 0.9;">
+                Click on the map to view details
+            </p>
+        </div>
+
+        <!-- Panel Content (initially hidden) -->
+        <div id="panel-content" style="display: none; padding: 16px 20px;">
+
+            <!-- Basic Info Section -->
+            <div class="info-section" style="margin-bottom: 16px;">
+                <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Basic Information
+                </h3>
+                <div style="background: {COLORS['light_grey']}; border-radius: 8px; padding: 12px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #666; font-size: 13px;"><b>ED ID</b></span>
+                        <span id="info-ed-id" style="color: {COLORS['text_dark']}; font-size: 13px;">-</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #666; font-size: 13px;"><b>County</b></span>
+                        <span id="info-county" style="color: {COLORS['text_dark']}; font-size: 13px;">-</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: #666; font-size: 13px;"><b>Constituency</b></span>
+                        <span id="info-constituency" style="color: {COLORS['deep_purple']}; font-size: 13px; font-weight: 500;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Population Data Section -->
+            <div class="info-section" style="margin-bottom: 16px;">
+                <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Population Data (Census 2022)
+                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div style="background: {COLORS['light_grey']}; border-radius: 8px; padding: 12px; text-align: center;">
+                        <p id="info-population" style="margin: 0; font-size: 22px; font-weight: 700; color: {COLORS['green_2']};">-</p>
+                        <p style="margin: 4px 0 0 0; font-size: 11px; color: #666;">Population</p>
+                    </div>
+                    <div style="background: {COLORS['light_grey']}; border-radius: 8px; padding: 12px; text-align: center;">
+                        <p id="info-households" style="margin: 0; font-size: 22px; font-weight: 700; color: {COLORS['purple']};">-</p>
+                        <p style="margin: 4px 0 0 0; font-size: 11px; color: #666;">Households</p>
+                    </div>
+                </div>
+                <div style="margin-top: 10px; background: {COLORS['light_grey']}; border-radius: 8px; padding: 12px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <span style="color: #666; font-size: 12px;">Population Rank</span>
+                        <span id="info-rank" style="color: {COLORS['text_dark']}; font-size: 12px; font-weight: 600;">-</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: #666; font-size: 12px;">vs National Average</span>
+                        <span id="info-vs-average" style="font-size: 12px; font-weight: 600;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Comparison Bar -->
+            <div class="info-section" style="margin-bottom: 16px;">
+                <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Population Comparison
+                </h3>
+                <div style="background: {COLORS['light_grey']}; border-radius: 8px; padding: 12px;">
+                    <div style="margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <span style="font-size: 11px; color: #666;">This ED</span>
+                            <span id="bar-ed-pop" style="font-size: 11px; color: {COLORS['text_dark']};">-</span>
+                        </div>
+                        <div style="background: #ddd; border-radius: 4px; height: 8px; overflow: hidden;">
+                            <div id="bar-ed" style="background: {COLORS['bright_green']}; height: 100%; width: 0%; transition: width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <span style="font-size: 11px; color: #666;">County Average</span>
+                            <span id="bar-county-pop" style="font-size: 11px; color: {COLORS['text_dark']};">-</span>
+                        </div>
+                        <div style="background: #ddd; border-radius: 4px; height: 8px; overflow: hidden;">
+                            <div id="bar-county" style="background: {COLORS['purple']}; height: 100%; width: 0%; transition: width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <span style="font-size: 11px; color: #666;">National Average</span>
+                            <span id="bar-national-pop" style="font-size: 11px; color: {COLORS['text_dark']};">-</span>
+                        </div>
+                        <div style="background: #ddd; border-radius: 4px; height: 8px; overflow: hidden;">
+                            <div id="bar-national" style="background: {COLORS['deep_purple']}; height: 100%; width: 0%; transition: width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Constituency Context -->
+            <div class="info-section" style="margin-bottom: 16px;">
+                <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Constituency Context
+                </h3>
+                <div style="
+                    background: linear-gradient(135deg, {COLORS['deep_purple']}10 0%, {COLORS['purple']}15 100%);
+                    border-left: 3px solid {COLORS['purple']};
+                    border-radius: 0 8px 8px 0;
+                    padding: 12px;
+                ">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #666; font-size: 12px;">TDs Elected</span>
+                        <span id="info-tds" style="color: {COLORS['deep_purple']}; font-size: 12px; font-weight: 600;">-</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #666; font-size: 12px;">Constituency Population</span>
+                        <span id="info-con-pop" style="color: {COLORS['text_dark']}; font-size: 12px;">-</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #666; font-size: 12px;">Your ED Share</span>
+                        <span id="info-ed-share" style="color: {COLORS['text_dark']}; font-size: 12px; font-weight: 500;">-</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: #666; font-size: 12px;">Population per TD</span>
+                        <span id="info-pop-per-td" style="color: {COLORS['text_dark']}; font-size: 12px;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compare Button -->
+            <div class="info-section">
+                <button id="compare-btn" onclick="toggleCompareMode()" style="
+                    width: 100%;
+                    padding: 12px;
+                    background: {COLORS['bright_green']};
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                ">
+                    Compare with Another ED
+                </button>
+            </div>
+
+            <!-- Comparison Section (hidden by default) -->
+            <div id="compare-section" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid #eee;">
+                <h3 style="margin: 0 0 10px 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Comparison: <span id="compare-ed-name" style="color: {COLORS['green_2']};">-</span>
+                </h3>
+                <div id="compare-content" style="background: {COLORS['light_grey']}; border-radius: 8px; padding: 12px;">
+                    <p style="text-align: center; color: #666; font-size: 12px;">
+                        Click another ED on the map to compare
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Initial State Message -->
+        <div id="panel-initial" style="padding: 30px 20px; text-align: center;">
+            <div style="
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 15px auto;
+                background: {COLORS['light_grey']};
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">
+                <span style="font-size: 28px;">🗺️</span>
+            </div>
+            <p style="color: #666; font-size: 14px; margin: 0;">
+                Click on any <b style="color: {COLORS['green_2']};">green area</b> on the map to view detailed information about that Electoral District.
+            </p>
+        </div>
+    </div>
+    '''
+
+
+def generate_info_panel_javascript(stats: dict) -> str:
+    """Generate JavaScript for the info panel interactivity."""
+    # Convert stats to JSON for use in JavaScript
+    stats_json = json.dumps(stats)
+
+    return f'''
+    <script>
+    // ED Statistics data
+    var edStats = {stats_json};
+    var compareMode = false;
+    var selectedED = null;
+    var comparisonED = null;
+
+    function updateInfoPanel(props) {{
+        // Store selected ED
+        selectedED = props;
+
+        // Show panel content, hide initial state
+        document.getElementById('panel-content').style.display = 'block';
+        document.getElementById('panel-initial').style.display = 'none';
+
+        // Update header
+        document.getElementById('ed-name').textContent = props.ED_ENGLISH || 'Unknown ED';
+        document.getElementById('ed-subtitle').textContent = 'Electoral District Details';
+
+        // Update basic info
+        document.getElementById('info-ed-id').textContent = props.CSOED_34_1 || 'N/A';
+        document.getElementById('info-county').textContent = props.COUNTY || 'N/A';
+        document.getElementById('info-constituency').textContent = props.CONSTITUENCY || 'N/A';
+
+        // Update population data
+        var pop = props.POPULATION_2022 || 0;
+        var households = props.HOUSEHOLDS_2022 || 0;
+        document.getElementById('info-population').textContent = pop.toLocaleString();
+        document.getElementById('info-households').textContent = households.toLocaleString();
+
+        // Calculate rank
+        var sortedPops = edStats.sorted_populations || [];
+        var rank = sortedPops.indexOf(pop) + 1;
+        var totalEds = edStats.total_eds || sortedPops.length;
+        if (rank > 0) {{
+            document.getElementById('info-rank').textContent = ordinal(rank) + ' of ' + totalEds + ' EDs';
+        }} else {{
+            document.getElementById('info-rank').textContent = 'N/A';
+        }}
+
+        // Calculate vs average
+        var avgPop = edStats.avg_population || 1495;
+        var diff = ((pop - avgPop) / avgPop * 100).toFixed(1);
+        var vsAvgEl = document.getElementById('info-vs-average');
+        if (diff > 0) {{
+            vsAvgEl.textContent = '+' + diff + '% above';
+            vsAvgEl.style.color = '{COLORS['green_2']}';
+        }} else {{
+            vsAvgEl.textContent = diff + '% below';
+            vsAvgEl.style.color = '{COLORS['purple']}';
+        }}
+
+        // Update comparison bars
+        var maxPop = Math.max(pop, avgPop, (edStats.county_averages || {{}})[props.COUNTY] || avgPop) * 1.2;
+        var countyAvg = (edStats.county_averages || {{}})[props.COUNTY] || avgPop;
+
+        document.getElementById('bar-ed').style.width = (pop / maxPop * 100) + '%';
+        document.getElementById('bar-county').style.width = (countyAvg / maxPop * 100) + '%';
+        document.getElementById('bar-national').style.width = (avgPop / maxPop * 100) + '%';
+
+        document.getElementById('bar-ed-pop').textContent = pop.toLocaleString();
+        document.getElementById('bar-county-pop').textContent = Math.round(countyAvg).toLocaleString();
+        document.getElementById('bar-national-pop').textContent = Math.round(avgPop).toLocaleString();
+
+        // Update constituency context
+        var conStats = (edStats.constituency_stats || {{}})[props.CONSTITUENCY] || {{}};
+        var seats = props.CONSTITUENCY_SEATS || conStats.seats || 0;
+        var conPop = conStats.total || 0;
+
+        document.getElementById('info-tds').textContent = seats + ' TDs';
+        document.getElementById('info-con-pop').textContent = conPop.toLocaleString();
+
+        if (conPop > 0) {{
+            var share = (pop / conPop * 100).toFixed(1);
+            document.getElementById('info-ed-share').textContent = share + '% of constituency';
+        }} else {{
+            document.getElementById('info-ed-share').textContent = 'N/A';
+        }}
+
+        if (seats > 0 && conPop > 0) {{
+            document.getElementById('info-pop-per-td').textContent = Math.round(conPop / seats).toLocaleString();
+        }} else {{
+            document.getElementById('info-pop-per-td').textContent = 'N/A';
+        }}
+
+        // If in compare mode and this is the second click
+        if (compareMode && comparisonED === null) {{
+            comparisonED = props;
+            showComparison();
+        }}
+    }}
+
+    function toggleCompareMode() {{
+        compareMode = !compareMode;
+        var btn = document.getElementById('compare-btn');
+        var section = document.getElementById('compare-section');
+
+        if (compareMode) {{
+            btn.textContent = 'Cancel Comparison';
+            btn.style.background = '{COLORS['purple']}';
+            section.style.display = 'block';
+            comparisonED = null;
+            document.getElementById('compare-content').innerHTML = '<p style="text-align: center; color: #666; font-size: 12px;">Click another ED on the map to compare</p>';
+        }} else {{
+            btn.textContent = 'Compare with Another ED';
+            btn.style.background = '{COLORS['bright_green']}';
+            section.style.display = 'none';
+            comparisonED = null;
+        }}
+    }}
+
+    function showComparison() {{
+        if (!selectedED || !comparisonED) return;
+
+        var html = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">';
+
+        // Header row
+        html += '<div style="font-weight: 600; color: {COLORS['green_2']}; padding: 4px 0;">' + selectedED.ED_ENGLISH + '</div>';
+        html += '<div style="font-weight: 600; color: {COLORS['purple']}; padding: 4px 0;">' + comparisonED.ED_ENGLISH + '</div>';
+
+        // Population
+        html += '<div style="padding: 4px 0;"><b>Pop:</b> ' + (selectedED.POPULATION_2022 || 0).toLocaleString() + '</div>';
+        html += '<div style="padding: 4px 0;"><b>Pop:</b> ' + (comparisonED.POPULATION_2022 || 0).toLocaleString() + '</div>';
+
+        // Households
+        html += '<div style="padding: 4px 0;"><b>Households:</b> ' + (selectedED.HOUSEHOLDS_2022 || 0).toLocaleString() + '</div>';
+        html += '<div style="padding: 4px 0;"><b>Households:</b> ' + (comparisonED.HOUSEHOLDS_2022 || 0).toLocaleString() + '</div>';
+
+        // County
+        html += '<div style="padding: 4px 0;"><b>County:</b> ' + (selectedED.COUNTY || 'N/A') + '</div>';
+        html += '<div style="padding: 4px 0;"><b>County:</b> ' + (comparisonED.COUNTY || 'N/A') + '</div>';
+
+        // Constituency
+        html += '<div style="padding: 4px 0;"><b>Const:</b> ' + (selectedED.CONSTITUENCY || 'N/A') + '</div>';
+        html += '<div style="padding: 4px 0;"><b>Const:</b> ' + (comparisonED.CONSTITUENCY || 'N/A') + '</div>';
+
+        html += '</div>';
+
+        // Difference summary
+        var popDiff = (selectedED.POPULATION_2022 || 0) - (comparisonED.POPULATION_2022 || 0);
+        var diffColor = popDiff >= 0 ? '{COLORS['green_2']}' : '{COLORS['purple']}';
+        html += '<div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #ddd; text-align: center;">';
+        html += '<span style="color: ' + diffColor + '; font-weight: 600;">';
+        html += selectedED.ED_ENGLISH + ' has ' + Math.abs(popDiff).toLocaleString() + ' ' + (popDiff >= 0 ? 'more' : 'fewer') + ' people';
+        html += '</span></div>';
+
+        document.getElementById('compare-content').innerHTML = html;
+        document.getElementById('compare-ed-name').textContent = comparisonED.ED_ENGLISH;
+
+        // Reset compare mode
+        compareMode = false;
+        document.getElementById('compare-btn').textContent = 'Compare with Another ED';
+        document.getElementById('compare-btn').style.background = '{COLORS['bright_green']}';
+    }}
+
+    function ordinal(n) {{
+        var s = ['th', 'st', 'nd', 'rd'];
+        var v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    }}
+    </script>
+    '''
 
 
 def create_ed_finder_map(
@@ -369,6 +795,62 @@ def create_ed_finder_map(
         title='Fullscreen',
         title_cancel='Exit Fullscreen'
     ).add_to(m)
+
+    # Calculate ED statistics for the info panel
+    stats = calculate_ed_statistics(ed_geojson, constituency_geojson)
+
+    # Add info panel HTML
+    info_panel_html = generate_info_panel_html()
+    m.get_root().html.add_child(folium.Element(info_panel_html))
+
+    # Add info panel JavaScript
+    info_panel_js = generate_info_panel_javascript(stats)
+    m.get_root().html.add_child(folium.Element(info_panel_js))
+
+    # Add JavaScript to connect ED layer clicks to the info panel
+    # Folium creates map variables with random hashes, so we search for them
+    ed_click_handler_js = f'''
+    <script>
+    // Wait for map and layers to load, then attach click handlers
+    document.addEventListener('DOMContentLoaded', function() {{
+        setTimeout(function() {{
+            // Find the Leaflet map object (folium names it map_<hash>)
+            var mapObj = null;
+            for (var key in window) {{
+                if (key.startsWith('map_') && window[key] && typeof window[key].eachLayer === 'function') {{
+                    mapObj = window[key];
+                    break;
+                }}
+            }}
+
+            if (mapObj) {{
+                mapObj.eachLayer(function(layer) {{
+                    // Check if this is an ED feature (has ED_ENGLISH property)
+                    if (layer.feature && layer.feature.properties && layer.feature.properties.ED_ENGLISH) {{
+                        layer.on('click', function(e) {{
+                            updateInfoPanel(layer.feature.properties);
+                        }});
+                    }}
+                    // Also check for nested feature groups
+                    if (layer.eachLayer) {{
+                        layer.eachLayer(function(sublayer) {{
+                            if (sublayer.feature && sublayer.feature.properties && sublayer.feature.properties.ED_ENGLISH) {{
+                                sublayer.on('click', function(e) {{
+                                    updateInfoPanel(sublayer.feature.properties);
+                                }});
+                            }}
+                        }});
+                    }}
+                }});
+                console.log('ED Finder: Click handlers attached to ED layers');
+            }} else {{
+                console.log('ED Finder: Could not find map object');
+            }}
+        }}, 1500);
+    }});
+    </script>
+    '''
+    m.get_root().html.add_child(folium.Element(ed_click_handler_js))
 
     # Add title/legend
     legend_html = f'''
