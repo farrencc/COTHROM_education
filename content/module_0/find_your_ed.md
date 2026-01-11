@@ -129,61 +129,110 @@ Now let's find **your** Electoral District.
 
 ## Understanding Your ED
 
-Once you've found your ED, here's what the information tells you:
+Once you've found your ED, here's what the information tells you and why it matters for your representation.
 
 ### Population Size
 
-**Why it matters:**
-- Larger EDs have more influence on constituency calculations
-- Small EDs are easier to swap between constituencies
-- Population changes within an ED affect the whole constituency
+Your ED's population directly influences how constituency boundaries are drawn. Electoral Districts with larger populations carry more weight in the calculations that determine where constituency lines fall. When the Electoral Commission is balancing populations across constituencies, smaller EDs provide more flexibility since they can be moved between constituencies with less impact on the overall population balance. Any population growth or decline within your ED ripples through to affect your entire constituency's representation.
 
-**Example:**
-```
-ED: Rathmines West C
-Population: 1,234 people
+```{raw} html
+<div style="margin: 1.5rem 0;">
+    <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #27ae60; border-radius: 0 8px 8px 0; padding: 20px; max-width: 500px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <div style="background: #27ae60; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold;">ED</div>
+            <div>
+                <div style="font-weight: 700; color: #166534; font-size: 16px;">Rathmines West C</div>
+                <div style="font-size: 12px; color: #15803d;">Dublin Bay South</div>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="background: white; padding: 12px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 24px; font-weight: 700; color: #27ae60;">1,234</div>
+                <div style="font-size: 11px; color: #666; text-transform: uppercase;">Population</div>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 24px; font-weight: 700; color: #7b2cbf;">0.93%</div>
+                <div style="font-size: 11px; color: #666; text-transform: uppercase;">of TD's Constituents</div>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 
-If this ED is in a 4-seat constituency with average 33,000 people per TD, this ED represents about **0.93%** of one TD's constituents.
+In a 4-seat constituency with approximately 33,000 people per TD, an ED of 1,234 people represents about 0.93% of a single TD's constituents. This means your ED, combined with roughly 100 other similar EDs, collectively determines who your TD will be.
 
 ### Geographic Size
 
-**Why it matters:**
-- Urban EDs: small area, high population density
-- Rural EDs: large area, low population density
-- Shape affects **compactness** of constituencies
+The physical size of Electoral Districts varies dramatically between urban and rural areas, even when populations are similar. This creates one of the fundamental tensions in Irish redistricting: urban constituencies can be geographically compact while serving the same population that requires a rural constituency to stretch across vast areas. The shape and size of EDs directly affects how "compact" a constituency can be drawn, which is one of the criteria the Electoral Commission considers.
 
-**Visual Comparison:**
-
+```{raw} html
+<div style="margin: 1.5rem 0; display: flex; gap: 20px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 200px; background: white; border: 2px solid #27ae60; border-radius: 12px; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #27ae60 0%, #32e875 100%); color: white; padding: 12px 16px; font-weight: 600;">
+            Urban ED (Dublin)
+        </div>
+        <div style="padding: 16px;">
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border: 2px solid #27ae60; border-radius: 4px; margin: 0 auto 12px;"></div>
+            <div style="text-align: center;">
+                <div style="font-size: 13px; color: #666;">Area: <strong>500m x 500m</strong></div>
+                <div style="font-size: 13px; color: #666;">Population: <strong style="color: #27ae60;">1,500</strong></div>
+                <div style="font-size: 11px; color: #999; margin-top: 8px;">High density urban core</div>
+            </div>
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 200px; background: white; border: 2px solid #7b2cbf; border-radius: 12px; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #7b2cbf 0%, #3c096c 100%); color: white; padding: 12px 16px; font-weight: 600;">
+            Rural ED (Kerry)
+        </div>
+        <div style="padding: 16px;">
+            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); border: 2px solid #7b2cbf; border-radius: 4px; margin: 0 auto 12px;"></div>
+            <div style="text-align: center;">
+                <div style="font-size: 13px; color: #666;">Area: <strong>5km x 5km</strong></div>
+                <div style="font-size: 13px; color: #666;">Population: <strong style="color: #7b2cbf;">1,500</strong></div>
+                <div style="font-size: 11px; color: #999; margin-top: 8px;">Low density rural area</div>
+            </div>
+        </div>
+    </div>
+</div>
 ```
-Urban ED (Dublin):              Rural ED (Kerry):
-┌──┐  500m × 500m               ┌────────────┐
-│  │  Population: 1,500         │            │  5km × 5km
-└──┘                            │            │  Population: 1,500
-                                └────────────┘
-```
 
-Both have the same population, but very different geography. This creates challenges for drawing compact constituencies.
+Both Electoral Districts shown above have identical populations of 1,500 people, yet the rural ED covers 100 times more land area. This disparity means that creating constituencies with equal populations often results in rural constituencies that span multiple towns and large geographic distances, while urban constituencies might cover just a few neighbourhoods. The challenge of balancing population equality with geographic practicality is at the heart of every redistricting exercise.
 
 ### County Location
 
-**Why it matters:**
-- Irish electoral law mentions "respect for county boundaries"
-- Breaking counties is politically sensitive
-- Your county identity might not match your constituency
+Irish electoral law specifically mentions respect for county boundaries, making your ED's county location politically significant. Counties have deep historical and cultural meaning in Ireland, and voters often feel strong attachment to their county identity. When an ED is proposed to move from a constituency that aligns with county boundaries to one that crosses them, it can feel like a disconnection from local identity, even if the population mathematics make it necessary.
 
-**Case Study:**
-
+```{raw} html
+<div style="margin: 1.5rem 0; background: white; border: 2px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 500px;">
+    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 12px 16px; border-bottom: 1px solid #fcd34d;">
+        <span style="font-weight: 700; color: #92400e;">Case Study: Boundary Change Impact</span>
+    </div>
+    <div style="padding: 16px;">
+        <div style="background: #f9fafb; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+            <div style="font-weight: 600; color: #374151; margin-bottom: 4px;">ED: Portlaoise Urban</div>
+            <div style="font-size: 13px; color: #6b7280;">County Laois</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin: 16px 0;">
+            <div style="flex: 1; background: #fee2e2; border-radius: 8px; padding: 12px; text-align: center;">
+                <div style="font-size: 11px; color: #991b1b; text-transform: uppercase; margin-bottom: 4px;">Current</div>
+                <div style="font-weight: 600; color: #dc2626;">Laois-Offaly</div>
+                <div style="font-size: 12px; color: #666;">5 seats</div>
+            </div>
+            <div style="font-size: 24px; color: #9ca3af;">→</div>
+            <div style="flex: 1; background: #dbeafe; border-radius: 8px; padding: 12px; text-align: center;">
+                <div style="font-size: 11px; color: #1e40af; text-transform: uppercase; margin-bottom: 4px;">Proposed</div>
+                <div style="font-weight: 600; color: #2563eb;">Kildare South</div>
+                <div style="font-size: 12px; color: #666;">3 seats</div>
+            </div>
+        </div>
+        <div style="font-size: 13px; color: #4b5563; line-height: 1.6;">
+            Your county remains <strong>Laois</strong>, but your constituency changes. You would vote alongside Kildare residents instead of Offaly neighbours.
+        </div>
+    </div>
+</div>
 ```
-ED: Portlaoise Urban
-County: Laois
-Current Constituency: Laois-Offaly (5 seats)
-2023 Recommendation: Move to Kildare South
 
-→ Your county stays the same (Laois)
-→ But your constituency changes
-→ You'd now vote with Kildare voters, not Offaly voters
-```
+This case study illustrates a common redistricting scenario. Even though the county boundary itself doesn't move, the constituency boundary does. For residents of Portlaoise Urban, this means their TDs would change, their local political community would shift, and the candidates on their ballot would be different. The county identity remains, but the democratic community with whom they share representation transforms entirely.
 
 ---
 

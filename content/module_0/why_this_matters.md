@@ -116,6 +116,10 @@ Use this interactive calculator to discover your constituency's seat shortage or
             background: white;
             cursor: pointer;
         }
+        .cothrom-input-section select:focus {
+            border-color: #27ae60;
+            outline: none;
+        }
         .cothrom-results {
             display: none;
         }
@@ -123,7 +127,7 @@ Use this interactive calculator to discover your constituency's seat shortage or
             display: block;
         }
         .cothrom-shortage-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #27ae60 0%, #32e875 100%);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -146,7 +150,7 @@ Use this interactive calculator to discover your constituency's seat shortage or
             font-size: 16px;
             margin: 20px 0 12px 0;
             padding-bottom: 8px;
-            border-bottom: 2px solid #3498db;
+            border-bottom: 2px solid #27ae60;
         }
         .cothrom-seat-comparison {
             display: grid;
@@ -163,12 +167,12 @@ Use this interactive calculator to discover your constituency's seat shortage or
             text-align: center;
         }
         .cothrom-seat-box.deserved {
-            border-color: #3498db;
-            background: #f0f8ff;
+            border-color: #27ae60;
+            background: #f0fdf4;
         }
         .cothrom-seat-box.assigned {
-            border-color: #e74c3c;
-            background: #fff5f5;
+            border-color: #7b2cbf;
+            background: #faf5ff;
         }
         .cothrom-seat-box .number {
             font-size: 28px;
@@ -248,7 +252,7 @@ Use this interactive calculator to discover your constituency's seat shortage or
             color: #3a3;
         }
         .cothrom-vote-weight {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #7b2cbf 0%, #3c096c 100%);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -266,7 +270,7 @@ Use this interactive calculator to discover your constituency's seat shortage or
         }
         .cothrom-explanation {
             background: #f8f9fa;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #27ae60;
             padding: 16px;
             margin: 12px 0;
             border-radius: 4px;
@@ -279,6 +283,18 @@ Use this interactive calculator to discover your constituency's seat shortage or
         }
         .cothrom-explanation p:last-child {
             margin-bottom: 0;
+        }
+        .cothrom-loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .cothrom-error {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
         }
         @media (max-width: 768px) {
             .cothrom-stat-grid {
@@ -296,11 +312,11 @@ Use this interactive calculator to discover your constituency's seat shortage or
     <div class="cothrom-calc-container">
         <h3>COTHROM Representation Calculator</h3>
         <div class="cothrom-subtitle">Based on Seat Equivalent Representation Framework</div>
-        
+
         <div class="cothrom-input-section">
             <label for="cothrom-constituency-select">Select your constituency:</label>
-            <select id="cothrom-constituency-select">
-                <option value="">Choose your constituency...</option>
+            <select id="cothrom-constituency-select" disabled>
+                <option value="">Loading constituencies...</option>
             </select>
         </div>
 
@@ -367,51 +383,7 @@ Use this interactive calculator to discover your constituency's seat shortage or
 
     <script>
         (function() {
-            const constituencyData = {
-                constituencies: [
-                    {name: "Dublin Bay North", population: 138936, tds: 5, peoplePerTD: 27787, variance: -8.5},
-                    {name: "Dublin Bay South", population: 139247, tds: 4, peoplePerTD: 34812, variance: 14.7},
-                    {name: "Dublin Central", population: 107399, tds: 3, peoplePerTD: 35800, variance: 18.0},
-                    {name: "Dublin Fingal", population: 186544, tds: 5, peoplePerTD: 37309, variance: 22.9},
-                    {name: "Dublin Mid-West", population: 107765, tds: 4, peoplePerTD: 26941, variance: -11.3},
-                    {name: "Dublin North-West", population: 107503, tds: 3, peoplePerTD: 35834, variance: 18.1},
-                    {name: "Dublin Rathdown", population: 137588, tds: 3, peoplePerTD: 45863, variance: 51.1},
-                    {name: "Dublin South-Central", population: 118959, tds: 4, peoplePerTD: 29740, variance: -2.1},
-                    {name: "Dublin South-West", population: 130530, tds: 5, peoplePerTD: 26106, variance: -14.1},
-                    {name: "Dublin West", population: 115049, tds: 4, peoplePerTD: 28762, variance: -5.3},
-                    {name: "Dún Laoghaire", population: 137877, tds: 4, peoplePerTD: 34469, variance: 13.5},
-                    {name: "Carlow-Kilkenny", population: 145388, tds: 5, peoplePerTD: 29078, variance: -4.2},
-                    {name: "Cavan-Monaghan", population: 127772, tds: 4, peoplePerTD: 31943, variance: 5.2},
-                    {name: "Clare", population: 118817, tds: 4, peoplePerTD: 29704, variance: -2.2},
-                    {name: "Cork East", population: 104627, tds: 4, peoplePerTD: 26157, variance: -13.9},
-                    {name: "Cork North-Central", population: 120349, tds: 4, peoplePerTD: 30087, variance: -0.9},
-                    {name: "Cork North-West", population: 90694, tds: 3, peoplePerTD: 30231, variance: -0.4},
-                    {name: "Cork South-Central", population: 153337, tds: 4, peoplePerTD: 38334, variance: 26.3},
-                    {name: "Cork South-West", population: 91125, tds: 3, peoplePerTD: 30375, variance: 0.1},
-                    {name: "Donegal", population: 159192, tds: 5, peoplePerTD: 31838, variance: 4.9},
-                    {name: "Galway East", population: 123237, tds: 3, peoplePerTD: 41079, variance: 35.3},
-                    {name: "Galway West", population: 139693, tds: 5, peoplePerTD: 27939, variance: -8.0},
-                    {name: "Kerry", population: 147707, tds: 5, peoplePerTD: 29541, variance: -2.7},
-                    {name: "Kildare North", population: 111890, tds: 4, peoplePerTD: 27973, variance: -7.9},
-                    {name: "Kildare South", population: 110539, tds: 3, peoplePerTD: 36846, variance: 21.4},
-                    {name: "Laois", population: 84697, tds: 3, peoplePerTD: 28232, variance: -7.1},
-                    {name: "Limerick City", population: 98979, tds: 4, peoplePerTD: 24745, variance: -18.5},
-                    {name: "Limerick County", population: 96108, tds: 3, peoplePerTD: 32036, variance: 5.5},
-                    {name: "Longford-Westmeath", population: 129296, tds: 4, peoplePerTD: 32324, variance: 6.5},
-                    {name: "Louth", population: 128884, tds: 5, peoplePerTD: 25777, variance: -15.1},
-                    {name: "Mayo", population: 130507, tds: 4, peoplePerTD: 32627, variance: 7.5},
-                    {name: "Meath East", population: 101041, tds: 3, peoplePerTD: 33680, variance: 10.9},
-                    {name: "Meath West", population: 94868, tds: 3, peoplePerTD: 31623, variance: 4.2},
-                    {name: "Offaly", population: 77961, tds: 3, peoplePerTD: 25987, variance: -14.4},
-                    {name: "Roscommon-Galway", population: 120534, tds: 3, peoplePerTD: 40178, variance: 32.4},
-                    {name: "Sligo-Leitrim", population: 92206, tds: 4, peoplePerTD: 23052, variance: -24.1},
-                    {name: "Tipperary", population: 159553, tds: 5, peoplePerTD: 31911, variance: 5.1},
-                    {name: "Waterford", population: 116176, tds: 4, peoplePerTD: 29044, variance: -4.4},
-                    {name: "Wexford", population: 149722, tds: 5, peoplePerTD: 29944, variance: -1.4},
-                    {name: "Wicklow", population: 142425, tds: 5, peoplePerTD: 28485, variance: -6.2}
-                ],
-                nationalAverage: 30365
-            };
+            let constituencyData = null;
 
             // Helper functions
             function calculateSER(population, nationalRatio) {
@@ -430,112 +402,133 @@ Use this interactive calculator to discover your constituency's seat shortage or
                 return nationalAverage / peoplePerTD;
             }
 
-            // Populate dropdown
-            const select = document.getElementById('cothrom-constituency-select');
-            const sorted = [...constituencyData.constituencies].sort((a, b) => a.name.localeCompare(b.name));
-            sorted.forEach(c => {
-                const option = document.createElement('option');
-                option.value = c.name;
-                option.textContent = c.name;
-                select.appendChild(option);
-            });
-
-            // Handle selection
-            select.addEventListener('change', function(e) {
-                const selectedName = e.target.value;
-                if (!selectedName) {
-                    document.getElementById('cothrom-results').classList.remove('show');
-                    return;
+            // Load data from external JSON file
+            async function loadData() {
+                try {
+                    const response = await fetch('/_static/data/sample_constituencies.json');
+                    if (!response.ok) throw new Error('Failed to load data');
+                    constituencyData = await response.json();
+                    initializeCalculator();
+                } catch (error) {
+                    console.error('Error loading constituency data:', error);
+                    const select = document.getElementById('cothrom-constituency-select');
+                    select.innerHTML = '<option value="">Error loading data</option>';
                 }
+            }
 
-                const constituency = constituencyData.constituencies.find(c => c.name === selectedName);
-                if (!constituency) return;
+            function initializeCalculator() {
+                const select = document.getElementById('cothrom-constituency-select');
+                select.disabled = false;
+                select.innerHTML = '<option value="">Choose your constituency...</option>';
 
-                const nationalRatio = constituencyData.nationalAverage;
-                const ser = calculateSER(constituency.population, nationalRatio);
-                const varianceTrad = calculateTraditionalVariance(ser, constituency.tds);
-                const varianceAlt = calculateAlternativeVariance(ser, constituency.tds);
-                const voteWeight = calculateVoteWeight(nationalRatio, constituency.peoplePerTD);
-                const seatDiff = ser - constituency.tds;
-                const absSeatDiff = Math.abs(seatDiff);
+                const sorted = [...constituencyData.constituencies].sort((a, b) => a.name.localeCompare(b.name));
+                sorted.forEach(c => {
+                    const option = document.createElement('option');
+                    option.value = c.name;
+                    option.textContent = c.name;
+                    select.appendChild(option);
+                });
 
-                // Update Seat Shortage Banner
-                const banner = document.getElementById('cothrom-shortage-banner');
-                const diffElem = document.getElementById('cothrom-seat-difference');
-                const labelElem = document.getElementById('cothrom-shortage-label');
-                
-                diffElem.textContent = absSeatDiff.toFixed(2);
-                if (seatDiff > 0) {
-                    labelElem.textContent = 'seats short of fair representation';
-                    banner.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
-                } else if (seatDiff < 0) {
-                    labelElem.textContent = 'surplus seats beyond fair representation';
-                    banner.style.background = 'linear-gradient(135deg, #27ae60 0%, #229954 100%)';
-                } else {
-                    labelElem.textContent = 'perfectly represented!';
-                    banner.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                }
+                // Handle selection
+                select.addEventListener('change', function(e) {
+                    const selectedName = e.target.value;
+                    if (!selectedName) {
+                        document.getElementById('cothrom-results').classList.remove('show');
+                        return;
+                    }
 
-                // Update Seat Comparison
-                document.getElementById('cothrom-seats-deserved').textContent = ser.toFixed(2);
-                document.getElementById('cothrom-seats-assigned').textContent = constituency.tds;
+                    const constituency = constituencyData.constituencies.find(c => c.name === selectedName);
+                    if (!constituency) return;
 
-                // Update Population Stats
-                document.getElementById('cothrom-people-per-td').textContent = 
-                    constituency.peoplePerTD.toLocaleString() + ' people';
-                document.getElementById('cothrom-national-avg').textContent = 
-                    nationalRatio.toLocaleString() + ' people';
+                    const nationalRatio = constituencyData.nationalAverage;
+                    const ser = calculateSER(constituency.population, nationalRatio);
+                    const varianceTrad = calculateTraditionalVariance(ser, constituency.tds);
+                    const varianceAlt = calculateAlternativeVariance(ser, constituency.tds);
+                    const voteWeight = calculateVoteWeight(nationalRatio, constituency.peoplePerTD);
+                    const seatDiff = ser - constituency.tds;
+                    const absSeatDiff = Math.abs(seatDiff);
 
-                // Update Variance Comparison
-                document.getElementById('cothrom-variance-trad').textContent = 
-                    (varianceTrad > 0 ? '+' : '') + varianceTrad.toFixed(1) + '%';
-                document.getElementById('cothrom-variance-alt').textContent = 
-                    (varianceAlt > 0 ? '+' : '') + varianceAlt.toFixed(1) + '%';
+                    // Update Seat Shortage Banner
+                    const banner = document.getElementById('cothrom-shortage-banner');
+                    const diffElem = document.getElementById('cothrom-seat-difference');
+                    const labelElem = document.getElementById('cothrom-shortage-label');
 
-                // Update variance badges
-                const badgeTrad = document.getElementById('cothrom-badge-trad');
-                const badgeAlt = document.getElementById('cothrom-badge-alt');
-                
-                if (varianceTrad > 0) {
-                    badgeTrad.className = 'cothrom-variance-badge cothrom-variance-over';
-                    badgeTrad.textContent = 'OVER';
-                    badgeAlt.className = 'cothrom-variance-badge cothrom-variance-over';
-                    badgeAlt.textContent = 'OVER';
-                } else if (varianceTrad < 0) {
-                    badgeTrad.className = 'cothrom-variance-badge cothrom-variance-under';
-                    badgeTrad.textContent = 'UNDER';
-                    badgeAlt.className = 'cothrom-variance-badge cothrom-variance-under';
-                    badgeAlt.textContent = 'UNDER';
-                } else {
-                    badgeTrad.className = 'cothrom-variance-badge';
-                    badgeTrad.textContent = 'EQUAL';
-                    badgeAlt.className = 'cothrom-variance-badge';
-                    badgeAlt.textContent = 'EQUAL';
-                }
+                    diffElem.textContent = absSeatDiff.toFixed(2);
+                    if (seatDiff > 0) {
+                        labelElem.textContent = 'seats short of fair representation';
+                        banner.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
+                    } else if (seatDiff < 0) {
+                        labelElem.textContent = 'surplus seats beyond fair representation';
+                        banner.style.background = 'linear-gradient(135deg, #27ae60 0%, #32e875 100%)';
+                    } else {
+                        labelElem.textContent = 'perfectly represented!';
+                        banner.style.background = 'linear-gradient(135deg, #27ae60 0%, #32e875 100%)';
+                    }
 
-                // Update Vote Weight
-                document.getElementById('cothrom-vote-weight').textContent = voteWeight.toFixed(3);
+                    // Update Seat Comparison
+                    document.getElementById('cothrom-seats-deserved').textContent = ser.toFixed(2);
+                    document.getElementById('cothrom-seats-assigned').textContent = constituency.tds;
 
-                // Generate explanation
-                let explanation = '';
-                const absVarTrad = Math.abs(varianceTrad);
-                
-                if (varianceTrad > 10) {
-                    explanation = `<strong>${constituency.name}</strong> deserves <strong>${ser.toFixed(2)} seats</strong> but has only <strong>${constituency.tds} assigned</strong> - a shortage of <strong>${absSeatDiff.toFixed(2)} seats</strong>. Each TD represents <strong>${absVarTrad.toFixed(1)}% more people</strong> than they should. Your vote effectively counts as <strong>${voteWeight.toFixed(3)} votes</strong> - giving you <strong>${((1 - voteWeight) * 100).toFixed(1)}% less democratic influence</strong> than the average Irish voter.`;
-                } else if (varianceTrad < -10) {
-                    explanation = `<strong>${constituency.name}</strong> deserves <strong>${ser.toFixed(2)} seats</strong> but has <strong>${constituency.tds} assigned</strong> - a surplus of <strong>${absSeatDiff.toFixed(2)} seats</strong>. Each TD represents <strong>${absVarTrad.toFixed(1)}% fewer people</strong> than they should. Your vote effectively counts as <strong>${voteWeight.toFixed(3)} votes</strong> - giving you <strong>${((voteWeight - 1) * 100).toFixed(1)}% more democratic influence</strong> than the average Irish voter.`;
-                } else if (varianceTrad > 0) {
-                    explanation = `<strong>${constituency.name}</strong> is slightly over-represented with <strong>${constituency.tds} seats</strong> (deserves ${ser.toFixed(2)}). Your vote counts as <strong>${voteWeight.toFixed(3)}</strong>, slightly less than the ideal of 1.00.`;
-                } else if (varianceTrad < 0) {
-                    explanation = `<strong>${constituency.name}</strong> is slightly under-represented with <strong>${constituency.tds} seats</strong> (deserves ${ser.toFixed(2)}). Your vote counts as <strong>${voteWeight.toFixed(3)}</strong>, slightly more than the ideal of 1.00.`;
-                } else {
-                    explanation = `<strong>${constituency.name}</strong> has perfect representation! Your vote counts as exactly <strong>1.00</strong>.`;
-                }
-                
-                document.getElementById('cothrom-explanation').innerHTML = explanation;
+                    // Update Population Stats
+                    document.getElementById('cothrom-people-per-td').textContent =
+                        constituency.peoplePerTD.toLocaleString() + ' people';
+                    document.getElementById('cothrom-national-avg').textContent =
+                        nationalRatio.toLocaleString() + ' people';
 
-                document.getElementById('cothrom-results').classList.add('show');
-            });
+                    // Update Variance Comparison
+                    document.getElementById('cothrom-variance-trad').textContent =
+                        (varianceTrad > 0 ? '+' : '') + varianceTrad.toFixed(1) + '%';
+                    document.getElementById('cothrom-variance-alt').textContent =
+                        (varianceAlt > 0 ? '+' : '') + varianceAlt.toFixed(1) + '%';
+
+                    // Update variance badges
+                    const badgeTrad = document.getElementById('cothrom-badge-trad');
+                    const badgeAlt = document.getElementById('cothrom-badge-alt');
+
+                    if (varianceTrad > 0) {
+                        badgeTrad.className = 'cothrom-variance-badge cothrom-variance-over';
+                        badgeTrad.textContent = 'OVER';
+                        badgeAlt.className = 'cothrom-variance-badge cothrom-variance-over';
+                        badgeAlt.textContent = 'OVER';
+                    } else if (varianceTrad < 0) {
+                        badgeTrad.className = 'cothrom-variance-badge cothrom-variance-under';
+                        badgeTrad.textContent = 'UNDER';
+                        badgeAlt.className = 'cothrom-variance-badge cothrom-variance-under';
+                        badgeAlt.textContent = 'UNDER';
+                    } else {
+                        badgeTrad.className = 'cothrom-variance-badge';
+                        badgeTrad.textContent = 'EQUAL';
+                        badgeAlt.className = 'cothrom-variance-badge';
+                        badgeAlt.textContent = 'EQUAL';
+                    }
+
+                    // Update Vote Weight
+                    document.getElementById('cothrom-vote-weight').textContent = voteWeight.toFixed(3);
+
+                    // Generate explanation
+                    let explanation = '';
+                    const absVarTrad = Math.abs(varianceTrad);
+
+                    if (varianceTrad > 10) {
+                        explanation = `<strong>${constituency.name}</strong> deserves <strong>${ser.toFixed(2)} seats</strong> but has only <strong>${constituency.tds} assigned</strong> - a shortage of <strong>${absSeatDiff.toFixed(2)} seats</strong>. Each TD represents <strong>${absVarTrad.toFixed(1)}% more people</strong> than they should. Your vote effectively counts as <strong>${voteWeight.toFixed(3)} votes</strong> - giving you <strong>${((1 - voteWeight) * 100).toFixed(1)}% less democratic influence</strong> than the average Irish voter.`;
+                    } else if (varianceTrad < -10) {
+                        explanation = `<strong>${constituency.name}</strong> deserves <strong>${ser.toFixed(2)} seats</strong> but has <strong>${constituency.tds} assigned</strong> - a surplus of <strong>${absSeatDiff.toFixed(2)} seats</strong>. Each TD represents <strong>${absVarTrad.toFixed(1)}% fewer people</strong> than they should. Your vote effectively counts as <strong>${voteWeight.toFixed(3)} votes</strong> - giving you <strong>${((voteWeight - 1) * 100).toFixed(1)}% more democratic influence</strong> than the average Irish voter.`;
+                    } else if (varianceTrad > 0) {
+                        explanation = `<strong>${constituency.name}</strong> is slightly over-represented with <strong>${constituency.tds} seats</strong> (deserves ${ser.toFixed(2)}). Your vote counts as <strong>${voteWeight.toFixed(3)}</strong>, slightly less than the ideal of 1.00.`;
+                    } else if (varianceTrad < 0) {
+                        explanation = `<strong>${constituency.name}</strong> is slightly under-represented with <strong>${constituency.tds} seats</strong> (deserves ${ser.toFixed(2)}). Your vote counts as <strong>${voteWeight.toFixed(3)}</strong>, slightly more than the ideal of 1.00.`;
+                    } else {
+                        explanation = `<strong>${constituency.name}</strong> has perfect representation! Your vote counts as exactly <strong>1.00</strong>.`;
+                    }
+
+                    document.getElementById('cothrom-explanation').innerHTML = explanation;
+
+                    document.getElementById('cothrom-results').classList.add('show');
+                });
+            }
+
+            // Start loading data
+            loadData();
         })();
     </script>
 </div>
