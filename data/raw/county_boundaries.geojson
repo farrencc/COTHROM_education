@@ -1,0 +1,893 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Carlow",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.1,
+              52.6
+            ],
+            [
+              -6.7,
+              52.6
+            ],
+            [
+              -6.7,
+              52.9
+            ],
+            [
+              -7.1,
+              52.9
+            ],
+            [
+              -7.1,
+              52.6
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Cavan",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.8,
+              53.8
+            ],
+            [
+              -6.8,
+              53.8
+            ],
+            [
+              -6.8,
+              54.2
+            ],
+            [
+              -7.8,
+              54.2
+            ],
+            [
+              -7.8,
+              53.8
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Clare",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.0,
+              52.5
+            ],
+            [
+              -8.3,
+              52.5
+            ],
+            [
+              -8.3,
+              53.2
+            ],
+            [
+              -10.0,
+              53.2
+            ],
+            [
+              -10.0,
+              52.5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Cork",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.2,
+              51.4
+            ],
+            [
+              -8.0,
+              51.4
+            ],
+            [
+              -8.0,
+              52.3
+            ],
+            [
+              -10.2,
+              52.3
+            ],
+            [
+              -10.2,
+              51.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Donegal",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.8,
+              54.4
+            ],
+            [
+              -7.2,
+              54.4
+            ],
+            [
+              -7.2,
+              55.4
+            ],
+            [
+              -8.8,
+              55.4
+            ],
+            [
+              -8.8,
+              54.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Dublin",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.6,
+              53.2
+            ],
+            [
+              -6.0,
+              53.2
+            ],
+            [
+              -6.0,
+              53.6
+            ],
+            [
+              -6.6,
+              53.6
+            ],
+            [
+              -6.6,
+              53.2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Galway",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.5,
+              53.0
+            ],
+            [
+              -8.2,
+              53.0
+            ],
+            [
+              -8.2,
+              53.7
+            ],
+            [
+              -10.5,
+              53.7
+            ],
+            [
+              -10.5,
+              53.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Kerry",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.5,
+              51.7
+            ],
+            [
+              -9.2,
+              51.7
+            ],
+            [
+              -9.2,
+              52.5
+            ],
+            [
+              -10.5,
+              52.5
+            ],
+            [
+              -10.5,
+              51.7
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Kildare",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.1,
+              53.0
+            ],
+            [
+              -6.5,
+              53.0
+            ],
+            [
+              -6.5,
+              53.4
+            ],
+            [
+              -7.1,
+              53.4
+            ],
+            [
+              -7.1,
+              53.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Kilkenny",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.7,
+              52.3
+            ],
+            [
+              -6.9,
+              52.3
+            ],
+            [
+              -6.9,
+              52.9
+            ],
+            [
+              -7.7,
+              52.9
+            ],
+            [
+              -7.7,
+              52.3
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Laois",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.9,
+              52.8
+            ],
+            [
+              -7.2,
+              52.8
+            ],
+            [
+              -7.2,
+              53.2
+            ],
+            [
+              -7.9,
+              53.2
+            ],
+            [
+              -7.9,
+              52.8
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Leitrim",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.4,
+              53.9
+            ],
+            [
+              -7.7,
+              53.9
+            ],
+            [
+              -7.7,
+              54.4
+            ],
+            [
+              -8.4,
+              54.4
+            ],
+            [
+              -8.4,
+              53.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Limerick",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -9.4,
+              52.3
+            ],
+            [
+              -8.2,
+              52.3
+            ],
+            [
+              -8.2,
+              52.8
+            ],
+            [
+              -9.4,
+              52.8
+            ],
+            [
+              -9.4,
+              52.3
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Longford",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.1,
+              53.5
+            ],
+            [
+              -7.5,
+              53.5
+            ],
+            [
+              -7.5,
+              53.9
+            ],
+            [
+              -8.1,
+              53.9
+            ],
+            [
+              -8.1,
+              53.5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Louth",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.7,
+              53.7
+            ],
+            [
+              -6.1,
+              53.7
+            ],
+            [
+              -6.1,
+              54.1
+            ],
+            [
+              -6.7,
+              54.1
+            ],
+            [
+              -6.7,
+              53.7
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Mayo",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.3,
+              53.4
+            ],
+            [
+              -9.0,
+              53.4
+            ],
+            [
+              -9.0,
+              54.3
+            ],
+            [
+              -10.3,
+              54.3
+            ],
+            [
+              -10.3,
+              53.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Meath",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.3,
+              53.4
+            ],
+            [
+              -6.2,
+              53.4
+            ],
+            [
+              -6.2,
+              53.9
+            ],
+            [
+              -7.3,
+              53.9
+            ],
+            [
+              -7.3,
+              53.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Monaghan",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.4,
+              53.9
+            ],
+            [
+              -6.5,
+              53.9
+            ],
+            [
+              -6.5,
+              54.4
+            ],
+            [
+              -7.4,
+              54.4
+            ],
+            [
+              -7.4,
+              53.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Offaly",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.1,
+              53.0
+            ],
+            [
+              -7.3,
+              53.0
+            ],
+            [
+              -7.3,
+              53.5
+            ],
+            [
+              -8.1,
+              53.5
+            ],
+            [
+              -8.1,
+              53.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roscommon",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.8,
+              53.5
+            ],
+            [
+              -7.9,
+              53.5
+            ],
+            [
+              -7.9,
+              54.1
+            ],
+            [
+              -8.8,
+              54.1
+            ],
+            [
+              -8.8,
+              53.5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Sligo",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.9,
+              53.9
+            ],
+            [
+              -8.2,
+              53.9
+            ],
+            [
+              -8.2,
+              54.5
+            ],
+            [
+              -8.9,
+              54.5
+            ],
+            [
+              -8.9,
+              53.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Tipperary",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.5,
+              52.2
+            ],
+            [
+              -7.4,
+              52.2
+            ],
+            [
+              -7.4,
+              53.0
+            ],
+            [
+              -8.5,
+              53.0
+            ],
+            [
+              -8.5,
+              52.2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Waterford",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.0,
+              51.9
+            ],
+            [
+              -6.9,
+              51.9
+            ],
+            [
+              -6.9,
+              52.4
+            ],
+            [
+              -8.0,
+              52.4
+            ],
+            [
+              -8.0,
+              51.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Westmeath",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.9,
+              53.3
+            ],
+            [
+              -7.1,
+              53.3
+            ],
+            [
+              -7.1,
+              53.7
+            ],
+            [
+              -7.9,
+              53.7
+            ],
+            [
+              -7.9,
+              53.3
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Wexford",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.9,
+              52.2
+            ],
+            [
+              -6.1,
+              52.2
+            ],
+            [
+              -6.1,
+              52.7
+            ],
+            [
+              -6.9,
+              52.7
+            ],
+            [
+              -6.9,
+              52.2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Wicklow",
+        "TYPE": "County"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.7,
+              52.8
+            ],
+            [
+              -6.0,
+              52.8
+            ],
+            [
+              -6.0,
+              53.3
+            ],
+            [
+              -6.7,
+              53.3
+            ],
+            [
+              -6.7,
+              52.8
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "_metadata": {
+    "is_sample": true,
+    "note": "Simplified county boundaries for development"
+  }
+}

@@ -1,0 +1,4062 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e2ce485bbda3677b424ad5693bc4fbf6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; padding: 5px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: #ffffff; color: #333; font-size: 12px; padding: 8px;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 50px;
+        left: 50px;
+        z-index: 1000;
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        font-family: Arial, sans-serif;
+        max-width: 250px;
+    ">
+        <h4 style="margin: 0 0 10px 0; color: #333;">ED Finder Tool</h4>
+        <div style="margin: 5px 0;">
+            <span style="display: inline-block; width: 20px; height: 12px; background: #32e875; border: 1px solid #27ae60; margin-right: 8px;"></span>
+            Electoral Districts
+        </div>
+        <div style="margin: 5px 0;">
+            <span style="display: inline-block; width: 20px; height: 12px; background: #3c096c; opacity: 0.3; border: 1px solid #7b2cbf; margin-right: 8px;"></span>
+            Constituencies
+        </div>
+        <div style="margin: 5px 0;">
+            <span style="display: inline-block; width: 20px; height: 12px; background: #f4f4f4; border: 1px dashed #333; margin-right: 8px;"></span>
+            Counties
+        </div>
+        <p style="font-size: 11px; color: #666; margin: 10px 0 0 0;">
+            Click on an area for details.<br>
+            Use layer control to toggle views.
+        </p>
+    </div>
+    
+    
+        <div style="
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #ffc107;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        ">
+            <b>Sample Data:</b> Showing 15 of 3440 Electoral Districts
+        </div>
+        
+    
+            <div class="folium-map" id="map_e2ce485bbda3677b424ad5693bc4fbf6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e2ce485bbda3677b424ad5693bc4fbf6 = L.map(
+                "map_e2ce485bbda3677b424ad5693bc4fbf6",
+                {
+                    center: [53.4, -7.9],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+
+            
+
+        
+    
+            var tile_layer_6f948a52eb22bc0ddc72519dbfa1afff = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6f948a52eb22bc0ddc72519dbfa1afff.addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+        
+    
+            var tile_layer_5774d3fa94b3d8f595ae3b2925ad947b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5774d3fa94b3d8f595ae3b2925ad947b.addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+        
+    
+            var tile_layer_035590ad08ed59afd6cb05de90305e84 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_035590ad08ed59afd6cb05de90305e84.addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+        
+    
+            var feature_group_05a75060303d823b221befa8d47a6e60 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_ccfcf02bfb8a2ba937a2a696cf81215b_styler(feature) {
+            switch(feature.properties.NAME) {
+                default:
+                    return {"color": "#333", "dashArray": "5, 5", "fillColor": "#f4f4f4", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_ccfcf02bfb8a2ba937a2a696cf81215b_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ccfcf02bfb8a2ba937a2a696cf81215b = L.geoJson(null, {
+                onEachFeature: geo_json_ccfcf02bfb8a2ba937a2a696cf81215b_onEachFeature,
+            
+                style: geo_json_ccfcf02bfb8a2ba937a2a696cf81215b_styler,
+            ...{
+}
+        });
+
+        function geo_json_ccfcf02bfb8a2ba937a2a696cf81215b_add (data) {
+            geo_json_ccfcf02bfb8a2ba937a2a696cf81215b
+                .addData(data);
+        }
+            geo_json_ccfcf02bfb8a2ba937a2a696cf81215b_add({"_metadata": {"is_sample": true, "note": "Simplified county boundaries for development"}, "features": [{"geometry": {"coordinates": [[[-7.1, 52.6], [-6.7, 52.6], [-6.7, 52.9], [-7.1, 52.9], [-7.1, 52.6]]], "type": "Polygon"}, "properties": {"NAME": "Carlow", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-7.8, 53.8], [-6.8, 53.8], [-6.8, 54.2], [-7.8, 54.2], [-7.8, 53.8]]], "type": "Polygon"}, "properties": {"NAME": "Cavan", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-10.0, 52.5], [-8.3, 52.5], [-8.3, 53.2], [-10.0, 53.2], [-10.0, 52.5]]], "type": "Polygon"}, "properties": {"NAME": "Clare", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-10.2, 51.4], [-8.0, 51.4], [-8.0, 52.3], [-10.2, 52.3], [-10.2, 51.4]]], "type": "Polygon"}, "properties": {"NAME": "Cork", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.8, 54.4], [-7.2, 54.4], [-7.2, 55.4], [-8.8, 55.4], [-8.8, 54.4]]], "type": "Polygon"}, "properties": {"NAME": "Donegal", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-6.6, 53.2], [-6.0, 53.2], [-6.0, 53.6], [-6.6, 53.6], [-6.6, 53.2]]], "type": "Polygon"}, "properties": {"NAME": "Dublin", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-10.5, 53.0], [-8.2, 53.0], [-8.2, 53.7], [-10.5, 53.7], [-10.5, 53.0]]], "type": "Polygon"}, "properties": {"NAME": "Galway", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-10.5, 51.7], [-9.2, 51.7], [-9.2, 52.5], [-10.5, 52.5], [-10.5, 51.7]]], "type": "Polygon"}, "properties": {"NAME": "Kerry", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-7.1, 53.0], [-6.5, 53.0], [-6.5, 53.4], [-7.1, 53.4], [-7.1, 53.0]]], "type": "Polygon"}, "properties": {"NAME": "Kildare", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-7.7, 52.3], [-6.9, 52.3], [-6.9, 52.9], [-7.7, 52.9], [-7.7, 52.3]]], "type": "Polygon"}, "properties": {"NAME": "Kilkenny", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-7.9, 52.8], [-7.2, 52.8], [-7.2, 53.2], [-7.9, 53.2], [-7.9, 52.8]]], "type": "Polygon"}, "properties": {"NAME": "Laois", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.4, 53.9], [-7.7, 53.9], [-7.7, 54.4], [-8.4, 54.4], [-8.4, 53.9]]], "type": "Polygon"}, "properties": {"NAME": "Leitrim", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-9.4, 52.3], [-8.2, 52.3], [-8.2, 52.8], [-9.4, 52.8], [-9.4, 52.3]]], "type": "Polygon"}, "properties": {"NAME": "Limerick", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.1, 53.5], [-7.5, 53.5], [-7.5, 53.9], [-8.1, 53.9], [-8.1, 53.5]]], "type": "Polygon"}, "properties": {"NAME": "Longford", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-6.7, 53.7], [-6.1, 53.7], [-6.1, 54.1], [-6.7, 54.1], [-6.7, 53.7]]], "type": "Polygon"}, "properties": {"NAME": "Louth", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-10.3, 53.4], [-9.0, 53.4], [-9.0, 54.3], [-10.3, 54.3], [-10.3, 53.4]]], "type": "Polygon"}, "properties": {"NAME": "Mayo", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-7.3, 53.4], [-6.2, 53.4], [-6.2, 53.9], [-7.3, 53.9], [-7.3, 53.4]]], "type": "Polygon"}, "properties": {"NAME": "Meath", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-7.4, 53.9], [-6.5, 53.9], [-6.5, 54.4], [-7.4, 54.4], [-7.4, 53.9]]], "type": "Polygon"}, "properties": {"NAME": "Monaghan", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.1, 53.0], [-7.3, 53.0], [-7.3, 53.5], [-8.1, 53.5], [-8.1, 53.0]]], "type": "Polygon"}, "properties": {"NAME": "Offaly", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.8, 53.5], [-7.9, 53.5], [-7.9, 54.1], [-8.8, 54.1], [-8.8, 53.5]]], "type": "Polygon"}, "properties": {"NAME": "Roscommon", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.9, 53.9], [-8.2, 53.9], [-8.2, 54.5], [-8.9, 54.5], [-8.9, 53.9]]], "type": "Polygon"}, "properties": {"NAME": "Sligo", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.5, 52.2], [-7.4, 52.2], [-7.4, 53.0], [-8.5, 53.0], [-8.5, 52.2]]], "type": "Polygon"}, "properties": {"NAME": "Tipperary", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-8.0, 51.9], [-6.9, 51.9], [-6.9, 52.4], [-8.0, 52.4], [-8.0, 51.9]]], "type": "Polygon"}, "properties": {"NAME": "Waterford", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-7.9, 53.3], [-7.1, 53.3], [-7.1, 53.7], [-7.9, 53.7], [-7.9, 53.3]]], "type": "Polygon"}, "properties": {"NAME": "Westmeath", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-6.9, 52.2], [-6.1, 52.2], [-6.1, 52.7], [-6.9, 52.7], [-6.9, 52.2]]], "type": "Polygon"}, "properties": {"NAME": "Wexford", "TYPE": "County"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-6.7, 52.8], [-6.0, 52.8], [-6.0, 53.3], [-6.7, 53.3], [-6.7, 52.8]]], "type": "Polygon"}, "properties": {"NAME": "Wicklow", "TYPE": "County"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_ccfcf02bfb8a2ba937a2a696cf81215b.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["NAME"];
+    let aliases = ["County:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_ccfcf02bfb8a2ba937a2a696cf81215b.addTo(feature_group_05a75060303d823b221befa8d47a6e60);
+        
+    
+            feature_group_05a75060303d823b221befa8d47a6e60.addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+        
+    
+            var feature_group_1f4655866b088543dc991fc54fb87cdb = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_7be2b347a2a88e9c296f6801b64f431a_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_7be2b347a2a88e9c296f6801b64f431a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_7be2b347a2a88e9c296f6801b64f431a = L.geoJson(null, {
+                onEachFeature: geo_json_7be2b347a2a88e9c296f6801b64f431a_onEachFeature,
+            
+                style: geo_json_7be2b347a2a88e9c296f6801b64f431a_styler,
+            ...{
+}
+        });
+
+        function geo_json_7be2b347a2a88e9c296f6801b64f431a_add (data) {
+            geo_json_7be2b347a2a88e9c296f6801b64f431a
+                .addData(data);
+        }
+            geo_json_7be2b347a2a88e9c296f6801b64f431a_add({"features": [{"geometry": {"coordinates": [[[-7.5, 52.5], [-6.9, 52.5], [-6.9, 53.0], [-7.5, 53.0], [-7.5, 52.5]]], "type": "Polygon"}, "properties": {"COUNTY": "Carlow/Kilkenny", "ENGLISH": "Carlow-Kilkenny", "OBJECTID": 1, "POPULATION_2022": 165000, "SEATS": 5, "TD_POP_RATIO": 33000.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_7be2b347a2a88e9c296f6801b64f431a.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_2023110e6e92f1fa8debdb010473c86d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_32f7c663ac41e8bc113ee578a79aa39c = $(`<div id="html_32f7c663ac41e8bc113ee578a79aa39c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Carlow-Kilkenny                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 5 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 165,000</p>             </div>             </div>`)[0];
+                popup_2023110e6e92f1fa8debdb010473c86d.setContent(html_32f7c663ac41e8bc113ee578a79aa39c);
+            
+        
+
+        geo_json_7be2b347a2a88e9c296f6801b64f431a.bindPopup(popup_2023110e6e92f1fa8debdb010473c86d)
+        ;
+
+        
+    
+    
+            geo_json_7be2b347a2a88e9c296f6801b64f431a.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5 = L.geoJson(null, {
+                onEachFeature: geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5_onEachFeature,
+            
+                style: geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5_styler,
+            ...{
+}
+        });
+
+        function geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5_add (data) {
+            geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5
+                .addData(data);
+        }
+            geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5_add({"features": [{"geometry": {"coordinates": [[[-7.8, 53.8], [-6.5, 53.8], [-6.5, 54.3], [-7.8, 54.3], [-7.8, 53.8]]], "type": "Polygon"}, "properties": {"COUNTY": "Cavan/Monaghan", "ENGLISH": "Cavan-Monaghan", "OBJECTID": 2, "POPULATION_2022": 155000, "SEATS": 5, "TD_POP_RATIO": 31000.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_71574585747dacafaef415a039ccef17 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_45e9f3f58566330dd94b929624aed8c4 = $(`<div id="html_45e9f3f58566330dd94b929624aed8c4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Cavan-Monaghan                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 5 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 155,000</p>             </div>             </div>`)[0];
+                popup_71574585747dacafaef415a039ccef17.setContent(html_45e9f3f58566330dd94b929624aed8c4);
+            
+        
+
+        geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5.bindPopup(popup_71574585747dacafaef415a039ccef17)
+        ;
+
+        
+    
+    
+            geo_json_6f31a90b74c3dfa0c7d22098ca2afdd5.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_fe1731a60449d2ce6d0399290a4fcdf0_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_fe1731a60449d2ce6d0399290a4fcdf0_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_fe1731a60449d2ce6d0399290a4fcdf0 = L.geoJson(null, {
+                onEachFeature: geo_json_fe1731a60449d2ce6d0399290a4fcdf0_onEachFeature,
+            
+                style: geo_json_fe1731a60449d2ce6d0399290a4fcdf0_styler,
+            ...{
+}
+        });
+
+        function geo_json_fe1731a60449d2ce6d0399290a4fcdf0_add (data) {
+            geo_json_fe1731a60449d2ce6d0399290a4fcdf0
+                .addData(data);
+        }
+            geo_json_fe1731a60449d2ce6d0399290a4fcdf0_add({"features": [{"geometry": {"coordinates": [[[-10.0, 52.5], [-8.5, 52.5], [-8.5, 53.2], [-10.0, 53.2], [-10.0, 52.5]]], "type": "Polygon"}, "properties": {"COUNTY": "Clare", "ENGLISH": "Clare", "OBJECTID": 3, "POPULATION_2022": 132000, "SEATS": 4, "TD_POP_RATIO": 33000.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_fe1731a60449d2ce6d0399290a4fcdf0.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_14add6989f1a1548472e62bdedc07fe2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40edebb28264573eca1035f2e0e19f0b = $(`<div id="html_40edebb28264573eca1035f2e0e19f0b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Clare                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 132,000</p>             </div>             </div>`)[0];
+                popup_14add6989f1a1548472e62bdedc07fe2.setContent(html_40edebb28264573eca1035f2e0e19f0b);
+            
+        
+
+        geo_json_fe1731a60449d2ce6d0399290a4fcdf0.bindPopup(popup_14add6989f1a1548472e62bdedc07fe2)
+        ;
+
+        
+    
+    
+            geo_json_fe1731a60449d2ce6d0399290a4fcdf0.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_2662b8ca897f2ed3fc38caaf9930dc9e_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_2662b8ca897f2ed3fc38caaf9930dc9e_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_2662b8ca897f2ed3fc38caaf9930dc9e = L.geoJson(null, {
+                onEachFeature: geo_json_2662b8ca897f2ed3fc38caaf9930dc9e_onEachFeature,
+            
+                style: geo_json_2662b8ca897f2ed3fc38caaf9930dc9e_styler,
+            ...{
+}
+        });
+
+        function geo_json_2662b8ca897f2ed3fc38caaf9930dc9e_add (data) {
+            geo_json_2662b8ca897f2ed3fc38caaf9930dc9e
+                .addData(data);
+        }
+            geo_json_2662b8ca897f2ed3fc38caaf9930dc9e_add({"features": [{"geometry": {"coordinates": [[[-8.5, 51.7], [-7.8, 51.7], [-7.8, 52.2], [-8.5, 52.2], [-8.5, 51.7]]], "type": "Polygon"}, "properties": {"COUNTY": "Cork", "ENGLISH": "Cork East", "OBJECTID": 4, "POPULATION_2022": 130000, "SEATS": 4, "TD_POP_RATIO": 32500.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_2662b8ca897f2ed3fc38caaf9930dc9e.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_53d0989892e507e4a6afd2377bd26140 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9f1c24236043a58788a9a3dae43519d = $(`<div id="html_f9f1c24236043a58788a9a3dae43519d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Cork East                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 130,000</p>             </div>             </div>`)[0];
+                popup_53d0989892e507e4a6afd2377bd26140.setContent(html_f9f1c24236043a58788a9a3dae43519d);
+            
+        
+
+        geo_json_2662b8ca897f2ed3fc38caaf9930dc9e.bindPopup(popup_53d0989892e507e4a6afd2377bd26140)
+        ;
+
+        
+    
+    
+            geo_json_2662b8ca897f2ed3fc38caaf9930dc9e.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_977689b46b7cf087975d90c44b213cc9_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_977689b46b7cf087975d90c44b213cc9_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_977689b46b7cf087975d90c44b213cc9 = L.geoJson(null, {
+                onEachFeature: geo_json_977689b46b7cf087975d90c44b213cc9_onEachFeature,
+            
+                style: geo_json_977689b46b7cf087975d90c44b213cc9_styler,
+            ...{
+}
+        });
+
+        function geo_json_977689b46b7cf087975d90c44b213cc9_add (data) {
+            geo_json_977689b46b7cf087975d90c44b213cc9
+                .addData(data);
+        }
+            geo_json_977689b46b7cf087975d90c44b213cc9_add({"features": [{"geometry": {"coordinates": [[[-8.6, 51.85], [-8.3, 51.85], [-8.3, 52.0], [-8.6, 52.0], [-8.6, 51.85]]], "type": "Polygon"}, "properties": {"COUNTY": "Cork City", "ENGLISH": "Cork North-Central", "OBJECTID": 5, "POPULATION_2022": 128000, "SEATS": 4, "TD_POP_RATIO": 32000.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_977689b46b7cf087975d90c44b213cc9.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_6dd52b6be1bd42f2feae9538d9113d9f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e1496cc2be39ddd2912dca2ad3fd5dea = $(`<div id="html_e1496cc2be39ddd2912dca2ad3fd5dea" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Cork North-Central                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 128,000</p>             </div>             </div>`)[0];
+                popup_6dd52b6be1bd42f2feae9538d9113d9f.setContent(html_e1496cc2be39ddd2912dca2ad3fd5dea);
+            
+        
+
+        geo_json_977689b46b7cf087975d90c44b213cc9.bindPopup(popup_6dd52b6be1bd42f2feae9538d9113d9f)
+        ;
+
+        
+    
+    
+            geo_json_977689b46b7cf087975d90c44b213cc9.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_fc06858a0086b132e52e6c36ec283beb_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_fc06858a0086b132e52e6c36ec283beb_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_fc06858a0086b132e52e6c36ec283beb = L.geoJson(null, {
+                onEachFeature: geo_json_fc06858a0086b132e52e6c36ec283beb_onEachFeature,
+            
+                style: geo_json_fc06858a0086b132e52e6c36ec283beb_styler,
+            ...{
+}
+        });
+
+        function geo_json_fc06858a0086b132e52e6c36ec283beb_add (data) {
+            geo_json_fc06858a0086b132e52e6c36ec283beb
+                .addData(data);
+        }
+            geo_json_fc06858a0086b132e52e6c36ec283beb_add({"features": [{"geometry": {"coordinates": [[[-9.5, 51.8], [-8.6, 51.8], [-8.6, 52.3], [-9.5, 52.3], [-9.5, 51.8]]], "type": "Polygon"}, "properties": {"COUNTY": "Cork", "ENGLISH": "Cork North-West", "OBJECTID": 6, "POPULATION_2022": 98000, "SEATS": 3, "TD_POP_RATIO": 32666.666666666668}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_fc06858a0086b132e52e6c36ec283beb.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_d458e239c6b7fbab33afc4f01208f785 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_65b26eca611df7ba9778f2338225a055 = $(`<div id="html_65b26eca611df7ba9778f2338225a055" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Cork North-West                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 3 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 98,000</p>             </div>             </div>`)[0];
+                popup_d458e239c6b7fbab33afc4f01208f785.setContent(html_65b26eca611df7ba9778f2338225a055);
+            
+        
+
+        geo_json_fc06858a0086b132e52e6c36ec283beb.bindPopup(popup_d458e239c6b7fbab33afc4f01208f785)
+        ;
+
+        
+    
+    
+            geo_json_fc06858a0086b132e52e6c36ec283beb.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_4157a1d0bb0380a6c219aff38d8a9165_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_4157a1d0bb0380a6c219aff38d8a9165_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_4157a1d0bb0380a6c219aff38d8a9165 = L.geoJson(null, {
+                onEachFeature: geo_json_4157a1d0bb0380a6c219aff38d8a9165_onEachFeature,
+            
+                style: geo_json_4157a1d0bb0380a6c219aff38d8a9165_styler,
+            ...{
+}
+        });
+
+        function geo_json_4157a1d0bb0380a6c219aff38d8a9165_add (data) {
+            geo_json_4157a1d0bb0380a6c219aff38d8a9165
+                .addData(data);
+        }
+            geo_json_4157a1d0bb0380a6c219aff38d8a9165_add({"features": [{"geometry": {"coordinates": [[[-8.6, 51.7], [-8.3, 51.7], [-8.3, 51.85], [-8.6, 51.85], [-8.6, 51.7]]], "type": "Polygon"}, "properties": {"COUNTY": "Cork City", "ENGLISH": "Cork South-Central", "OBJECTID": 7, "POPULATION_2022": 131000, "SEATS": 4, "TD_POP_RATIO": 32750.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_4157a1d0bb0380a6c219aff38d8a9165.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_40c6b35978e438e407133f335d2642a4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3e63d1e5a3b554d7f042e3b9af63f266 = $(`<div id="html_3e63d1e5a3b554d7f042e3b9af63f266" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Cork South-Central                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 131,000</p>             </div>             </div>`)[0];
+                popup_40c6b35978e438e407133f335d2642a4.setContent(html_3e63d1e5a3b554d7f042e3b9af63f266);
+            
+        
+
+        geo_json_4157a1d0bb0380a6c219aff38d8a9165.bindPopup(popup_40c6b35978e438e407133f335d2642a4)
+        ;
+
+        
+    
+    
+            geo_json_4157a1d0bb0380a6c219aff38d8a9165.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_a1abc1403532e77dacbfe7dd6fca4011_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_a1abc1403532e77dacbfe7dd6fca4011_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_a1abc1403532e77dacbfe7dd6fca4011 = L.geoJson(null, {
+                onEachFeature: geo_json_a1abc1403532e77dacbfe7dd6fca4011_onEachFeature,
+            
+                style: geo_json_a1abc1403532e77dacbfe7dd6fca4011_styler,
+            ...{
+}
+        });
+
+        function geo_json_a1abc1403532e77dacbfe7dd6fca4011_add (data) {
+            geo_json_a1abc1403532e77dacbfe7dd6fca4011
+                .addData(data);
+        }
+            geo_json_a1abc1403532e77dacbfe7dd6fca4011_add({"features": [{"geometry": {"coordinates": [[[-10.0, 51.4], [-9.0, 51.4], [-9.0, 51.8], [-10.0, 51.8], [-10.0, 51.4]]], "type": "Polygon"}, "properties": {"COUNTY": "Cork", "ENGLISH": "Cork South-West", "OBJECTID": 8, "POPULATION_2022": 96000, "SEATS": 3, "TD_POP_RATIO": 32000.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_a1abc1403532e77dacbfe7dd6fca4011.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_7ef789c1e204c67a10bbf372efff456a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_192bddfa275c0045e33fa0b20c24818d = $(`<div id="html_192bddfa275c0045e33fa0b20c24818d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Cork South-West                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 3 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 96,000</p>             </div>             </div>`)[0];
+                popup_7ef789c1e204c67a10bbf372efff456a.setContent(html_192bddfa275c0045e33fa0b20c24818d);
+            
+        
+
+        geo_json_a1abc1403532e77dacbfe7dd6fca4011.bindPopup(popup_7ef789c1e204c67a10bbf372efff456a)
+        ;
+
+        
+    
+    
+            geo_json_a1abc1403532e77dacbfe7dd6fca4011.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_81bfad52002a3ad84d3c313b84503132_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_81bfad52002a3ad84d3c313b84503132_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_81bfad52002a3ad84d3c313b84503132 = L.geoJson(null, {
+                onEachFeature: geo_json_81bfad52002a3ad84d3c313b84503132_onEachFeature,
+            
+                style: geo_json_81bfad52002a3ad84d3c313b84503132_styler,
+            ...{
+}
+        });
+
+        function geo_json_81bfad52002a3ad84d3c313b84503132_add (data) {
+            geo_json_81bfad52002a3ad84d3c313b84503132
+                .addData(data);
+        }
+            geo_json_81bfad52002a3ad84d3c313b84503132_add({"features": [{"geometry": {"coordinates": [[[-6.25, 53.35], [-6.1, 53.35], [-6.1, 53.45], [-6.25, 53.45], [-6.25, 53.35]]], "type": "Polygon"}, "properties": {"COUNTY": "Dublin", "ENGLISH": "Dublin Bay North", "OBJECTID": 9, "POPULATION_2022": 161000, "SEATS": 5, "TD_POP_RATIO": 32200.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_81bfad52002a3ad84d3c313b84503132.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_15cee2554251dd045ab5e68c2f58fa74 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_273f3360d47b75759d75c34327d860ef = $(`<div id="html_273f3360d47b75759d75c34327d860ef" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Dublin Bay North                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 5 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 161,000</p>             </div>             </div>`)[0];
+                popup_15cee2554251dd045ab5e68c2f58fa74.setContent(html_273f3360d47b75759d75c34327d860ef);
+            
+        
+
+        geo_json_81bfad52002a3ad84d3c313b84503132.bindPopup(popup_15cee2554251dd045ab5e68c2f58fa74)
+        ;
+
+        
+    
+    
+            geo_json_81bfad52002a3ad84d3c313b84503132.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_196d82d8cf2b2a4aaa065e2514620d47_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_196d82d8cf2b2a4aaa065e2514620d47_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_196d82d8cf2b2a4aaa065e2514620d47 = L.geoJson(null, {
+                onEachFeature: geo_json_196d82d8cf2b2a4aaa065e2514620d47_onEachFeature,
+            
+                style: geo_json_196d82d8cf2b2a4aaa065e2514620d47_styler,
+            ...{
+}
+        });
+
+        function geo_json_196d82d8cf2b2a4aaa065e2514620d47_add (data) {
+            geo_json_196d82d8cf2b2a4aaa065e2514620d47
+                .addData(data);
+        }
+            geo_json_196d82d8cf2b2a4aaa065e2514620d47_add({"features": [{"geometry": {"coordinates": [[[-6.3, 53.3], [-6.2, 53.3], [-6.2, 53.35], [-6.3, 53.35], [-6.3, 53.3]]], "type": "Polygon"}, "properties": {"COUNTY": "Dublin", "ENGLISH": "Dublin Bay South", "OBJECTID": 10, "POPULATION_2022": 132920, "SEATS": 4, "TD_POP_RATIO": 33230.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_196d82d8cf2b2a4aaa065e2514620d47.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_686716a862c966c5451190b0a9471521 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75d306484fbbd9d6a3292b1f9566d15d = $(`<div id="html_75d306484fbbd9d6a3292b1f9566d15d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Dublin Bay South                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 132,920</p>             </div>             </div>`)[0];
+                popup_686716a862c966c5451190b0a9471521.setContent(html_75d306484fbbd9d6a3292b1f9566d15d);
+            
+        
+
+        geo_json_196d82d8cf2b2a4aaa065e2514620d47.bindPopup(popup_686716a862c966c5451190b0a9471521)
+        ;
+
+        
+    
+    
+            geo_json_196d82d8cf2b2a4aaa065e2514620d47.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_27859c538148658f1d0b08fad4a27ee6_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_27859c538148658f1d0b08fad4a27ee6_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_27859c538148658f1d0b08fad4a27ee6 = L.geoJson(null, {
+                onEachFeature: geo_json_27859c538148658f1d0b08fad4a27ee6_onEachFeature,
+            
+                style: geo_json_27859c538148658f1d0b08fad4a27ee6_styler,
+            ...{
+}
+        });
+
+        function geo_json_27859c538148658f1d0b08fad4a27ee6_add (data) {
+            geo_json_27859c538148658f1d0b08fad4a27ee6
+                .addData(data);
+        }
+            geo_json_27859c538148658f1d0b08fad4a27ee6_add({"features": [{"geometry": {"coordinates": [[[-6.35, 53.33], [-6.25, 53.33], [-6.25, 53.38], [-6.35, 53.38], [-6.35, 53.33]]], "type": "Polygon"}, "properties": {"COUNTY": "Dublin", "ENGLISH": "Dublin Central", "OBJECTID": 11, "POPULATION_2022": 125000, "SEATS": 4, "TD_POP_RATIO": 31250.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_27859c538148658f1d0b08fad4a27ee6.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_d9abe549a3a050935fef01a05511db5f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c66d7fdc305274238e209b49a4fe9ecb = $(`<div id="html_c66d7fdc305274238e209b49a4fe9ecb" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Dublin Central                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 125,000</p>             </div>             </div>`)[0];
+                popup_d9abe549a3a050935fef01a05511db5f.setContent(html_c66d7fdc305274238e209b49a4fe9ecb);
+            
+        
+
+        geo_json_27859c538148658f1d0b08fad4a27ee6.bindPopup(popup_d9abe549a3a050935fef01a05511db5f)
+        ;
+
+        
+    
+    
+            geo_json_27859c538148658f1d0b08fad4a27ee6.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_e5c8476566ad41df203ee6515a6f2780_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_e5c8476566ad41df203ee6515a6f2780_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_e5c8476566ad41df203ee6515a6f2780 = L.geoJson(null, {
+                onEachFeature: geo_json_e5c8476566ad41df203ee6515a6f2780_onEachFeature,
+            
+                style: geo_json_e5c8476566ad41df203ee6515a6f2780_styler,
+            ...{
+}
+        });
+
+        function geo_json_e5c8476566ad41df203ee6515a6f2780_add (data) {
+            geo_json_e5c8476566ad41df203ee6515a6f2780
+                .addData(data);
+        }
+            geo_json_e5c8476566ad41df203ee6515a6f2780_add({"features": [{"geometry": {"coordinates": [[[-6.2, 53.45], [-6.0, 53.45], [-6.0, 53.55], [-6.2, 53.55], [-6.2, 53.45]]], "type": "Polygon"}, "properties": {"COUNTY": "Dublin", "ENGLISH": "Dublin Fingal East", "OBJECTID": 12, "POPULATION_2022": 130000, "SEATS": 4, "TD_POP_RATIO": 32500.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e5c8476566ad41df203ee6515a6f2780.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_83e298c48ae871555c27cc2e5632cd7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_888e6fb3d303c243872c7ea203fd24ad = $(`<div id="html_888e6fb3d303c243872c7ea203fd24ad" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Dublin Fingal East                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 130,000</p>             </div>             </div>`)[0];
+                popup_83e298c48ae871555c27cc2e5632cd7b.setContent(html_888e6fb3d303c243872c7ea203fd24ad);
+            
+        
+
+        geo_json_e5c8476566ad41df203ee6515a6f2780.bindPopup(popup_83e298c48ae871555c27cc2e5632cd7b)
+        ;
+
+        
+    
+    
+            geo_json_e5c8476566ad41df203ee6515a6f2780.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_6f2b0063fb1bcb0ea28c350daa95501c_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_6f2b0063fb1bcb0ea28c350daa95501c_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_6f2b0063fb1bcb0ea28c350daa95501c = L.geoJson(null, {
+                onEachFeature: geo_json_6f2b0063fb1bcb0ea28c350daa95501c_onEachFeature,
+            
+                style: geo_json_6f2b0063fb1bcb0ea28c350daa95501c_styler,
+            ...{
+}
+        });
+
+        function geo_json_6f2b0063fb1bcb0ea28c350daa95501c_add (data) {
+            geo_json_6f2b0063fb1bcb0ea28c350daa95501c
+                .addData(data);
+        }
+            geo_json_6f2b0063fb1bcb0ea28c350daa95501c_add({"features": [{"geometry": {"coordinates": [[[-6.4, 53.45], [-6.2, 53.45], [-6.2, 53.55], [-6.4, 53.55], [-6.4, 53.45]]], "type": "Polygon"}, "properties": {"COUNTY": "Dublin", "ENGLISH": "Dublin Fingal West", "OBJECTID": 13, "POPULATION_2022": 99000, "SEATS": 3, "TD_POP_RATIO": 33000.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_6f2b0063fb1bcb0ea28c350daa95501c.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_6ebbe0ad1bf29724da69ef85b108cbf8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3314ba5522d135401ad551f8baf36744 = $(`<div id="html_3314ba5522d135401ad551f8baf36744" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Dublin Fingal West                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 3 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 99,000</p>             </div>             </div>`)[0];
+                popup_6ebbe0ad1bf29724da69ef85b108cbf8.setContent(html_3314ba5522d135401ad551f8baf36744);
+            
+        
+
+        geo_json_6f2b0063fb1bcb0ea28c350daa95501c.bindPopup(popup_6ebbe0ad1bf29724da69ef85b108cbf8)
+        ;
+
+        
+    
+    
+            geo_json_6f2b0063fb1bcb0ea28c350daa95501c.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_232f1f2b6ce67f026bf3d1e045cf37f4_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_232f1f2b6ce67f026bf3d1e045cf37f4_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_232f1f2b6ce67f026bf3d1e045cf37f4 = L.geoJson(null, {
+                onEachFeature: geo_json_232f1f2b6ce67f026bf3d1e045cf37f4_onEachFeature,
+            
+                style: geo_json_232f1f2b6ce67f026bf3d1e045cf37f4_styler,
+            ...{
+}
+        });
+
+        function geo_json_232f1f2b6ce67f026bf3d1e045cf37f4_add (data) {
+            geo_json_232f1f2b6ce67f026bf3d1e045cf37f4
+                .addData(data);
+        }
+            geo_json_232f1f2b6ce67f026bf3d1e045cf37f4_add({"features": [{"geometry": {"coordinates": [[[-6.5, 53.3], [-6.35, 53.3], [-6.35, 53.4], [-6.5, 53.4], [-6.5, 53.3]]], "type": "Polygon"}, "properties": {"COUNTY": "Dublin", "ENGLISH": "Dublin Mid-West", "OBJECTID": 14, "POPULATION_2022": 134000, "SEATS": 4, "TD_POP_RATIO": 33500.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_232f1f2b6ce67f026bf3d1e045cf37f4.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_2557b601f63b0dd677c24eaf3e005235 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5f4e9da32bfc26ab248abff7635fd7d3 = $(`<div id="html_5f4e9da32bfc26ab248abff7635fd7d3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Dublin Mid-West                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 134,000</p>             </div>             </div>`)[0];
+                popup_2557b601f63b0dd677c24eaf3e005235.setContent(html_5f4e9da32bfc26ab248abff7635fd7d3);
+            
+        
+
+        geo_json_232f1f2b6ce67f026bf3d1e045cf37f4.bindPopup(popup_2557b601f63b0dd677c24eaf3e005235)
+        ;
+
+        
+    
+    
+            geo_json_232f1f2b6ce67f026bf3d1e045cf37f4.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_07084692f6140193e9a921129df3350d_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_07084692f6140193e9a921129df3350d_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_07084692f6140193e9a921129df3350d = L.geoJson(null, {
+                onEachFeature: geo_json_07084692f6140193e9a921129df3350d_onEachFeature,
+            
+                style: geo_json_07084692f6140193e9a921129df3350d_styler,
+            ...{
+}
+        });
+
+        function geo_json_07084692f6140193e9a921129df3350d_add (data) {
+            geo_json_07084692f6140193e9a921129df3350d
+                .addData(data);
+        }
+            geo_json_07084692f6140193e9a921129df3350d_add({"features": [{"geometry": {"coordinates": [[[-6.4, 53.38], [-6.25, 53.38], [-6.25, 53.45], [-6.4, 53.45], [-6.4, 53.38]]], "type": "Polygon"}, "properties": {"COUNTY": "Dublin", "ENGLISH": "Dublin North-West", "OBJECTID": 15, "POPULATION_2022": 127000, "SEATS": 4, "TD_POP_RATIO": 31750.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_07084692f6140193e9a921129df3350d.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_3be86529331759efd407ba8e41b07882 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_27517e3d0877b69a6b7f4c5b5db90458 = $(`<div id="html_27517e3d0877b69a6b7f4c5b5db90458" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Dublin North-West                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 127,000</p>             </div>             </div>`)[0];
+                popup_3be86529331759efd407ba8e41b07882.setContent(html_27517e3d0877b69a6b7f4c5b5db90458);
+            
+        
+
+        geo_json_07084692f6140193e9a921129df3350d.bindPopup(popup_3be86529331759efd407ba8e41b07882)
+        ;
+
+        
+    
+    
+            geo_json_07084692f6140193e9a921129df3350d.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_9a342a61e8a965324819bc8814802329_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_9a342a61e8a965324819bc8814802329_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_9a342a61e8a965324819bc8814802329 = L.geoJson(null, {
+                onEachFeature: geo_json_9a342a61e8a965324819bc8814802329_onEachFeature,
+            
+                style: geo_json_9a342a61e8a965324819bc8814802329_styler,
+            ...{
+}
+        });
+
+        function geo_json_9a342a61e8a965324819bc8814802329_add (data) {
+            geo_json_9a342a61e8a965324819bc8814802329
+                .addData(data);
+        }
+            geo_json_9a342a61e8a965324819bc8814802329_add({"features": [{"geometry": {"coordinates": [[[-9.0, 53.2], [-8.0, 53.2], [-8.0, 53.6], [-9.0, 53.6], [-9.0, 53.2]]], "type": "Polygon"}, "properties": {"COUNTY": "Galway", "ENGLISH": "Galway East", "OBJECTID": 16, "POPULATION_2022": 97000, "SEATS": 3, "TD_POP_RATIO": 32333.333333333332}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_9a342a61e8a965324819bc8814802329.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_5d23103157d3b954e19b1d7cd3884f96 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_90f5a7204b7cefe6270ef30e20a51ef4 = $(`<div id="html_90f5a7204b7cefe6270ef30e20a51ef4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Galway East                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 3 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 97,000</p>             </div>             </div>`)[0];
+                popup_5d23103157d3b954e19b1d7cd3884f96.setContent(html_90f5a7204b7cefe6270ef30e20a51ef4);
+            
+        
+
+        geo_json_9a342a61e8a965324819bc8814802329.bindPopup(popup_5d23103157d3b954e19b1d7cd3884f96)
+        ;
+
+        
+    
+    
+            geo_json_9a342a61e8a965324819bc8814802329.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_2b771c88438c06ab511d72ea1455b133_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_2b771c88438c06ab511d72ea1455b133_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_2b771c88438c06ab511d72ea1455b133 = L.geoJson(null, {
+                onEachFeature: geo_json_2b771c88438c06ab511d72ea1455b133_onEachFeature,
+            
+                style: geo_json_2b771c88438c06ab511d72ea1455b133_styler,
+            ...{
+}
+        });
+
+        function geo_json_2b771c88438c06ab511d72ea1455b133_add (data) {
+            geo_json_2b771c88438c06ab511d72ea1455b133
+                .addData(data);
+        }
+            geo_json_2b771c88438c06ab511d72ea1455b133_add({"features": [{"geometry": {"coordinates": [[[-10.2, 53.0], [-9.0, 53.0], [-9.0, 53.6], [-10.2, 53.6], [-10.2, 53.0]]], "type": "Polygon"}, "properties": {"COUNTY": "Galway", "ENGLISH": "Galway West", "OBJECTID": 17, "POPULATION_2022": 158000, "SEATS": 5, "TD_POP_RATIO": 31600.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_2b771c88438c06ab511d72ea1455b133.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_a00c2c194531fd776ee8ed3296c20f74 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2cbbe1624cea0e583d55a1365ba04fd4 = $(`<div id="html_2cbbe1624cea0e583d55a1365ba04fd4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Galway West                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 5 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 158,000</p>             </div>             </div>`)[0];
+                popup_a00c2c194531fd776ee8ed3296c20f74.setContent(html_2cbbe1624cea0e583d55a1365ba04fd4);
+            
+        
+
+        geo_json_2b771c88438c06ab511d72ea1455b133.bindPopup(popup_a00c2c194531fd776ee8ed3296c20f74)
+        ;
+
+        
+    
+    
+            geo_json_2b771c88438c06ab511d72ea1455b133.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_fc21137241bded42909fe73367a3ef5c_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_fc21137241bded42909fe73367a3ef5c_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_fc21137241bded42909fe73367a3ef5c = L.geoJson(null, {
+                onEachFeature: geo_json_fc21137241bded42909fe73367a3ef5c_onEachFeature,
+            
+                style: geo_json_fc21137241bded42909fe73367a3ef5c_styler,
+            ...{
+}
+        });
+
+        function geo_json_fc21137241bded42909fe73367a3ef5c_add (data) {
+            geo_json_fc21137241bded42909fe73367a3ef5c
+                .addData(data);
+        }
+            geo_json_fc21137241bded42909fe73367a3ef5c_add({"features": [{"geometry": {"coordinates": [[[-10.5, 51.7], [-9.5, 51.7], [-9.5, 52.5], [-10.5, 52.5], [-10.5, 51.7]]], "type": "Polygon"}, "properties": {"COUNTY": "Kerry", "ENGLISH": "Kerry", "OBJECTID": 18, "POPULATION_2022": 156000, "SEATS": 5, "TD_POP_RATIO": 31200.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_fc21137241bded42909fe73367a3ef5c.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_89db0b42e91401d3114524b5345721e8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_463d5e400a01a945d9eaf4ee3791cb77 = $(`<div id="html_463d5e400a01a945d9eaf4ee3791cb77" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Kerry                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 5 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 156,000</p>             </div>             </div>`)[0];
+                popup_89db0b42e91401d3114524b5345721e8.setContent(html_463d5e400a01a945d9eaf4ee3791cb77);
+            
+        
+
+        geo_json_fc21137241bded42909fe73367a3ef5c.bindPopup(popup_89db0b42e91401d3114524b5345721e8)
+        ;
+
+        
+    
+    
+            geo_json_fc21137241bded42909fe73367a3ef5c.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_1f9c382a250b2e57e2afd7bc557eae3e_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_1f9c382a250b2e57e2afd7bc557eae3e_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_1f9c382a250b2e57e2afd7bc557eae3e = L.geoJson(null, {
+                onEachFeature: geo_json_1f9c382a250b2e57e2afd7bc557eae3e_onEachFeature,
+            
+                style: geo_json_1f9c382a250b2e57e2afd7bc557eae3e_styler,
+            ...{
+}
+        });
+
+        function geo_json_1f9c382a250b2e57e2afd7bc557eae3e_add (data) {
+            geo_json_1f9c382a250b2e57e2afd7bc557eae3e
+                .addData(data);
+        }
+            geo_json_1f9c382a250b2e57e2afd7bc557eae3e_add({"features": [{"geometry": {"coordinates": [[[-8.2, 52.8], [-7.0, 52.8], [-7.0, 53.5], [-8.2, 53.5], [-8.2, 52.8]]], "type": "Polygon"}, "properties": {"COUNTY": "Laois/Offaly", "ENGLISH": "Laois-Offaly", "OBJECTID": 19, "POPULATION_2022": 159000, "SEATS": 5, "TD_POP_RATIO": 31800.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_1f9c382a250b2e57e2afd7bc557eae3e.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_c64c8d4433c785a84d7d5eed123c029a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea237bb1542894aaa9601fa4942005aa = $(`<div id="html_ea237bb1542894aaa9601fa4942005aa" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Laois-Offaly                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 5 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 159,000</p>             </div>             </div>`)[0];
+                popup_c64c8d4433c785a84d7d5eed123c029a.setContent(html_ea237bb1542894aaa9601fa4942005aa);
+            
+        
+
+        geo_json_1f9c382a250b2e57e2afd7bc557eae3e.bindPopup(popup_c64c8d4433c785a84d7d5eed123c029a)
+        ;
+
+        
+    
+    
+            geo_json_1f9c382a250b2e57e2afd7bc557eae3e.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+        function geo_json_7494b10451023cbc08f3f356e9638833_styler(feature) {
+            switch(feature.properties.ENGLISH) {
+                default:
+                    return {"color": "#7b2cbf", "fillColor": "#3c096c", "fillOpacity": 0.15, "weight": 2};
+            }
+        }
+
+        function geo_json_7494b10451023cbc08f3f356e9638833_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_7494b10451023cbc08f3f356e9638833 = L.geoJson(null, {
+                onEachFeature: geo_json_7494b10451023cbc08f3f356e9638833_onEachFeature,
+            
+                style: geo_json_7494b10451023cbc08f3f356e9638833_styler,
+            ...{
+}
+        });
+
+        function geo_json_7494b10451023cbc08f3f356e9638833_add (data) {
+            geo_json_7494b10451023cbc08f3f356e9638833
+                .addData(data);
+        }
+            geo_json_7494b10451023cbc08f3f356e9638833_add({"features": [{"geometry": {"coordinates": [[[-8.75, 52.6], [-8.5, 52.6], [-8.5, 52.75], [-8.75, 52.75], [-8.75, 52.6]]], "type": "Polygon"}, "properties": {"COUNTY": "Limerick", "ENGLISH": "Limerick City", "OBJECTID": 20, "POPULATION_2022": 128000, "SEATS": 4, "TD_POP_RATIO": 32000.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_7494b10451023cbc08f3f356e9638833.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ENGLISH", "SEATS"];
+    let aliases = ["Constituency:", "TDs:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_b43f3a2eec6cc6ccdf73e8f3ee358756 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_60da4e64cdfb47fe95dd4b4e9aa6a48d = $(`<div id="html_60da4e64cdfb47fe95dd4b4e9aa6a48d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial, sans-serif; padding: 10px;">                 <h4 style="color: #3c096c; margin: 0 0 8px 0;">                     Limerick City                 </h4>                 <p style="margin: 4px 0;"><b>Seats:</b> 4 TDs</p>                 <p style="margin: 4px 0;"><b>Population:</b> 128,000</p>             </div>             </div>`)[0];
+                popup_b43f3a2eec6cc6ccdf73e8f3ee358756.setContent(html_60da4e64cdfb47fe95dd4b4e9aa6a48d);
+            
+        
+
+        geo_json_7494b10451023cbc08f3f356e9638833.bindPopup(popup_b43f3a2eec6cc6ccdf73e8f3ee358756)
+        ;
+
+        
+    
+    
+            geo_json_7494b10451023cbc08f3f356e9638833.addTo(feature_group_1f4655866b088543dc991fc54fb87cdb);
+        
+    
+            var feature_group_081a4897e3b7f303fc7ca68a00f612b8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_e45eb28fe89cc419732e60637ac5c12c_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_e45eb28fe89cc419732e60637ac5c12c_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_e45eb28fe89cc419732e60637ac5c12c_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_e45eb28fe89cc419732e60637ac5c12c.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_e45eb28fe89cc419732e60637ac5c12c_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_e45eb28fe89cc419732e60637ac5c12c = L.geoJson(null, {
+                onEachFeature: geo_json_e45eb28fe89cc419732e60637ac5c12c_onEachFeature,
+            
+                style: geo_json_e45eb28fe89cc419732e60637ac5c12c_styler,
+            ...{
+}
+        });
+
+        function geo_json_e45eb28fe89cc419732e60637ac5c12c_add (data) {
+            geo_json_e45eb28fe89cc419732e60637ac5c12c
+                .addData(data);
+        }
+            geo_json_e45eb28fe89cc419732e60637ac5c12c_add({"features": [{"geometry": {"coordinates": [[[-6.9261, 52.8386], [-6.9361, 52.8386], [-6.9361, 52.8286], [-6.9261, 52.8286], [-6.9261, 52.8386]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Carlow-Kilkenny", "CONSTITUENCY_SEATS": 5, "COUNTY": "Carlow", "CSOED_34_1": "01001", "ED_ENGLISH": "Carlow Urban", "OBJECTID": 1001, "POPULATION_2022": 20504, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e45eb28fe89cc419732e60637ac5c12c.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_ba14cbea734f96c3a5b29cda60b9c85b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_72694315e3093004ee9a26e0bef6c8c9 = $(`<div id="html_72694315e3093004ee9a26e0bef6c8c9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Carlow Urban             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">01001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Carlow</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">20,504</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Carlow-Kilkenny</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_ba14cbea734f96c3a5b29cda60b9c85b.setContent(html_72694315e3093004ee9a26e0bef6c8c9);
+            
+        
+
+        geo_json_e45eb28fe89cc419732e60637ac5c12c.bindPopup(popup_ba14cbea734f96c3a5b29cda60b9c85b)
+        ;
+
+        
+    
+    
+            geo_json_e45eb28fe89cc419732e60637ac5c12c.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_07ec3b4a033a06b1aa15cc23aecd0312_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_07ec3b4a033a06b1aa15cc23aecd0312_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_07ec3b4a033a06b1aa15cc23aecd0312_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_07ec3b4a033a06b1aa15cc23aecd0312.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_07ec3b4a033a06b1aa15cc23aecd0312_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_07ec3b4a033a06b1aa15cc23aecd0312 = L.geoJson(null, {
+                onEachFeature: geo_json_07ec3b4a033a06b1aa15cc23aecd0312_onEachFeature,
+            
+                style: geo_json_07ec3b4a033a06b1aa15cc23aecd0312_styler,
+            ...{
+}
+        });
+
+        function geo_json_07ec3b4a033a06b1aa15cc23aecd0312_add (data) {
+            geo_json_07ec3b4a033a06b1aa15cc23aecd0312
+                .addData(data);
+        }
+            geo_json_07ec3b4a033a06b1aa15cc23aecd0312_add({"features": [{"geometry": {"coordinates": [[[-6.9561, 52.8586], [-6.9661, 52.8586], [-6.9661, 52.8486], [-6.9561, 52.8486], [-6.9561, 52.8586]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Carlow-Kilkenny", "CONSTITUENCY_SEATS": 5, "COUNTY": "Carlow", "CSOED_34_1": "01002", "ED_ENGLISH": "Carlow Rural", "OBJECTID": 1002, "POPULATION_2022": 3789, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_07ec3b4a033a06b1aa15cc23aecd0312.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_5e192f85c22384d5d7c97d71b77c83ed = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1db27a783e8bd94800775d1da229abbe = $(`<div id="html_1db27a783e8bd94800775d1da229abbe" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Carlow Rural             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">01002</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Carlow</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">3,789</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Carlow-Kilkenny</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_5e192f85c22384d5d7c97d71b77c83ed.setContent(html_1db27a783e8bd94800775d1da229abbe);
+            
+        
+
+        geo_json_07ec3b4a033a06b1aa15cc23aecd0312.bindPopup(popup_5e192f85c22384d5d7c97d71b77c83ed)
+        ;
+
+        
+    
+    
+            geo_json_07ec3b4a033a06b1aa15cc23aecd0312.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_25b5704d57a6f926413d7007d8cf2b59_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_25b5704d57a6f926413d7007d8cf2b59_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_25b5704d57a6f926413d7007d8cf2b59_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_25b5704d57a6f926413d7007d8cf2b59.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_25b5704d57a6f926413d7007d8cf2b59_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_25b5704d57a6f926413d7007d8cf2b59 = L.geoJson(null, {
+                onEachFeature: geo_json_25b5704d57a6f926413d7007d8cf2b59_onEachFeature,
+            
+                style: geo_json_25b5704d57a6f926413d7007d8cf2b59_styler,
+            ...{
+}
+        });
+
+        function geo_json_25b5704d57a6f926413d7007d8cf2b59_add (data) {
+            geo_json_25b5704d57a6f926413d7007d8cf2b59
+                .addData(data);
+        }
+            geo_json_25b5704d57a6f926413d7007d8cf2b59_add({"features": [{"geometry": {"coordinates": [[[-7.3603, 53.9907], [-7.3703, 53.9907], [-7.3703, 53.9807], [-7.3603, 53.9807], [-7.3603, 53.9907]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Cavan-Monaghan", "CONSTITUENCY_SEATS": 5, "COUNTY": "Cavan", "CSOED_34_1": "02001", "ED_ENGLISH": "Cavan", "OBJECTID": 2001, "POPULATION_2022": 4356, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_25b5704d57a6f926413d7007d8cf2b59.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_97d29c5b060c30fbd034806a85bd3fe4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cf4ee286dec943c9ff31264c28ded8c2 = $(`<div id="html_cf4ee286dec943c9ff31264c28ded8c2" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Cavan             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">02001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Cavan</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">4,356</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Cavan-Monaghan</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_97d29c5b060c30fbd034806a85bd3fe4.setContent(html_cf4ee286dec943c9ff31264c28ded8c2);
+            
+        
+
+        geo_json_25b5704d57a6f926413d7007d8cf2b59.bindPopup(popup_97d29c5b060c30fbd034806a85bd3fe4)
+        ;
+
+        
+    
+    
+            geo_json_25b5704d57a6f926413d7007d8cf2b59.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_18e2f8e7aaba645c00ab17646a22e012_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_18e2f8e7aaba645c00ab17646a22e012_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_18e2f8e7aaba645c00ab17646a22e012_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_18e2f8e7aaba645c00ab17646a22e012.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_18e2f8e7aaba645c00ab17646a22e012_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_18e2f8e7aaba645c00ab17646a22e012 = L.geoJson(null, {
+                onEachFeature: geo_json_18e2f8e7aaba645c00ab17646a22e012_onEachFeature,
+            
+                style: geo_json_18e2f8e7aaba645c00ab17646a22e012_styler,
+            ...{
+}
+        });
+
+        function geo_json_18e2f8e7aaba645c00ab17646a22e012_add (data) {
+            geo_json_18e2f8e7aaba645c00ab17646a22e012
+                .addData(data);
+        }
+            geo_json_18e2f8e7aaba645c00ab17646a22e012_add({"features": [{"geometry": {"coordinates": [[[-8.9861, 52.843], [-8.9961, 52.843], [-8.9961, 52.833], [-8.9861, 52.833], [-8.9861, 52.843]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Clare", "CONSTITUENCY_SEATS": 4, "COUNTY": "Clare", "CSOED_34_1": "03001", "ED_ENGLISH": "Ennis No. 1 Urban", "OBJECTID": 3001, "POPULATION_2022": 8742, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_18e2f8e7aaba645c00ab17646a22e012.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_51fb18cacf4d62108e33c9c259c7eb93 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_963ddfe9842cf776767cef4dc4dfd64e = $(`<div id="html_963ddfe9842cf776767cef4dc4dfd64e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Ennis No. 1 Urban             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">03001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Clare</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">8,742</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Clare</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">4</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_51fb18cacf4d62108e33c9c259c7eb93.setContent(html_963ddfe9842cf776767cef4dc4dfd64e);
+            
+        
+
+        geo_json_18e2f8e7aaba645c00ab17646a22e012.bindPopup(popup_51fb18cacf4d62108e33c9c259c7eb93)
+        ;
+
+        
+    
+    
+            geo_json_18e2f8e7aaba645c00ab17646a22e012.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_02b9d5635d8ef022eb5ba20d7080144d_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_02b9d5635d8ef022eb5ba20d7080144d_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_02b9d5635d8ef022eb5ba20d7080144d_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_02b9d5635d8ef022eb5ba20d7080144d.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_02b9d5635d8ef022eb5ba20d7080144d_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_02b9d5635d8ef022eb5ba20d7080144d = L.geoJson(null, {
+                onEachFeature: geo_json_02b9d5635d8ef022eb5ba20d7080144d_onEachFeature,
+            
+                style: geo_json_02b9d5635d8ef022eb5ba20d7080144d_styler,
+            ...{
+}
+        });
+
+        function geo_json_02b9d5635d8ef022eb5ba20d7080144d_add (data) {
+            geo_json_02b9d5635d8ef022eb5ba20d7080144d
+                .addData(data);
+        }
+            geo_json_02b9d5635d8ef022eb5ba20d7080144d_add({"features": [{"geometry": {"coordinates": [[[-8.4756, 51.9014], [-8.4856, 51.9014], [-8.4856, 51.8914], [-8.4756, 51.8914], [-8.4756, 51.9014]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Cork East", "CONSTITUENCY_SEATS": 4, "COUNTY": "Cork City", "CSOED_34_1": "04001", "ED_ENGLISH": "Cork City North A", "OBJECTID": 4001, "POPULATION_2022": 3456, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_02b9d5635d8ef022eb5ba20d7080144d.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_067b4879db12cb587f5e8ab98e998319 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5ed1833e3926ebe7c18fc3db84d49c4b = $(`<div id="html_5ed1833e3926ebe7c18fc3db84d49c4b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Cork City North A             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">04001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Cork City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">3,456</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Cork East</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">4</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_067b4879db12cb587f5e8ab98e998319.setContent(html_5ed1833e3926ebe7c18fc3db84d49c4b);
+            
+        
+
+        geo_json_02b9d5635d8ef022eb5ba20d7080144d.bindPopup(popup_067b4879db12cb587f5e8ab98e998319)
+        ;
+
+        
+    
+    
+            geo_json_02b9d5635d8ef022eb5ba20d7080144d.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_b5cc3b580982676cd5aa574140d534f5_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_b5cc3b580982676cd5aa574140d534f5_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_b5cc3b580982676cd5aa574140d534f5_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_b5cc3b580982676cd5aa574140d534f5.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_b5cc3b580982676cd5aa574140d534f5_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_b5cc3b580982676cd5aa574140d534f5 = L.geoJson(null, {
+                onEachFeature: geo_json_b5cc3b580982676cd5aa574140d534f5_onEachFeature,
+            
+                style: geo_json_b5cc3b580982676cd5aa574140d534f5_styler,
+            ...{
+}
+        });
+
+        function geo_json_b5cc3b580982676cd5aa574140d534f5_add (data) {
+            geo_json_b5cc3b580982676cd5aa574140d534f5
+                .addData(data);
+        }
+            geo_json_b5cc3b580982676cd5aa574140d534f5_add({"features": [{"geometry": {"coordinates": [[[-8.4656, 51.8914], [-8.4756, 51.8914], [-8.4756, 51.8814], [-8.4656, 51.8814], [-8.4656, 51.8914]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Cork East", "CONSTITUENCY_SEATS": 4, "COUNTY": "Cork City", "CSOED_34_1": "04002", "ED_ENGLISH": "Cork City South A", "OBJECTID": 4002, "POPULATION_2022": 2987, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_b5cc3b580982676cd5aa574140d534f5.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_6261740622a9c95e983d56aefae3e9b0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_deefc6da35ac6e3f6cc7382cd1adfe79 = $(`<div id="html_deefc6da35ac6e3f6cc7382cd1adfe79" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Cork City South A             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">04002</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Cork City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">2,987</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Cork East</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">4</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_6261740622a9c95e983d56aefae3e9b0.setContent(html_deefc6da35ac6e3f6cc7382cd1adfe79);
+            
+        
+
+        geo_json_b5cc3b580982676cd5aa574140d534f5.bindPopup(popup_6261740622a9c95e983d56aefae3e9b0)
+        ;
+
+        
+    
+    
+            geo_json_b5cc3b580982676cd5aa574140d534f5.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_e3ea21b3f98d12159b48280b9a8cfb7f.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_e3ea21b3f98d12159b48280b9a8cfb7f = L.geoJson(null, {
+                onEachFeature: geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_onEachFeature,
+            
+                style: geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_styler,
+            ...{
+}
+        });
+
+        function geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_add (data) {
+            geo_json_e3ea21b3f98d12159b48280b9a8cfb7f
+                .addData(data);
+        }
+            geo_json_e3ea21b3f98d12159b48280b9a8cfb7f_add({"features": [{"geometry": {"coordinates": [[[-6.1914, 53.3849], [-6.2014, 53.3849], [-6.2014, 53.3749], [-6.1914, 53.3749], [-6.1914, 53.3849]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Dublin Bay North", "CONSTITUENCY_SEATS": 5, "COUNTY": "Dublin City", "CSOED_34_1": "07001", "ED_ENGLISH": "Dublin City Artane A", "OBJECTID": 7001, "POPULATION_2022": 3254, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e3ea21b3f98d12159b48280b9a8cfb7f.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_4e78f6291a2245d80cb9c82668f0e6ea = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_bb8882354bbbd1e94ba2e9a3b0b4268a = $(`<div id="html_bb8882354bbbd1e94ba2e9a3b0b4268a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Dublin City Artane A             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">07001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Dublin City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">3,254</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Dublin Bay North</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_4e78f6291a2245d80cb9c82668f0e6ea.setContent(html_bb8882354bbbd1e94ba2e9a3b0b4268a);
+            
+        
+
+        geo_json_e3ea21b3f98d12159b48280b9a8cfb7f.bindPopup(popup_4e78f6291a2245d80cb9c82668f0e6ea)
+        ;
+
+        
+    
+    
+            geo_json_e3ea21b3f98d12159b48280b9a8cfb7f.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_d2c4c7895247ce57a423156411af37ba_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_d2c4c7895247ce57a423156411af37ba_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_d2c4c7895247ce57a423156411af37ba_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_d2c4c7895247ce57a423156411af37ba.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_d2c4c7895247ce57a423156411af37ba_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_d2c4c7895247ce57a423156411af37ba = L.geoJson(null, {
+                onEachFeature: geo_json_d2c4c7895247ce57a423156411af37ba_onEachFeature,
+            
+                style: geo_json_d2c4c7895247ce57a423156411af37ba_styler,
+            ...{
+}
+        });
+
+        function geo_json_d2c4c7895247ce57a423156411af37ba_add (data) {
+            geo_json_d2c4c7895247ce57a423156411af37ba
+                .addData(data);
+        }
+            geo_json_d2c4c7895247ce57a423156411af37ba_add({"features": [{"geometry": {"coordinates": [[[-6.2014, 53.3849], [-6.2114, 53.3849], [-6.2114, 53.3749], [-6.2014, 53.3749], [-6.2014, 53.3849]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Dublin Bay North", "CONSTITUENCY_SEATS": 5, "COUNTY": "Dublin City", "CSOED_34_1": "07002", "ED_ENGLISH": "Dublin City Artane B", "OBJECTID": 7002, "POPULATION_2022": 4123, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_d2c4c7895247ce57a423156411af37ba.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_8fa680a5624065601f2c5f7eafc3f288 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5b5d5035c036049ad71f2fcaf0340178 = $(`<div id="html_5b5d5035c036049ad71f2fcaf0340178" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Dublin City Artane B             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">07002</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Dublin City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">4,123</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Dublin Bay North</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_8fa680a5624065601f2c5f7eafc3f288.setContent(html_5b5d5035c036049ad71f2fcaf0340178);
+            
+        
+
+        geo_json_d2c4c7895247ce57a423156411af37ba.bindPopup(popup_8fa680a5624065601f2c5f7eafc3f288)
+        ;
+
+        
+    
+    
+            geo_json_d2c4c7895247ce57a423156411af37ba.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_1305ac81b3f6f9d93b963289fc1c4b46_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_1305ac81b3f6f9d93b963289fc1c4b46_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_1305ac81b3f6f9d93b963289fc1c4b46_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_1305ac81b3f6f9d93b963289fc1c4b46.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_1305ac81b3f6f9d93b963289fc1c4b46_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_1305ac81b3f6f9d93b963289fc1c4b46 = L.geoJson(null, {
+                onEachFeature: geo_json_1305ac81b3f6f9d93b963289fc1c4b46_onEachFeature,
+            
+                style: geo_json_1305ac81b3f6f9d93b963289fc1c4b46_styler,
+            ...{
+}
+        });
+
+        function geo_json_1305ac81b3f6f9d93b963289fc1c4b46_add (data) {
+            geo_json_1305ac81b3f6f9d93b963289fc1c4b46
+                .addData(data);
+        }
+            geo_json_1305ac81b3f6f9d93b963289fc1c4b46_add({"features": [{"geometry": {"coordinates": [[[-6.2658, 53.325], [-6.2758, 53.325], [-6.2758, 53.315], [-6.2658, 53.315], [-6.2658, 53.325]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Dublin Bay South", "CONSTITUENCY_SEATS": 4, "COUNTY": "Dublin City", "CSOED_34_1": "07003", "ED_ENGLISH": "Rathmines West A", "OBJECTID": 7003, "POPULATION_2022": 2876, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_1305ac81b3f6f9d93b963289fc1c4b46.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_b12bfc0a5233fa7725e47386b777a8a9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3497b2aac33257f570add3632be7427c = $(`<div id="html_3497b2aac33257f570add3632be7427c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Rathmines West A             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">07003</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Dublin City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">2,876</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Dublin Bay South</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">4</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_b12bfc0a5233fa7725e47386b777a8a9.setContent(html_3497b2aac33257f570add3632be7427c);
+            
+        
+
+        geo_json_1305ac81b3f6f9d93b963289fc1c4b46.bindPopup(popup_b12bfc0a5233fa7725e47386b777a8a9)
+        ;
+
+        
+    
+    
+            geo_json_1305ac81b3f6f9d93b963289fc1c4b46.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_1a7a859c57925ab8125f99ffa87d8dc8_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_1a7a859c57925ab8125f99ffa87d8dc8_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_1a7a859c57925ab8125f99ffa87d8dc8_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_1a7a859c57925ab8125f99ffa87d8dc8.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_1a7a859c57925ab8125f99ffa87d8dc8_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_1a7a859c57925ab8125f99ffa87d8dc8 = L.geoJson(null, {
+                onEachFeature: geo_json_1a7a859c57925ab8125f99ffa87d8dc8_onEachFeature,
+            
+                style: geo_json_1a7a859c57925ab8125f99ffa87d8dc8_styler,
+            ...{
+}
+        });
+
+        function geo_json_1a7a859c57925ab8125f99ffa87d8dc8_add (data) {
+            geo_json_1a7a859c57925ab8125f99ffa87d8dc8
+                .addData(data);
+        }
+            geo_json_1a7a859c57925ab8125f99ffa87d8dc8_add({"features": [{"geometry": {"coordinates": [[[-6.2758, 53.325], [-6.2858, 53.325], [-6.2858, 53.315], [-6.2758, 53.315], [-6.2758, 53.325]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Dublin Bay South", "CONSTITUENCY_SEATS": 4, "COUNTY": "Dublin City", "CSOED_34_1": "07004", "ED_ENGLISH": "Rathmines West B", "OBJECTID": 7004, "POPULATION_2022": 3012, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_1a7a859c57925ab8125f99ffa87d8dc8.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_c089ed155d8af2058f71a4bdafefb0c5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_198531ba18b2d80c97418a27e09243bf = $(`<div id="html_198531ba18b2d80c97418a27e09243bf" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Rathmines West B             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">07004</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Dublin City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">3,012</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Dublin Bay South</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">4</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_c089ed155d8af2058f71a4bdafefb0c5.setContent(html_198531ba18b2d80c97418a27e09243bf);
+            
+        
+
+        geo_json_1a7a859c57925ab8125f99ffa87d8dc8.bindPopup(popup_c089ed155d8af2058f71a4bdafefb0c5)
+        ;
+
+        
+    
+    
+            geo_json_1a7a859c57925ab8125f99ffa87d8dc8.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_635a6f8d6bd07329298c5bab0303c732_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_635a6f8d6bd07329298c5bab0303c732_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_635a6f8d6bd07329298c5bab0303c732_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_635a6f8d6bd07329298c5bab0303c732.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_635a6f8d6bd07329298c5bab0303c732_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_635a6f8d6bd07329298c5bab0303c732 = L.geoJson(null, {
+                onEachFeature: geo_json_635a6f8d6bd07329298c5bab0303c732_onEachFeature,
+            
+                style: geo_json_635a6f8d6bd07329298c5bab0303c732_styler,
+            ...{
+}
+        });
+
+        function geo_json_635a6f8d6bd07329298c5bab0303c732_add (data) {
+            geo_json_635a6f8d6bd07329298c5bab0303c732
+                .addData(data);
+        }
+            geo_json_635a6f8d6bd07329298c5bab0303c732_add({"features": [{"geometry": {"coordinates": [[[-6.2658, 53.315], [-6.2758, 53.315], [-6.2758, 53.305], [-6.2658, 53.305], [-6.2658, 53.315]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Dublin Bay South", "CONSTITUENCY_SEATS": 4, "COUNTY": "Dublin City", "CSOED_34_1": "07005", "ED_ENGLISH": "Rathmines West C", "OBJECTID": 7005, "POPULATION_2022": 1234, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_635a6f8d6bd07329298c5bab0303c732.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_c606cb86c0ffb8171b4ef640552c8b78 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5347decaeff39fc1006b24a33a6f9e51 = $(`<div id="html_5347decaeff39fc1006b24a33a6f9e51" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Rathmines West C             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">07005</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Dublin City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">1,234</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Dublin Bay South</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">4</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_c606cb86c0ffb8171b4ef640552c8b78.setContent(html_5347decaeff39fc1006b24a33a6f9e51);
+            
+        
+
+        geo_json_635a6f8d6bd07329298c5bab0303c732.bindPopup(popup_c606cb86c0ffb8171b4ef640552c8b78)
+        ;
+
+        
+    
+    
+            geo_json_635a6f8d6bd07329298c5bab0303c732.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_ad9fa70616197799bc885ecd81709341_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_ad9fa70616197799bc885ecd81709341_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_ad9fa70616197799bc885ecd81709341_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_ad9fa70616197799bc885ecd81709341.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_ad9fa70616197799bc885ecd81709341_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_ad9fa70616197799bc885ecd81709341 = L.geoJson(null, {
+                onEachFeature: geo_json_ad9fa70616197799bc885ecd81709341_onEachFeature,
+            
+                style: geo_json_ad9fa70616197799bc885ecd81709341_styler,
+            ...{
+}
+        });
+
+        function geo_json_ad9fa70616197799bc885ecd81709341_add (data) {
+            geo_json_ad9fa70616197799bc885ecd81709341
+                .addData(data);
+        }
+            geo_json_ad9fa70616197799bc885ecd81709341_add({"features": [{"geometry": {"coordinates": [[[-9.03, 53.275], [-9.04, 53.275], [-9.04, 53.265], [-9.03, 53.265], [-9.03, 53.275]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Galway West", "CONSTITUENCY_SEATS": 5, "COUNTY": "Galway City", "CSOED_34_1": "10001", "ED_ENGLISH": "Galway City East", "OBJECTID": 10001, "POPULATION_2022": 5678, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_ad9fa70616197799bc885ecd81709341.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_2698a4e3bbd1d15dac4d73afafe4f25e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_eaaeaf9a69861efeb756d89c05ce0233 = $(`<div id="html_eaaeaf9a69861efeb756d89c05ce0233" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Galway City East             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">10001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Galway City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">5,678</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Galway West</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_2698a4e3bbd1d15dac4d73afafe4f25e.setContent(html_eaaeaf9a69861efeb756d89c05ce0233);
+            
+        
+
+        geo_json_ad9fa70616197799bc885ecd81709341.bindPopup(popup_2698a4e3bbd1d15dac4d73afafe4f25e)
+        ;
+
+        
+    
+    
+            geo_json_ad9fa70616197799bc885ecd81709341.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_c8a691c12f235776ed1e853ffd3620cb_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_c8a691c12f235776ed1e853ffd3620cb_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_c8a691c12f235776ed1e853ffd3620cb_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_c8a691c12f235776ed1e853ffd3620cb.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_c8a691c12f235776ed1e853ffd3620cb_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_c8a691c12f235776ed1e853ffd3620cb = L.geoJson(null, {
+                onEachFeature: geo_json_c8a691c12f235776ed1e853ffd3620cb_onEachFeature,
+            
+                style: geo_json_c8a691c12f235776ed1e853ffd3620cb_styler,
+            ...{
+}
+        });
+
+        function geo_json_c8a691c12f235776ed1e853ffd3620cb_add (data) {
+            geo_json_c8a691c12f235776ed1e853ffd3620cb
+                .addData(data);
+        }
+            geo_json_c8a691c12f235776ed1e853ffd3620cb_add({"features": [{"geometry": {"coordinates": [[[-9.5074, 52.0583], [-9.5174, 52.0583], [-9.5174, 52.0483], [-9.5074, 52.0483], [-9.5074, 52.0583]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Kerry", "CONSTITUENCY_SEATS": 5, "COUNTY": "Kerry", "CSOED_34_1": "13001", "ED_ENGLISH": "Killarney Urban", "OBJECTID": 13001, "POPULATION_2022": 6543, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_c8a691c12f235776ed1e853ffd3620cb.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_13e13260169e71b0627c24db4cf4ce1b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_937ecce21af13be3b7b39faf40fc9fb6 = $(`<div id="html_937ecce21af13be3b7b39faf40fc9fb6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Killarney Urban             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">13001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Kerry</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">6,543</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Kerry</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_13e13260169e71b0627c24db4cf4ce1b.setContent(html_937ecce21af13be3b7b39faf40fc9fb6);
+            
+        
+
+        geo_json_c8a691c12f235776ed1e853ffd3620cb.bindPopup(popup_13e13260169e71b0627c24db4cf4ce1b)
+        ;
+
+        
+    
+    
+            geo_json_c8a691c12f235776ed1e853ffd3620cb.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_e5f92bbc35bb8f63cf9214da13b13170_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_e5f92bbc35bb8f63cf9214da13b13170_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_e5f92bbc35bb8f63cf9214da13b13170_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_e5f92bbc35bb8f63cf9214da13b13170.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_e5f92bbc35bb8f63cf9214da13b13170_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_e5f92bbc35bb8f63cf9214da13b13170 = L.geoJson(null, {
+                onEachFeature: geo_json_e5f92bbc35bb8f63cf9214da13b13170_onEachFeature,
+            
+                style: geo_json_e5f92bbc35bb8f63cf9214da13b13170_styler,
+            ...{
+}
+        });
+
+        function geo_json_e5f92bbc35bb8f63cf9214da13b13170_add (data) {
+            geo_json_e5f92bbc35bb8f63cf9214da13b13170
+                .addData(data);
+        }
+            geo_json_e5f92bbc35bb8f63cf9214da13b13170_add({"features": [{"geometry": {"coordinates": [[[-7.2994, 53.0341], [-7.3094, 53.0341], [-7.3094, 53.0241], [-7.2994, 53.0241], [-7.2994, 53.0341]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Laois-Offaly", "CONSTITUENCY_SEATS": 5, "COUNTY": "Laois", "CSOED_34_1": "15001", "ED_ENGLISH": "Portlaoise Urban", "OBJECTID": 15001, "POPULATION_2022": 8123, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e5f92bbc35bb8f63cf9214da13b13170.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_2c84e957911943d9edb3f4e94aca5add = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_643119970c3338a3edc8f74370a173be = $(`<div id="html_643119970c3338a3edc8f74370a173be" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Portlaoise Urban             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">15001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Laois</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">8,123</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Laois-Offaly</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">5</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_2c84e957911943d9edb3f4e94aca5add.setContent(html_643119970c3338a3edc8f74370a173be);
+            
+        
+
+        geo_json_e5f92bbc35bb8f63cf9214da13b13170.bindPopup(popup_2c84e957911943d9edb3f4e94aca5add)
+        ;
+
+        
+    
+    
+            geo_json_e5f92bbc35bb8f63cf9214da13b13170.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+        function geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_styler(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#27ae60", "fillColor": "#32e875", "fillOpacity": 0.4, "weight": 1.5};
+            }
+        }
+        function geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_highlighter(feature) {
+            switch(feature.properties.CSOED_34_1) {
+                default:
+                    return {"color": "#000000", "fillColor": "#2ecc71", "fillOpacity": 0.7, "weight": 3};
+            }
+        }
+
+        function geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_55af0dbf7c9e008a87f1fedddd1ddf31.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_55af0dbf7c9e008a87f1fedddd1ddf31 = L.geoJson(null, {
+                onEachFeature: geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_onEachFeature,
+            
+                style: geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_styler,
+            ...{
+}
+        });
+
+        function geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_add (data) {
+            geo_json_55af0dbf7c9e008a87f1fedddd1ddf31
+                .addData(data);
+        }
+            geo_json_55af0dbf7c9e008a87f1fedddd1ddf31_add({"features": [{"geometry": {"coordinates": [[[-8.6233, 52.67], [-8.6333, 52.67], [-8.6333, 52.66], [-8.6233, 52.66], [-8.6233, 52.67]]], "type": "Polygon"}, "properties": {"CONSTITUENCY": "Clare", "CONSTITUENCY_SEATS": 4, "COUNTY": "Limerick City", "CSOED_34_1": "16001", "ED_ENGLISH": "Limerick City North A", "OBJECTID": 16001, "POPULATION_2022": 3456, "TOTAL_AREA_KM2": 12.5}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_55af0dbf7c9e008a87f1fedddd1ddf31.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["ED_ENGLISH", "COUNTY", "POPULATION_2022"];
+    let aliases = ["Electoral District:", "County:", "Population:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+        var popup_97dfe9000d292fb38845816dc6ceadcb = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b3dd2fbeb227a7cc54b02ba921194b3f = $(`<div id="html_b3dd2fbeb227a7cc54b02ba921194b3f" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">             <h3 style="color: #27ae60; margin: 0 0 10px 0; border-bottom: 2px solid #32e875; padding-bottom: 5px;">                 Limerick City North A             </h3>             <table style="width: 100%; border-collapse: collapse;">                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>ED ID:</b></td>                     <td style="padding: 4px 0;">16001</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>County:</b></td>                     <td style="padding: 4px 0;">Limerick City</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Population:</b></td>                     <td style="padding: 4px 0;">3,456</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>Constituency:</b></td>                     <td style="padding: 4px 0;">Clare</td>                 </tr>                 <tr>                     <td style="padding: 4px 0; color: #333;"><b>TDs:</b></td>                     <td style="padding: 4px 0;">4</td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_97dfe9000d292fb38845816dc6ceadcb.setContent(html_b3dd2fbeb227a7cc54b02ba921194b3f);
+            
+        
+
+        geo_json_55af0dbf7c9e008a87f1fedddd1ddf31.bindPopup(popup_97dfe9000d292fb38845816dc6ceadcb)
+        ;
+
+        
+    
+    
+            geo_json_55af0dbf7c9e008a87f1fedddd1ddf31.addTo(feature_group_081a4897e3b7f303fc7ca68a00f612b8);
+        
+    
+            feature_group_081a4897e3b7f303fc7ca68a00f612b8.addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+        
+    
+            var layer_control_ce75deedf031ad016f23741516223360_layers = {
+                base_layers : {
+                    "Light Map" : tile_layer_6f948a52eb22bc0ddc72519dbfa1afff,
+                    "Dark Map" : tile_layer_5774d3fa94b3d8f595ae3b2925ad947b,
+                    "Street Map" : tile_layer_035590ad08ed59afd6cb05de90305e84,
+                },
+                overlays :  {
+                    "County Boundaries" : feature_group_05a75060303d823b221befa8d47a6e60,
+                    "Constituency Boundaries" : feature_group_1f4655866b088543dc991fc54fb87cdb,
+                    "Electoral Districts" : feature_group_081a4897e3b7f303fc7ca68a00f612b8,
+                },
+            };
+            let layer_control_ce75deedf031ad016f23741516223360 = L.control.layers(
+                layer_control_ce75deedf031ad016f23741516223360_layers.base_layers,
+                layer_control_ce75deedf031ad016f23741516223360_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+
+        
+    
+            var locate_control_e8cd98aafeb6201fc8e04972602c4cf0 = L.control.locate(
+                {"strings": {"title": "Find my location"}}
+            ).addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+            
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Fullscreen",
+  "titleCancel": "Exit Fullscreen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_e2ce485bbda3677b424ad5693bc4fbf6);
+        
+</script>
+</html>
