@@ -1,5 +1,5 @@
 {
-  "download_time": "2026-01-09T17:37:42.331488",
+  "download_time": "2026-01-11T02:43:59.878282",
   "output_directory": "/home/user/COTHROM_education/data/raw",
   "datasets": {
     "ed_boundaries_20m": {
@@ -10,8 +10,8 @@
       "download": {
         "success": true,
         "error": null,
-        "size_bytes": 11538,
-        "checksum_md5": "afb8992f341c8a454788187c03bb0fd4",
+        "size_bytes": 12032,
+        "checksum_md5": "c693aa5dbabce24b0b98e23ab2208d7c",
         "is_sample": true
       },
       "validation": {
@@ -28,6 +28,7 @@
             "ED_ENGLISH",
             "COUNTY",
             "POPULATION_2022",
+            "HOUSEHOLDS_2022",
             "TOTAL_AREA_KM2",
             "OBJECTID"
           ]

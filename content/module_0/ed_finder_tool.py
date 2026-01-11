@@ -246,33 +246,94 @@ def create_ed_finder_map(
         props = feature['properties']
 
         # Create popup content
+        # Format population and households with commas
+        pop = props.get('POPULATION_2022')
+        pop_str = f"{pop:,}" if isinstance(pop, int) else 'N/A'
+        households = props.get('HOUSEHOLDS_2022')
+        households_str = f"{households:,}" if isinstance(households, int) else 'N/A'
+        seats = props.get('CONSTITUENCY_SEATS')
+        seats_str = f"{seats} TDs" if seats else 'N/A'
+
         popup_html = f"""
-        <div style="font-family: Arial, sans-serif; padding: 10px; min-width: 200px;">
-            <h3 style="color: {COLORS['green_2']}; margin: 0 0 10px 0; border-bottom: 2px solid {COLORS['bright_green']}; padding-bottom: 5px;">
-                {props.get('ED_ENGLISH', 'Unknown ED')}
-            </h3>
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr>
-                    <td style="padding: 4px 0; color: {COLORS['text_dark']};"><b>ED ID:</b></td>
-                    <td style="padding: 4px 0;">{props.get('CSOED_34_1', 'N/A')}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 4px 0; color: {COLORS['text_dark']};"><b>County:</b></td>
-                    <td style="padding: 4px 0;">{props.get('COUNTY', 'N/A')}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 4px 0; color: {COLORS['text_dark']};"><b>Population:</b></td>
-                    <td style="padding: 4px 0;">{props.get('POPULATION_2022', 'N/A'):,}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 4px 0; color: {COLORS['text_dark']};"><b>Constituency:</b></td>
-                    <td style="padding: 4px 0;">{props.get('CONSTITUENCY', 'N/A')}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 4px 0; color: {COLORS['text_dark']};"><b>TDs:</b></td>
-                    <td style="padding: 4px 0;">{props.get('CONSTITUENCY_SEATS', 'N/A')}</td>
-                </tr>
-            </table>
+        <div style="
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 0;
+            min-width: 280px;
+            max-width: 320px;
+            background: {COLORS['white']};
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        ">
+            <!-- Header -->
+            <div style="
+                background: linear-gradient(135deg, {COLORS['green_2']} 0%, {COLORS['bright_green']} 100%);
+                color: {COLORS['white']};
+                padding: 12px 16px;
+                margin: 0;
+            ">
+                <h3 style="margin: 0; font-size: 16px; font-weight: 600;">
+                    {props.get('ED_ENGLISH', 'Unknown ED')}
+                </h3>
+                <p style="margin: 4px 0 0 0; font-size: 12px; opacity: 0.9;">
+                    Electoral District
+                </p>
+            </div>
+
+            <!-- Content -->
+            <div style="padding: 12px 16px;">
+                <!-- ED Info Section -->
+                <div style="margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid {COLORS['light_grey']};">
+                        <span style="color: #666; font-size: 13px;"><b>ED ID</b></span>
+                        <span style="color: {COLORS['text_dark']}; font-size: 13px;">{props.get('CSOED_34_1', 'N/A')}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid {COLORS['light_grey']};">
+                        <span style="color: #666; font-size: 13px;"><b>County</b></span>
+                        <span style="color: {COLORS['text_dark']}; font-size: 13px;">{props.get('COUNTY', 'N/A')}</span>
+                    </div>
+                </div>
+
+                <!-- Census Data Section -->
+                <div style="
+                    background: {COLORS['light_grey']};
+                    border-radius: 6px;
+                    padding: 10px 12px;
+                    margin-bottom: 12px;
+                ">
+                    <p style="margin: 0 0 8px 0; font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Census 2022
+                    </p>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="text-align: center;">
+                            <p style="margin: 0; font-size: 18px; font-weight: 600; color: {COLORS['green_2']};">{pop_str}</p>
+                            <p style="margin: 2px 0 0 0; font-size: 11px; color: #666;">Population</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="margin: 0; font-size: 18px; font-weight: 600; color: {COLORS['purple']};">{households_str}</p>
+                            <p style="margin: 2px 0 0 0; font-size: 11px; color: #666;">Households</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Constituency Section -->
+                <div style="
+                    background: linear-gradient(135deg, {COLORS['deep_purple']}15 0%, {COLORS['purple']}15 100%);
+                    border-left: 3px solid {COLORS['purple']};
+                    border-radius: 0 6px 6px 0;
+                    padding: 10px 12px;
+                ">
+                    <p style="margin: 0 0 4px 0; font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Constituency (2024)
+                    </p>
+                    <p style="margin: 0; font-size: 14px; font-weight: 600; color: {COLORS['deep_purple']};">
+                        {props.get('CONSTITUENCY', 'N/A')}
+                    </p>
+                    <p style="margin: 4px 0 0 0; font-size: 12px; color: #666;">
+                        {seats_str}
+                    </p>
+                </div>
+            </div>
         </div>
         """
 

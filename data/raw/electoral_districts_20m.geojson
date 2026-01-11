@@ -15,6 +15,7 @@
         "ED_ENGLISH": "Carlow Urban",
         "COUNTY": "Carlow",
         "POPULATION_2022": 20504,
+        "HOUSEHOLDS_2022": 8202,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 1001
       },
@@ -53,6 +54,7 @@
         "ED_ENGLISH": "Carlow Rural",
         "COUNTY": "Carlow",
         "POPULATION_2022": 3789,
+        "HOUSEHOLDS_2022": 1516,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 1002
       },
@@ -91,6 +93,7 @@
         "ED_ENGLISH": "Cavan",
         "COUNTY": "Cavan",
         "POPULATION_2022": 4356,
+        "HOUSEHOLDS_2022": 1742,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 2001
       },
@@ -129,6 +132,7 @@
         "ED_ENGLISH": "Ennis No. 1 Urban",
         "COUNTY": "Clare",
         "POPULATION_2022": 8742,
+        "HOUSEHOLDS_2022": 3497,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 3001
       },
@@ -167,6 +171,7 @@
         "ED_ENGLISH": "Cork City North A",
         "COUNTY": "Cork City",
         "POPULATION_2022": 3456,
+        "HOUSEHOLDS_2022": 1382,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 4001
       },
@@ -205,6 +210,7 @@
         "ED_ENGLISH": "Cork City South A",
         "COUNTY": "Cork City",
         "POPULATION_2022": 2987,
+        "HOUSEHOLDS_2022": 1195,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 4002
       },
@@ -243,6 +249,7 @@
         "ED_ENGLISH": "Dublin City Artane A",
         "COUNTY": "Dublin City",
         "POPULATION_2022": 3254,
+        "HOUSEHOLDS_2022": 1302,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 7001
       },
@@ -281,6 +288,7 @@
         "ED_ENGLISH": "Dublin City Artane B",
         "COUNTY": "Dublin City",
         "POPULATION_2022": 4123,
+        "HOUSEHOLDS_2022": 1649,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 7002
       },
@@ -319,6 +327,7 @@
         "ED_ENGLISH": "Rathmines West A",
         "COUNTY": "Dublin City",
         "POPULATION_2022": 2876,
+        "HOUSEHOLDS_2022": 1150,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 7003
       },
@@ -357,6 +366,7 @@
         "ED_ENGLISH": "Rathmines West B",
         "COUNTY": "Dublin City",
         "POPULATION_2022": 3012,
+        "HOUSEHOLDS_2022": 1205,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 7004
       },
@@ -395,6 +405,7 @@
         "ED_ENGLISH": "Rathmines West C",
         "COUNTY": "Dublin City",
         "POPULATION_2022": 1234,
+        "HOUSEHOLDS_2022": 494,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 7005
       },
@@ -433,6 +444,7 @@
         "ED_ENGLISH": "Galway City East",
         "COUNTY": "Galway City",
         "POPULATION_2022": 5678,
+        "HOUSEHOLDS_2022": 2271,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 10001
       },
@@ -471,6 +483,7 @@
         "ED_ENGLISH": "Killarney Urban",
         "COUNTY": "Kerry",
         "POPULATION_2022": 6543,
+        "HOUSEHOLDS_2022": 2617,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 13001
       },
@@ -509,6 +522,7 @@
         "ED_ENGLISH": "Portlaoise Urban",
         "COUNTY": "Laois",
         "POPULATION_2022": 8123,
+        "HOUSEHOLDS_2022": 3249,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 15001
       },
@@ -547,6 +561,7 @@
         "ED_ENGLISH": "Limerick City North A",
         "COUNTY": "Limerick City",
         "POPULATION_2022": 3456,
+        "HOUSEHOLDS_2022": 1382,
         "TOTAL_AREA_KM2": 12.5,
         "OBJECTID": 16001
       },
