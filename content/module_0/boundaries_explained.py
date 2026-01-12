@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Generate the 'Why Boundaries Matter' interactive educational page.
+Generate the 'Why Boundaries Matter' interactive educational components.
 
-This script creates a complete, self-contained HTML page that explains
-why constituency boundary design matters in Irish electoral redistricting,
-using the framework from the COTHROM redistricting research.
+This script creates self-contained HTML files for each interactive section
+that explains constituency boundary design principles. Each file can be
+embedded individually in the Jupyter Book markdown.
 
 Color Scheme (matches ed_finder_tool.py):
 - Primary: #32e875 (bright green)
@@ -18,7 +18,12 @@ Usage:
     python3 boundaries_explained.py
 
 Output:
-    boundaries_explained.html
+    - boundaries_explained.html (full page)
+    - boundaries_variance.html (population balance section)
+    - boundaries_contiguity.html (contiguity section)
+    - boundaries_compactness.html (compactness section)
+    - boundaries_counties.html (county boundaries section)
+    - boundaries_tradeoffs.html (trade-offs section)
 """
 
 from pathlib import Path
@@ -37,10 +42,9 @@ COLORS = {
 }
 
 
-def generate_css() -> str:
-    """Generate all CSS styles for the page."""
+def generate_base_css() -> str:
+    """Generate base CSS styles used by all components."""
     return f'''
-    <style>
         /* Reset and base styles */
         * {{
             box-sizing: border-box;
@@ -60,6 +64,11 @@ def generate_css() -> str:
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+        }}
+
+        /* For embedded components - no extra padding */
+        .embedded {{
+            padding: 10px;
         }}
 
         /* Typography */
@@ -332,7 +341,7 @@ def generate_css() -> str:
         /* Data display */
         .data-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 15px;
             margin: 15px 0;
         }}
@@ -398,58 +407,6 @@ def generate_css() -> str:
             padding: 20px;
         }}
 
-        /* Grid visualizations */
-        .ed-grid {{
-            display: grid;
-            gap: 4px;
-            margin: 15px auto;
-        }}
-
-        .ed-cell {{
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 600;
-            color: white;
-        }}
-
-        .ed-cell:hover {{
-            transform: scale(1.1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }}
-
-        .ed-cell.constituency-a {{
-            background: {COLORS['bright_green']};
-        }}
-
-        .ed-cell.constituency-b {{
-            background: {COLORS['purple']};
-        }}
-
-        .ed-cell.empty {{
-            background: #eee;
-        }}
-
-        /* Footer */
-        footer {{
-            border-top: 1px solid #ddd;
-            margin-top: 60px;
-            padding-top: 20px;
-            font-size: 12px;
-            color: #666;
-        }}
-
-        footer p {{
-            margin: 5px 0;
-            font-size: 12px;
-        }}
-
         /* Utility classes */
         .text-center {{
             text-align: center;
@@ -481,8 +438,8 @@ def generate_css() -> str:
 
         /* Responsive adjustments */
         @media (max-width: 768px) {{
-            .container {{
-                padding: 15px;
+            .container, .embedded {{
+                padding: 10px;
             }}
 
             h1 {{
@@ -496,11 +453,6 @@ def generate_css() -> str:
             .data-grid {{
                 grid-template-columns: repeat(2, 1fr);
             }}
-
-            .ed-cell {{
-                width: 30px;
-                height: 30px;
-            }}
         }}
 
         /* Animation classes */
@@ -512,59 +464,32 @@ def generate_css() -> str:
         .animate-in {{
             animation: fadeIn 0.3s ease forwards;
         }}
-    </style>
+
+        /* Footer */
+        footer {{
+            border-top: 1px solid #ddd;
+            margin-top: 60px;
+            padding-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }}
+
+        footer p {{
+            margin: 5px 0;
+            font-size: 12px;
+        }}
     '''
 
 
-def generate_header() -> str:
-    """Generate the page header and introduction section."""
+def generate_css() -> str:
+    """Generate all CSS styles wrapped in style tags."""
+    return f'''<style>{generate_base_css()}</style>'''
+
+
+def generate_variance_content() -> str:
+    """Generate the Population Balance (Variance) section content."""
     return f'''
-    <header>
-        <h1>Why Boundaries Matter: What Makes a Good Constituency?</h1>
-
-        <div class="intro-box">
-            <p>
-                When drawing constituency boundaries, the Electoral Commission must balance
-                multiple competing objectives. Not all maps are equally fair or functional.
-                This page explains the key principles that distinguish good boundary design
-                from bad, using the framework from the COTHROM redistricting research.
-            </p>
-        </div>
-    </header>
-    '''
-
-
-def generate_section_population_balance() -> str:
-    """Generate Section 1: Population Balance (Variance)."""
-    return f'''
-    <section class="section" id="section-variance">
-        <h2>1. Population Balance (Variance)</h2>
-
-        <h3>The Core Principle: Equal Representation</h3>
-        <p>
-            Every TD should represent roughly the same number of people. In Ireland,
-            constituencies must stay within <strong>&plusmn;5%</strong> of the national
-            average population per TD.
-        </p>
-
-        <div class="info-box">
-            <h4>Why it matters</h4>
-            <p>
-                Outside this range, some votes count more than others. This creates
-                mathematical unfairness in representation and violates the constitutional
-                principle of equality.
-            </p>
-        </div>
-
-        <div class="warning-box">
-            <h4>The Challenge</h4>
-            <p>
-                Perfect population balance often conflicts with other goals like keeping
-                counties intact or respecting community boundaries.
-            </p>
-        </div>
-
-        <h3>Visualisation: Population Balance Comparison</h3>
+        <h4>Good vs Bad: Population Balance</h4>
 
         <div class="comparison-container">
             <div class="example-card good">
@@ -676,40 +601,57 @@ def generate_section_population_balance() -> str:
                 </div>
             </div>
         </div>
-    </section>
     '''
 
 
-def generate_section_contiguity() -> str:
-    """Generate Section 2: Contiguity (Geographic Connection)."""
+def generate_variance_js() -> str:
+    """Generate JavaScript for the variance slider."""
     return f'''
-    <section class="section" id="section-contiguity">
-        <h2>2. Contiguity (Geographic Connection)</h2>
+    <script>
+    const NATIONAL_AVG = 32500;
 
-        <h3>The Principle: Connected Territory</h3>
-        <p>
-            Every constituency must form a single, geographically connected area. You can't
-            have a constituency that includes Electoral Divisions (EDs) in Dublin AND Cork
-            with nothing in between.
-        </p>
+    const popSlider = document.getElementById('population-slider');
+    if (popSlider) {{
+        popSlider.addEventListener('input', function() {{
+            const pop = parseInt(this.value);
+            const perTD = pop / 4;
+            const variance = ((perTD - NATIONAL_AVG) / NATIONAL_AVG * 100);
 
-        <div class="info-box">
-            <h4>Why it matters</h4>
-            <p>
-                TDs must be able to physically visit all parts of their constituency.
-                Communities need cohesive representation, and this prevents arbitrary
-                grouping of unrelated areas.
-            </p>
-        </div>
+            document.getElementById('pop-value').textContent = pop.toLocaleString();
+            document.getElementById('per-td-value').textContent = Math.round(perTD).toLocaleString();
 
-        <h3>Visual Examples: Contiguity</h3>
+            const varianceEl = document.getElementById('variance-value');
+            const sign = variance >= 0 ? '+' : '';
+            varianceEl.textContent = sign + variance.toFixed(1) + '%';
+
+            const absVariance = Math.abs(variance);
+            if (absVariance <= 5) {{
+                varianceEl.className = 'text-good';
+            }} else if (absVariance <= 7) {{
+                varianceEl.className = 'text-moderate';
+            }} else {{
+                varianceEl.className = 'text-bad';
+            }}
+
+            const markerPos = 50 + (variance / 15 * 50);
+            document.getElementById('variance-marker').style.left = Math.max(0, Math.min(100, markerPos)) + '%';
+        }});
+    }}
+    </script>
+    '''
+
+
+def generate_contiguity_content() -> str:
+    """Generate the Contiguity section content."""
+    return f'''
+        <h4>Visual Examples: Contiguity</h4>
 
         <div class="comparison-container">
             <div class="example-card good">
                 <h4>CONTIGUOUS (Good)</h4>
                 <p class="micro-label">All EDs form one connected region</p>
                 <div class="svg-container">
-                    <svg viewBox="0 0 160 160" width="160" height="160">
+                    <svg viewBox="0 0 160 160" width="140" height="140">
                         <!-- 3x3 grid of connected EDs -->
                         <rect x="10" y="10" width="40" height="40" rx="4" fill="{COLORS['bright_green']}" opacity="0.8"/>
                         <rect x="60" y="10" width="40" height="40" rx="4" fill="{COLORS['bright_green']}" opacity="0.8"/>
@@ -731,7 +673,7 @@ def generate_section_contiguity() -> str:
                 <h4>NON-CONTIGUOUS (Bad)</h4>
                 <p class="micro-label">Constituency broken into isolated pieces</p>
                 <div class="svg-container">
-                    <svg viewBox="0 0 160 160" width="160" height="160">
+                    <svg viewBox="0 0 160 160" width="140" height="140">
                         <!-- Scattered, disconnected EDs -->
                         <rect x="10" y="10" width="40" height="40" rx="4" fill="{COLORS['deep_purple']}" opacity="0.8"/>
                         <rect x="110" y="10" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
@@ -741,7 +683,6 @@ def generate_section_contiguity() -> str:
                         <rect x="60" y="110" width="40" height="40" rx="4" fill="{COLORS['deep_purple']}" opacity="0.8"/>
                         <rect x="10" y="110" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
                         <rect x="110" y="110" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
-                        <!-- X marks showing disconnection -->
                         <text x="80" y="45" font-size="20" fill="{COLORS['deep_purple']}" text-anchor="middle">?</text>
                     </svg>
                 </div>
@@ -774,46 +715,19 @@ def generate_section_contiguity() -> str:
                 <span class="status moderate">&#10003; Acceptable exception</span>
             </p>
         </div>
-    </section>
     '''
 
 
-def generate_section_compactness() -> str:
-    """Generate Section 3: Compactness (Avoiding Gerrymandering)."""
+def generate_compactness_content() -> str:
+    """Generate the Compactness section content."""
     return f'''
-    <section class="section" id="section-compactness">
-        <h2>3. Compactness (Avoiding Gerrymandering)</h2>
-
-        <h3>The Principle: Reasonable Shapes</h3>
-        <p>
-            Constituencies should have compact, regular shapes - not long, winding "salamander"
-            configurations that snake across the map to include specific voters.
-        </p>
-
-        <div class="info-box">
-            <h4>Why it matters</h4>
-            <p>
-                Compact shapes prevent deliberate manipulation (gerrymandering), make constituencies
-                easier to understand and navigate, reflect natural geographic communities, and
-                reduce travel distances for TDs.
-            </p>
-        </div>
-
-        <div class="warning-box">
-            <h4>The Origin of "Gerrymandering"</h4>
-            <p>
-                The term comes from Governor Elbridge Gerry + "salamander", describing the twisted
-                shape of a manipulated district in 1812 Massachusetts.
-            </p>
-        </div>
-
-        <h3>Shape Comparison</h3>
+        <h4>Shape Comparison: Compactness</h4>
 
         <div class="comparison-container">
             <div class="example-card good">
                 <h4>COMPACT (Good)</h4>
                 <div class="svg-container">
-                    <svg viewBox="0 0 120 120" width="120" height="120">
+                    <svg viewBox="0 0 120 120" width="100" height="100">
                         <!-- Roughly circular shape -->
                         <path d="M60,15 Q95,15 100,50 Q105,85 70,100 Q35,105 20,70 Q10,35 45,20 Q55,15 60,15"
                               fill="{COLORS['bright_green']}" opacity="0.7" stroke="{COLORS['green_2']}" stroke-width="2"/>
@@ -835,7 +749,7 @@ def generate_section_compactness() -> str:
             <div class="example-card moderate">
                 <h4>MODERATE</h4>
                 <div class="svg-container">
-                    <svg viewBox="0 0 120 120" width="120" height="120">
+                    <svg viewBox="0 0 120 120" width="100" height="100">
                         <!-- Boot-like shape -->
                         <path d="M30,20 L80,20 L90,40 L85,70 L100,90 L80,100 L50,95 L40,80 L25,85 L20,60 L30,20"
                               fill="{COLORS['purple']}" opacity="0.7" stroke="{COLORS['purple']}" stroke-width="2"/>
@@ -857,7 +771,7 @@ def generate_section_compactness() -> str:
             <div class="example-card bad">
                 <h4>GERRYMANDERED (Bad)</h4>
                 <div class="svg-container">
-                    <svg viewBox="0 0 120 120" width="120" height="120">
+                    <svg viewBox="0 0 120 120" width="100" height="100">
                         <!-- Snake-like gerrymandered shape -->
                         <path d="M10,30 L25,25 L35,35 L50,20 L70,25 L85,15 L100,25 L110,40 L95,50 L100,65 L85,75 L70,65 L55,80 L40,70 L25,85 L15,70 L25,55 L10,45 L10,30"
                               fill="{COLORS['deep_purple']}" opacity="0.7" stroke="{COLORS['deep_purple']}" stroke-width="2"/>
@@ -912,6 +826,399 @@ def generate_section_compactness() -> str:
                 </div>
             </div>
         </div>
+    '''
+
+
+def generate_counties_content() -> str:
+    """Generate the County Boundaries section content."""
+    return f'''
+        <h4>County Boundary Scenarios</h4>
+
+        <div class="comparison-container">
+            <div class="example-card good">
+                <h4>NO COUNTY BREAKS (Ideal)</h4>
+                <p class="micro-label">Each constituency = one complete county</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 150 100" width="130" height="90">
+                        <!-- County 1 - Constituency A -->
+                        <rect x="10" y="10" width="60" height="80" rx="4" fill="{COLORS['bright_green']}" opacity="0.6" stroke="{COLORS['green_2']}" stroke-width="2"/>
+                        <text x="40" y="55" font-size="10" fill="{COLORS['text_dark']}" text-anchor="middle">County 1</text>
+                        <!-- County 2 - Constituency B -->
+                        <rect x="80" y="10" width="60" height="80" rx="4" fill="{COLORS['purple']}" opacity="0.6" stroke="{COLORS['purple']}" stroke-width="2"/>
+                        <text x="110" y="55" font-size="10" fill="{COLORS['text_dark']}" text-anchor="middle">County 2</text>
+                    </svg>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">County Breaks</span>
+                    <span class="metric-value text-good">0</span>
+                </div>
+            </div>
+
+            <div class="example-card moderate">
+                <h4>ONE BREAK (Common)</h4>
+                <p class="micro-label">County split between 2 constituencies</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 150 100" width="130" height="90">
+                        <rect x="10" y="10" width="60" height="50" rx="4" fill="{COLORS['bright_green']}" opacity="0.6" stroke="{COLORS['green_2']}" stroke-width="2"/>
+                        <rect x="10" y="60" width="60" height="30" rx="4" fill="{COLORS['purple']}" opacity="0.6" stroke="{COLORS['purple']}" stroke-width="2"/>
+                        <line x1="5" y1="10" x2="5" y2="90" stroke="{COLORS['text_dark']}" stroke-width="2" stroke-dasharray="4,2"/>
+                        <line x1="75" y1="10" x2="75" y2="90" stroke="{COLORS['text_dark']}" stroke-width="2" stroke-dasharray="4,2"/>
+                        <text x="40" y="55" font-size="8" fill="{COLORS['text_dark']}" text-anchor="middle">County 1</text>
+                        <rect x="85" y="10" width="55" height="80" rx="4" fill="#eee" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">County Breaks</span>
+                    <span class="metric-value text-moderate">1</span>
+                </div>
+            </div>
+
+            <div class="example-card bad">
+                <h4>MULTIPLE BREAKS (Bad)</h4>
+                <p class="micro-label">County fragmented across 4 constituencies</p>
+                <div class="svg-container">
+                    <svg viewBox="0 0 150 100" width="130" height="90">
+                        <rect x="10" y="10" width="30" height="40" rx="2" fill="{COLORS['bright_green']}" opacity="0.6"/>
+                        <rect x="45" y="10" width="30" height="40" rx="2" fill="{COLORS['purple']}" opacity="0.6"/>
+                        <rect x="10" y="55" width="30" height="35" rx="2" fill="{COLORS['deep_purple']}" opacity="0.6"/>
+                        <rect x="45" y="55" width="30" height="35" rx="2" fill="#f59e0b" opacity="0.6"/>
+                        <rect x="5" y="5" width="75" height="90" rx="4" fill="none" stroke="{COLORS['text_dark']}" stroke-width="2" stroke-dasharray="4,2"/>
+                        <rect x="90" y="10" width="50" height="80" rx="4" fill="#eee" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">County Breaks</span>
+                    <span class="metric-value text-bad">4</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Laois-Offaly Real Example -->
+        <div class="interactive-section">
+            <h4>Real Example: The Laois-Offaly Dilemma</h4>
+
+            <div class="data-grid" style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div class="data-item">
+                    <p class="data-value" style="font-size: 20px;">91,000</p>
+                    <p class="data-label">Laois Population</p>
+                </div>
+                <div class="data-item">
+                    <p class="data-value" style="font-size: 20px;">82,000</p>
+                    <p class="data-label">Offaly Population</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-bottom: 20px;">
+                Combined: <strong>173,000</strong> | National Average per TD: <strong>32,500</strong>
+            </p>
+
+            <div class="comparison-container">
+                <div class="example-card bad">
+                    <h4>Option 1: Keep Together</h4>
+                    <div class="metric-row">
+                        <span class="metric-label">Calculation</span>
+                        <span class="metric-value">173,000 &divide; 32,500 = 5.32 TDs</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Round to</span>
+                        <span class="metric-value">5 TDs</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Variance</span>
+                        <span class="metric-value text-bad">+6.5%</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="status bad">&#10007; OUTSIDE &plusmn;5% LIMIT</span>
+                    </div>
+                    <p style="font-size: 12px; margin-top: 15px; padding: 10px; background: {COLORS['light_grey']}; border-radius: 4px;">
+                        <strong>Argument:</strong> Respects 70+ year tradition.
+                    </p>
+                </div>
+
+                <div class="example-card good">
+                    <h4>Option 2: Break Apart</h4>
+                    <div class="metric-row">
+                        <span class="metric-label">Create</span>
+                        <span class="metric-value">Laois-South Kildare (3 TDs)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Create</span>
+                        <span class="metric-value">Offaly-Westmeath (3 TDs)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Variance</span>
+                        <span class="metric-value text-good">Within &plusmn;5%</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="status good">&#10003; MEETS LEGAL REQUIREMENTS</span>
+                    </div>
+                    <p style="font-size: 12px; margin-top: 15px; padding: 10px; background: {COLORS['light_grey']}; border-radius: 4px;">
+                        <strong>Argument:</strong> Ensures equal representation.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <p style="font-size: 14px; font-weight: 600; color: {COLORS['purple']};">
+                    Which would you choose? Both sides have valid points.
+                </p>
+            </div>
+        </div>
+    '''
+
+
+def generate_tradeoffs_content() -> str:
+    """Generate the Trade-Offs section content."""
+    return f'''
+        <h4>The Impossible Triangle</h4>
+        <p>Adjust the sliders to see how prioritizing one objective affects the others.</p>
+
+        <div class="viz-container">
+            <div style="max-width: 500px; margin: 0 auto;">
+                <!-- Priority sliders -->
+                <div style="margin-bottom: 25px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label style="font-size: 13px; font-weight: 600; color: {COLORS['green_2']};">Population Balance</label>
+                        <span id="balance-value" style="font-size: 13px; font-weight: 600;">50%</span>
+                    </div>
+                    <input type="range" id="balance-slider" min="0" max="100" value="50">
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label style="font-size: 13px; font-weight: 600; color: {COLORS['purple']};">County Integrity</label>
+                        <span id="county-value" style="font-size: 13px; font-weight: 600;">50%</span>
+                    </div>
+                    <input type="range" id="county-slider" min="0" max="100" value="50">
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label style="font-size: 13px; font-weight: 600; color: {COLORS['deep_purple']};">Compactness</label>
+                        <span id="compact-value" style="font-size: 13px; font-weight: 600;">50%</span>
+                    </div>
+                    <input type="range" id="compact-slider" min="0" max="100" value="50">
+                </div>
+
+                <!-- Result display -->
+                <div id="tradeoff-result" style="
+                    background: {COLORS['light_grey']};
+                    padding: 20px;
+                    border-radius: 8px;
+                    margin-top: 20px;
+                ">
+                    <h4 style="margin: 0 0 15px 0; font-size: 14px;">Resulting Map Characteristics:</h4>
+                    <div class="metric-row">
+                        <span class="metric-label">Expected Variance</span>
+                        <span class="metric-value" id="result-variance">&plusmn;4%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">County Breaks</span>
+                        <span class="metric-value" id="result-breaks">3-4 counties</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Shape Quality</span>
+                        <span class="metric-value" id="result-shape">Moderate</span>
+                    </div>
+                    <p id="result-description" style="font-size: 12px; margin-top: 15px; color: #666;">
+                        A balanced approach that accepts some compromises in each area.
+                    </p>
+                </div>
+
+                <button class="btn" onclick="resetTradeoffs()" style="width: 100%; margin-top: 15px;">
+                    Reset to Balanced
+                </button>
+            </div>
+        </div>
+    '''
+
+
+def generate_tradeoffs_js() -> str:
+    """Generate JavaScript for the trade-offs sliders."""
+    return f'''
+    <script>
+    const balanceSlider = document.getElementById('balance-slider');
+    const countySlider = document.getElementById('county-slider');
+    const compactSlider = document.getElementById('compact-slider');
+
+    function updateTradeoffs() {{
+        const balance = parseInt(balanceSlider?.value || 50);
+        const county = parseInt(countySlider?.value || 50);
+        const compact = parseInt(compactSlider?.value || 50);
+
+        document.getElementById('balance-value').textContent = balance + '%';
+        document.getElementById('county-value').textContent = county + '%';
+        document.getElementById('compact-value').textContent = compact + '%';
+
+        const varianceResult = balance >= 80 ? '&plusmn;2%' :
+                              balance >= 60 ? '&plusmn;3-4%' :
+                              balance >= 40 ? '&plusmn;4-5%' :
+                              balance >= 20 ? '&plusmn;5-7%' : '&plusmn;7-10%';
+
+        const breaksResult = county >= 80 ? '0-1 counties' :
+                            county >= 60 ? '2-3 counties' :
+                            county >= 40 ? '3-4 counties' :
+                            county >= 20 ? '5-7 counties' : '8+ counties';
+
+        const shapeResult = compact >= 80 ? 'Excellent' :
+                          compact >= 60 ? 'Good' :
+                          compact >= 40 ? 'Moderate' :
+                          compact >= 20 ? 'Poor' : 'Very Poor';
+
+        document.getElementById('result-variance').innerHTML = varianceResult;
+        document.getElementById('result-breaks').textContent = breaksResult;
+        document.getElementById('result-shape').textContent = shapeResult;
+
+        let desc = '';
+        if (balance >= 70 && county < 40 && compact < 40) {{
+            desc = 'Prioritizes equal representation above all. Expect broken counties and unusual shapes.';
+        }} else if (county >= 70 && balance < 40) {{
+            desc = 'Prioritizes keeping counties intact. Some constituencies will be over/under represented.';
+        }} else if (compact >= 70 && balance < 40) {{
+            desc = 'Prioritizes regular shapes. May sacrifice both equality and county integrity.';
+        }} else {{
+            desc = 'A balanced approach that accepts some compromises in each area.';
+        }}
+        document.getElementById('result-description').textContent = desc;
+    }}
+
+    if (balanceSlider) balanceSlider.addEventListener('input', updateTradeoffs);
+    if (countySlider) countySlider.addEventListener('input', updateTradeoffs);
+    if (compactSlider) compactSlider.addEventListener('input', updateTradeoffs);
+
+    function resetTradeoffs() {{
+        if (balanceSlider) balanceSlider.value = 50;
+        if (countySlider) countySlider.value = 50;
+        if (compactSlider) compactSlider.value = 50;
+        updateTradeoffs();
+    }}
+
+    document.addEventListener('DOMContentLoaded', updateTradeoffs);
+    </script>
+    '''
+
+
+def generate_standalone_html(title: str, content: str, javascript: str = "") -> str:
+    """Generate a standalone HTML page for embedding."""
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <style>{generate_base_css()}</style>
+</head>
+<body>
+    <div class="embedded">
+        {content}
+    </div>
+    {javascript}
+</body>
+</html>'''
+
+
+def generate_header() -> str:
+    """Generate the page header and introduction section."""
+    return '''
+    <header>
+        <h1>Why Boundaries Matter: What Makes a Good Constituency?</h1>
+
+        <div class="intro-box">
+            <p>
+                When drawing constituency boundaries, the Electoral Commission must balance
+                multiple competing objectives. Not all maps are equally fair or functional.
+                This page explains the key principles that distinguish good boundary design
+                from bad, using the framework from the COTHROM redistricting research.
+            </p>
+        </div>
+    </header>
+    '''
+
+
+def generate_section_population_balance() -> str:
+    """Generate Section 1: Population Balance (Variance)."""
+    return f'''
+    <section class="section" id="section-variance">
+        <h2>1. Population Balance (Variance)</h2>
+
+        <h3>The Core Principle: Equal Representation</h3>
+        <p>
+            Every TD should represent roughly the same number of people. In Ireland,
+            constituencies must stay within <strong>&plusmn;5%</strong> of the national
+            average population per TD.
+        </p>
+
+        <div class="info-box">
+            <h4>Why it matters</h4>
+            <p>
+                Outside this range, some votes count more than others. This creates
+                mathematical unfairness in representation and violates the constitutional
+                principle of equality.
+            </p>
+        </div>
+
+        {generate_variance_content()}
+    </section>
+    '''
+
+
+def generate_section_contiguity() -> str:
+    """Generate Section 2: Contiguity (Geographic Connection)."""
+    return f'''
+    <section class="section" id="section-contiguity">
+        <h2>2. Contiguity (Geographic Connection)</h2>
+
+        <h3>The Principle: Connected Territory</h3>
+        <p>
+            Every constituency must form a single, geographically connected area. You can't
+            have a constituency that includes Electoral Divisions (EDs) in Dublin AND Cork
+            with nothing in between.
+        </p>
+
+        <div class="info-box">
+            <h4>Why it matters</h4>
+            <p>
+                TDs must be able to physically visit all parts of their constituency.
+                Communities need cohesive representation, and this prevents arbitrary
+                grouping of unrelated areas.
+            </p>
+        </div>
+
+        {generate_contiguity_content()}
+    </section>
+    '''
+
+
+def generate_section_compactness() -> str:
+    """Generate Section 3: Compactness (Avoiding Gerrymandering)."""
+    return f'''
+    <section class="section" id="section-compactness">
+        <h2>3. Compactness (Avoiding Gerrymandering)</h2>
+
+        <h3>The Principle: Reasonable Shapes</h3>
+        <p>
+            Constituencies should have compact, regular shapes - not long, winding "salamander"
+            configurations that snake across the map to include specific voters.
+        </p>
+
+        <div class="info-box">
+            <h4>Why it matters</h4>
+            <p>
+                Compact shapes prevent deliberate manipulation (gerrymandering), make constituencies
+                easier to understand and navigate, reflect natural geographic communities, and
+                reduce travel distances for TDs.
+            </p>
+        </div>
+
+        <div class="warning-box">
+            <h4>The Origin of "Gerrymandering"</h4>
+            <p>
+                The term comes from Governor Elbridge Gerry + "salamander", describing the twisted
+                shape of a manipulated district in 1812 Massachusetts.
+            </p>
+        </div>
+
+        {generate_compactness_content()}
     </section>
     '''
 
@@ -945,158 +1252,7 @@ def generate_section_county_boundaries() -> str:
             </p>
         </div>
 
-        <h3>County Boundary Scenarios</h3>
-
-        <div class="comparison-container">
-            <div class="example-card good">
-                <h4>NO COUNTY BREAKS (Ideal)</h4>
-                <p class="micro-label">Each constituency = one complete county</p>
-                <div class="svg-container">
-                    <svg viewBox="0 0 150 100" width="150" height="100">
-                        <!-- County 1 - Constituency A -->
-                        <rect x="10" y="10" width="60" height="80" rx="4" fill="{COLORS['bright_green']}" opacity="0.6" stroke="{COLORS['green_2']}" stroke-width="2"/>
-                        <text x="40" y="55" font-size="10" fill="{COLORS['text_dark']}" text-anchor="middle">County 1</text>
-                        <!-- County 2 - Constituency B -->
-                        <rect x="80" y="10" width="60" height="80" rx="4" fill="{COLORS['purple']}" opacity="0.6" stroke="{COLORS['purple']}" stroke-width="2"/>
-                        <text x="110" y="55" font-size="10" fill="{COLORS['text_dark']}" text-anchor="middle">County 2</text>
-                    </svg>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">County Breaks</span>
-                    <span class="metric-value text-good">0</span>
-                </div>
-                <p style="font-size: 11px; color: #666; margin-top: 10px;">
-                    Perfect - but only possible when county populations happen to align with seat allocations.
-                </p>
-            </div>
-
-            <div class="example-card moderate">
-                <h4>ONE COUNTY BREAK (Common)</h4>
-                <p class="micro-label">County split between 2 constituencies</p>
-                <div class="svg-container">
-                    <svg viewBox="0 0 150 100" width="150" height="100">
-                        <!-- County split -->
-                        <rect x="10" y="10" width="60" height="50" rx="4" fill="{COLORS['bright_green']}" opacity="0.6" stroke="{COLORS['green_2']}" stroke-width="2"/>
-                        <rect x="10" y="60" width="60" height="30" rx="4" fill="{COLORS['purple']}" opacity="0.6" stroke="{COLORS['purple']}" stroke-width="2"/>
-                        <!-- Dashed county border -->
-                        <line x1="5" y1="10" x2="5" y2="90" stroke="{COLORS['text_dark']}" stroke-width="2" stroke-dasharray="4,2"/>
-                        <line x1="75" y1="10" x2="75" y2="90" stroke="{COLORS['text_dark']}" stroke-width="2" stroke-dasharray="4,2"/>
-                        <text x="40" y="55" font-size="8" fill="{COLORS['text_dark']}" text-anchor="middle">County 1</text>
-                        <!-- Other area -->
-                        <rect x="85" y="10" width="55" height="80" rx="4" fill="#eee" opacity="0.8"/>
-                    </svg>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">County Breaks</span>
-                    <span class="metric-value text-moderate">1</span>
-                </div>
-                <p style="font-size: 11px; color: #666; margin-top: 10px;">
-                    Acceptable compromise - breaks county but achieves population balance.
-                </p>
-            </div>
-
-            <div class="example-card bad">
-                <h4>MULTIPLE BREAKS (Problematic)</h4>
-                <p class="micro-label">County fragmented across 4 constituencies</p>
-                <div class="svg-container">
-                    <svg viewBox="0 0 150 100" width="150" height="100">
-                        <!-- County fragmented into 4 pieces -->
-                        <rect x="10" y="10" width="30" height="40" rx="2" fill="{COLORS['bright_green']}" opacity="0.6"/>
-                        <rect x="45" y="10" width="30" height="40" rx="2" fill="{COLORS['purple']}" opacity="0.6"/>
-                        <rect x="10" y="55" width="30" height="35" rx="2" fill="{COLORS['deep_purple']}" opacity="0.6"/>
-                        <rect x="45" y="55" width="30" height="35" rx="2" fill="#f59e0b" opacity="0.6"/>
-                        <!-- County outline -->
-                        <rect x="5" y="5" width="75" height="90" rx="4" fill="none" stroke="{COLORS['text_dark']}" stroke-width="2" stroke-dasharray="4,2"/>
-                        <text x="42" y="50" font-size="8" fill="{COLORS['text_dark']}" text-anchor="middle">County 1</text>
-                        <!-- Other areas -->
-                        <rect x="90" y="10" width="50" height="80" rx="4" fill="#eee" opacity="0.8"/>
-                    </svg>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">County Breaks</span>
-                    <span class="metric-value text-bad">4</span>
-                </div>
-                <p style="font-size: 11px; color: #666; margin-top: 10px;">
-                    Technically legal but destroys county identity.
-                </p>
-            </div>
-        </div>
-
-        <!-- Laois-Offaly Real Example -->
-        <div class="interactive-section">
-            <h4>Real Example: The Laois-Offaly Dilemma</h4>
-
-            <div class="data-grid" style="max-width: 400px; margin: 0 auto 20px auto;">
-                <div class="data-item">
-                    <p class="data-value" style="font-size: 20px;">91,000</p>
-                    <p class="data-label">Laois Population</p>
-                </div>
-                <div class="data-item">
-                    <p class="data-value" style="font-size: 20px;">82,000</p>
-                    <p class="data-label">Offaly Population</p>
-                </div>
-            </div>
-
-            <p style="text-align: center; margin-bottom: 20px;">
-                Combined: <strong>173,000</strong> | National Average per TD: <strong>32,500</strong>
-            </p>
-
-            <div class="comparison-container">
-                <div class="example-card bad" id="option1-card">
-                    <h4>Option 1: Keep Together</h4>
-                    <div class="metric-row">
-                        <span class="metric-label">Calculation</span>
-                        <span class="metric-value">173,000 &divide; 32,500 = 5.32 TDs</span>
-                    </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Round to</span>
-                        <span class="metric-value">5 TDs</span>
-                    </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Pop per TD</span>
-                        <span class="metric-value">34,600</span>
-                    </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Variance</span>
-                        <span class="metric-value text-bad">+6.5%</span>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <span class="status bad">&#10007; OUTSIDE &plusmn;5% LIMIT</span>
-                    </div>
-                    <p style="font-size: 12px; margin-top: 15px; padding: 10px; background: {COLORS['light_grey']}; border-radius: 4px;">
-                        <strong>Argument:</strong> Respects tradition and 70+ year county partnership.
-                    </p>
-                </div>
-
-                <div class="example-card good" id="option2-card">
-                    <h4>Option 2: Break Apart</h4>
-                    <div class="metric-row">
-                        <span class="metric-label">Create</span>
-                        <span class="metric-value">Laois-South Kildare (3 TDs)</span>
-                    </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Create</span>
-                        <span class="metric-value">Offaly-Westmeath (3 TDs)</span>
-                    </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Variance</span>
-                        <span class="metric-value text-good">Within &plusmn;5%</span>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <span class="status good">&#10003; MEETS LEGAL REQUIREMENTS</span>
-                    </div>
-                    <p style="font-size: 12px; margin-top: 15px; padding: 10px; background: {COLORS['light_grey']}; border-radius: 4px;">
-                        <strong>Argument:</strong> Respects constitutional requirement of equal representation.
-                    </p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 20px;">
-                <p style="font-size: 14px; font-weight: 600; color: {COLORS['purple']};">
-                    Which would you choose? Both sides have valid points.
-                </p>
-            </div>
-        </div>
+        {generate_counties_content()}
     </section>
     '''
 
@@ -1132,234 +1288,8 @@ def generate_section_tradeoffs() -> str:
             </p>
         </div>
 
-        <!-- Interactive Trade-off Triangle -->
         <div class="interactive-section">
-            <h4>The Impossible Triangle</h4>
-            <p>Adjust the sliders to see how prioritizing one objective affects the others.</p>
-
-            <div class="viz-container">
-                <div style="max-width: 500px; margin: 0 auto;">
-                    <!-- Priority sliders -->
-                    <div style="margin-bottom: 25px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <label style="font-size: 13px; font-weight: 600; color: {COLORS['green_2']};">Population Balance</label>
-                            <span id="balance-value" style="font-size: 13px; font-weight: 600;">50%</span>
-                        </div>
-                        <input type="range" id="balance-slider" min="0" max="100" value="50" class="priority-slider">
-                    </div>
-
-                    <div style="margin-bottom: 25px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <label style="font-size: 13px; font-weight: 600; color: {COLORS['purple']};">County Integrity</label>
-                            <span id="county-value" style="font-size: 13px; font-weight: 600;">50%</span>
-                        </div>
-                        <input type="range" id="county-slider" min="0" max="100" value="50" class="priority-slider">
-                    </div>
-
-                    <div style="margin-bottom: 25px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <label style="font-size: 13px; font-weight: 600; color: {COLORS['deep_purple']};">Compactness</label>
-                            <span id="compact-value" style="font-size: 13px; font-weight: 600;">50%</span>
-                        </div>
-                        <input type="range" id="compact-slider" min="0" max="100" value="50" class="priority-slider">
-                    </div>
-
-                    <!-- Result display -->
-                    <div id="tradeoff-result" style="
-                        background: {COLORS['light_grey']};
-                        padding: 20px;
-                        border-radius: 8px;
-                        margin-top: 20px;
-                    ">
-                        <h4 style="margin: 0 0 15px 0; font-size: 14px;">Resulting Map Characteristics:</h4>
-                        <div class="metric-row">
-                            <span class="metric-label">Expected Variance</span>
-                            <span class="metric-value" id="result-variance">&plusmn;4%</span>
-                        </div>
-                        <div class="metric-row">
-                            <span class="metric-label">County Breaks</span>
-                            <span class="metric-value" id="result-breaks">3-4 counties</span>
-                        </div>
-                        <div class="metric-row">
-                            <span class="metric-label">Shape Quality</span>
-                            <span class="metric-value" id="result-shape">Moderate</span>
-                        </div>
-                        <p id="result-description" style="font-size: 12px; margin-top: 15px; color: #666;">
-                            A balanced approach that accepts some compromises in each area.
-                        </p>
-                    </div>
-
-                    <button class="btn" onclick="resetTradeoffs()" style="width: 100%; margin-top: 15px;">
-                        Reset to Balanced
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-    '''
-
-
-def generate_section_why_matters() -> str:
-    """Generate Section 6: Why This Matters to You."""
-    return f'''
-    <section class="section" id="section-why-matters">
-        <h2>6. Why This Matters to You</h2>
-
-        <h3>Your Constituency Was Designed With These Trade-Offs</h3>
-        <p>
-            Every boundary you see on Irish electoral maps reflects choices about these competing
-            values. When you hear debates about redistricting, they're really debates about:
-        </p>
-        <ul style="margin: 15px 0; padding-left: 25px;">
-            <li>Should we prioritize equal representation or county identity?</li>
-            <li>Is a +6% variance acceptable to keep a community together?</li>
-            <li>Should we accept strange shapes to avoid breaking a county?</li>
-        </ul>
-
-        <div class="info-box">
-            <h4>Understanding these principles lets you:</h4>
-            <p>
-                &#10003; Evaluate proposed maps critically<br>
-                &#10003; Understand why your area might face boundary changes<br>
-                &#10003; Participate meaningfully in public consultations<br>
-                &#10003; Ask informed questions about trade-offs
-            </p>
-        </div>
-
-        <p>
-            The next time boundaries are redrawn (likely 2028-2029), you'll be able to see
-            which objectives the Commission prioritized, what trade-offs they made, whether
-            alternative configurations were possible, and how your area fits into the bigger picture.
-        </p>
-
-        <!-- Constituency Lookup Tool -->
-        <div class="interactive-section">
-            <h4>Look Up a Constituency</h4>
-            <p class="micro-label">Select a constituency to see its current metrics</p>
-
-            <div style="max-width: 500px; margin: 0 auto;">
-                <select id="constituency-select" style="
-                    width: 100%;
-                    padding: 12px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    font-size: 14px;
-                    margin-bottom: 20px;
-                    background: white;
-                ">
-                    <option value="">-- Select a Constituency --</option>
-                    <option value="carlow-kilkenny">Carlow-Kilkenny</option>
-                    <option value="cavan-monaghan">Cavan-Monaghan</option>
-                    <option value="clare">Clare</option>
-                    <option value="cork-east">Cork East</option>
-                    <option value="cork-north-central">Cork North-Central</option>
-                    <option value="cork-north-west">Cork North-West</option>
-                    <option value="cork-south-central">Cork South-Central</option>
-                    <option value="cork-south-west">Cork South-West</option>
-                    <option value="donegal">Donegal</option>
-                    <option value="dublin-bay-north">Dublin Bay North</option>
-                    <option value="dublin-bay-south">Dublin Bay South</option>
-                    <option value="dublin-central">Dublin Central</option>
-                    <option value="dublin-fingal-east">Dublin Fingal East</option>
-                    <option value="dublin-fingal-west">Dublin Fingal West</option>
-                    <option value="dublin-mid-west">Dublin Mid-West</option>
-                    <option value="dublin-north-west">Dublin North-West</option>
-                    <option value="dublin-south-central">Dublin South-Central</option>
-                    <option value="dublin-south-west">Dublin South-West</option>
-                    <option value="dublin-west">Dublin West</option>
-                    <option value="dun-laoghaire">Dun Laoghaire</option>
-                    <option value="galway-east">Galway East</option>
-                    <option value="galway-west">Galway West</option>
-                    <option value="kerry">Kerry</option>
-                    <option value="kildare-north">Kildare North</option>
-                    <option value="kildare-south">Kildare South</option>
-                    <option value="laois">Laois</option>
-                    <option value="limerick-city">Limerick City</option>
-                    <option value="limerick-county">Limerick County</option>
-                    <option value="longford-westmeath">Longford-Westmeath</option>
-                    <option value="louth">Louth</option>
-                    <option value="mayo">Mayo</option>
-                    <option value="meath-east">Meath East</option>
-                    <option value="meath-west">Meath West</option>
-                    <option value="offaly">Offaly</option>
-                    <option value="roscommon-galway">Roscommon-Galway</option>
-                    <option value="sligo-leitrim">Sligo-Leitrim</option>
-                    <option value="tipperary-north">Tipperary North</option>
-                    <option value="tipperary-south">Tipperary South</option>
-                    <option value="waterford">Waterford</option>
-                    <option value="wexford">Wexford</option>
-                    <option value="wicklow">Wicklow</option>
-                </select>
-
-                <div id="constituency-info" style="display: none;">
-                    <div style="
-                        background: linear-gradient(135deg, {COLORS['green_2']} 0%, {COLORS['bright_green']} 100%);
-                        color: white;
-                        padding: 15px 20px;
-                        border-radius: 8px 8px 0 0;
-                    ">
-                        <h4 id="const-name" style="margin: 0; font-size: 18px; color: white;">Dublin Bay South</h4>
-                    </div>
-                    <div style="background: {COLORS['light_grey']}; padding: 20px; border-radius: 0 0 8px 8px;">
-                        <div class="data-grid">
-                            <div class="data-item">
-                                <p class="data-value" id="const-tds">4</p>
-                                <p class="data-label">TDs</p>
-                            </div>
-                            <div class="data-item">
-                                <p class="data-value" id="const-eds" style="color: {COLORS['purple']};">68</p>
-                                <p class="data-label">EDs</p>
-                            </div>
-                            <div class="data-item">
-                                <p class="data-value" id="const-pop" style="font-size: 18px;">132,920</p>
-                                <p class="data-label">Population</p>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 20px;">
-                            <div class="metric-row">
-                                <span class="metric-label">Population per TD</span>
-                                <span class="metric-value" id="const-per-td">33,230</span>
-                            </div>
-                            <div class="metric-row">
-                                <span class="metric-label">National Average</span>
-                                <span class="metric-value">32,500</span>
-                            </div>
-                            <div class="metric-row">
-                                <span class="metric-label">Variance</span>
-                                <span class="metric-value" id="const-variance">+2.2%</span>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 20px;">
-                            <p class="micro-label">Performance Metrics</p>
-                            <div id="const-metrics">
-                                <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-                                    <span style="color: {COLORS['green_2']};">&#10003;</span>
-                                    <span style="font-size: 13px;">Contiguity: All EDs connected</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-                                    <span style="color: {COLORS['green_2']};">&#10003;</span>
-                                    <span style="font-size: 13px;">Variance: Within &plusmn;5%</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-                                    <span style="color: {COLORS['purple']};">&#9888;</span>
-                                    <span style="font-size: 13px;">Compactness: Moderate (0.67)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="constituency-placeholder" style="
-                    text-align: center;
-                    padding: 40px;
-                    color: #666;
-                ">
-                    <p style="font-size: 40px; margin: 0;">&#x1F5FA;</p>
-                    <p>Select a constituency above to view its metrics</p>
-                </div>
-            </div>
+            {generate_tradeoffs_content()}
         </div>
     </section>
     '''
@@ -1375,55 +1305,10 @@ def generate_footer() -> str:
     '''
 
 
-def generate_javascript() -> str:
-    """Generate all JavaScript for interactivity."""
+def generate_full_javascript() -> str:
+    """Generate all JavaScript for the full page."""
     return f'''
     <script>
-    // Constituency data (simplified for demonstration)
-    const constituencyData = {{
-        'carlow-kilkenny': {{ name: 'Carlow-Kilkenny', tds: 5, eds: 89, pop: 161234, variance: '+0.8%', compactness: 0.72 }},
-        'cavan-monaghan': {{ name: 'Cavan-Monaghan', tds: 4, eds: 78, pop: 128456, variance: '-1.2%', compactness: 0.68 }},
-        'clare': {{ name: 'Clare', tds: 4, eds: 65, pop: 131890, variance: '+1.5%', compactness: 0.71 }},
-        'cork-east': {{ name: 'Cork East', tds: 4, eds: 52, pop: 130234, variance: '+0.2%', compactness: 0.65 }},
-        'cork-north-central': {{ name: 'Cork North-Central', tds: 4, eds: 45, pop: 129876, variance: '-0.1%', compactness: 0.78 }},
-        'cork-north-west': {{ name: 'Cork North-West', tds: 3, eds: 48, pop: 97234, variance: '-0.3%', compactness: 0.62 }},
-        'cork-south-central': {{ name: 'Cork South-Central', tds: 4, eds: 42, pop: 132456, variance: '+1.9%', compactness: 0.81 }},
-        'cork-south-west': {{ name: 'Cork South-West', tds: 3, eds: 56, pop: 96789, variance: '-0.8%', compactness: 0.59 }},
-        'donegal': {{ name: 'Donegal', tds: 5, eds: 95, pop: 159234, variance: '-2.1%', compactness: 0.55 }},
-        'dublin-bay-north': {{ name: 'Dublin Bay North', tds: 5, eds: 58, pop: 165432, variance: '+1.8%', compactness: 0.73 }},
-        'dublin-bay-south': {{ name: 'Dublin Bay South', tds: 4, eds: 68, pop: 132920, variance: '+2.2%', compactness: 0.67 }},
-        'dublin-central': {{ name: 'Dublin Central', tds: 4, eds: 35, pop: 128765, variance: '-0.9%', compactness: 0.82 }},
-        'dublin-fingal-east': {{ name: 'Dublin Fingal East', tds: 4, eds: 42, pop: 134567, variance: '+3.5%', compactness: 0.69 }},
-        'dublin-fingal-west': {{ name: 'Dublin Fingal West', tds: 3, eds: 38, pop: 99876, variance: '+2.3%', compactness: 0.71 }},
-        'dublin-mid-west': {{ name: 'Dublin Mid-West', tds: 4, eds: 45, pop: 131234, variance: '+0.9%', compactness: 0.74 }},
-        'dublin-north-west': {{ name: 'Dublin North-West', tds: 4, eds: 48, pop: 130567, variance: '+0.4%', compactness: 0.76 }},
-        'dublin-south-central': {{ name: 'Dublin South-Central', tds: 4, eds: 52, pop: 129345, variance: '-0.5%', compactness: 0.79 }},
-        'dublin-south-west': {{ name: 'Dublin South-West', tds: 5, eds: 55, pop: 161789, variance: '-0.4%', compactness: 0.72 }},
-        'dublin-west': {{ name: 'Dublin West', tds: 4, eds: 40, pop: 133456, variance: '+2.6%', compactness: 0.68 }},
-        'dun-laoghaire': {{ name: 'Dun Laoghaire', tds: 4, eds: 62, pop: 130123, variance: '+0.1%', compactness: 0.75 }},
-        'galway-east': {{ name: 'Galway East', tds: 3, eds: 72, pop: 98765, variance: '+1.2%', compactness: 0.58 }},
-        'galway-west': {{ name: 'Galway West', tds: 5, eds: 68, pop: 163456, variance: '+0.6%', compactness: 0.64 }},
-        'kerry': {{ name: 'Kerry', tds: 5, eds: 88, pop: 160234, variance: '-1.4%', compactness: 0.61 }},
-        'kildare-north': {{ name: 'Kildare North', tds: 4, eds: 45, pop: 135678, variance: '+4.4%', compactness: 0.66 }},
-        'kildare-south': {{ name: 'Kildare South', tds: 4, eds: 48, pop: 132345, variance: '+1.8%', compactness: 0.69 }},
-        'laois': {{ name: 'Laois', tds: 3, eds: 52, pop: 91234, variance: '-6.5%', compactness: 0.73 }},
-        'limerick-city': {{ name: 'Limerick City', tds: 4, eds: 38, pop: 131567, variance: '+1.2%', compactness: 0.80 }},
-        'limerick-county': {{ name: 'Limerick County', tds: 3, eds: 58, pop: 97654, variance: '+0.1%', compactness: 0.57 }},
-        'longford-westmeath': {{ name: 'Longford-Westmeath', tds: 4, eds: 68, pop: 128976, variance: '-0.7%', compactness: 0.63 }},
-        'louth': {{ name: 'Louth', tds: 5, eds: 55, pop: 162345, variance: '+0.1%', compactness: 0.70 }},
-        'mayo': {{ name: 'Mayo', tds: 4, eds: 85, pop: 127654, variance: '-1.8%', compactness: 0.52 }},
-        'meath-east': {{ name: 'Meath East', tds: 3, eds: 42, pop: 100234, variance: '+2.8%', compactness: 0.65 }},
-        'meath-west': {{ name: 'Meath West', tds: 4, eds: 55, pop: 132567, variance: '+2.0%', compactness: 0.61 }},
-        'offaly': {{ name: 'Offaly', tds: 3, eds: 48, pop: 82345, variance: '-15.6%', compactness: 0.71 }},
-        'roscommon-galway': {{ name: 'Roscommon-Galway', tds: 3, eds: 72, pop: 96543, variance: '-1.0%', compactness: 0.54 }},
-        'sligo-leitrim': {{ name: 'Sligo-Leitrim', tds: 4, eds: 82, pop: 126789, variance: '-2.7%', compactness: 0.49 }},
-        'tipperary-north': {{ name: 'Tipperary North', tds: 3, eds: 55, pop: 98234, variance: '+0.7%', compactness: 0.64 }},
-        'tipperary-south': {{ name: 'Tipperary South', tds: 3, eds: 52, pop: 96789, variance: '-0.8%', compactness: 0.67 }},
-        'waterford': {{ name: 'Waterford', tds: 4, eds: 58, pop: 131234, variance: '+0.9%', compactness: 0.72 }},
-        'wexford': {{ name: 'Wexford', tds: 5, eds: 72, pop: 160567, variance: '-1.2%', compactness: 0.68 }},
-        'wicklow': {{ name: 'Wicklow', tds: 5, eds: 65, pop: 163234, variance: '+0.5%', compactness: 0.63 }}
-    }};
-
     const NATIONAL_AVG = 32500;
 
     // Population Balance Slider
@@ -1441,7 +1326,6 @@ def generate_javascript() -> str:
             const sign = variance >= 0 ? '+' : '';
             varianceEl.textContent = sign + variance.toFixed(1) + '%';
 
-            // Update color based on variance
             const absVariance = Math.abs(variance);
             if (absVariance <= 5) {{
                 varianceEl.className = 'text-good';
@@ -1451,7 +1335,6 @@ def generate_javascript() -> str:
                 varianceEl.className = 'text-bad';
             }}
 
-            // Update marker position (0% at center = 50%, range is -15% to +15%)
             const markerPos = 50 + (variance / 15 * 50);
             document.getElementById('variance-marker').style.left = Math.max(0, Math.min(100, markerPos)) + '%';
         }});
@@ -1467,25 +1350,20 @@ def generate_javascript() -> str:
         const county = parseInt(countySlider?.value || 50);
         const compact = parseInt(compactSlider?.value || 50);
 
-        // Update displayed values
         document.getElementById('balance-value').textContent = balance + '%';
         document.getElementById('county-value').textContent = county + '%';
         document.getElementById('compact-value').textContent = compact + '%';
 
-        // Calculate resulting characteristics
-        // Higher balance priority = lower variance
         const varianceResult = balance >= 80 ? '&plusmn;2%' :
                               balance >= 60 ? '&plusmn;3-4%' :
                               balance >= 40 ? '&plusmn;4-5%' :
                               balance >= 20 ? '&plusmn;5-7%' : '&plusmn;7-10%';
 
-        // Higher county priority = fewer breaks
         const breaksResult = county >= 80 ? '0-1 counties' :
                             county >= 60 ? '2-3 counties' :
                             county >= 40 ? '3-4 counties' :
                             county >= 20 ? '5-7 counties' : '8+ counties';
 
-        // Higher compact priority = better shapes
         const shapeResult = compact >= 80 ? 'Excellent' :
                           compact >= 60 ? 'Good' :
                           compact >= 40 ? 'Moderate' :
@@ -1495,7 +1373,6 @@ def generate_javascript() -> str:
         document.getElementById('result-breaks').textContent = breaksResult;
         document.getElementById('result-shape').textContent = shapeResult;
 
-        // Generate description
         let desc = '';
         if (balance >= 70 && county < 40 && compact < 40) {{
             desc = 'Prioritizes equal representation above all. Expect broken counties and unusual shapes.';
@@ -1520,60 +1397,6 @@ def generate_javascript() -> str:
         updateTradeoffs();
     }}
 
-    // Constituency lookup
-    const constSelect = document.getElementById('constituency-select');
-    if (constSelect) {{
-        constSelect.addEventListener('change', function() {{
-            const val = this.value;
-            const info = document.getElementById('constituency-info');
-            const placeholder = document.getElementById('constituency-placeholder');
-
-            if (!val) {{
-                info.style.display = 'none';
-                placeholder.style.display = 'block';
-                return;
-            }}
-
-            const data = constituencyData[val];
-            if (!data) return;
-
-            document.getElementById('const-name').textContent = data.name;
-            document.getElementById('const-tds').textContent = data.tds;
-            document.getElementById('const-eds').textContent = data.eds;
-            document.getElementById('const-pop').textContent = data.pop.toLocaleString();
-            document.getElementById('const-per-td').textContent = Math.round(data.pop / data.tds).toLocaleString();
-
-            const varianceEl = document.getElementById('const-variance');
-            varianceEl.textContent = data.variance;
-            const absVar = Math.abs(parseFloat(data.variance));
-            varianceEl.style.color = absVar <= 5 ? '{COLORS['green_2']}' : absVar <= 7 ? '{COLORS['purple']}' : '{COLORS['deep_purple']}';
-
-            // Update metrics
-            const metrics = document.getElementById('const-metrics');
-            const varCheck = absVar <= 5;
-            const compactCheck = data.compactness >= 0.65;
-
-            metrics.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-                    <span style="color: {COLORS['green_2']};">&#10003;</span>
-                    <span style="font-size: 13px;">Contiguity: All EDs connected</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-                    <span style="color: ${{varCheck ? '{COLORS['green_2']}' : '{COLORS['purple']}'}};">${{varCheck ? '&#10003;' : '&#9888;'}}</span>
-                    <span style="font-size: 13px;">Variance: ${{varCheck ? 'Within' : 'Outside'}} &plusmn;5%</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-                    <span style="color: ${{compactCheck ? '{COLORS['green_2']}' : '{COLORS['purple']}'}};">${{compactCheck ? '&#10003;' : '&#9888;'}}</span>
-                    <span style="font-size: 13px;">Compactness: ${{compactCheck ? 'Good' : 'Moderate'}} (${{data.compactness.toFixed(2)}})</span>
-                </div>
-            `;
-
-            info.style.display = 'block';
-            placeholder.style.display = 'none';
-        }});
-    }}
-
-    // Initialize
     document.addEventListener('DOMContentLoaded', function() {{
         updateTradeoffs();
     }});
@@ -1581,9 +1404,9 @@ def generate_javascript() -> str:
     '''
 
 
-def generate_page() -> str:
-    """Generate the complete HTML page."""
-    html = f'''<!DOCTYPE html>
+def generate_full_page() -> str:
+    """Generate the complete HTML page with all sections."""
+    return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1601,46 +1424,78 @@ def generate_page() -> str:
             {generate_section_compactness()}
             {generate_section_county_boundaries()}
             {generate_section_tradeoffs()}
-            {generate_section_why_matters()}
         </main>
 
         {generate_footer()}
     </div>
 
-    {generate_javascript()}
+    {generate_full_javascript()}
 </body>
 </html>'''
-    return html
 
 
 def main():
-    """Generate the Why Boundaries Matter page."""
+    """Generate all boundary explanation pages."""
     script_dir = Path(__file__).parent
     project_root = script_dir.parent.parent
 
-    # Output to _static/interactive/ for Jupyter Book integration
+    # Output directories
     interactive_dir = project_root / "_static" / "interactive"
     interactive_dir.mkdir(parents=True, exist_ok=True)
-    output_path = interactive_dir / "boundaries_explained.html"
 
-    # Also save a copy in the module_0 directory for direct access
-    local_output_path = script_dir / "boundaries_explained.html"
+    print("Generating 'Why Boundaries Matter' pages...")
 
-    print("Generating 'Why Boundaries Matter' page...")
+    # Generate individual section files
+    sections = {
+        "boundaries_variance.html": (
+            "Population Balance - Interactive",
+            generate_variance_content(),
+            generate_variance_js()
+        ),
+        "boundaries_contiguity.html": (
+            "Contiguity - Visual Examples",
+            generate_contiguity_content(),
+            ""
+        ),
+        "boundaries_compactness.html": (
+            "Compactness - Shape Comparison",
+            generate_compactness_content(),
+            ""
+        ),
+        "boundaries_counties.html": (
+            "County Boundaries - Scenarios",
+            generate_counties_content(),
+            ""
+        ),
+        "boundaries_tradeoffs.html": (
+            "Trade-Offs - Interactive Triangle",
+            generate_tradeoffs_content(),
+            generate_tradeoffs_js()
+        ),
+    }
 
-    html = generate_page()
+    for filename, (title, content, js) in sections.items():
+        html = generate_standalone_html(title, content, js)
+        output_path = interactive_dir / filename
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(html)
+        print(f"  Generated: {filename} ({len(html):,} bytes)")
 
-    # Write to both locations
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(html)
+    # Generate full page
+    full_html = generate_full_page()
+    full_output = interactive_dir / "boundaries_explained.html"
+    with open(full_output, 'w', encoding='utf-8') as f:
+        f.write(full_html)
+    print(f"  Generated: boundaries_explained.html ({len(full_html):,} bytes)")
 
-    with open(local_output_path, 'w', encoding='utf-8') as f:
-        f.write(html)
+    # Also save full page to module_0 for local development
+    local_output = script_dir / "boundaries_explained.html"
+    with open(local_output, 'w', encoding='utf-8') as f:
+        f.write(full_html)
+    print(f"  Local copy: boundaries_explained.html")
 
-    print(f"Page generated successfully!")
-    print(f"Output: {output_path}")
-    print(f"Local copy: {local_output_path}")
-    print(f"File size: {len(html):,} bytes")
+    print(f"\nAll pages generated successfully!")
+    print(f"Output directory: {interactive_dir}")
 
     return 0
 

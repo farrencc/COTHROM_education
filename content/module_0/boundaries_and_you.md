@@ -12,32 +12,6 @@ Understanding boundary dynamics helps you anticipate changes and participate mea
 
 ---
 
-## Interactive: Why Boundaries Matter
-
-Before diving into the details, explore the key principles that make a "good" constituency map versus a "bad" one. This interactive guide explains population balance, contiguity, compactness, and county boundary considerations.
-
-<div style="margin: 2rem 0; border: 2px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-  <iframe
-    src="../../_static/interactive/boundaries_explained.html"
-    width="100%"
-    height="800"
-    frameborder="0"
-    style="display: block;"
-    title="Why Boundaries Matter - Interactive Educational Guide">
-  </iframe>
-</div>
-
-<p style="font-size: 0.9em; color: #6b7280; text-align: center; margin-top: 0.5rem;">
-  <strong>Interactive Guide:</strong> Explore population variance sliders, contiguity examples, compactness comparisons, and trade-off visualizations. Scroll within the frame to see all sections.
-</p>
-
-```{tip}
-**Want to open in a new window?**
-<a href="../../_static/interactive/boundaries_explained.html" target="_blank">Click here to open the interactive guide in a new tab</a> for a larger view.
-```
-
----
-
 ## Boundaries Are Alive
 
 Here's something that might surprise you: **constituency boundaries in Ireland have been redrawn 10 times since 1980.**
@@ -197,6 +171,19 @@ Acceptable range: 31,350 to 34,650 per TD
 5-seat constituency: 156,750 to 173,250 people
 ```
 
+**Interactive: See How Variance Works**
+
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_variance.html"
+    width="100%"
+    height="520"
+    frameborder="0"
+    style="display: block;"
+    title="Population Variance Interactive">
+  </iframe>
+</div>
+
 **The Challenge:**
 
 With 3,440 EDs of varying sizes, creating constituencies that:
@@ -230,6 +217,47 @@ You can't have a constituency that includes EDs in Dublin **and** Cork with noth
 
 Ireland has inhabited islands (Aran Islands, Achill, etc.). They must connect to the mainland constituency somehow - usually defined as "the constituency the ferry departs from."
 
+**Visual Examples: Contiguity**
+
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_contiguity.html"
+    width="100%"
+    height="420"
+    frameborder="0"
+    style="display: block;"
+    title="Contiguity Visual Examples">
+  </iframe>
+</div>
+
+#### Compactness (Avoiding Gerrymandering)
+
+Constituencies should have **compact, regular shapes** - not long, winding "salamander" configurations that snake across the map to include specific voters.
+
+**Why This Matters:**
+
+- Compact shapes prevent deliberate manipulation (gerrymandering)
+- Makes constituencies easier to understand and navigate
+- Reflects natural geographic communities
+- Reduces travel distances for TDs
+
+**The Origin of "Gerrymandering":**
+
+The term comes from Governor Elbridge Gerry + "salamander", describing the twisted shape of a manipulated district in 1812 Massachusetts.
+
+**Visual Examples: Compactness**
+
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_compactness.html"
+    width="100%"
+    height="520"
+    frameborder="0"
+    style="display: block;"
+    title="Compactness Visual Examples">
+  </iframe>
+</div>
+
 #### County Boundaries (Respect Where Possible)
 
 The Electoral Act mentions respecting **county boundaries** where possible, but this isn't absolute.
@@ -239,6 +267,19 @@ The Electoral Act mentions respecting **county boundaries** where possible, but 
 - **Tradition**: Counties have strong cultural identity in Ireland
 - **Mathematics**: Perfect population balance often requires breaking counties
 - **Politics**: Breaking counties is always controversial
+
+**Visual Examples: County Boundary Scenarios**
+
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_counties.html"
+    width="100%"
+    height="620"
+    frameborder="0"
+    style="display: block;"
+    title="County Boundaries Visual Examples">
+  </iframe>
+</div>
 
 **Case Study - Laois-Offaly:**
 
@@ -259,6 +300,19 @@ You cannot always achieve:
 
 Every boundary decision involves **trade-offs**. The question is: which trade-offs are acceptable?
 ```
+
+**Interactive: Explore Trade-Offs**
+
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_tradeoffs.html"
+    width="100%"
+    height="480"
+    frameborder="0"
+    style="display: block;"
+    title="Trade-Offs Interactive">
+  </iframe>
+</div>
 
 ---
 
