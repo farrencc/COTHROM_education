@@ -762,6 +762,24 @@ Then we'll explore what changes might be coming to your area and why.
 
 ---
 
+## Check Your Understanding
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">After the 2023 review, roughly how many people does each TD represent on average?</p>
+  <button class="cothrom-opt" data-explain="That was closer to the figure for the most under-represented constituencies, not the average.">About 45,000</button>
+  <button class="cothrom-opt" data-explain="Exactly — 5,149,139 people ÷ 174 TDs ≈ 29,593.">About 29,600</button>
+  <button class="cothrom-opt" data-explain="That's far below the real average; no constituency is that small per TD.">About 20,000</button>
+</div>
+
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">What does Seat Equivalent Representation (SER) tell you?</p>
+  <button class="cothrom-opt" data-explain="The number of people in a constituency is its population, not its SER.">A constituency's total population</button>
+  <button class="cothrom-opt" data-explain="Turnout isn't part of the SER calculation.">How many people turned out to vote</button>
+  <button class="cothrom-opt" data-explain="Right — SER = population ÷ national average, i.e. the seats a constituency 'deserves' on population alone.">How many seats a constituency deserves on population alone</button>
+</div>
+```
+
 ## Further Reflection
 
 Before moving on, consider:

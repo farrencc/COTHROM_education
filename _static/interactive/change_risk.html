@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boundary-Change Risk Estimator</title>
+<style>
+  :root { --green:#27ae60; --amber:#f59e0b; --red:#e74c3c; --ink:#2c3e50; --muted:#7f8c8d; --border:#e5e7eb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background:#fff; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 18px; }
+  h2 { text-align:center; margin: 0 0 4px; font-size: 1.25rem; }
+  .sub { text-align:center; color: var(--muted); font-size: 0.8rem; margin-bottom: 16px; font-style: italic; }
+  fieldset { border:1px solid var(--border); border-radius:10px; margin:0 0 12px; padding:10px 14px; }
+  legend { font-weight:600; font-size:0.92rem; padding:0 6px; }
+  label.opt { display:inline-flex; align-items:center; gap:6px; margin-right:16px; font-size:0.9rem; cursor:pointer; }
+  .result { border-radius:10px; padding:16px; color:#fff; text-align:center; margin-top:10px; transition: background 0.2s ease; }
+  .result .score { font-size:2.2rem; font-weight:800; }
+  .result .level { font-size:1rem; font-weight:600; letter-spacing:0.03em; }
+  .interp { background:#f8f9fa; border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 14px; margin-top:12px; font-size:0.9rem; line-height:1.55; }
+  .disclaimer { font-size:0.72rem; color:var(--muted); margin-top:12px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2>Could your area change next time?</h2>
+  <div class="sub">A rough, illustrative estimate — not a prediction. Answer about your Electoral Division.</div>
+
+  <fieldset>
+    <legend>Is your ED on the edge of its constituency?</legend>
+    <label class="opt"><input type="radio" name="edge" value="3">Yes, it borders another constituency</label>
+    <label class="opt"><input type="radio" name="edge" value="0" checked>No / not sure</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>How far is your constituency from the average people-per-TD?</legend>
+    <label class="opt"><input type="radio" name="var" value="3">More than ±8%</label>
+    <label class="opt"><input type="radio" name="var" value="2">Around ±5–8%</label>
+    <label class="opt"><input type="radio" name="var" value="0" checked>Close to average</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Is your area growing quickly (new housing, development)?</legend>
+    <label class="opt"><input type="radio" name="growth" value="2">Yes, noticeably</label>
+    <label class="opt"><input type="radio" name="growth" value="0" checked>No / stable</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>How many seats does your constituency have?</legend>
+    <label class="opt"><input type="radio" name="seats" value="1">3 seats</label>
+    <label class="opt"><input type="radio" name="seats" value="0" checked>4 or 5 seats</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Does your constituency already cross a county boundary?</legend>
+    <label class="opt"><input type="radio" name="county" value="1">Yes</label>
+    <label class="opt"><input type="radio" name="county" value="0" checked>No / not sure</label>
+  </fieldset>
+
+  <div class="result" id="result">
+    <div class="score" id="score">0 / 10</div>
+    <div class="level" id="level">LOW RISK</div>
+  </div>
+  <div class="interp" id="interp"></div>
+  <div class="disclaimer">For illustration only. Actual boundary decisions rest with An Coimisiún Toghcháin and depend on the full national picture, not any single ED.</div>
+</div>
+
+<script>
+(function () {
+  var groups = ["edge", "var", "growth", "seats", "county"];
+
+  function val(name) {
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? parseInt(el.value, 10) : 0;
+  }
+
+  function update() {
+    var score = groups.reduce(function (s, g) { return s + val(g); }, 0); // max 10
+    var result = document.getElementById("result");
+    var level = document.getElementById("level");
+    var interp = document.getElementById("interp");
+    document.getElementById("score").textContent = score + " / 10";
+
+    var label, colour, text;
+    if (score <= 3) {
+      label = "LOW RISK"; colour = "var(--green)";
+      text = "Your ED looks fairly stable. It could still be affected indirectly if neighbouring constituencies need rebalancing — the map is interconnected.";
+    } else if (score <= 6) {
+      label = "MODERATE RISK"; colour = "var(--amber)";
+      text = "Your ED has some features that make reassignment plausible at the next review. Worth watching the Commission's draft recommendations when they appear.";
+    } else {
+      label = "HIGHER RISK"; colour = "var(--red)";
+      text = "Several factors line up that make your ED a likely candidate to move. If you care about staying in your current constituency, this is an area to engage with during public consultation.";
+    }
+    result.style.background = colour;
+    level.textContent = label;
+    interp.style.borderLeftColor = colour;
+    interp.textContent = text;
+  }
+
+  document.querySelectorAll('input[type="radio"]').forEach(function (r) {
+    r.addEventListener("change", update);
+  });
+  update();
+})();
+</script>
+</body>
+</html>

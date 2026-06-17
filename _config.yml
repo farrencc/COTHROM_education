@@ -31,6 +31,10 @@ repository:
 # HTML settings - NO GitHub buttons
 html:
   extra_footer: "© The Problem Solving Association C.L.G."
+  extra_css:
+    - "_static/cothrom.css"
+  extra_js:
+    - "_static/cothrom.js"
 
 sphinx:
   config:

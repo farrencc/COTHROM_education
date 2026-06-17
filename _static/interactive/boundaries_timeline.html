@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ireland's Changing Dáil — Timeline</title>
+<style>
+  :root { --green:#27ae60; --purple:#7b2cbf; --ink:#2c3e50; --muted:#7f8c8d; --border:#e5e7eb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background:#fff; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 18px; }
+  h2 { text-align:center; margin: 0 0 4px; font-size: 1.25rem; }
+  .sub { text-align:center; color: var(--muted); font-size: 0.8rem; margin-bottom: 18px; font-style: italic; }
+  .stat-row { display:flex; gap:12px; margin: 10px 0 18px; }
+  .stat { flex:1; border:2px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+  .stat.tds { border-color: var(--purple); background:#faf5ff; }
+  .stat.cons { border-color: var(--green); background:#f0fdf4; }
+  .stat .num { font-size: 2rem; font-weight: 800; }
+  .stat.tds .num { color: var(--purple); }
+  .stat.cons .num { color: var(--green); }
+  .stat .lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-top: 4px; }
+  .year { text-align:center; font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+  input[type=range] { width: 100%; accent-color: var(--green); }
+  .ticks { display:flex; justify-content:space-between; font-size:0.72rem; color:var(--muted); margin-top:4px; }
+  .note { background:#f8f9fa; border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 14px; margin-top:16px; font-size:0.9rem; line-height:1.5; }
+  .disclaimer { font-size: 0.72rem; color: var(--muted); margin-top: 12px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2>Ireland's Changing Dáil</h2>
+  <div class="sub">Drag the slider to see how the number of TDs and constituencies has changed.</div>
+
+  <div class="year" id="year">2024</div>
+  <div class="stat-row">
+    <div class="stat tds"><div class="num" id="tds">174</div><div class="lbl">TDs in the Dáil</div></div>
+    <div class="stat cons"><div class="num" id="cons">43</div><div class="lbl">Constituencies</div></div>
+  </div>
+
+  <input type="range" id="slider" min="0" max="0" step="1" value="0" aria-label="Election year">
+  <div class="ticks" id="ticks"></div>
+
+  <div class="note" id="note"></div>
+  <div class="disclaimer">Figures are drawn from the constituency arrangements in force at each general election. Older constituency counts are approximate.</div>
+</div>
+
+<script>
+(function () {
+  // Arrangements in force at each general election (year -> TDs, constituencies, note).
+  var data = [
+    { year: 1981, tds: 166, cons: 41, note: "Through the 1980s and 1990s the Dáil held 166 TDs." },
+    { year: 1997, tds: 166, cons: 41, note: "166 TDs across 41 constituencies." },
+    { year: 2011, tds: 166, cons: 43, note: "166 TDs across 43 constituencies before seat numbers were reduced." },
+    { year: 2016, tds: 158, cons: 40, note: "The 2012 review cut the Dáil to 158 TDs across 40 constituencies — its smallest in decades." },
+    { year: 2020, tds: 160, cons: 39, note: "The 2017 review set 160 TDs across 39 constituencies." },
+    { year: 2024, tds: 174, cons: 43, note: "The 2023 Electoral Commission review grew the Dáil to 174 TDs across 43 constituencies, the largest ever, to keep pace with population growth." }
+  ];
+
+  var slider = document.getElementById("slider");
+  slider.max = data.length - 1;
+  slider.value = data.length - 1;
+
+  var ticks = document.getElementById("ticks");
+  data.forEach(function (d) {
+    var s = document.createElement("span");
+    s.textContent = d.year;
+    ticks.appendChild(s);
+  });
+
+  function render(i) {
+    var d = data[i];
+    document.getElementById("year").textContent = d.year;
+    document.getElementById("tds").textContent = d.tds;
+    document.getElementById("cons").textContent = d.cons;
+    document.getElementById("note").textContent = d.note;
+  }
+
+  slider.addEventListener("input", function () { render(parseInt(slider.value, 10)); });
+  render(data.length - 1);
+})();
+</script>
+</body>
+</html>

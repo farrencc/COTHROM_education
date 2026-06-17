@@ -2,6 +2,18 @@
 
 Welcome to the beginning of your journey into understanding democratic redistricting in Ireland.
 
+```{raw} html
+<div style="border:1px solid var(--cothrom-border,#e0e0e0); border-radius:10px; padding:0.9rem 1.1rem; margin:1.2rem 0; background:var(--cothrom-surface,#f8f9fa);">
+  <strong>Key terms</strong> <span style="font-size:0.85em; color:#7f8c8d;">(hover or tap each one)</span><br>
+  <span class="cothrom-term" data-def="Dáil Éireann — the lower house of the Irish parliament (the Oireachtas), with 174 members after the 2023 review.">Dáil</span> ·
+  <span class="cothrom-term" data-def="Teachta Dála — a member of Dáil Éireann, elected to represent a constituency.">TD</span> ·
+  <span class="cothrom-term" data-def="A geographic area that elects 3, 4 or 5 TDs. Ireland has 43 of them after the 2023 review.">constituency</span> ·
+  <span class="cothrom-term" data-def="Electoral Division — the ~3,440 small areas (used by the CSO) that are grouped together to build constituencies. EDs cannot be split.">Electoral Division (ED)</span> ·
+  <span class="cothrom-term" data-def="How far a constituency's population per TD sits above or below the national average, expressed as a percentage.">variance</span> ·
+  <span class="cothrom-term" data-def="Seat Equivalent Representation — a constituency's population divided by the national average people-per-TD; the number of seats it 'deserves' on population alone.">SER</span>
+</div>
+```
+
 ## Your Starting Point
 
 Before we explore algorithms, mathematics, or electoral systems, let's start with something immediate and personal: **your vote and your representation**.

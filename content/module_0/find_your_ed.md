@@ -383,6 +383,17 @@ Want to explore more? Try these activities:
 
 ---
 
+## Check Your Understanding
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="0">
+  <p class="cothrom-quiz-q">When the Commission draws constituency boundaries, what can it <em>not</em> do to your Electoral Division?</p>
+  <button class="cothrom-opt" data-explain="Correct — EDs are indivisible: each one must belong entirely to a single constituency.">Split it between two constituencies</button>
+  <button class="cothrom-opt" data-explain="EDs are regularly grouped with neighbours — that's exactly how constituencies are formed.">Group it with neighbouring EDs</button>
+  <button class="cothrom-opt" data-explain="Moving an ED to a different constituency is common at boundary reviews.">Move it to a different constituency</button>
+</div>
+```
+
 ## Common Questions
 
 ### "My ED seems really small. Is that normal?"

@@ -36,31 +36,16 @@ Think of Ireland's electoral map not as a static picture, but as a **time-lapse 
 - **Minor reviews**: Targeted adjustments to specific areas
 - **Frequency**: After each census; the most recent (2023) was the first carried out by the new statutory Electoral Commission
 
-**[PLACEHOLDER: Animated Map Timeline]**
-
-```
-┌─────────────────────────────────────────────────┐
-│  IRELAND'S CHANGING CONSTITUENCIES 1980-2023    │
-│                                                  │
-│  [Timeline slider: 1980 ═════●═══════ 2023]    │
-│                                                  │
-│  [Map of Ireland showing constituencies]        │
-│                                                  │
-│  Selected Year: 2007                            │
-│  Total Constituencies: 43                       │
-│  Total TDs: 166                                 │
-│                                                  │
-│  🔍 Features:                                   │
-│  • Drag slider to see boundaries change         │
-│  • Click constituency to see its history        │
-│  • Toggle "Show changes from previous" overlay  │
-│  • Zoom to your area                            │
-│                                                  │
-│  [Play Animation] [Reset] [Full Screen]        │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_timeline.html"
+    width="100%"
+    height="520"
+    frameborder="0"
+    style="display: block;"
+    title="Timeline of Ireland's Dáil size and constituencies">
+  </iframe>
+</div>
 
 ```{note}
 **Fun Fact:** If you were born in 1980, your constituency boundaries have likely changed at least twice in your lifetime - possibly three or four times depending on where you live.
@@ -160,13 +145,13 @@ Each constituency should have population within **±5% of the national average**
 
 **The Math:**
 ```
-National average: 33,000 people per TD (example)
+National average: 29,593 people per TD (2023 review)
 
-Acceptable range: 31,350 to 34,650 per TD
+Acceptable range (±5%): 28,113 to 31,073 per TD
 
-3-seat constituency: 94,050 to 103,950 people
-4-seat constituency: 125,400 to 138,600 people
-5-seat constituency: 156,750 to 173,250 people
+3-seat constituency: 84,339 to 93,219 people
+4-seat constituency: 112,452 to 124,292 people
+5-seat constituency: 140,565 to 155,365 people
 ```
 
 **Interactive: See How Variance Works**
@@ -348,8 +333,8 @@ Your ED is **more likely** to see changes if:
 │  VARIANCE CHECK                                  │
 │                                                  │
 │  Your Constituency: Dublin Bay South            │
-│  Population per TD: 33,230                      │
-│  National Average: 32,500                       │
+│  Population per TD: 30,244                      │
+│  National Average: 29,593                       │
 │  Variance: +2.2%                                │
 │                                                  │
 │  Risk Level: 🟡 MODERATE                        │
@@ -409,39 +394,16 @@ Your ED is **more likely** to see changes if:
 
 ### Interactive Risk Assessment
 
-**[PLACEHOLDER: Change Risk Calculator]**
-
-```
-┌─────────────────────────────────────────────────┐
-│  BOUNDARY CHANGE RISK ASSESSMENT                │
-│                                                  │
-│  📍 Electoral District: Rathmines West C        │
-│  🗳️  Constituency: Dublin Bay South              │
-│                                                  │
-│  RISK FACTORS ANALYSIS:                         │
-│  ✓ Edge of constituency: ✅ YES (High risk)     │
-│  ✓ Variance level: 🟡 MODERATE (+2.2%)         │
-│  ✓ Local development: 🟡 MODERATE              │
-│  ✓ Cross-county: ❌ NO                          │
-│  ✓ Constituency size: 🟡 MODERATE (4-seat)     │
-│                                                  │
-│  📊 OVERALL RISK SCORE: 6/10                    │
-│                                                  │
-│  🎯 RISK LEVEL: MODERATE-TO-HIGH                │
-│                                                  │
-│  💡 INTERPRETATION:                             │
-│  Your ED sits at the constituency edge and the  │
-│  area is seeing development. While current      │
-│  variance is acceptable, continued growth could │
-│  push Dublin Bay South over the limit. Your ED  │
-│  is a candidate for moving to balance           │
-│  populations in the next review (likely 2028).  │
-│                                                  │
-│  [View Detailed Analysis] [Compare Neighbors]  │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/change_risk.html"
+    width="100%"
+    height="780"
+    frameborder="0"
+    style="display: block;"
+    title="Boundary-change risk estimator">
+  </iframe>
+</div>
 
 ---
 
@@ -730,6 +692,24 @@ head back to the [course overview](../index.md) to explore what's available.
 ```
 
 ---
+
+## Check Your Understanding
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">What did the 2023 review do about county boundaries?</p>
+  <button class="cothrom-opt" data-explain="The opposite happened — the review reduced the number of county breaches.">Broke more counties apart to balance population</button>
+  <button class="cothrom-opt" data-explain="Correct — it reinstated county boundaries, removing seven of the ten existing breaches (for example, separating Laois-Offaly).">Reinstated county boundaries, removing 7 of 10 existing breaches</button>
+  <button class="cothrom-opt" data-explain="County boundaries changed significantly in this review; they were not left untouched.">Left county boundaries completely unchanged</button>
+</div>
+
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">Which of these makes your ED <em>more</em> likely to move constituency at the next review?</p>
+  <button class="cothrom-opt" data-explain="Interior EDs are harder to move because moving them splits a constituency.">Sitting deep in the interior of a constituency</button>
+  <button class="cothrom-opt" data-explain="A constituency already close to the national average is under less pressure to change.">Being in a constituency with near-zero variance</button>
+  <button class="cothrom-opt" data-explain="Right — EDs on a constituency border, in a high-variance or fast-growing area, are the easiest to reassign.">Sitting on a constituency border in a fast-growing area</button>
+</div>
+```
 
 ## Reflection Questions
 
