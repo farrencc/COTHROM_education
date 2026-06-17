@@ -1,15 +1,16 @@
+# Core build
 jupyter-book==1.0.4
-jupytercards
-jupyterquiz
-matplotlib
-numpy
+sphinx-book-theme
+
+# Diagrams / embeds used in content
 sphinxcontrib.mermaid
 sphinxcontrib.youtube
-sphinxcontrib-drawio
-qiskit
-qiskit-aer
+
+# Interactive learning components (flashcards & quizzes)
+jupytercards
+jupyterquiz
 pylatexenc
-jupyterlite-sphinx
-networkx
-# testing dependencies for navbar design
-sphinx-book-theme
+
+# Plotting (used by any executable content cells)
+matplotlib
+numpy

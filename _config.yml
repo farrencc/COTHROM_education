@@ -27,18 +27,7 @@ repository:
 
 # HTML settings - NO GitHub buttons
 html:
- # baseurl: /COTHROM_education/
-  extra_footer: "Copyright-info"
-  extra_css:
-    - "_static/style.css"
-    - "_static/jsxgraph.css"
-    - "_static/math_visualiser.css"
-  extra_js:
-    - "_static/theme.js"
-    - "_static/math_visualiser.js"
-    - "_static/jsxgraph-module.js"
-    - "_static/math.min.js"
-    - "_static/IdentityQuestions.js"
+  extra_footer: "© The Problem Solving Association C.L.G."
 
 sphinx:
   config:
