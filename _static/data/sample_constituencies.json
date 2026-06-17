@@ -1,19 +1,19 @@
 {
   "_metadata": {
-    "description": "Sample constituency data for COTHROM educational tools",
-    "source": "2023 Constituency Review recommendations and Census 2022",
-    "note": "Replace this file with real data when available",
+    "description": "ILLUSTRATIVE sample constituency data for COTHROM educational tools",
+    "disclaimer": "These figures are simplified teaching data, NOT official figures. Per-constituency populations and seat counts are approximate and the list is not exhaustive. National constants follow the Electoral Commission 2023 review (174 TDs, average 29,593 per TD). Replace with official Electoral Commission / CSO data before relying on tool output.",
+    "source": "Approximations based on the Electoral Commission 2023 review and CSO Census 2022",
     "fields": {
       "name": "Constituency name",
-      "population": "Total population (Census 2022)",
-      "tds": "Number of TDs assigned",
+      "population": "Total population (approximate, Census 2022)",
+      "tds": "Number of TDs assigned (2023 review)",
       "peoplePerTD": "Population divided by TDs",
-      "variance": "Traditional variance from national average (%)"
+      "variance": "Display only; the tool recomputes variance from population, tds and nationalAverage"
     }
   },
-  "nationalAverage": 30365,
+  "nationalAverage": 29593,
   "totalPopulation": 5149139,
-  "totalTDs": 160,
+  "totalTDs": 174,
   "constituencies": [
     {"name": "Dublin Bay North", "population": 138936, "tds": 5, "peoplePerTD": 27787, "variance": -8.5},
     {"name": "Dublin Bay South", "population": 139247, "tds": 4, "peoplePerTD": 34812, "variance": 14.7},
@@ -21,7 +21,7 @@
     {"name": "Dublin Fingal", "population": 186544, "tds": 5, "peoplePerTD": 37309, "variance": 22.9},
     {"name": "Dublin Mid-West", "population": 107765, "tds": 4, "peoplePerTD": 26941, "variance": -11.3},
     {"name": "Dublin North-West", "population": 107503, "tds": 3, "peoplePerTD": 35834, "variance": 18.1},
-    {"name": "Dublin Rathdown", "population": 137588, "tds": 3, "peoplePerTD": 45863, "variance": 51.1},
+    {"name": "Dublin Rathdown", "population": 137588, "tds": 4, "peoplePerTD": 34397, "variance": 16.2},
     {"name": "Dublin South-Central", "population": 118959, "tds": 4, "peoplePerTD": 29740, "variance": -2.1},
     {"name": "Dublin South-West", "population": 130530, "tds": 5, "peoplePerTD": 26106, "variance": -14.1},
     {"name": "Dublin West", "population": 115049, "tds": 4, "peoplePerTD": 28762, "variance": -5.3},

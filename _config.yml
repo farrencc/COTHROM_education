@@ -4,6 +4,9 @@ title: Electoral Redistricting and COTHROM Project Explanation from TPSA
 author: The Problem Solving Association C.L.G.
 logo: logo.png
 
+# Only build the pages listed in _toc.yml (ignore README, prompt files, docs, etc.)
+only_build_toc_files: true
+
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:

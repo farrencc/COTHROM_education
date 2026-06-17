@@ -15,7 +15,7 @@ In this module, you'll learn:
 - **Why your vote might not count equally** compared to voters in other constituencies
 - **How to find your Electoral Division** and understand your place in the system
 - **What drives boundary changes** and why your area might be affected next
-- **How the 2023 controversy** broke with decades of precedent
+- **How the 2023 review** reshaped the map, adding 14 TDs and reinstating county boundaries
 
 ## The Three Core Questions
 
@@ -33,7 +33,7 @@ Every address in Ireland falls within a specific Electoral Division. Understandi
 
 ### 3. Could This Affect Me?
 
-Boundaries have changed 10 times since 1980. They'll change again. Will your area be affected?
+Boundaries have been revised around ten times since 1980. They'll change again. Will your area be affected?
 
 [Discover Lesson 3: Boundaries and You →](boundaries_and_you.md)
 
