@@ -1,0 +1,112 @@
+/* =====================================================================
+   COTHROM interactive learning components
+   - Glossary tooltips (.cothrom-term)
+   - Multiple-choice knowledge checks (.cothrom-quiz)
+   Theme-aware via CSS variables that fall back to sensible defaults.
+   ===================================================================== */
+
+:root {
+  --cothrom-green: #27ae60;
+  --cothrom-green-dark: #1e874b;
+  --cothrom-purple: #7b2cbf;
+  --cothrom-red: #e74c3c;
+  --cothrom-surface: #f8f9fa;
+  --cothrom-border: #e0e0e0;
+  --cothrom-text: #2c3e50;
+}
+html[data-theme="dark"] {
+  --cothrom-surface: #1f2733;
+  --cothrom-border: #3a4453;
+  --cothrom-text: #e6e9ef;
+}
+
+/* ---------- Glossary term ---------- */
+.cothrom-term {
+  position: relative;
+  border-bottom: 2px dotted var(--cothrom-green);
+  cursor: help;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+.cothrom-term:focus { outline: 2px solid var(--cothrom-green); outline-offset: 2px; }
+.cothrom-term::after {
+  content: attr(data-def);
+  position: absolute;
+  left: 0;
+  bottom: 125%;
+  z-index: 50;
+  width: max-content;
+  max-width: 18rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  background: var(--cothrom-text);
+  color: #fff;
+  font-weight: 400;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.cothrom-term:hover::after,
+.cothrom-term:focus::after { opacity: 1; transform: translateY(0); }
+
+/* ---------- Knowledge-check quiz ---------- */
+.cothrom-quiz {
+  border: 1px solid var(--cothrom-border);
+  border-left: 4px solid var(--cothrom-green);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--cothrom-surface);
+}
+.cothrom-quiz .cothrom-quiz-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cothrom-green-dark);
+  margin-bottom: 0.4rem;
+}
+.cothrom-quiz .cothrom-quiz-q { font-weight: 600; margin: 0 0 0.8rem; color: var(--cothrom-text); }
+.cothrom-quiz .cothrom-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  margin: 0.4rem 0;
+  border: 1px solid var(--cothrom-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--cothrom-text);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+html[data-theme="dark"] .cothrom-quiz .cothrom-opt { background: #141a22; }
+.cothrom-quiz .cothrom-opt:hover { border-color: var(--cothrom-green); }
+.cothrom-quiz .cothrom-opt.is-correct {
+  border-color: var(--cothrom-green);
+  background: rgba(39, 174, 96, 0.14);
+  font-weight: 600;
+}
+.cothrom-quiz .cothrom-opt.is-wrong {
+  border-color: var(--cothrom-red);
+  background: rgba(231, 76, 60, 0.12);
+}
+.cothrom-quiz .cothrom-opt[disabled] { cursor: default; }
+.cothrom-quiz .cothrom-feedback {
+  margin-top: 0.7rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: none;
+}
+.cothrom-quiz .cothrom-feedback.show { display: block; }
+.cothrom-quiz .cothrom-feedback.correct { background: rgba(39, 174, 96, 0.14); color: var(--cothrom-green-dark); }
+.cothrom-quiz .cothrom-feedback.incorrect { background: rgba(231, 76, 60, 0.12); color: var(--cothrom-red); }

@@ -2,6 +2,11 @@
 
 This document defines the conceptual dependency structure for the COTHROM democratic redistricting educational pathway. Unlike traditional mathematics curricula with discrete topics, this structure represents the progressive build-up of understanding from civic engagement through technical comprehension.
 
+> **Facts and figures:** see the **Canonical Facts & Data** table in
+> `cothrom_content_creation.md` for the authoritative numbers (174 TDs, 43
+> constituencies, 29,593 average per TD, ~3,440 Electoral Divisions). Do not
+> introduce statistics that conflict with that table.
+
 ## Learning Architecture
 
 The COTHROM pathway uses a **nested dependency model** where:
@@ -53,7 +58,7 @@ MODULE 7 (Advanced Topics) - Optional branches from any module
 ### MODULE 0: The Personal Connection
 **Foundation Concepts** (No prerequisites):
 - `0.1` Your vote matters
-- `0.2` Electoral District (ED) identification
+- `0.2` Electoral Division (ED) identification
 - `0.3` Constituency boundaries affect representation
 - `0.4` Why boundaries change (population shifts)
 - `0.5` Personal impact of redistricting decisions
@@ -63,7 +68,7 @@ MODULE 7 (Advanced Topics) - Optional branches from any module
 ### MODULE 1: Understanding the Basics
 
 **Lesson 1.1: The Irish Electoral System**
-- `1.1.1` What is an Electoral District (ED)? [Requires: `0.2`]
+- `1.1.1` What is an Electoral Division (ED)? [Requires: `0.2`]
 - `1.1.2` What is a constituency? [Requires: `1.1.1`]
 - `1.1.3` Relationship between EDs and constituencies [Requires: `1.1.1`, `1.1.2`]
 - `1.1.4` Proportional representation (PR-STV) basics [Requires: `1.1.2`, `0.1`]
@@ -122,8 +127,8 @@ MODULE 7 (Advanced Topics) - Optional branches from any module
 - `3.1.3` Experiencing the difficulty [Requires: `3.1.2`]
 
 **Lesson 3.2: Scale Up to Reality**
-- `3.2.1` 3,440 Electoral Districts [Requires: `1.1.1`, `3.1.1`]
-- `3.2.2` ~40 constituencies [Requires: `1.1.2`, `3.2.1`]
+- `3.2.1` 3,440 Electoral Divisions [Requires: `1.1.1`, `3.1.1`]
+- `3.2.2` 43 constituencies [Requires: `1.1.2`, `3.2.1`]
 - `3.2.3` Multiple constraints simultaneously [Requires: ALL of Module 2, `3.2.2`]
 - `3.2.4` The combinatorial explosion [Requires: `3.2.3`]
 

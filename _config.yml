@@ -4,6 +4,9 @@ title: Electoral Redistricting and COTHROM Project Explanation from TPSA
 author: The Problem Solving Association C.L.G.
 logo: logo.png
 
+# Only build the pages listed in _toc.yml (ignore README, prompt files, docs, etc.)
+only_build_toc_files: true
+
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
@@ -27,18 +30,11 @@ repository:
 
 # HTML settings - NO GitHub buttons
 html:
- # baseurl: /COTHROM_education/
-  extra_footer: "Copyright-info"
+  extra_footer: "© The Problem Solving Association C.L.G."
   extra_css:
-    - "_static/style.css"
-    - "_static/jsxgraph.css"
-    - "_static/math_visualiser.css"
+    - "_static/cothrom.css"
   extra_js:
-    - "_static/theme.js"
-    - "_static/math_visualiser.js"
-    - "_static/jsxgraph-module.js"
-    - "_static/math.min.js"
-    - "_static/IdentityQuestions.js"
+    - "_static/cothrom.js"
 
 sphinx:
   config:

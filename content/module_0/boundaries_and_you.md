@@ -14,55 +14,38 @@ Understanding boundary dynamics helps you anticipate changes and participate mea
 
 ## Boundaries Are Alive
 
-Here's something that might surprise you: **constituency boundaries in Ireland have been redrawn 10 times since 1980.**
+Here's something that might surprise you: **Ireland's constituencies have been revised around ten times since 1980.**
 
-That means, on average, boundaries change every 4-5 years - roughly once between every second general election.
+In practice, the constituencies are reviewed after most censuses - roughly every five years - even though the Constitution only *requires* a revision at least once every twelve years.
 
 ### A Living Map
 
 Think of Ireland's electoral map not as a static picture, but as a **time-lapse video**:
-- Electoral Districts (the building blocks) stay mostly the same
+- Electoral Divisions (the building blocks) stay mostly the same
 - But which EDs group together into constituencies? **That changes constantly.**
 - Population shifts drive these changes - people moving to cities, new housing developments, demographic trends
 
-**Historical Boundary Reviews:**
+**Historical revisions (approximate):**
 
 ```
-1980 → 1990 → 1995 → 1997 → 2004 → 2007 → 2012 → 2017 → 2023
-  ↓      ↓      ↓      ↓      ↓      ↓      ↓      ↓      ↓
-Minor  Major  Minor  Minor  Minor  Major  Minor  Minor  Major
+1980 → 1983 → 1990 → 1995 → 1998 → 2005 → 2009 → 2013 → 2017 → 2023
 ```
 
 **Pattern Recognition:**
 - **Major reviews**: Significant changes affecting many constituencies
 - **Minor reviews**: Targeted adjustments to specific areas
-- **Frequency**: Roughly every 4-6 years, as required by the Constitution
+- **Frequency**: After each census; the most recent (2023) was the first carried out by the new statutory Electoral Commission
 
-**[PLACEHOLDER: Animated Map Timeline]**
-
-```
-┌─────────────────────────────────────────────────┐
-│  IRELAND'S CHANGING CONSTITUENCIES 1980-2023    │
-│                                                  │
-│  [Timeline slider: 1980 ═════●═══════ 2023]    │
-│                                                  │
-│  [Map of Ireland showing constituencies]        │
-│                                                  │
-│  Selected Year: 2007                            │
-│  Total Constituencies: 43                       │
-│  Total TDs: 166                                 │
-│                                                  │
-│  🔍 Features:                                   │
-│  • Drag slider to see boundaries change         │
-│  • Click constituency to see its history        │
-│  • Toggle "Show changes from previous" overlay  │
-│  • Zoom to your area                            │
-│                                                  │
-│  [Play Animation] [Reset] [Full Screen]        │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_timeline.html"
+    width="100%"
+    height="520"
+    frameborder="0"
+    style="display: block;"
+    title="Timeline of Ireland's Dáil size and constituencies">
+  </iframe>
+</div>
 
 ```{note}
 **Fun Fact:** If you were born in 1980, your constituency boundaries have likely changed at least twice in your lifetime - possibly three or four times depending on where you live.
@@ -78,10 +61,10 @@ Boundaries don't change randomly. Three main forces drive redistricting:
 
 **The National Pattern:**
 
-Ireland's population has grown significantly since 1980:
-- **1980**: 3.4 million people
-- **2000**: 3.8 million people
-- **2023**: 5.2 million people
+Ireland's population has grown significantly since 1980 (CSO census counts):
+- **1981**: about 3.44 million people
+- **2002**: about 3.92 million people
+- **2022**: **5,149,139** people
 
 But this growth hasn't been even:
 
@@ -121,15 +104,15 @@ But this growth hasn't been even:
 
 **Real Example - Dublin's Expansion:**
 
-Between 1980 and 2023:
-- Dublin's TDs increased from 42 to 47
-- New constituencies created: Dublin Fingal, Dublin Mid-West
-- Existing constituencies repeatedly redrawn
-- Commuter counties (Kildare, Meath) absorbed growth spillover
+Over the decades:
+- Dublin's share of TDs has grown steadily as its population has risen
+- New constituencies have been created (e.g. Dublin Fingal was split into Fingal East and Fingal West in the 2023 review)
+- Existing constituencies are repeatedly redrawn
+- Commuter counties (Kildare, Meath) have absorbed growth spillover
 
 ### 2. The Constitutional Requirement
 
-**Article 16.4 of the Irish Constitution** requires boundaries to be reviewed **at least once every twelve years**, based on census results.
+**Article 16.2.4° of the Irish Constitution** requires that the constituencies be revised **at least once every twelve years**, with regard to changes in the distribution of the population.
 
 **Why This Matters:**
 
@@ -162,13 +145,13 @@ Each constituency should have population within **±5% of the national average**
 
 **The Math:**
 ```
-National average: 33,000 people per TD (example)
+National average: 29,593 people per TD (2023 review)
 
-Acceptable range: 31,350 to 34,650 per TD
+Acceptable range (±5%): 28,113 to 31,073 per TD
 
-3-seat constituency: 94,050 to 103,950 people
-4-seat constituency: 125,400 to 138,600 people
-5-seat constituency: 156,750 to 173,250 people
+3-seat constituency: 84,339 to 93,219 people
+4-seat constituency: 112,452 to 124,292 people
+5-seat constituency: 140,565 to 155,365 people
 ```
 
 **Interactive: See How Variance Works**
@@ -195,14 +178,14 @@ With 3,440 EDs of varying sizes, creating constituencies that:
 ...is mathematically **extremely difficult**.
 
 ```{important}
-**The 2023 Controversy:**
+**The 2023 review and the ±5% tolerance:**
 
-For the first time in decades, the Commission recommended **15 out of 43 constituencies** outside the traditional ±5% range. Some reached ±8%.
+Previous reviews aimed to keep every constituency within about **±5%** of the national average. To absorb strong population growth *and* repair broken county lines, the 2023 Commission worked to a **wider tolerance, with some constituencies reaching around ±8%**.
 
-This sparked significant debate:
-- **Commission's view**: "Impossible to do better while respecting all constraints"
-- **Critics' view**: "Not enough exploration of alternatives"
-- **Opportunity**: Could algorithmic tools help explore more options?
+This sparked debate:
+- **Commission's view**: a wider band was needed to add 14 TDs and reinstate county boundaries at the same time
+- **Critics' view**: not enough alternatives were explored before settling on one map
+- **Opportunity**: could algorithmic tools help explore more options systematically?
 ```
 
 #### Contiguity (Must Be Connected)
@@ -283,11 +266,10 @@ The Electoral Act mentions respecting **county boundaries** where possible, but 
 
 **Case Study - Laois-Offaly:**
 
-Laois and Offaly have historically been paired as a single constituency:
-- **Tradition**: Kept the two counties together
-- **Population problem**: Combined population drifted outside acceptable variance
-- **2023 recommendation**: Break the constituency, move some EDs to neighboring counties
-- **Public reaction**: Strong opposition from those who value county identity
+Laois and Offaly had been paired together in various combinations for years:
+- **Recent history**: the two counties shared a single constituency, which had grown too large for its seats
+- **2023 recommendation**: **separate them into single-county constituencies** — a 3-seat **Laois** and a 3-seat **Offaly** — as part of the Commission's wider move to *reinstate* county boundaries
+- **The trade-off**: restoring clean county lines here meant other county boundaries elsewhere still had to be crossed; every fix shifts the pressure somewhere else
 
 ```{warning}
 **There Is No Perfect Solution:**
@@ -351,8 +333,8 @@ Your ED is **more likely** to see changes if:
 │  VARIANCE CHECK                                  │
 │                                                  │
 │  Your Constituency: Dublin Bay South            │
-│  Population per TD: 33,230                      │
-│  National Average: 32,500                       │
+│  Population per TD: 30,244                      │
+│  National Average: 29,593                       │
 │  Variance: +2.2%                                │
 │                                                  │
 │  Risk Level: 🟡 MODERATE                        │
@@ -387,10 +369,10 @@ Your ED is **more likely** to see changes if:
 - Extra scrutiny in each review
 - Pressure to "restore" county integrity
 
-**Examples of Cross-County Constituencies:**
-- Laois-Offaly
+**Examples of cross-county constituencies (2024):**
 - Sligo-Leitrim
-- Dún Laoghaire (crosses Dublin county subdivisions)
+- Cavan-Monaghan
+- Wicklow-Wexford (a new constituency created in the 2023 review)
 
 **Check Your Risk:**
 - Is your constituency named after two counties?
@@ -412,39 +394,16 @@ Your ED is **more likely** to see changes if:
 
 ### Interactive Risk Assessment
 
-**[PLACEHOLDER: Change Risk Calculator]**
-
-```
-┌─────────────────────────────────────────────────┐
-│  BOUNDARY CHANGE RISK ASSESSMENT                │
-│                                                  │
-│  📍 Electoral District: Rathmines West C        │
-│  🗳️  Constituency: Dublin Bay South              │
-│                                                  │
-│  RISK FACTORS ANALYSIS:                         │
-│  ✓ Edge of constituency: ✅ YES (High risk)     │
-│  ✓ Variance level: 🟡 MODERATE (+2.2%)         │
-│  ✓ Local development: 🟡 MODERATE              │
-│  ✓ Cross-county: ❌ NO                          │
-│  ✓ Constituency size: 🟡 MODERATE (4-seat)     │
-│                                                  │
-│  📊 OVERALL RISK SCORE: 6/10                    │
-│                                                  │
-│  🎯 RISK LEVEL: MODERATE-TO-HIGH                │
-│                                                  │
-│  💡 INTERPRETATION:                             │
-│  Your ED sits at the constituency edge and the  │
-│  area is seeing development. While current      │
-│  variance is acceptable, continued growth could │
-│  push Dublin Bay South over the limit. Your ED  │
-│  is a candidate for moving to balance           │
-│  populations in the next review (likely 2028).  │
-│                                                  │
-│  [View Detailed Analysis] [Compare Neighbors]  │
-└─────────────────────────────────────────────────┘
-```
-
-**[END PLACEHOLDER]**
+<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+  <iframe
+    src="../../_static/interactive/change_risk.html"
+    width="100%"
+    height="780"
+    frameborder="0"
+    style="display: block;"
+    title="Boundary-change risk estimator">
+  </iframe>
+</div>
 
 ---
 
@@ -562,19 +521,18 @@ Different constituencies prioritize different issues:
 
 **Case Study - The Laois-Offaly Debate:**
 
-When the 2023 Commission recommended breaking Laois-Offaly:
+The 2023 review *separated* the combined Laois-Offaly constituency back into single-county Laois and Offaly constituencies. Even a change like this, made to *respect* county identity, involves trade-offs:
 
-**Supporters said:**
-- "Mathematical necessity - variance was too high"
-- "Creates more balanced representation"
-- "Brings each area closer to population equality"
+**In favour:**
+- Restores clean county boundaries that many voters value
+- Each county gets a constituency tied to its own identity
 
-**Opponents said:**
-- "Destroys 70+ years of county partnership"
-- "Splits communities with shared identity"
-- "Ignores cultural and historical connections"
+**Against:**
+- Ends a long-standing shared Laois-Offaly political community
+- Smaller 3-seat constituencies can be less proportional than a larger combined one
+- Rebalancing here pushes population pressure onto neighbouring constituencies
 
-**Both sides had valid points.** This is the fundamental tension in redistricting.
+**Both sides have valid points.** This is the fundamental tension in redistricting: even "restoring" a boundary is a value choice, not a purely technical one.
 
 ```{important}
 **Democracy Requires Trade-offs:**
@@ -704,7 +662,10 @@ In Module 1, we'll dive deeper into:
 
 This foundation will prepare you for understanding **the rules and trade-offs** that make redistricting so challenging.
 
-**→ [Continue to Module 1: Understanding the Basics](../module_1/index.md)**
+```{note}
+**Module 1 is coming soon.** For now, revisit the interactive tools in this module or
+head back to the [course overview](../index.md) to explore what's available.
+```
 
 ---
 
@@ -713,7 +674,7 @@ This foundation will prepare you for understanding **the rules and trade-offs** 
 ```{important}
 **Remember These Points:**
 
-1. **Boundaries change regularly** - Ireland has redrawn constituencies 10 times since 1980, roughly every 4-5 years
+1. **Boundaries change regularly** - Ireland has revised its constituencies around ten times since 1980, typically after each census
 
 2. **Three forces drive changes** - Population shifts, constitutional requirements, and legal constraints
 
@@ -731,6 +692,24 @@ This foundation will prepare you for understanding **the rules and trade-offs** 
 ```
 
 ---
+
+## Check Your Understanding
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">What did the 2023 review do about county boundaries?</p>
+  <button class="cothrom-opt" data-explain="The opposite happened — the review reduced the number of county breaches.">Broke more counties apart to balance population</button>
+  <button class="cothrom-opt" data-explain="Correct — it reinstated county boundaries, removing seven of the ten existing breaches (for example, separating Laois-Offaly).">Reinstated county boundaries, removing 7 of 10 existing breaches</button>
+  <button class="cothrom-opt" data-explain="County boundaries changed significantly in this review; they were not left untouched.">Left county boundaries completely unchanged</button>
+</div>
+
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">Which of these makes your ED <em>more</em> likely to move constituency at the next review?</p>
+  <button class="cothrom-opt" data-explain="Interior EDs are harder to move because moving them splits a constituency.">Sitting deep in the interior of a constituency</button>
+  <button class="cothrom-opt" data-explain="A constituency already close to the national average is under less pressure to change.">Being in a constituency with near-zero variance</button>
+  <button class="cothrom-opt" data-explain="Right — EDs on a constituency border, in a high-variance or fast-growing area, are the easiest to reassign.">Sitting on a constituency border in a fast-growing area</button>
+</div>
+```
 
 ## Reflection Questions
 
@@ -757,4 +736,14 @@ There are no "right" answers - these questions reflect genuine value judgments t
 
 ---
 
-**[← Previous: Find Your ED](find_your_ed.md)** | **[Back to Module 0](index.md)** | **[Next: Module 1 →](../module_1/index.md)**
+## Sources
+
+- [Electoral Commission — Constituency Review Report 2023](https://www.electoralcommission.ie/constituency-reviews/)
+- [Electoral Commission press release, August 2023 — reinstatement of county boundaries](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/)
+- [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/)
+- [Bunreacht na hÉireann (Constitution of Ireland), Article 16](https://www.irishstatutebook.ie/eli/cons/en)
+- [The Irish Times — on the ±5%/±8% variance change (1 Sept 2023)](https://www.irishtimes.com/politics/2023/09/01/electoral-commission-may-face-legal-challenge-over-constituency-review/)
+
+---
+
+**[← Previous: Find Your ED](find_your_ed.md)** | **[Back to Module 0](index.md)** | **[Course Overview →](../index.md)**

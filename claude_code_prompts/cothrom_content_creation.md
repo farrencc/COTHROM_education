@@ -4,9 +4,45 @@ You are tasked with creating content for the **COTHROM** Jupyter Book - a compre
 
 ## Project Context
 - **Project Name**: COTHROM - Algorithmic Redistricting Educational Framework
+- **Maintained by**: The Problem Solving Association (TPSA)
 - **Target Audience**: Irish citizens, policymakers, and stakeholders interested in electoral fairness
 - **Format**: Jupyter Book with MyST markdown
 - **Purpose**: Demystify algorithmic redistricting and empower democratic participation
+
+## Canonical Facts & Data (SINGLE SOURCE OF TRUTH)
+
+Use these figures verbatim. **Do not invent or alter them.** If a fact you need is
+not listed here and you cannot cite it, write a clearly-marked `TODO(verify)` rather
+than guessing.
+
+| Fact | Value | Source key |
+|------|-------|------------|
+| Dáil size (from 2024 GE) | **174 TDs** (was 160) | `electoralcommission2023review` |
+| Constituencies (from 2024 GE) | **43** (was 39) | `electoralcommission2023review` |
+| National average people per TD | **29,593** (was 32,182) | `electoralcommission2023review` |
+| State population (Census 2022) | **5,149,139** | `cso2022census` |
+| Electoral Divisions | **~3,440** | `cso2022census` |
+| Seats per constituency | **3, 4 or 5** (min 3) | `bunreacht_art16` |
+| Constitutional review interval | at least once every **12 years** (Art. 16.2.4°) | `bunreacht_art16` |
+| Variance tolerance in 2023 review | widened toward **±8%** (previously ±5%) | `irishtimes2023variance` |
+| Highest population per TD (2024) | **Clare, ~31,995 (~8% above average)** | `irishtimes2023variance` |
+| County boundaries in 2023 review | **reinstated** — 7 of 10 breaches removed; Laois-Offaly separated | `electoralcommission2023news` |
+| Correct term | **Electoral Division** (not "Electoral District") | `cso2022census` |
+| COTHROM meaning | Irish for "fairness"/"balance" | — |
+
+### Factual Integrity Rules (NON-NEGOTIABLE)
+1. **Never fabricate statistics.** Every number in published prose must trace to an
+   entry in `references.bib`, or be explicitly framed as illustrative.
+2. **Mark illustrative examples as illustrative.** Use invented names (e.g. "Ardville",
+   "Baytown") and the word *illustrative* — never attribute invented figures to a real
+   constituency or to "the 2023 review".
+3. **Label sample datasets.** Any tool running on placeholder data must show an
+   on-screen "illustrative data, not official" banner, and the data file's metadata
+   must say so.
+4. **Cite sources.** Add a short `## Sources` list (links) at the foot of any lesson
+   that states statistics, and keep `references.bib` in sync.
+5. **No leftover placeholders.** Do not ship `[PLACEHOLDER: ...]` blocks or ASCII
+   mock-ups as if they were finished components (see the "No placeholders" rule below).
 
 ## Section Structure Requirements
 
@@ -246,7 +282,10 @@ document.addEventListener('DOMContentLoaded', function() {
 - **Population data**: Reference CSO (Central Statistics Office) data
 - **Historical maps**: Include comparisons to 1980, 1990, 2017, 2023 boundaries
 - **Unique IDs**: Base on module/lesson (e.g., 'module-3-lesson-2-combinatorics')
-- **No placeholders**: All interactive code must be complete and functional
+- **No placeholders**: All interactive code must be complete and functional. Never
+  emit `[PLACEHOLDER]` / ASCII mock-ups in place of a real widget — build the widget
+  (a self-contained HTML file under `_static/interactive/`, embedded via iframe) or
+  omit the section
 - **File naming**: lowercase with underscores (e.g., `understanding_variance.md`)
 
 ## Content Generation Strategy
@@ -341,6 +380,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Before completing any content file, verify:
 
+- [ ] **Every statistic traces to `references.bib`, or is clearly marked illustrative**
+- [ ] **All figures match the Canonical Facts table (174 TDs / 43 constituencies / 29,593 avg)**
+- [ ] **Uses "Electoral Division", never "Electoral District"**
+- [ ] **No `[PLACEHOLDER]` blocks or ASCII mock-ups remain**
 - [ ] Opens with personal relevance/"why this matters"
 - [ ] Uses plain language throughout
 - [ ] Includes at least one interactive component

@@ -16,3 +16,19 @@ content-local/
 # Sample data (<50KB) is tracked for development
 # Production data (>10MB) should be downloaded via scripts/download_datasets.py
 data/processed/
+
+# Python caches / artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# In-browser runtime / wheel artifacts (do not commit; large binaries)
+*.whl
+*.whl.metadata
+*.wasm
+pyodide*
+python_stdlib.zip
+
+# Editor / OS
+.DS_Store
+*.swp

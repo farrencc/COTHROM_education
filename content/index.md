@@ -1,6 +1,6 @@
 # A Pedagogical Pathway for Democratic Redistricting
 
-Welcome to this interactive learning resource on democratic redistricting and electoral boundaries in Ireland. This course is designed to help you understand one of the most fundamental yet often overlooked aspects of our democracy: how the boundaries of our electoral constituencies are drawn, why they matter, and how modern mathematical and computational methods can help ensure that every vote counts equally. This resource provides a pedagogical insight into the [TPSA's](tpsa.ie/problemsolving) COTHROM project.
+Welcome to this interactive learning resource on democratic redistricting and electoral boundaries in Ireland. This course is designed to help you understand one of the most fundamental yet often overlooked aspects of our democracy: how the boundaries of our electoral constituencies are drawn, why they matter, and how modern mathematical and computational methods can help ensure that every vote counts equally. This resource provides a pedagogical insight into the [TPSA's](https://tpsa.ie/problemsolving) COTHROM project.
 
 ## What You'll Learn
 
@@ -46,7 +46,7 @@ Let's begin your journey into understanding democratic redistricting!
 
 ---
 
-**Ready to start?** Head to [Module 0: Getting Started](module_0/index.md) to see how redistricting affects your own constituency, or explore the [Interactive Tools](interactive/ed_finder.md) to find your Electoral Division and begin experimenting with the data.
+**Ready to start?** Head to [Module 0: Getting Started](module_0/index.md) to see how redistricting affects your own constituency, or jump straight to [Find Your ED](module_0/find_your_ed.md) to locate your Electoral Division and begin experimenting with the interactive map.
 
 
 

@@ -1,29 +1,29 @@
-# Find Your Electoral District
+# Find Your Electoral Division
 
 ## Why This Matters
 
 Before we can talk about how constituency boundaries affect you, you need to know **where you are** in the system.
 
-Every address in Ireland falls within a specific **Electoral District (ED)**. Your ED is the fundamental building block of the electoral system - it groups with other EDs to form your constituency.
+Every address in Ireland falls within a specific **Electoral Division (ED)**. Your ED is the fundamental building block of the electoral system - it groups with other EDs to form your constituency.
 
-**Key Question:** Do you know which Electoral District you live in, and why that matters?
+**Key Question:** Do you know which Electoral Division you live in, and why that matters?
 
 ---
 
-## What Is an Electoral District?
+## What Is an Electoral Division?
 
-Think of Electoral Districts as the **Lego blocks** of Ireland's electoral system.
+Think of Electoral Divisions as the **Lego blocks** of Ireland's electoral system.
 
 ### The Basics
 
-**Electoral Districts (EDs)** are:
+**Electoral Divisions (EDs)** are:
 - Small geographic areas with clearly defined boundaries
 - The smallest official administrative units in Ireland
 - Used by the Central Statistics Office (CSO) for census data
 - The **building blocks** for creating constituencies
 
 **The Numbers:**
-- **3,440 Electoral Districts** in total across Ireland
+- **3,440 Electoral Divisions** in total across Ireland
 - Each ED contains roughly **80-200 homes**
 - Average population per ED: **around 1,400 people**
 - EDs vary significantly in size - urban EDs are geographically smaller but have higher populations
@@ -35,13 +35,13 @@ Here's how you fit into Ireland's electoral system:
 ```
 Your Address
     ↓
-Your Electoral District (ED)
+Your Electoral Division (ED)
     ↓
 Your Constituency (groups of EDs)
     ↓
 Your TDs (3, 4, or 5 per constituency)
     ↓
-Dáil Éireann (160 TDs total)
+Dáil Éireann (174 TDs total)
 ```
 
 **Example:**
@@ -53,7 +53,7 @@ Dáil Éireann (160 TDs total)
 
 ---
 
-## Why Electoral Districts Matter
+## Why Electoral Divisions Matter
 
 EDs are more than just administrative boundaries. They're **crucial for redistricting** because:
 
@@ -88,7 +88,7 @@ This data is what the Electoral Commission uses to calculate:
 - **Projected growth** for future planning
 
 ```{important}
-**Your ED is your democratic address.** Just like your postal address determines which mail you receive, your Electoral District determines:
+**Your ED is your democratic address.** Just like your postal address determines which mail you receive, your Electoral Division determines:
 - Which constituency you vote in
 - Which TDs represent you
 - How your vote is weighted relative to others
@@ -96,9 +96,9 @@ This data is what the Electoral Commission uses to calculate:
 
 ---
 
-## Find Your Electoral District
+## Find Your Electoral Division
 
-Now let's find **your** Electoral District.
+Now let's find **your** Electoral Division.
 
 ### Interactive ED Finder
 
@@ -133,7 +133,7 @@ Once you've found your ED, here's what the information tells you and why it matt
 
 ### Population Size
 
-Your ED's population directly influences how constituency boundaries are drawn. Electoral Districts with larger populations carry more weight in the calculations that determine where constituency lines fall. When the Electoral Commission is balancing populations across constituencies, smaller EDs provide more flexibility since they can be moved between constituencies with less impact on the overall population balance. Any population growth or decline within your ED ripples through to affect your entire constituency's representation.
+Your ED's population directly influences how constituency boundaries are drawn. Electoral Divisions with larger populations carry more weight in the calculations that determine where constituency lines fall. When the Electoral Commission is balancing populations across constituencies, smaller EDs provide more flexibility since they can be moved between constituencies with less impact on the overall population balance. Any population growth or decline within your ED ripples through to affect your entire constituency's representation.
 
 ```{raw} html
 <div style="margin: 1.5rem 0;">
@@ -159,11 +159,11 @@ Your ED's population directly influences how constituency boundaries are drawn. 
 </div>
 ```
 
-In a 4-seat constituency with approximately 33,000 people per TD, an ED of 1,234 people represents about 0.93% of a single TD's constituents. This means your ED, combined with roughly 100 other similar EDs, collectively determines who your TD will be.
+In a 4-seat constituency at roughly the national average of 29,593 people per TD, an ED of 1,234 people represents about 1% of a single TD's constituents. This means your ED, combined with roughly 100 other similar EDs, collectively determines who your TD will be.
 
 ### Geographic Size
 
-The physical size of Electoral Districts varies dramatically between urban and rural areas, even when populations are similar. This creates one of the fundamental tensions in Irish redistricting: urban constituencies can be geographically compact while serving the same population that requires a rural constituency to stretch across vast areas. The shape and size of EDs directly affects how "compact" a constituency can be drawn, which is one of the criteria the Electoral Commission considers.
+The physical size of Electoral Divisions varies dramatically between urban and rural areas, even when populations are similar. This creates one of the fundamental tensions in Irish redistricting: urban constituencies can be geographically compact while serving the same population that requires a rural constituency to stretch across vast areas. The shape and size of EDs directly affects how "compact" a constituency can be drawn, which is one of the criteria the Electoral Commission considers.
 
 ```{raw} html
 <div style="margin: 1.5rem 0; display: flex; gap: 20px; flex-wrap: wrap;">
@@ -196,7 +196,7 @@ The physical size of Electoral Districts varies dramatically between urban and r
 </div>
 ```
 
-Both Electoral Districts shown above have identical populations of 1,500 people, yet the rural ED covers 100 times more land area. This disparity means that creating constituencies with equal populations often results in rural constituencies that span multiple towns and large geographic distances, while urban constituencies might cover just a few neighbourhoods. The challenge of balancing population equality with geographic practicality is at the heart of every redistricting exercise.
+Both Electoral Divisions shown above have identical populations of 1,500 people, yet the rural ED covers 100 times more land area. This disparity means that creating constituencies with equal populations often results in rural constituencies that span multiple towns and large geographic distances, while urban constituencies might cover just a few neighbourhoods. The challenge of balancing population equality with geographic practicality is at the heart of every redistricting exercise.
 
 ### County Location
 
@@ -277,7 +277,7 @@ Now let's see how your ED fits into the bigger picture.
 When you select an ED in the interactive map above, the info panel shows:
 - **Your constituency name** and how many TDs it elects
 - **Your ED's population** relative to the national average
-- **Census 2022 data** for the Electoral District
+- **Census 2022 data** for the Electoral Division
 
 Toggle the "Constituencies" layer to see the constituency boundaries overlaid on the EDs.
 
@@ -285,12 +285,12 @@ Toggle the "Constituencies" layer to see the constituency boundaries overlaid on
 
 Has your ED always been in the same constituency? EDs can move between constituencies during redistricting:
 
-**Example: Rathmines West C**
+**Illustrative example** (showing how an ED can shift constituency over time):
 | Period | Constituency | Seats |
 |--------|--------------|-------|
 | 1980-2007 | Dublin South-Central | 5 |
 | 2007-2023 | Dublin Bay South | 4 |
-| 2023+ | Dublin Rathdown (proposed) | 5 |
+| 2024- | Dublin Bay South | 4 |
 
 Most EDs are relatively stable, changing constituencies only every 15-20 years. EDs at constituency borders are more likely to be moved during redistricting.
 
@@ -305,7 +305,7 @@ Most EDs are relatively stable, changing constituencies only every 15-20 years. 
 
 ## Why Knowing Your ED Empowers You
 
-Now that you know your Electoral District, you can:
+Now that you know your Electoral Division, you can:
 
 ### 1. Track Changes That Affect You
 
@@ -383,6 +383,17 @@ Want to explore more? Try these activities:
 
 ---
 
+## Check Your Understanding
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="0">
+  <p class="cothrom-quiz-q">When the Commission draws constituency boundaries, what can it <em>not</em> do to your Electoral Division?</p>
+  <button class="cothrom-opt" data-explain="Correct — EDs are indivisible: each one must belong entirely to a single constituency.">Split it between two constituencies</button>
+  <button class="cothrom-opt" data-explain="EDs are regularly grouped with neighbours — that's exactly how constituencies are formed.">Group it with neighbouring EDs</button>
+  <button class="cothrom-opt" data-explain="Moving an ED to a different constituency is common at boundary reviews.">Move it to a different constituency</button>
+</div>
+```
+
 ## Common Questions
 
 ### "My ED seems really small. Is that normal?"
@@ -424,7 +435,7 @@ Example: "Rathmines West C" means:
 ## What's Next?
 
 Now that you know:
-- ✅ What an Electoral District is
+- ✅ What an Electoral Division is
 - ✅ How to find your specific ED
 - ✅ Why your ED matters for redistricting
 
@@ -444,7 +455,7 @@ We're ready to explore **what could change** in your area:
 ```{important}
 **Remember These Points:**
 
-1. **Electoral Districts are the building blocks** - Ireland has 3,440 EDs that combine to form constituencies
+1. **Electoral Divisions are the building blocks** - Ireland has 3,440 EDs that combine to form constituencies
 
 2. **Your ED is indivisible** - It must belong entirely to one constituency; it cannot be split
 

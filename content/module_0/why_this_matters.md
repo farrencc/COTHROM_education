@@ -18,26 +18,23 @@ Let me show you what this means in practice.
 
 ### A Tale of Two Constituencies
 
-Imagine two voters - let's call them Sarah in Dublin Rathdown and Michael in Sligo-Leitrim.
+To see how this works, picture two illustrative constituencies — call them
+**Ardville** and **Baytown** — each electing TDs to the Dáil.
 
-**Sarah's Situation:**
-- Lives in a constituency with **45,863 people per TD**
-- Her constituency has **3 TDs assigned**
-- Based on population, it **deserves 4.53 TDs**
-- Her voice is one among 45,863
+**Ardville:**
+- A constituency with **about 38,000 people per TD**
+- Each TD has to speak for far more voters than average
 
-**Michael's Situation:**
-- Lives in a constituency with **23,052 people per TD**
-- His constituency has **4 TDs assigned**
-- Based on population, it **deserves 3.04 TDs**
-- His voice is one among 23,052
+**Baytown:**
+- A constituency with **about 25,000 people per TD**
+- Each TD speaks for far fewer voters than average
 
-**What this means:** Michael's vote effectively carries **1.99 times more weight** than Sarah's in determining who gets elected - nearly a **2:1 difference in democratic power**.
+**What this means:** a vote in Baytown effectively carries roughly **1.5 times more weight** than a vote in Ardville when it comes to electing a TD.
 
 ```{important}
 This isn't about urban vs. rural - it's about **mathematical representation**. The principle of "one person, one vote" means each TD should represent roughly the same number of people. When they don't, some votes mathematically count for more than others.
 
-This example uses real data from the 2023 Constituency Review - these are the **most extreme cases** of inequality in Ireland right now.
+The Ardville/Baytown figures above are illustrative, chosen to make the idea clear. For the real picture: the 2023 Electoral Commission review put the **national average at 29,593 people per TD**. The constituency with the *highest* population per TD is **Clare, at about 31,995 — roughly 8% above the average** — so each Clare voter has slightly less representation than the national norm.
 ```
 
 ### Understanding Seat Equivalent Representation
@@ -50,27 +47,26 @@ The calculation is straightforward:
 
 **SER = Constituency Population ÷ National Ratio**
 
-Where the **National Ratio** = Total Population ÷ Total TDs = approximately 30,365 people per TD.
+Where the **National Ratio** = Total Population ÷ Total TDs = 5,149,139 ÷ 174 ≈ **29,593 people per TD** (Census 2022 population, 174-seat Dáil).
 
-**Real Examples:**
-
-**Dublin Rathdown:**
-- Population: 137,588
-- SER = 137,588 ÷ 30,365 = **4.53 seats deserved**
-- Actually assigned: **3 seats**
-- **Shortage: 1.53 seats** - this is the largest deficit in Ireland
-
-**Sligo-Leitrim:**
-- Population: 92,206  
-- SER = 92,206 ÷ 30,365 = **3.04 seats deserved**
+**A real example — Clare:**
+- Population: about 127,980
+- SER = 127,980 ÷ 29,593 = **4.32 seats** "deserved" on strict population
 - Actually assigned: **4 seats**
-- **Surplus: 0.96 seats** - this is the largest surplus in Ireland
+- **Shortfall: about 0.32 of a seat** - the largest such gap after the 2023 review
 
-When you can see the **actual seat shortage or surplus**, the inequality becomes tangible rather than abstract.
+**A case the Commission corrected — Dublin Rathdown:**
+Before the 2023 review, Dublin Rathdown had one of the *highest* populations per TD in the country with only 3 seats. The Commission's response was to **give it a fourth seat** for the 2024 election, pulling it back toward the national average. That is exactly the kind of rebalancing a review is meant to do.
+
+When you can see the **actual seat shortfall or surplus**, the inequality becomes tangible rather than abstract.
 
 ### Your Representation Right Now
 
-Use this interactive calculator to discover your constituency's seat shortage or surplus, and see how it compares to the national standard using the COTHROM framework:
+Use this interactive calculator to explore a constituency's seat shortfall or surplus, and see how it compares to the national standard using the COTHROM framework:
+
+```{warning}
+**Illustrative data.** The figures in the calculator below are **simplified teaching data**, not official figures. The national constants (174 TDs, average 29,593 people per TD) follow the Electoral Commission's 2023 review, but the per-constituency populations are approximate and the list is not exhaustive. Always check the official [Electoral Commission](https://www.electoralcommission.ie/) and [CSO](https://www.cso.ie/) sources before relying on any number.
+```
 
 ```{raw} html
 <div style="margin: 20px 0;">
@@ -534,37 +530,31 @@ Use this interactive calculator to discover your constituency's seat shortage or
 </div>
 ```
 
-*Data based on the 2023 Constituency Review recommendations and Census 2022 population figures.*
+*National constants based on the Electoral Commission's 2023 review and CSO Census 2022; per-constituency figures are illustrative.*
 
 ---
 
-## The 2023 Wake-Up Call
+## The 2023 Review
 
-In 2023, the Constituency Review Commission made a set of recommendations that broke with precedent. For the first time in decades:
+In August 2023, **An Coimisiún Toghcháin (the Electoral Commission)** published its first constituency review and made recommendations that reshaped the political map:
 
-**15 out of 40 constituencies** fell outside the traditional ±5% variance range.
+- The Dáil grows from **160 TDs to 174 TDs** — 14 more seats.
+- The number of constituencies rises from **39 to 43**.
+- The average drops from **32,182 to 29,593 people per TD**.
 
-Let me put that in perspective:
+Two features of the review are worth understanding:
 
-```{warning}
-**Historical Context**
-- **1980**: 5 constituencies outside ±5%
-- **1990**: 11 constituencies outside ±5%
-- **2017**: 1 constituency outside ±5%
-- **2023**: **15 constituencies outside ±5%** ⚠️
+```{note}
+**A wider tolerance, and county boundaries restored**
 
-This is the highest number in over 40 years - and represents an **unprecedented crisis in representational equality**.
+Previous reviews aimed to keep every constituency within about **±5%** of the national average people-per-TD. To absorb strong population growth *and* repair broken county lines, the 2023 Commission worked to a wider tolerance, with some constituencies reaching around **±8%**.
+
+At the same time it **reinstated county boundaries**, removing seven of the ten existing breaches of county lines — for example by separating the long-combined Laois–Offaly constituency back into single-county constituencies.
 ```
 
 ### What Does This Mean for You?
 
-If you live in one of these 15 constituencies, your representation could differ from the national average by **more than 5%**.
-
-In the most extreme cases:
-- **Dublin Rathdown**: +51.1% variance (1.53 seats short)
-- **Sligo-Leitrim**: -24.1% variance (0.96 seats surplus)
-
-**The gap between them:** A voter in Sligo-Leitrim has **nearly twice the democratic influence** of a voter in Dublin Rathdown.
+Even after the review, representation is not perfectly equal. The constituency with the highest population per TD (**Clare**, ~31,995) sits about **8% above** the one closest to balance. So a vote in a low-population-per-TD constituency still carries somewhat more weight than a vote where each TD represents many more people — the gap is just narrower than the headline numbers some commentators quoted.
 
 ### Two Ways to Measure the Same Problem
 
@@ -582,10 +572,10 @@ Variance = (SER - Assigned Seats) / SER × 100%
 
 **Why two formulas?** The traditional formula has a mathematical quirk: constituencies that are +5% over and -5% under the ideal don't actually experience the same degree of voter misrepresentation. The alternative formula fixes this asymmetry, making it more transparent and voter-centered.
 
-**Example - Dublin Rathdown:**
-- Traditional variance: **+51.0%**
-- Alternative variance: **+33.8%**
-- Both measure the same inequality - the choice of denominator just changes the number
+**Example - Clare** (SER ≈ 4.32, assigned 4 seats):
+- Traditional variance: (4.32 − 4) / 4 = **+8.1%**
+- Alternative variance: (4.32 − 4) / 4.32 = **+7.5%**
+- Both measure the same gap - the choice of denominator just changes the number
 
 The calculator above shows **both** methods side-by-side so you can understand how the choice of measurement affects the numbers (but not the underlying reality).
 
@@ -601,9 +591,9 @@ But then someone suggests: "Actually, some of us should pay €13 and others sho
 
 You'd probably ask: **Why should where we sit change what we pay?**
 
-That's essentially what's happening with constituency boundaries. The principle says **equal representation**, but the practice delivers **unequal weight to votes** based on which constituency you happen to live in.
+That's essentially what's happening with constituency boundaries. The principle says **equal representation**, but the practice delivers **slightly unequal weight to votes** based on which constituency you happen to live in.
 
-**The real numbers:** In our current system, someone in Sligo-Leitrim effectively pays €13 while someone in Dublin Rathdown pays €27 for the same representation.
+**In practice:** the difference is real but bounded — after the 2023 review the most and least favourably represented constituencies differ by roughly the gap between paying €19 and €21 on that €20 bill, not €13 and €27. The job of a boundary review is to keep that gap as small as the rules allow.
 
 ```{note}
 To be clear: the Electoral Commission isn't being malicious or incompetent. They're facing an incredibly difficult puzzle with competing constraints:
@@ -627,13 +617,13 @@ The traditional approach to drawing constituencies is **manual and time-consumin
 - After months of work, they propose **one option**
 - That's what goes to the Dáil for a vote
 
-**The limitation:** With 3,440 Electoral Divisions to arrange into ~40 constituencies, the number of possible combinations is **astronomically large**.
+**The limitation:** With 3,440 Electoral Divisions to arrange into 43 constituencies, the number of possible combinations is **astronomically large**.
 
 The Commission, working manually, can only explore a tiny fraction of possibilities. They might find a good solution - but how do they know if there's a better one?
 
 ### The COTHROM Approach
 
-COTHROM (which is Irish for "fairness" or "balance") is a framework developed by the Theoretical Physics Student Association that proposes using **algorithmic redistricting** to:
+COTHROM (which is Irish for "fairness" or "balance") is a framework developed by **The Problem Solving Association (TPSA)** that proposes using **algorithmic redistricting** to:
 
 1. **Systematically explore thousands** of possible boundary configurations
 2. **Check each one** against all legal requirements automatically
@@ -688,7 +678,7 @@ When the next Constituency Review happens (likely around 2028-2029, following th
 
 Right now, you can use the calculator above to:
 1. **See your own constituency's situation** - are you in surplus or deficit?
-2. **Check the extremes** - look at Dublin Rathdown and Sligo-Leitrim
+2. **Check the extremes** - compare a high-population-per-TD constituency like Clare with one closer to the average
 3. **Understand both variance methods** - see how the choice of formula affects the numbers
 4. **Calculate vote weight** - discover your actual democratic influence compared to others
 
@@ -709,9 +699,9 @@ This resource aims to give you those capabilities for redistricting.
 The calculator you used above is based on the COTHROM framework, which emphasizes:
 
 **1. Voter-Centered Metrics**
-- Seat Equivalent Representation makes inequality concrete: "1.53 seats short"
-- Vote weight shows personal impact: "your vote counts as 0.662 votes"
-- Rankings show where you stand: "worst inequality in Ireland"
+- Seat Equivalent Representation makes inequality concrete: "about a third of a seat short"
+- Vote weight shows personal impact: e.g. in Clare "your vote counts as roughly 0.93 votes"
+- Rankings show where you stand: "highest population per TD in the country"
 
 **2. Transparent Measurement**
 - Shows both traditional and alternative variance formulas
@@ -753,11 +743,11 @@ Then we'll explore what changes might be coming to your area and why.
 ```{important}
 **Remember These Points:**
 
-1. **Your vote's weight varies by nearly 2:1** between the most extreme constituencies (Dublin Rathdown vs. Sligo-Leitrim)
+1. **Your vote's weight varies between constituencies** - after the 2023 review the most extreme case (Clare) is about 8% from the national average, so votes are close to equal but not identical
 
-2. **Seat Equivalent Representation (SER) makes inequality tangible** - "1.53 seats short" is more concrete than "51% variance"
+2. **Seat Equivalent Representation (SER) makes inequality tangible** - "about a third of a seat short" is more concrete than "8% variance"
 
-3. **The 2023 review broke precedent** with 15 constituencies outside the traditional ±5% variance range - the highest in 40+ years
+3. **The 2023 review reshaped the map** - the Dáil grew from 160 to 174 TDs across 43 constituencies, using a wider (~±8%) tolerance while reinstating county boundaries
 
 4. **Two variance formulas exist** - the traditional Commission method and the symmetric COTHROM alternative
 
@@ -771,6 +761,24 @@ Then we'll explore what changes might be coming to your area and why.
 ```
 
 ---
+
+## Check Your Understanding
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">After the 2023 review, roughly how many people does each TD represent on average?</p>
+  <button class="cothrom-opt" data-explain="That was closer to the figure for the most under-represented constituencies, not the average.">About 45,000</button>
+  <button class="cothrom-opt" data-explain="Exactly — 5,149,139 people ÷ 174 TDs ≈ 29,593.">About 29,600</button>
+  <button class="cothrom-opt" data-explain="That's far below the real average; no constituency is that small per TD.">About 20,000</button>
+</div>
+
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">What does Seat Equivalent Representation (SER) tell you?</p>
+  <button class="cothrom-opt" data-explain="The number of people in a constituency is its population, not its SER.">A constituency's total population</button>
+  <button class="cothrom-opt" data-explain="Turnout isn't part of the SER calculation.">How many people turned out to vote</button>
+  <button class="cothrom-opt" data-explain="Right — SER = population ÷ national average, i.e. the seats a constituency 'deserves' on population alone.">How many seats a constituency deserves on population alone</button>
+</div>
+```
 
 ## Further Reflection
 
@@ -787,6 +795,15 @@ Before moving on, consider:
 The journey from "my vote matters" to "I understand how algorithmic redistricting works" starts with understanding that the current system, while well-intentioned, has significant limitations.
 
 Let's explore those limitations - and the opportunities for improvement - together.
+
+---
+
+## Sources
+
+- [Electoral Commission — Constituency Review Report 2023](https://www.electoralcommission.ie/constituency-reviews/) (174 TDs across 43 constituencies; average 29,593 per TD)
+- [Electoral Commission press release, August 2023](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/)
+- [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/) (population 5,149,139)
+- [The Irish Times — on the ±5%/±8% variance change (1 Sept 2023)](https://www.irishtimes.com/politics/2023/09/01/electoral-commission-may-face-legal-challenge-over-constituency-review/)
 
 ---
 
