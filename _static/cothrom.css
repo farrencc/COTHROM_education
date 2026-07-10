@@ -13,6 +13,7 @@
   --cothrom-accent: #7b2cbf;        /* "assigned" / secondary emphasis */
   --cothrom-accent-dark: #3c096c;   /* gradient partner */
   --cothrom-red: #e74c3c;
+  --cothrom-amber: #f59e0b;         /* medium-risk / caution accent */
 
   /* --- Text / neutral --- */
   --cothrom-ink: #2c3e50;           /* headings, primary text */

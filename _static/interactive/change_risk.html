@@ -5,21 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boundary-Change Risk Estimator</title>
 <style>
-  :root { --green:#27ae60; --amber:#f59e0b; --red:#e74c3c; --ink:#2c3e50; --muted:#7f8c8d; --border:#e5e7eb; }
+  :root { --green:var(--cothrom-green); --amber:var(--cothrom-amber); --red:var(--cothrom-red); --ink:var(--cothrom-ink); --muted:var(--cothrom-muted); --border:var(--cothrom-border); }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background:#fff; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background:var(--cothrom-panel); }
   .wrap { max-width: 720px; margin: 0 auto; padding: 18px; }
   h2 { text-align:center; margin: 0 0 4px; font-size: 1.25rem; }
   .sub { text-align:center; color: var(--muted); font-size: 0.8rem; margin-bottom: 16px; font-style: italic; }
   fieldset { border:1px solid var(--border); border-radius:10px; margin:0 0 12px; padding:10px 14px; }
   legend { font-weight:600; font-size:0.92rem; padding:0 6px; }
   label.opt { display:inline-flex; align-items:center; gap:6px; margin-right:16px; font-size:0.9rem; cursor:pointer; }
-  .result { border-radius:10px; padding:16px; color:#fff; text-align:center; margin-top:10px; transition: background 0.2s ease; }
+  .result { border-radius:10px; padding:16px; color:var(--cothrom-panel); text-align:center; margin-top:10px; transition: background 0.2s ease; }
   .result .score { font-size:2.2rem; font-weight:800; }
   .result .level { font-size:1rem; font-weight:600; letter-spacing:0.03em; }
-  .interp { background:#f8f9fa; border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 14px; margin-top:12px; font-size:0.9rem; line-height:1.55; }
+  .interp { background:var(--cothrom-surface); border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 14px; margin-top:12px; font-size:0.9rem; line-height:1.55; }
   .disclaimer { font-size:0.72rem; color:var(--muted); margin-top:12px; text-align:center; }
 </style>
+  <link rel="stylesheet" href="../cothrom.css">
 </head>
 <body>
 <div class="wrap">

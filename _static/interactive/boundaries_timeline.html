@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ireland's Changing Dáil — Timeline</title>
 <style>
-  :root { --green:#27ae60; --purple:#7b2cbf; --ink:#2c3e50; --muted:#7f8c8d; --border:#e5e7eb; }
+  :root { --green:var(--cothrom-green); --purple:var(--cothrom-accent); --ink:var(--cothrom-ink); --muted:var(--cothrom-muted); --border:var(--cothrom-border); }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background:#fff; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background:var(--cothrom-panel); }
   .wrap { max-width: 720px; margin: 0 auto; padding: 18px; }
   h2 { text-align:center; margin: 0 0 4px; font-size: 1.25rem; }
   .sub { text-align:center; color: var(--muted); font-size: 0.8rem; margin-bottom: 18px; font-style: italic; }
   .stat-row { display:flex; gap:12px; margin: 10px 0 18px; }
   .stat { flex:1; border:2px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
-  .stat.tds { border-color: var(--purple); background:#faf5ff; }
-  .stat.cons { border-color: var(--green); background:#f0fdf4; }
+  .stat.tds { border-color: var(--purple); background:var(--cothrom-tint-accent); }
+  .stat.cons { border-color: var(--green); background:var(--cothrom-tint-green); }
   .stat .num { font-size: 2rem; font-weight: 800; }
   .stat.tds .num { color: var(--purple); }
   .stat.cons .num { color: var(--green); }
@@ -22,9 +22,10 @@
   .year { text-align:center; font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
   input[type=range] { width: 100%; accent-color: var(--green); }
   .ticks { display:flex; justify-content:space-between; font-size:0.72rem; color:var(--muted); margin-top:4px; }
-  .note { background:#f8f9fa; border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 14px; margin-top:16px; font-size:0.9rem; line-height:1.5; }
+  .note { background:var(--cothrom-surface); border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 14px; margin-top:16px; font-size:0.9rem; line-height:1.5; }
   .disclaimer { font-size: 0.72rem; color: var(--muted); margin-top: 12px; text-align:center; }
 </style>
+  <link rel="stylesheet" href="../cothrom.css">
 </head>
 <body>
 <div class="wrap">

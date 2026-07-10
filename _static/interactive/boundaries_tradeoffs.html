@@ -14,8 +14,8 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #ffffff;
-            color: #333;
+            background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
             line-height: 1.6;
         }
 
@@ -36,23 +36,23 @@
             font-size: 32px;
             font-weight: 600;
             margin: 0 0 20px 0;
-            color: #333;
+            color: var(--cothrom-ink);
         }
 
         h2 {
             font-size: 24px;
             font-weight: 600;
             margin: 40px 0 20px 0;
-            color: #333;
+            color: var(--cothrom-ink);
             padding-bottom: 10px;
-            border-bottom: 2px solid #f5f5f5;
+            border-bottom: 2px solid var(--cothrom-surface);
         }
 
         h3 {
             font-size: 18px;
             font-weight: 600;
             margin: 25px 0 15px 0;
-            color: #333;
+            color: var(--cothrom-ink);
         }
 
         h4 {
@@ -72,13 +72,13 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #666;
+            color: var(--cothrom-muted);
             margin-bottom: 8px;
         }
 
         /* Intro box */
         .intro-box {
-            background: #f5f5f5;
+            background: var(--cothrom-surface);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 30px;
@@ -110,39 +110,39 @@
         /* Example cards */
         .example-card {
             flex: 1;
-            background: #ffffff;
+            background: var(--cothrom-panel);
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .example-card.good {
-            border-left: 3px solid #27ae60;
+            border-left: 3px solid var(--cothrom-green);
         }
 
         .example-card.good h4 {
-            color: #27ae60;
+            color: var(--cothrom-green);
         }
 
         .example-card.bad {
-            border-left: 3px solid #3c096c;
+            border-left: 3px solid var(--cothrom-accent-dark);
         }
 
         .example-card.bad h4 {
-            color: #3c096c;
+            color: var(--cothrom-accent-dark);
         }
 
         .example-card.moderate {
-            border-left: 3px solid #7b2cbf;
+            border-left: 3px solid var(--cothrom-accent);
         }
 
         .example-card.moderate h4 {
-            color: #7b2cbf;
+            color: var(--cothrom-accent);
         }
 
         /* Interactive sections */
         .interactive-section {
-            background: #f5f5f5;
+            background: var(--cothrom-surface);
             padding: 20px;
             border-radius: 12px;
             margin: 20px 0;
@@ -150,15 +150,15 @@
 
         /* Info boxes (important callouts) */
         .info-box {
-            background: linear-gradient(135deg, #27ae6010 0%, #32e87510 100%);
-            border-left: 3px solid #27ae60;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-green) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-green-bright) 6%, transparent) 100%);
+            border-left: 3px solid var(--cothrom-green);
             border-radius: 0 8px 8px 0;
             padding: 15px;
             margin: 20px 0;
         }
 
         .info-box h4 {
-            color: #27ae60;
+            color: var(--cothrom-green);
             margin-bottom: 8px;
         }
 
@@ -168,15 +168,15 @@
 
         /* Warning boxes */
         .warning-box {
-            background: linear-gradient(135deg, #7b2cbf10 0%, #3c096c10 100%);
-            border-left: 3px solid #7b2cbf;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-accent) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-accent-dark) 6%, transparent) 100%);
+            border-left: 3px solid var(--cothrom-accent);
             border-radius: 0 8px 8px 0;
             padding: 15px;
             margin: 20px 0;
         }
 
         .warning-box h4 {
-            color: #7b2cbf;
+            color: var(--cothrom-accent);
             margin-bottom: 8px;
         }
 
@@ -186,8 +186,8 @@
 
         /* Buttons */
         .btn {
-            background: #32e875;
-            color: #ffffff;
+            background: var(--cothrom-green-bright);
+            color: var(--cothrom-panel);
             border: none;
             border-radius: 8px;
             padding: 12px 20px;
@@ -198,20 +198,20 @@
         }
 
         .btn:hover {
-            background: #27ae60;
+            background: var(--cothrom-green);
         }
 
         .btn:disabled {
-            background: #ccc;
+            background: var(--cothrom-border);
             cursor: not-allowed;
         }
 
         .btn-secondary {
-            background: #7b2cbf;
+            background: var(--cothrom-accent);
         }
 
         .btn-secondary:hover {
-            background: #3c096c;
+            background: var(--cothrom-accent-dark);
         }
 
         /* Range sliders */
@@ -220,7 +220,7 @@
             margin: 10px 0;
             -webkit-appearance: none;
             height: 8px;
-            background: #ddd;
+            background: var(--cothrom-border);
             border-radius: 4px;
             outline: none;
         }
@@ -229,7 +229,7 @@
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            background: #32e875;
+            background: var(--cothrom-green-bright);
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -238,7 +238,7 @@
         input[type="range"]::-moz-range-thumb {
             width: 20px;
             height: 20px;
-            background: #32e875;
+            background: var(--cothrom-green-bright);
             border-radius: 50%;
             cursor: pointer;
             border: none;
@@ -247,7 +247,7 @@
 
         /* Visual bars */
         .bar-container {
-            background: #ddd;
+            background: var(--cothrom-border);
             border-radius: 4px;
             height: 8px;
             overflow: hidden;
@@ -261,15 +261,15 @@
         }
 
         .bar-fill.good {
-            background: #32e875;
+            background: var(--cothrom-green-bright);
         }
 
         .bar-fill.moderate {
-            background: #7b2cbf;
+            background: var(--cothrom-accent);
         }
 
         .bar-fill.bad {
-            background: #3c096c;
+            background: var(--cothrom-accent-dark);
         }
 
         /* Status indicators */
@@ -284,18 +284,18 @@
         }
 
         .status.good {
-            background: #27ae6020;
-            color: #27ae60;
+            background: color-mix(in srgb, var(--cothrom-green) 13%, transparent);
+            color: var(--cothrom-green);
         }
 
         .status.moderate {
-            background: #7b2cbf20;
-            color: #7b2cbf;
+            background: color-mix(in srgb, var(--cothrom-accent) 13%, transparent);
+            color: var(--cothrom-accent);
         }
 
         .status.bad {
-            background: #3c096c20;
-            color: #3c096c;
+            background: color-mix(in srgb, var(--cothrom-accent-dark) 13%, transparent);
+            color: var(--cothrom-accent-dark);
         }
 
         /* Data display */
@@ -307,7 +307,7 @@
         }
 
         .data-item {
-            background: #f5f5f5;
+            background: var(--cothrom-surface);
             padding: 15px;
             border-radius: 8px;
             text-align: center;
@@ -316,7 +316,7 @@
         .data-value {
             font-size: 24px;
             font-weight: 700;
-            color: #27ae60;
+            color: var(--cothrom-green);
             margin: 0;
         }
 
@@ -324,7 +324,7 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #666;
+            color: var(--cothrom-muted);
             margin-top: 4px;
         }
 
@@ -333,7 +333,7 @@
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--cothrom-border);
         }
 
         .metric-row:last-child {
@@ -341,7 +341,7 @@
         }
 
         .metric-label {
-            color: #666;
+            color: var(--cothrom-muted);
             font-size: 13px;
         }
 
@@ -352,7 +352,7 @@
 
         /* Visualization containers */
         .viz-container {
-            background: #ffffff;
+            background: var(--cothrom-panel);
             border-radius: 8px;
             padding: 20px;
             margin: 15px 0;
@@ -373,15 +373,15 @@
         }
 
         .text-good {
-            color: #27ae60;
+            color: var(--cothrom-green);
         }
 
         .text-bad {
-            color: #3c096c;
+            color: var(--cothrom-accent-dark);
         }
 
         .text-moderate {
-            color: #7b2cbf;
+            color: var(--cothrom-accent);
         }
 
         .mt-20 {
@@ -427,11 +427,11 @@
 
         /* Footer */
         footer {
-            border-top: 1px solid #ddd;
+            border-top: 1px solid var(--cothrom-border);
             margin-top: 60px;
             padding-top: 20px;
             font-size: 12px;
-            color: #666;
+            color: var(--cothrom-muted);
         }
 
         footer p {
@@ -439,6 +439,7 @@
             font-size: 12px;
         }
     </style>
+  <link rel="stylesheet" href="../cothrom.css">
 </head>
 <body>
     <div class="embedded">
@@ -451,7 +452,7 @@
                 <!-- Priority sliders -->
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <label style="font-size: 13px; font-weight: 600; color: #27ae60;">Population Balance</label>
+                        <label style="font-size: 13px; font-weight: 600; color: var(--cothrom-green);">Population Balance</label>
                         <span id="balance-value" style="font-size: 13px; font-weight: 600;">50%</span>
                     </div>
                     <input type="range" id="balance-slider" min="0" max="100" value="50">
@@ -459,7 +460,7 @@
 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <label style="font-size: 13px; font-weight: 600; color: #7b2cbf;">County Integrity</label>
+                        <label style="font-size: 13px; font-weight: 600; color: var(--cothrom-accent);">County Integrity</label>
                         <span id="county-value" style="font-size: 13px; font-weight: 600;">50%</span>
                     </div>
                     <input type="range" id="county-slider" min="0" max="100" value="50">
@@ -467,7 +468,7 @@
 
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <label style="font-size: 13px; font-weight: 600; color: #3c096c;">Compactness</label>
+                        <label style="font-size: 13px; font-weight: 600; color: var(--cothrom-accent-dark);">Compactness</label>
                         <span id="compact-value" style="font-size: 13px; font-weight: 600;">50%</span>
                     </div>
                     <input type="range" id="compact-slider" min="0" max="100" value="50">
@@ -475,7 +476,7 @@
 
                 <!-- Result display -->
                 <div id="tradeoff-result" style="
-                    background: #f5f5f5;
+                    background: var(--cothrom-surface);
                     padding: 20px;
                     border-radius: 8px;
                     margin-top: 20px;
@@ -493,7 +494,7 @@
                         <span class="metric-label">Shape Quality</span>
                         <span class="metric-value" id="result-shape">Moderate</span>
                     </div>
-                    <p id="result-description" style="font-size: 12px; margin-top: 15px; color: #666;">
+                    <p id="result-description" style="font-size: 12px; margin-top: 15px; color: var(--cothrom-muted);">
                         A balanced approach that accepts some compromises in each area.
                     </p>
                 </div>
