@@ -1,0 +1,2062 @@
+Algorithmic Redistricting of Irish Election
+Boundaries: A Framework for Rethinking Dáil
+Constituencies
+Theoretical Physics Student Association
+
+Algorithmic Redistricting of Irish Election Boundaries: A
+Framework for Rethinking Dáil Constituencies
+Theoretical Physics Student Association
+Contents
+1
+Introduction
+5
+1.1
+Context: Historical Context . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7
+2
+Challenges (Michael)
+8
+2.1
+Incorporating Geographical Information
+. . . . . . . . . . . . . . . . . . . . . . .
+8
+2.2
+Proportional Representation and “Variance” . . . . . . . . . . . . . . . . . . . . .
+9
+2.3
+Contiguity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+10
+2.4
+Compactness
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+2.5
+County Boundaries and Geographic Considerations . . . . . . . . . . . . . . . . .
+11
+2.6
+Temporal Boundaries . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+13
+2.7
+Weighting Rule-Break by Population . . . . . . . . . . . . . . . . . . . . . . . . .
+13
+2.8
+Multi-Objective Optimisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+14
+3
+Challenges (Matthew)
+16
+3.1
+The Maths Problem
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+17
+3.2
+Outlining The abstraction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+18
+3.3
+Considerations/Constraints: The Rule Set . . . . . . . . . . . . . . . . . . . . . .
+22
+3.3.1
+Variance (representation)
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+24
+3.3.2
+Continuity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+25
+3.3.3
+Number of Seats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+26
+3.4
+Searching The Solution Space . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+27
+3.5
+Key Issues . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+27
+3.6
+A Good Map/Boundary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+27
+3.7
+Proportional Representation at the Ballot vs. Accurate Representation during term 27
+4
+Methodology
+29
+4.1
+Models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+29
+4.1.1
+Potts Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+29
+4.1.2
+Genetic Algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+33
+4.2
+Techniques
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+35
+4.2.1
+Simulated Annealing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+35
+4.2.2
+Coupling Constants
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+35
+5
+Results
+36
+5.1
+Small-Scale Problem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+36
+5.1.1
+Potts Results - Ruaidhrí . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+36
+5.1.2
+GA results - Cas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+37
+5.2
+Further Work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+37
+1
+
+5.2.1
+Extending to Full-Scale Problem
+. . . . . . . . . . . . . . . . . . . . . . .
+37
+5.2.2
+Exploring the Parameter Space . . . . . . . . . . . . . . . . . . . . . . . .
+37
+5.2.3
+Other Potential Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . . .
+37
+6
+Conclusion
+38
+6.1
+Algorithmic Redistricting Framework . . . . . . . . . . . . . . . . . . . . . . . . .
+38
+6.2
+Implementing: MCMC for Redistricting
+. . . . . . . . . . . . . . . . . . . . . . .
+39
+A Data
+42
+A.1 Variance Data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+42
+A.2 Boundary Data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+42
+B Considerations
+43
+C Alternative Definition for Variance
+43
+C.1 Heuristics for Assigning Constituencies from Past Reports . . . . . . . . . . . . .
+45
+C.2 Variance Trade-off
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+46
+D Markov Chain Monte Carlo Methods
+46
+D.1 Metropolis-Hastings Algorithm
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+47
+D.1.1
+Metropolis Algorithm
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+47
+D.1.2
+Gibbs Sampler
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+48
+2
+
+List of plots
+1
+The numbers originate from the Electoral District ID in the CSO dataset (A
+“pandas GeoDataFrame” file). The lines connecting EDs to one another indicate
+if they are land connected. There are exceptions to this land-connected definition
+of EDs being neighbours or not; these will be explored in the section on contiguity.
+This may be viewed as a mathematical “graph”, where the circles signifying EDs
+are “nodes”, and the lines connected EDs are “edges”. . . . . . . . . . . . . . . . .
+8
+2
+Functions suitable for optimising over SER all bear common points of extremal
+values at integer values of SER. The functions are constructed to yield the least
+favourable result at midway points between the integer SER values, so that the
+search process tends away from non-representative configurations. . . . . . . . . .
+10
+3
+The four problematic non-contiguous boundary electoral divisions.
+. . . . . . . .
+12
+4
+Caption . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+13
+5
+Caption . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+15
+6
+This diagram provides a concise visual representation of the redistricting problem
+as explored in this paper. It illustrates the current ambiguity involved in trans-
+forming a geographical or administrative map into valid constituencies, while
+adhering to a predefined "Redistricting Rule Set."
+. . . . . . . . . . . . . . . . .
+16
+7
+This diagram breaks down the process of redistricting into its core components.
+That of the Map, which represents the geographic or administrative region subject
+to redistricting. The rule set is how the aspirations of a system are codified and
+the result of this yields a collection of ’Boundaries’, which are a collection of valid
+constituencies that meet criteria outlined in the rule set, allowing for multiple
+boundary configurations within a given rule set framework.
+. . . . . . . . . . . .
+17
+8
+Evolution of Dáil Constituency Boundaries in Ireland (2007-2017): The three
+maps depict the recommended and accepted constituency boundaries as pro-
+posed by the Boundary Commissions over the years. The first map represents
+the boundaries in 2007, followed by the changes made in 2013, and the final map
+illustrates the updated boundaries in 2017. Arrows connect each map, showcasing
+the evolution of boundaries overtime. . . . . . . . . . . . . . . . . . . . . . . . . .
+18
+9
+We see a single transition from a Map to a Boundary. In this case the recom-
+mended and accepted boundaries for 2017. . . . . . . . . . . . . . . . . . . . . . .
+19
+10
+This figure illustrates We interpret point A as being the minimum population
+that is required to be transferred and B is
+. . . . . . . . . . . . . . . . . . . . .
+20
+11
+Box plot of the variance in representation across Constituencies from 1980-2023.
+The top and bottom of the error bars indicate Constituencies with the most
+extreme departures from equal representation for that year. The blue boxes are
+an indication of the spread of representation disparity (variance in the usual
+statistical definition). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+24
+12
+Bar plot showing the count of constituencies recommended outside the ±5% vari-
+ance for each report year. The heights of the bars represent the number of con-
+stituencies with recommendations exceeding this variance threshold.
+. . . . . . .
+25
+13
+Contribution of a single constituency to HP against constituency population, for
+{ms} = {3, 4, 5}. Black dashed line represents a 5% variance.
+. . . . . . . . . . .
+30
+14
+Exponential distribution (Equation 14) for β = 1, 5, 25. . . . . . . . . . . . . . . .
+32
+15
+Examples of a temperature-dependant algorithm maximising a one-dimensional
+function for fixed high and low temperatures (similar to uniform random sampling
+and hill climbing, respectively) and decreasing temperature (simulated annealing). 35
+3
+
+Tables
+1
+Number of Historical Constituency Recommendations Outside the ±5% Vari-
+ance Range: This table shows the number of constituency recommendations from
+previous Electoral Commission reports (1980 - 2023) that fell outside the ±5%
+variation from the National Average. . . . . . . . . . . . . . . . . . . . . . . . . .
+26
+4
+
+1
+Introduction
+Proportional Representation and the need for Electoral Redistricting
+An electoral district, or constituency, is a geographical subdivision of a state created to provide
+its population with representation in the larger state’s legislative body[(1)]. Electoral redistrict-
+ing is the process of redrawing the electoral boundaries that make up constituencies. At its
+most basic level, the principle motivating the necessity of redistricting is that of proportional
+representation. Proportional representation (PR) is an electoral system in which the under-
+lying distribution of electorate support for each political party is reflected proportionately in
+the elected representative body. PR is a core feature of the Irish democratic landscape. To
+accommodate PR, constituencies geographically divide the state such that the representatives
+elected to each constituency are individually responsible for the same number of electorate as
+any other representative in the state (although this will technically fall short on the principle
+of PR for subtle reasons explained later). Between election cycles, as the population density
+across the state alters, so too must the geographical boundaries of the constituencies. Election
+redistricting is a necessary consequence of PR.
+Electoral Redistricting in Ireland
+This paper is written within the Irish context, so we must clearly define the following basic terms
+for future reference:
+• The national parliament of Ireland is referred to as Dáil Éireann, or simply the Dáil.
+• An elected representative sitting in the Dáil is referred to as a Teachta Dála (TD).
+• Ireland is divided up into 3,440 regions known as electoral divisions (EDs).
+• These EDs are currently split between 39 constituencies. The current configuration of con-
+stituencies in Ireland is shown in Figure 1.1. The constituency boundaries can be changed
+by transferring EDs from one constituency to another. The number of constituencies is
+not fixed and may be altered in a redrawing of boundaries.
+• Ireland is also divided into 26 counties, which are administrative regions governed by
+bodies called county councils.
+The location of constituency boundaries is independent
+of the position of county boundaries, but it is considered desirable for constituencies to
+conform to county boundaries as far as is practicable.
+On 9 February 2023, a new state body called the Electoral Commission was established
+to oversee elections in Ireland. One of the roles of the Electoral Commission is reviewing the
+Dáil Éireann constituencies, and making a report and recommendations in relation to possible
+changes to constituency boundaries. When deciding on any changes to the current constituency
+boundaries, the Electoral Commission is required to observe the following provisions of the
+Constitution [2, 3]:
+• Article 16.2.2°of the Constitution provides that: The number of members shall from time
+to time be fixed by law, but the total number of members of Dáil Éireann shall not be fixed
+at less than one member for each thirty thousand of the population, or at more than one
+member for each twenty thousand of the population.
+• Article 16.2.3°of the Constitution provides that: The ratio between the number of members
+to be elected at any time for each constituency and the population of each constituency,
+5
+
+as ascertained at the last preceding census, shall, so far as it is practicable, be the same
+throughout the country.
+There is significance jointly given to other objectives which are detailed Section 57 of the
+Electoral Reform Act 2022. Stated briefly, these objectives include:
+1. There must be between 171 and 181 (inclusive) elected Dáil representatives.
+2. Each constituency will have 3, 4, or 5 members (seats).
+3. County boundaries should be preserved.
+4. Constituencies must be contiguous (there cannot be isolated regions).
+5. Geographic considerations to do with physical features and population density should be
+considered.
+6. Continuity of the current arrangement of constituencies should be upheld as much as
+possible.
+There is no mention of the relative importance of the themes of county boundaries, geographic
+consideration and constituency continuity, though it is generally understood that PR trumps
+these themes. When searching for satisfactory configurations, terms (i), (ii), and (iv) cannot
+be broken, whereas the remaining (iii), (v), and (vi) can and will be transgressed in the final
+boundaries to some extent.
+Algorithmic Redistricting in Ireland
+To the author’s knowledge, an algorithmic redistricting aid is not presently employed. Fortu-
+nately, the manner of redistricting in Ireland, that of moving EDs between constituencies, lends
+itself very well to a mathematical representation.
+As a result, the time-intensive process of
+manually generating and evaluating proposed constituencies can be dispensed with by using an
+appropriate algorithm.
+The main objective of this paper is to outline algorithmic techniques that can tackle the
+redistricting mathematically, such that the space of possible solutions can be searched in a
+unbiased and efficient manner (save for bias in the numerical-stochastic sense, though this is
+a rather academic and irrelevant point for our purposes). Later in the text, we briefly touch
+on further-reaching use-cases for such an algorithmic approach, namely in assessing existing
+legal rules in achieving fair representation, and in testing the resilience of the rules against
+gerrymandering.
+Technical Problem Overview
+We will refer to any one composition of Dáil constituencies and their boundaries as a “config-
+uration”. From a mathematical point of view, the number of possible configurations is truly
+enormous. The vast majority of the space of all possible configurations are completely unrea-
+sonable from a legal perspective; a configuration selected at random will likely dramatically
+fail the 171-181 seat restriction, the 3-5 seat range, the county boundary, and the contiguity
+requirements simultaneously. Only a tiny sliver of the space of all possible configurations is
+satisfactory according to the requirements; and even within all valid configurations, there still
+exists a hierarchy from passable to optimal configurations that is impossible to rigorously probe
+by a human expert.
+6
+
+Automating the task roughly splits into two main axes; mathematically quantifying the
+legal rules, and, having then established a means to differentiate good from bad configurations,
+efficiently navigate the possibilities in a manner which systematically finds the better solutions.
+It should be noted that this process is not perfect with respect to either axis.
+In the case
+of codifying the rules, there is the ambiguity of legal interpretation, layered on with further
+technical difficulty in faithfully translating the relative importance of the legal rules to one
+another into a multi-objective mathematical summary that has the desired effect. In the case of
+the search, there is the ambiguity of different configurations admitting the same score under the
+chosen objective function. Both of these issues are addressed to some extent later in the text.
+Very roughly speaking, and at its most basic level, the algorithms execute a search of possible
+configurations as follows: Consider some initial configuration. Quantify how closely the config-
+uration adheres to the rules. Make a change, e.g., take an ED , and make it part of a different
+constituency. Re-evaluate how closely the changed configuration adheres to the rules. Use the
+difference in the performance of the changed, and unchanged configuration to inform the search.
+Continue this process iteratively until the calculated adherance to the rules is satisfactory. If
+the rules have been parsed well into maths, and the search is effective, the final configuration
+will be a set of constituencies that respect the Constitution and Terms of Reference.
+The algorithmic solution must be formulated in a way that is interpretable and open to
+scrutiny. This translates to using a minimal number of tunable parameters, such that the value
+of each parameter can be subject to legal debate. A “black-box” solution, which would include
+Deep Learning approaches that invoke thousands of parameters which admit highly non-linear
+inter-dependencies, is deliberately avoided for this reason.
+1.1
+Context: Historical Context
+- Boundary commissions -> now we have Election commissions
+- MATTHEW WILL WRITE - WILL HIGHLIGHT IN OTHER SECTION HOW THEY
+HAVE DEALT WITH CERTAIN RULES
+We would like to highlight that in most cases (the ones that are well known). Computational
+methods have been deployed to get a better democracy due how electoral boundaries are drawn
+by entities that are not 100% independent.
+This is not the case in Ireland.
+The problem
+being faced here is that of how can we improve and refine the already functional system. We
+believe given the establishment of Ireland’s new independent electoral commission, An Coimisiún
+Toghcháin. That there is now a opportunity for introduce these sort of computational methods.
+We believe that their introduction could help achieve and enhance the following
+• Improve transparency: Auditable trail for decisions
+• Improve turn around times. Speeding up the process of finding valid maps
+• Improve efficiency and provide decision support to our new electoral commission who will
+faced with a significant challenge in the coming years when they will need to review and
+potentially redraw the following electoral boundaries: EU, LEA and Dáil
+MOST RECENT CENSUS Introduction of a new way of defining urban areas. They utilised
+algorithms to assist in this process, but still deferred to human in the loop to solve issues in
+particular cases
+Make the point that this is a president (precedent?) for utilising algorithms to help define
+areas that are valid under a rule set that is feed into the algorithm
+7
+
+Figure 1: The numbers originate from the Electoral District ID in the CSO dataset (A “pan-
+das GeoDataFrame” file). The lines connecting EDs to one another indicate if they are land
+connected. There are exceptions to this land-connected definition of EDs being neighbours or
+not; these will be explored in the section on contiguity. This may be viewed as a mathematical
+“graph”, where the circles signifying EDs are “nodes”, and the lines connected EDs are “edges”.
+2
+Challenges (Michael)
+A function that characterises error is a requisite to a process of optimisation. We will now
+explore the framing of the individual legal objectives as optimisable sub-components of such a
+function.
+2.1
+Incorporating Geographical Information
+Before exploring the framing of the legal objectives as optimisable functions, we must first
+consider how ED geographical information is held within the algorithm. There is no set way to
+represent the information, but certainly all forms must include neighbour information, roughly
+in line with Fig. [1].
+The optimisation process will rely on this representation of the geography to identify which
+EDs are reasonable to add to a given constituency during the search. A geographically informed
+search, wherein EDs do not change their constituency membership to a random constituency,
+8
+
+but to a nearby/neighbouring constituency, is much significantly faster than a random search.
+Other geographical information to do with constituency and community boundaries is overlaid
+on this neighbourhood information; this is explained later.
+2.2
+Proportional Representation and “Variance”
+In line with Article 16.2.3° of the Constitution, let us base our discussion of quantifying voter
+representation on the National Ratio, defined as follows;
+National Ratio = Recorded Census Population
+Number of Dáil seats
+(1)
+For a given hypothetical constituency, we will refer to the population of its electorate as
+the Proposed Population.
+In a previous work submitted to the Electoral Commission as a
+submission for the open consultation on the electoral boundaries, a measure known as Seat
+Equivalent Representation (SER) was introduced. It is defined as follows:
+Seat Equivalent Representation = Proposed Population
+National Ratio
+(2)
+This measure directly captures the number of seats a hypothetical constituency deserves.
+We can see this by analysing the units of the measure. The National Ratio is measured as
+[National Ratio] = [People]
+[Seats]
+(3)
+With this in mind, now consider the units of the Seat Equivalent Representation metric;
+[Seat Equivalent Representation] = [Proposed Population]
+[National Ratio]
+= [People]
+[People]
+[Seats]
+= [Seats] (4)
+The Seat Equivalent Representation tells us how many TDs should be assigned to a proposed
+constituency, given the population of said constituency. The nice thing about this metric is
+unlike population number, it centres representation as measured in seats as the key concept
+being addressed. We can always switch back to the population via the following formula,
+Proposed Population = Seat Equivalent Representation × National Ratio
+(5)
+In reality, constituencies will often have a non-integer SER, meaning that when an integer
+number of TDs are assigned to the constituency, the electorate will often be marginally over-
+or under-represented. The higher the discrepancy between the SER and the assigned number
+of seats, the greater the degree of misrepresentation. The previous Constituency Commission
+reports have defined “Variance from the National Average” based on population to c, which is
+1-to-1 equivalent to the same definition in terms of SER:
+Variance from the
+National Average = Seat Equivalent Representation −Assigned Seats
+Assigned Seats
+(6)
+A positive value of 0.05 indicates a variance of 5% above the National Average Representation,
+while a negative value of −0.05% indicates a variance of −5% below the National Average. In
+a recent submission to the electoral boundary consultation, our team submitted an alternative
+9
+
+2.5
+3.0
+3.5
+4.0
+4.5
+5.0
+5.5
+SER
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+fPR(SER)
+An example of an optimsation function on the Variance. 
+a = 0.2
+a = 0.1
+a = 0.05
+a = 0.005
+Figure 2: Functions suitable for optimising over SER all bear common points of extremal values
+at integer values of SER. The functions are constructed to yield the least favourable result at
+midway points between the integer SER values, so that the search process tends away from
+non-representative configurations.
+definition of variance which is provably a more democratic representation of variance from the
+national average. For more information, see the appendix.
+Optimisation tasks work by iteratively altering some mathematical circumstance so that a
+function acting on said circumstance may take on an extremal value. For our purposes, whatever
+function the SER is considered within, it is crucial that said function’s extremal values occurs
+when the SER values are either 3, 4, or 5, as dictated by the terms of reference. As a illustrative
+example of such a function, consider:
+fPR(SER) = 1 −e
+a
+−(Assigned Seats)×|Variance| ,
+(7)
+Altogether, this optimisation function yields a class of surfaces as in Fig. 2. During the
+optimisation process, departures from integer SER is penalised. Of course, this then shifts a
+great deal of responsibility for adhering to proportional representation onto the definition of
+variance to begin with, as the optimisation function is constructed about that.
+2.3
+Contiguity
+The contiguity of a constituency refers to whether the constituency is whole, or split into different
+regions that are not connected by land. Ignoring these exceptions momentarily for the sake
+of clarity, there are standard computational techniques that can calculate whether a region
+is contiguous or not stemming from graph theory. In the Irish context, contiguity is a hard
+requirement. From an optimisation perspective, there is a design choice; do we constrain our
+search to only configurations with contiguous regions, narrowing and hastening the search, or do
+10
+
+we entertain non-contiguous configurations during the search, in the hopes that by the time the
+search completes, might it happen on a better configuration (In optimisation speak, we refer to
+this as “avoiding local minima”)? If we constrain the search to only contiguous configurations,
+this rules out being able to begin the search with a completely unbiased, randomised starting
+point, since the constituencies would be very scattered at the start. In order to remain efficient
+however, some amount of search narrowing is required. The resolution is to include a term that
+severely punishes breaking contiguity, so that it is heavily disincentivised, but to also restrict
+the EDs eligible to change constituency membership to those at constituency boundaries, and
+to ensure that they must flip membership to that of a nearby constituency, rather than any
+random one. This will have the effect of constituencies morphing, growing, and shrinking during
+the search, rather than peppering the map in a non-contiguous way, while still allowing islands
+to temporarily form if all other objectives deem it favourable to do so.
+There are some exceptions to the land-connected contiguity definition, such as where electoral
+districts which are intrinsically split. These examples are pictured in Fig. [3]. However, when
+the entire ED is absorbed into the nodes as in Fig. [1], the algorithm treats these as being
+land-connected, which is a fine approximation for our purposes.
+2.4
+Compactness
+The word gerrymander comes from the combination of “Gerry”, after Elbridge Gerry, and “Sala-
+mandar”, alluding to the meandering shape of a deliberately manipulated constituency. To avoid
+these highly-unnaturally shaped constituencies, a compactness optimisation is performed. As
+was the case with SER and variance, in order to optimise for it, we first need to measure it, and
+there are a number of ways to perform this. The most intuitive, but also most computationally
+demanding measure of compactness is via a calculation of the polygon enclosing the constituen-
+cies, what is known as the “convex hull”. This is pictured in Fig. [4]. The computationally
+demanding aspect is having to continually reference the geometry after every edition is made.
+Alternatively, we may instead optimise to minimise the number of external boundary ED neigh-
+bours, or maximise the number of internal boundary ED neighbours, both of which will induce
+roughly circular (or at the very least non-serpentine) constituencies.
+2.5
+County Boundaries and Geographic Considerations
+The proof-of-concept algorithms outlined in the paper have not been executed at a scale at which
+the effects of optimising against county boundaries can be observed. However, the general idea
+for constructing such a function is straightforward. If we consider a representation of the EDs
+in the form of Fig. [1], county boundaries are the collection of graph edges connecting EDs
+that are on either side of a county boundary. The most basic measure of boundary breaking
+would be to count the number of times a county boundary edge connects two EDs that are
+members of the same constituency. This count is then minimised during the search, minimising
+the county breaks. This measure may be somewhat at odds with the practice of the Electoral
+Commission, which considers a constituency that perfectly encompasses two counties to not be
+breaking county borders. This discrepancy is addressed in more detail in section 5.1. There are
+also certain cases where a community that is not very geographically localised may be adamantly
+against being split by an electoral boundary. These may be introduced into the algorithm in
+much the same way as the county boundaries; designating graph edges that will count towards a
+penalty in the event that the EDs connected by the edges are members of different constituencies.
+11
+
+Figure 3: The four problematic non-contiguous boundary electoral divisions.
+12
+
+Figure 4: Caption
+2.6
+Temporal Boundaries
+As outlined in the Terms of Reference, the Commission aims to maintain continuity in relation
+to the existing arrangement of constituencies. Arguably, there are two ways to ensure this in
+the algorithm; bias the search by using the existing boundaries as the starting configuration,
+optimise for it by penalising discontinuity, or use both approaches simultaneously. To optimise
+against discontinuity, we must first come up with a measure of the discontinuity. Let us introduce
+a basic function fC for the purpose of illustrating this measure.
+fC(Configuration) = e−acnpeople−bcnED
+(8)
+where npeople is the total number of people no longer in their original constituency, and
+nED being the number of EDs no longer in their original constituency. The constants ac and
+bc would change the relative weighting of each of these two considerations. The function fC
+takes a maximum of 1 when npeople = nED = 0, so it is maximal when no change has happened,
+providing an extremal value to optimise towards. However, this approach is not complete, since
+it not sensitive to the underlying geography; fC might yield the same penalty for a constituency
+with minor changes everywhere, and one with very drastic changes in one region. This geographic
+consideration is mathematically addressed in section 5.1. The following section 2.7 introduces a
+further complication.
+2.7
+Weighting Rule-Break by Population
+Equation (8) introduced an interesting notion of having the breaking of the Term of Refer-
+ence/Constitutional rule in question be contextualised by the number of people affected. In
+addition to continuity, this can also be applied mathematically to optimising SER variance
+(arguably a controversial move), county boundaries, and community boundaries. However, re-
+garding the county, the Commission notes in the most recent Constituency Review Report;
+“The transfer of a small population can add to the perception of lack of effective represen-
+tation. A view was expressed in submissions that if a county boundary was to be breached, the
+breach should involve the transfer of a sufficiently large number of persons to ensure that the
+transferred population carried some weight.”
+This is a difficult sentiment to measure and optimise around. A possible optimisation function
+on the SER lying over the county boundary is given in 5. The range of this figure is from zero to
+13
+
+one, since at one it is equally as favourable for a constituency in the county being encroached on to
+absorb the over-reach. The rapid drop-off at 0 reflects the Commission’s observation that a small
+population transfer can leave the transferred population feeling under-represented. The bump
+in the graph at an SER of 0.4 reflects the notion that transferring a larger number of people
+is preferable so that their vote carries weight. Facilitating the Commission’s sentiment that
+transferred populations should be substantial will introduce another three tunable parameters
+to control the position of the bump, namely the height (quantifying how much worse it is to
+transfer population as a block than to stay within), the SER value (how much of a population
+is acceptable), and the width (tolerance).
+One quite technical point worth noting is that if the acceptable SER value is 0.5, this may
+introduce an issue in converging the search, since a symmetry has been introduced. If I have 2
+constituencies, A and B, both with an SER of 4.5 to begin with, the situations where A = 4, B
+= 5 with B over-reaching is identical to A = 5, B = 4 with A over-reaching, from the perspective
+of the optimisation function. However, if I instead consider a bump SER function placement of
+0.4, and two constituencies C and D with SERs of 4.6, then the the situations with C = 5, D
+= 4.2 with C overreaching, and C = 4.2, D = 5 with D overreaching are individually uniquely
+out of equilibrium because the proportional representation optimisation function deems the 4.2
+to be unacceptable, and this kind of uniqueness is preferable. The same kind of symmetries
+emerge when 3 constituencies X, Y, Z with SERs of 4.33 and a bump function at 1/3, meet at
+an intersection of 3 counties. While this is quite an academic point, this suggests that from an
+optimisation point of view, a bump position away from 1/3 = 0.333 and 1/2 = 0.5 is preferable.
+This of course must be balanced with a legal perspective on the matter, which we do not comment
+on here.
+2.8
+Multi-Objective Optimisation
+In addition to the to the difficulty of properly defining a measure for each individual constraint
+and guideline (particularly county borders, geographic considerations, temporal continuity),
+there are additional problems directly to do with the nature of multi-objective objective opti-
+misation. There is first the legal ambiguity to do with ranking the importance of each of these
+constraints relative to one another, and secondly there is the problem of faithfully translating
+this hierarchy into a numerical algorithm.
+The function descriptions corresponding to each of the themes in the preceding sections are
+added together to give one overall optimisation function that dictates the search.
+However,
+the individual functions are not necessarily given the same weight in the overall optimisation
+function. We refer to the individual weights assigned to the optimisation of each legal theme
+the “coupling constants”. However, the technical obstacle is that there is no a priori way of
+calculating exact values for these to represent a desired hierarchy of constraints.
+To put it
+another way, it is not as though if the coupling constant on the county boundary term is increased
++10% relative to the community boundary term that the search will then reflect this in a linear
+manner with +10% more respect for the legal theme. Determining these constants thus reduces
+to investigating behaviour and results of algorithms for a variety of values for each coupling
+constant.
+14
+
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+SER lying over boundary
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+fPop. Context(SER lying over boundary)
+Contextualising county-boundary break by population.
+Figure 5: Caption
+15
+
+3
+Challenges (Matthew)
+The current problem is solved from a legal point of view. We will now setup the problem in
+such away that enables this to be treated as a math problem. But also such that it is accessible.
+Such that each step in the framework/process is can easily be understood.
+Figure 6: This diagram provides a concise visual representation of the redistricting problem as
+explored in this paper. It illustrates the current ambiguity involved in transforming a geographi-
+cal or administrative map into valid constituencies, while adhering to a predefined "Redistricting
+Rule Set."
+The problem of generating valid boundaries mainly boils down to one key problem. That
+of the combinatorial explosion of possible solutions. Attempting to traverse the space of valid
+solutions without the assistance of computational tools means.... (Do we want to mention they
+stated things they cannot verify such as the current suggestion provides minimal breaches in
+county boundaries). Add citation [the page in their report ]
+There is also the problem of interpretation/treatment of the constraints/rules.
+We would argue that in an idea situation everyone would be able to reason to a similar
+conclusion instead of having to wait for some big "announcement day". As if a special convening
+of a group is required. Then the system isn’t really that accessible is it... if you need the high
+prestes to read the n trails...
+16
+
+3.1
+The Maths Problem
+The first concept we will introduce is the term "Map". This is a collection of building blocks
+that make up the region which we will be redistricting. We will refer to these building blocks as
+districts. These districts, are the smallest components that can be used to build constituencies.
+Constituencies, in turn, are combinations of districts, classified as either valid or invalid based
+on adherence to the redistricting rule set, which defines the criteria for validity.
+The challenge lies in the arrangement of districts to create valid constituencies as dictated
+by the rule set. This task is complicated by the intricate interplay and ripple effects that arise
+when relocating individual districts within the map. In the Irish case our map is the republic
+and the building blocks are Electoral districts (EDs). The goal is to find configurations of the
+EDs such that valid constituencies can be formed. The final key concept is that of "Boundaries,"
+which comprises a collection of constituencies that meet the rule set criteria for a specific map.
+Notably, multiple valid boundaries can exist for a given rule set, considering the variability of
+seat ranges in the Irish context and or degree of acceptance for the value for the variance to
+name but a few. The problem of selecting which set of boundaries to go with is covered in 3.6
+So in short the problem is how does one arrange the districts (EDs) in such away as to
+generate valid constituencies. Then the question is how does one sort through the final collection
+of valid constituencies otherwise know as "Boundaries"? There are many steps within the overall
+process from Map -> New boundary, which we will outline. The methods used within the process
+are covered in 4.
+Figure 7: This diagram breaks down the process of redistricting into its core components. That
+of the Map, which represents the geographic or administrative region subject to redistricting.
+The rule set is how the aspirations of a system are codified and the result of this yields a collection
+of ’Boundaries’, which are a collection of valid constituencies that meet criteria outlined in the
+rule set, allowing for multiple boundary configurations within a given rule set framework.
+17
+
+3.2
+Outlining The abstraction
+Building on the previous section, we will now outline an abstraction that will align the Irish
+problem with the approach we are taking.
+We will start with a systematic deconstruction,
+followed by a methodical reconstruction of the current Irish case.
+We find greater value in
+this deconstruction-reconstruction approach, as it enables us to discern the rationale behind
+each step, fostering a deeper understanding of the process and thus the benefits of what we are
+proposing.
+We will start by looking at what people see from the outside looking in. That is outputs
+of the current redistricting process. If we examine Fig. 8 we can see the result of the current
+redistricting process. This is currently what people see. The boundaries being moved around
+to arrive at a new set of boundaries at each review (boundary review) step. The process that
+drives these outputs is outlined in reports associated with each review. The reports provide the
+recommendations and the approach taken to the rules (they are obligated to follow and those
+they are not). We will discuss this in detail later. But there is still yet to be an auditable trail
+that outlines the process either the steps or the choices that were made. Given the nature of
+the problem trade offs occur and some options are determined to be prefrerable to others (with
+the reasons for not being clear to outsiders).
+(they mention they carried out analysis in 2023. The question might be were is this analysis
+to view as they make claims around how the solution they chose helps provide what I could only
+interpret as things one might classify as guarantees).
+Constituency Commission Reports in 2017 (2, p. 16)
+Figure 8: Evolution of Dáil Constituency Boundaries in Ireland (2007-2017): The three maps
+depict the recommended and accepted constituency boundaries as proposed by the Boundary
+Commissions over the years. The first map represents the boundaries in 2007, followed by the
+changes made in 2013, and the final map illustrates the updated boundaries in 2017. Arrows
+connect each map, showcasing the evolution of boundaries overtime.
+18
+
+If we break down this process to consider a singular transition within Fig. 8. In this case
+the transition from 2013 →2017 and consider the generation of a single boundary (in this case
+2017) Fig. 9. We still have very little information of how we get from the Map to the eventual
+selected boundary. But this process is happening between each iteration. With the main driving
+force causing the shifting of boundaries being the change in population.
+Figure 9: We see a single transition from a Map to a Boundary. In this case the recommended
+and accepted boundaries for 2017.
+There is an issue of continuity ( as technically the map doesn’t start completely from scratch.)
+but this is discussed in another section.
+Note:
+19
+
+Figure 10: This figure illustrates We interpret point A as being the minimum population that
+is required to be transferred and B is
+Diagram of Current Process
+We will now move onto a diagram of the full abstraction. This is what is driving the generation
+of the boundaries in Fig. 8 and 9. We cannot speak to the exact process but we have broken
+and structured the decisions that have to be made.
+Each piece of this diagram represents
+a component in the flow. There is potential to have many different interpretations for each
+component. An example of this is how a particular part of the ruleset might be treated is how
+the electoral commission took a different approaches as stated in Constituency Report in 2023
+(2, p. 19) and clearly seen in the rest of the report. One such way is the number of times they
+went outside the 5% with their recommendations, with over 1/3 ( 15
+43) of their recommendations
+falling outside this range. The highest percentage since the 1995 report. Each component and
+ones approach to them will have a significant impact on the eventual Boundary that is select
+(as it will impact the set of acceptable boundaries that will be considered).
+• Map: We start with the EDs having their data updated. In this case it is population data.
+This will impact the metrics used to determine what constituencies and thus boundaries
+could be formed.
+– If this was part of the review process then the metrics would be calculated for the
+most current configuration. If needed then the process of generating new boundaries
+would commence.
+• The rule set is now applied to the Map and the attached population data.
+– The explicitly written down rules are applied
+– The rules (more like conventions) of thumb (an example being that if two whole
+counties are joined it isn’t considered a breach of county boundaries. At least for
+reports proceeding the 2023 report).
+20
+
+• Boundaries: Sets of valid constituencies under the rule set are generated to found bound-
+aries.
+– A: The process of sorting through the solution space of boundaries. Boundaries are
+either acceptable or not acceptable. This is a part of the process that is dependent
+on how one interprets the ruleset. As one needs a clear and consistent and repro-
+ducible way of sorting through the boundaries. We will highlight this with examples
+later. Ones interpretation (and in the algo case the selection of coupling constants
+will impact the boundaries that are valid). Your interpretation is encoded into the
+boundaries you find acceptable
+– B: The process of sorting through the set of valid boundaries and eventually selecting
+the boundary to be recommended/implemented.
+We see that we go from some map (EDs) to the ruleset. - Each piece of this diagram represents
+a component in the flow. There is potential to have many different interpretations for each
+component
+- The map is updated. New census (population data) is feed in. This then changes the
+metrics used to measure if a constituencies are valid (reference appendix). - This updated map
+is not put through the process of the ruleset being applied to it. Which involves moving around
+components of the Map ("EDs")
+21
+
+3.3
+Considerations/Constraints: The Rule Set
+As highlighted by Moon Duchin in her presentation in (3), understanding the universe of pos-
+sibilities that is structured by the rules is essential to tackling the sort of questions we are
+interested in. So in this section we will be highlighting the rules/constrains that apply to the
+Irish case. We will highlight how they have been interpreted historically and how (if any) has
+their interpretation changed with time.
+One thing that should be highlighted and that will be touched on throughout is realising that
+you are designing a system and how you think a system will behave vs what you expectations are
+always in agreement. Certain rules and choices will achieve certain outcomes and prevent others.
+This is something our framework aims to attempt to assist with. By providing people with the
+ability to understand the consequences of certain rules (in this case the terms of reference and
+constitutional requirements). A prime opportunity\example of this can be seen in the 2023
+Constituency review report (2, p. 30). Where we see the commission highlight that there were
+issues that arouse during the review.
+That being that they were limited to 3,4 and 5 seat
+constituencies. From our point of view this is around changing the "ruleset". To do research on
+the issue of Constituency magnitude. They highlighted the following points
+• The limitations of the current rule set: Some submissions suggest 6-seat constituencies,
+which are prohibited by the Act of 2022 (Current rule set).
+• Others recommend revising this prohibition to allow 6 or more seat constituencies.
+• Stated the potential impact of population growth on current 5-seat county constituencies
+in future reviews and somewhat suggesting that having the ability to have 6-seat con-
+stituencies might better enable them to meet the parts of the rule set (maintaining county
+boundaries)
+We believe that having a framework with the appropriate machinery in place would best enable
+the commission to understand the impact of changing the rule set and seeing if it would actually
+lead to an outcome that improves what our systeme is
+In this section we will outline in details the constraints and will touch on the theme of the
+need for clarification on some of the constraints and the main problem of the lack of any sort of
+hierarchy between them. This is in fact something that our framework and suggested algorithms
+could help provide a powerful tool for testing what things might look like if there was a hierarchy
+or different bounds for things such as variance.
+While the process of translating legal requirements into mathematical definitions that can
+them be processed by algorithms can be a powerful tool for addressing complex issues, it is
+important to acknowledge that certain legal requirements may present a distinct challenge. This
+challenge stems from the inherent variability and subjectivity in the interpretation of these legal
+requirements. For instance, the interpretation of ‘reasonable’ or ‘fair’ in a legal context can
+vary considerably between individuals or even legal experts. Such ambiguities can introduce
+uncertainty when operationalising these requirements within mathematical frameworks, and
+it is crucial to be aware of these challenges as they can impact the effectiveness of algorithmic
+solutions. One can see this across the main reports by previous Electoral commissions (4),(5),(6),
+and(7), and now the
+The constraints we are concerning ourselves with come in two forms (but are the same,
+one is just less flexible and stricter). Constitutional Provisions (/requirements) and Legislative
+(the terms of reference). They are legal definitions and have yet to be codified into operational
+mathematical definitions.
+Constitutional Provisions and Terms of Reference in Relation to Dáil Constituencies ( as
+highlighted in the 2023 report).
+22
+
+The format will be as followed
+- The constraint - The metric - The history of its implementation - Both pre-electoral com-
+mission - Post electoral commission - Highlight how it’s codified such that it can be handled by
+one of the methods (basically just reference that section)
+23
+
+3.3.1
+Variance (representation)
+Figure 11: Box plot of the variance in representation across Constituencies from 1980-2023.
+The top and bottom of the error bars indicate Constituencies with the most extreme departures
+from equal representation for that year.
+The blue boxes are an indication of the spread of
+representation disparity (variance in the usual statistical definition).
+It doesn’t matter which way you cut it or from which period you look at 2023 was un-
+precedented when it came to the number of recommended constituencies that were outside the
+range.
+24
+
+Figure 12: Bar plot showing the count of constituencies recommended outside the ±5% variance
+for each report year.
+The heights of the bars represent the number of constituencies with
+recommendations exceeding this variance threshold.
+3.3.2
+Continuity
+When we look at how the previous reports have handled the topic of endeavouring to maintain
+continuity in relation to the arrangement of constituencies. We see that there has been some
+slight differences in the wording across the different sections from different years (7, p. 15),(6,
+p. 13) ,(5, p. 13) and (4, p. 12) . But we have also seen that the overall message and themes
+have stayed consistent. Each report acknowledges the challenge of maintaining continuity in the
+arrangement of constituencies in the face of population growth and distribution, and the need to
+balance this with other requirements such as constitutional and geographical considerations. The
+idea that changes in constituency arrangements may be necessary due to population changes and
+the possibility of breaching county and provincial boundaries is mentioned consistently across
+the different sections. So, while the language and details around the discussion of continuity
+differ slightly between the different reports, the overall approach and view the commissions takes
+to it remain similar.
+THE NEW WICKLOW WEXFORD CONSITUENCEY. WHAT ARE THE LONG TERM
+IMPACTS??? AS HOW IMPORTANT WILL CONINIUITY BE WITH THIS CONSITUNECY
+GIVEN THE PROJECTED GROWTH OF WEXFORD AND WICKLOW. HAVE THEY DUG
+THEM SELFS INTO A WHOLE???
+ALSO WHAT IS THE IMPACT OF EVEN MAINTING CONTINUITY ??? IF TURNOUT
+IS NOT A CONSIDERATION FOR DRAWING THE LINES WHY IS IT SOMETHING THAT
+IS CONSIDERED?.
+25
+
+Report Name
+Number of
+Constituencies
+Number of Constituencies
+Outside of Range
+percentage of total
+recommendations outside of range
+report_1980
+41
+5
+12.20
+report_1983
+41
+11
+26.83
+report_1990
+41
+5
+12.20
+report_1995
+41
+13
+31.71
+report_1998
+42
+5
+11.90
+report_2004
+43
+7
+16.28
+report_2007
+43
+1
+2.33
+report_2012
+40
+0
+0.0
+report_2017
+39
+2
+5.13
+report_2023
+43
+15
+34.88
+Table 1:
+Number of Historical Constituency Recommendations Outside the ±5% Variance
+Range: This table shows the number of constituency recommendations from previous Elec-
+toral Commission reports (1980 - 2023) that fell outside the ±5% variation from the National
+Average.
+3.3.3
+Number of Seats
+- We do not see this as a constraint in the same way as the others. But more as an option that
+provides us flexibility. This would be the main factor we would be pushing as it is not really
+something that we can directly tie to something being violated (its connected to representation
+but that is impacted by variance. [ head is to fried for this will explain to mm]
+As stated in ?? the potential size of the next Dáil is set at 171-181. All our calculations
+take into consideration this full range. But as will become clear as one examines the numbers,
+the range of 178 - 181 seats is the only range that allows for boundaries that make sense, when
+accounting for the terms of reference. Within all our recommendations, we provide a range for
+which our recommendation is valid.
+26
+
+3.4
+Searching The Solution Space
+The problem from a technical point of view is searching the space of possible configurations and
+then finding valid solutions. The number of possible ways in which the building blocks (EDs)
+can be arranged to form constituencies is beyond substantial. Even if we search a small area,
+its more than a human could traverse.
+"even when winnowing down to districting plans that satisfy criteria set forth by legislatures,
+commissions, or voter referenda, the number remains far too large to enumerate all possible plans
+in a state. The numbers are easily in the range of googols rather than billions, as we will explain
+here."
+- insert diagram "Recent methods for analyzing and comparing districting plans attempt
+to do so by placing a plan in the context of valid alternatives—that is, those that cut up
+the same jurisdiction by the same rules and with the structural features of the geography and
+the pattern of voting held constant. Modern computational techniques can generate large and
+diverse ensembles of comparison plans, even if building the full space of alternatives is out of
+reach. These ensembles contain samples from the full space of plans, aiming to help compare
+a plan’s properties to the range of possible designs. More than this, we need some assurance
+of representative sampling; that is, we need to relate the sampling distribution to the rules and
+priorities articulated by redistricters." "But the inferences that can be drawn from ensembles
+rely heavily on the distributions from which the ensembles are sampled."
+We have opted for two options:
+1. MCMC for sampling. "methods offer strong underlying theory and heuristics, in the form
+of mixing theorems and convergence diagnostics." "The idea is to form a random walk on
+the state space and collect states visited by the walker to build a sample. The first and
+most natural approach to defining a random walk on graph partitions is to simply reassign
+one node at a time through a random process in a process. In a districting context, this
+amounts to changing the labeling of individual geographic units along district borders. In
+the standard MCMC paradigm, we would modify the basic step to adjust the ultimate
+stationary distribution. The traditional ways of doing that are explored here."
+2. Cas’s approach
+3.5
+Key Issues
+One of the issues that arises with the ruleset in the Irish case is the lack of clarity on the
+As we currently see it, a good system of rules should enable people to work to a solution
+that is very close to the final accepted one without to much effort. But we would argue this is
+not the case with the current rule set.
+3.6
+A Good Map/Boundary
+- There will inveitablly be muilple options and the question is which one ends up being the one
+selected and what is the basis for this
+3.7
+Proportional Representation at the Ballot vs. Accurate Representation
+during term
+As stated in the outset, PR aims to reflect the political distribution of the electorate in the
+makeup of the elected representatives. However, when paired with the practical need for con-
+stituencies, this perhaps introduces a fundamental tension which cannot be resolved. It has
+27
+
+been acknowledged that the larger the number of seats in a constituency, the greater the oppor-
+tunity for representatives of smaller parties to make it in. This points to larger constituencies
+facilitating a greater resolution into the true, underlying distribution of political opinions in
+the electorate, and that smaller seat constituencies coarsens the reflection of said distribution
+in the representatives, favouring larger parties. However, as is demonstrable using the most
+recent election data, larger constituencies increasingly enable disproportionate geographical rep-
+resentation. (Matthew’s plot) Representatives can cluster geographically in one section of their
+constituency. This poses an interesting, open question: If PR is supposed to facilitate a faithful,
+proportionate embodiment of the constituents’ political beliefs in their representatives, do we
+content ourselves with greater fidelity at the ballot at the expense of exaggerated uneven access
+to representatives during the term?
+28
+
+4
+Methodology
+4.1
+Models
+4.1.1
+Potts Model
+The Standard Potts Model
+In his 1951 PhD thesis, Australian mathematician Renfrey Potts introduced a model (8) of
+interacting spins, now aptly known as the Potts model.
+The model consists of a lattice of
+spin sites si, each of which are assigned to one of Q values. The interactions of the spins are
+determined by a function known as the Hamiltonian H, in that a different Hamiltonian will result
+in different dynamics of the model. The standard Potts model is defined by the Hamiltonian
+HPotts = −JPotts
+X
+⟨i,j⟩
+δsi,sj,
+(9)
+where the coupling constant JPotts determines the strength of interactions, the summation is
+over all nearest-neighbour pairs ⟨i, j⟩, and the Kronecker delta δa,b is defined as
+δa,b =
+ 1,
+a = b
+0,
+a ̸= b .
+(10)
+In the standard Potts model, spins only interact with a nearest neighbour based on whether or
+not their values are equal, where pairs of equal sites reduce the Hamiltonian and pairs of unequal
+sites do not contribute. In this sense, the values taken by each spin need not be numerical, but
+can be elements of any abstract set of size Q; for example, {1, 2, 3} and {red, green, blue} are
+equivalent sets of values for the Q = 3 standard Potts model.
+It is straightforward to verify that HPotts is minimised when all lattice sites are assigned to
+the same value, i.e. when si = sj for all i, j; this is known as a ferromagnetic configuration. If
+the Hamiltonian was defined differently, then a different configuration would minimise it; for
+example, since an antiferromagnetic configuration (si ̸= sj for all neighbours i, j) maximises
+HPotts, then it must also minimise the Hamiltonian H = −HPotts.
+The Electoral Potts Model
+The first step in characterising the Electoral Potts model (9) is to describe the redistricting
+problem using the language of the Potts model; the 3,440 Irish EDs assigned to Q constituen-
+cies1 are treated as 3,440 lattice sites assigned to Q spin values, constituency boundaries are
+determined by the groupings of these values, and geographical ED borders translate directly
+into nearest-neighbour lattice sites.
+The next step is to encode the desired legal requirements into separate Hamiltonian functions,
+such that adhering to a requirement minimises the corresponding Hamiltonian. The main re-
+quirements for a configuration of constituencies are Proportional representation (subsection 2.2),
+Contiguity (subsection 2.3), and compactness2 (Dlúthacht as Gaeilge) (subsection 2.4), repre-
+sented by the Hamiltonians
+HP =
+Q
+X
+q=1
+min
+m∈{ms}
+
+Pq
+m −⟨P⟩
+ ,
+HC =
+Q
+X
+q=1
+|Gq −1| ,
+HD =
+X
+⟨i,j⟩
+ 1 −δqi,qj
+
+,
+(11)
+1The 2023 Constituency Review Report recommends an increase from Q = 39 to Q = 43.
+2In this model, compactness is defined based on the length of a constituency’s border with another constituency.
+29
+
+where Pq and ⟨P⟩are the population of constituency q and average population per constituency
+respectively, {ms} is the allowed numbers of seats per constituency,3 Gq is the number of con-
+tiguous groups in constituency q, qi is the constituency to which district i is allocated, and ⟨i, j⟩
+denotes neighbouring districts i and j. It is straightforward to verify that
+• HP is minimised when each constituency represents an allowed integer multiple of the
+average population per constituency (Pq = m⟨P⟩for some m ∈{ms}, for each q =
+1, . . . , Q; this is illustrated in Figure 13),
+• HC is minimised when each constituency is made up of exactly one connected group of
+EDs (Gq = 1 for each q = 1, . . . , Q; note that the modulus || is used so that a constituency
+q contributes to HC even when no ED is assigned to it, i.e. when Gq = 0), and
+• HD is minimised when all EDs are assigned to the same constituency (qi = qj for all i, j;
+note that HD = HPotts
+JPotts +P
+⟨i,j⟩1, and so is also minimised by a ferromagnetic configuration).
+0
+1
+2
+3
+4
+5
+6
+7
+8
+Pq ( P )
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+min
+m = 3, 4, 5|
+Pq
+m
+P | ( P )
+Figure 13: Contribution of a single constituency to HP against constituency population, for
+{ms} = {3, 4, 5}. Black dashed line represents a 5% variance.
+Implementing other considerations would amount to defining corresponding Hamiltonian terms
+in a similar manner. However, vaguely defined constraints might require further clarification;
+3The Electoral Act of 1997 specifies {ms} = {3, 4, 5}, i.e. 3-, 4-, and 5-seater constituencies.
+30
+
+for example, each of
+H(1) =
+Q
+X
+q=1
+(Cq −1) ,
+H(2) =
+Q
+X
+q=1
+ 1 −δCq,1
+ X
+cq
+
+1 −δπcq ,1
+
+,
+H(3) =
+Q
+X
+q=1
+X
+πcq ̸=πcq,max
+1 −
+2πcq −1
+
+2
+(where Cq is the number of counties cq with EDs in constituency q, and πcq is the proportion4 of
+county cq contained within constituency q) could be seen as adequate Hamiltonians for county
+borders, depending on the interpretation of a “county border violation” (subsection 2.5).
+The final step is to form a linear combination of these Hamiltonians to create an objective
+function
+H =
+X
+α
+JαHα,
+(12)
+where α = P, C, D, . . . refers to a requirement/guideline and the coupling constant Jα implicitly
+determines the consideration given to that requirement/guideline. Through this modified model,
+the redistricting problem has now been reduced to
+• translating the desired hierarchy of rules and guidelines {α} into numerical coupling con-
+stants {Jα}, and
+• determining the configuration of constituencies that minimises Equation 12 for a given set
+of constants {Jα}.
+The first of these objectives requires exploration of the coupling constant parameter space,
+i.e. comparing results for variety of combinations of {Jα}, and is further discussed in subsubsec-
+tion 4.2.2. The second objective is simply an optimisation problem which, similarly to how the
+Electoral Potts model is based on a model in condensed matter physics, can be tackled using
+methods popular in statistical mechanics.
+Configuration Optimisation
+From inspection of the constraint Hamiltonians (Equation 11) it is easy to determine a configu-
+ration of constituencies that minimises HC (each constituency is contiguous) or HD (ferromag-
+netic), however finding one that minimises HP is a non-trivial problem. Furthermore, minimising
+the objective Hamiltonian H (Equation 12) for a given set of coupling constants {Jα} is even
+more difficult. It is computationally infeasible to calculate H for each unique configuration of
+constituencies,5 and so numerical approximation methods are required to arrive at sufficiently
+optimal electoral maps.
+In statistical mechanics, the (discrete) Boltzmann distribution6
+λ(σ) ∝exp
+
+−H(σ)
+T
+
+(13)
+4Furthermore, the definition of proportion could be defined based on population, area, or number of EDs.
+5S(3440, Q) ≫105000 for Q ⩾30.
+6For simplicity, kB = 1 (or equivalently, kBT →T).
+31
+
+represents the probability of a system at temperature T being in a state σ with energy H(σ) ≡H.
+By comparison to the (continuous) exponential distribution
+fExp(x) ∝e−βx
+(14)
+as depicted in Figure 14, it is clear that, as T →0, λ(σ) approaches a uniform distribution of
+the states with minimum energy. As such, if this distribution can be adequately sampled from,
+then doing so for a small temperature T will return configurations that minimise H.
+0
+1
+2
+3
+4
+5
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+fExp(x)
+= 0.1
+= 1
+= 10
+Figure 14: Exponential distribution (Equation 14) for β = 1, 5, 25.
+While mainly used to numerically approximate multi-dimensional integrals, Markov chain
+Monte Carlo (MCMC) methods are algorithms that sample from a desired probability distribu-
+tion. They rely on random sampling (Monte Carlo) from a simpler distribution depending on
+the previous sample to form a sequence of samples (Markov chain) from the desired distribution.
+Two examples of MCMC methods are the Metropolis algorithm and the Gibbs sampler, and can
+be used to sample configurations from λ(σ) for a fixed temperature T as follows:7
+7See Appendix D for an introduction to MCMC methods and a motivation for the Metropolis algorithm and
+Gibbs sampler.
+32
+
+Metropolis algorithm
+1. Choose an ED i and record its con-
+stituency qi.
+2. Choose a different constituency q′
+i ̸= qi at
+random.
+3. Calculate the change ∆H in the Hamilto-
+nian H due to a proposed update qi →q′
+i.
+4.
+(a) If ∆H ⩽0, update qi →q′
+i.
+(b) If ∆H > 0, update qi →q′
+i with
+probability exp
+ −∆H
+T
+
+.
+5. Repeat steps 1-4 for each ED.
+Gibbs sampler
+1. Choose an ED i and record its con-
+stituency qi.
+2. Calculate the changes ∆H(q) in the Hamil-
+tonian H due to updating qi →q for each
+q = 1, . . . , Q (note that ∆H(qi) = 0).
+3. Choose q′
+i according to the distribution
+exp
+
+−∆H(q′
+i)
+T
+
+PQ
+q=1 exp
+
+−∆H(q)
+T
+.
+4. Update qi →q′
+i.
+5. Repeat steps 1-4 for each ED.
+By initialising a random constituency configuration and employing a technique called simu-
+lated annealing (subsubsection 4.2.1), these methods can be used to sample from λ(σ) at small
+temperatures T, thereby obtaining optimal electoral map configurations for a given number of
+constituencies Q and coupling constants {Jα}.
+4.1.2
+Genetic Algorithm
+One need only look at the world around us to appreciate the fact that evolution by natural
+selection has resulted in some of the most remarkably complicated structures operating at near
+optimal efficiencies in their environment. Oversimplifying the process, we can describe evolution
+as a 3 step process that turns what is effectively randomly generated beings - unfit for their
+environment, into their most optimal form.
+1. A large group of individuals (called the population) fights amongst themselves in their
+environment such that the population is "ranked" in order of "strength" or more accurately,
+fitness.
+2. This group of top individuals are picked out and given the highest chance of successfully
+breeding.
+3. Breeding causes a new generation to come about. This acts as the new population and
+Step 1. is repeated.
+This basis provides a good starting point to designing a computational algorithm to best use
+the principles of evolution to generate optimal solutions to a problem.
+In this section, we analyse the custom designed Simulated Annealing - Genetic Algorithm
+(SAGA) method. Combining the aforementioned layout of a genetic algorithm with the control
+regime set out by simulating the metallurgical process of annealing as discussed in subsubsec-
+tion 4.2.1.
+The first step is the creation of an initial population, built up of a set of individuals. First
+and foremost, the question is "how can we phrase the problem of drawing constituencies (or seat
+allocations) such that we can create a set of individuals with a quantifiable concept of fitness?".
+The answer to which is to identify each individual with a configuration of the given EDs i.e.
+every ED is given one of Q values, where Q is the number of constituencies or seats. This is
+a working representation of the problem in terms of individuals which can be grouped together
+to form a population. We now focus on the form of the fitness calculation. We first identify
+33
+
+the aspects of a configuration which we would like to optimise: contiguity / compactness and
+population variance are the most fundamental. So we say that the total fitness of a configuration
+is said to be a linear combination of how "good" the configuration’s compactness and adherence
+to population variance is i.e.
+F = γcompD + γpopP
+(15)
+Looking first at compactness, we use an area of mathematics called Graph Theory. We generate
+a graph (add in example graph) wherein each ED is a node.
+We say that node A, which
+corresponds to ED A, is connected to node B iff nodes A and B share a geographical border
+and belong to the same seat allocation. We then count the amount of edges, or connections, in
+this graph and call this E. The total amount of edges possible in a graph with N nodes, is the
+edges of the complete graph of N nodes which is N(N −1)/2 [reference?]. This is obviously
+impossible as it would require every ED to geographically border every other ED. If there are
+N EDs in the area being analysed we say N(N −1)/2 = Etot. To obtain the desired behavior
+the following compactness function was constructed
+D = κ arcsin
+ E
+Etot
+
+(16)
+Where κ is a constant of proportionality. Given that the ratio
+E
+Etot is quite small, we have that
+the difference between the compactness of two similar configurations A and B, arcsin( EA
+Etot ) −
+arcsin( EB
+Etot ) ≊EA−EB
+Etot
+. This is quite a small number, so a constant κ was introduced such that
+the difference is more pronounced. For this case we set κ = 50
+3 .
+The other term in this fitness is that which corresponds to the level of conformity to the
+population variance found in the configuration. This is a relatively simple calculation originating
+from the behaviour of the used mathematical functions. Namely,
+P =
+
+1 −2
+π arctan
+ 1
+Q
+Q
+X
+i=1
+
+Pi
+Pavg
+−1
+
+η
+(17)
+Although computationally simple, this is not a simple expression so to speak. Here, as before,
+Q is the number of constituencies or seats. There are three unseen variables here. The η term is
+defined to be the harshness. It allows us to control how sharply the punishment for configurations
+that do not meet a certain level of variance changes. That is to say, for low η values if a new
+configuration is suggested where the population variance is relatively far away from the minimal
+variance (zero) then this can be let slide. However, in high η regimes, even a slight movement
+away from minimal variance causes a large drop in the P term of the configuration’s fitness.
+This is not to be confused with the relative importance of the population variance term to the
+compactness term, which is given by γcomp and γpop. In this case, η = 5 was used. The other
+two previously unseen variables are the terms Pi and Pavg. These correspond to the population
+of each proposed constituency or seat and the average population of all the given space, i.e.
+Pavg = 1
+Q
+PQ
+j=1 Pj, respectively.
+Now that we have fully developed the fitness function for our genetic algorithm, we turn our
+heads to actual carrying out of said algorithm. An initial temperature, T0, is chosen which is to
+decrease geometrically in each generation by a factor of 0.99. That is to say, the temperature at
+generation k is given by Tk = (0.99)kT0. This value will then be used to carry out the simulated
+annealing aspect of SAGA. In this case, an initial population of size 2 is created and each
+individual is treated sequentially and goes through the same process separately. The individual
+is firstly mutated, in this case that just means that an ED is picked, at random, and another
+ED is picked
+34
+
+4.2
+Techniques
+4.2.1
+Simulated Annealing
+The optimisation methods for the two models presented here each rely on an objective function
+to be minimised (Equation 12) or maximised (Equation 15) and an external “temperature” pa-
+rameter that determines the behaviour of the corresponding algorithm. Setting this temperature
+parameter at a high value results in uniform random sampling of the entire space of constituency
+configurations (Figure 15a), while setting a low temperature restricts sampling around a local
+extremum near the initial configuration (Figure 15b); in either case, the probability of obtaining
+the desired global extremum is extremely small. If the temperature was instead initially set high
+and slowly reduced over time, this would ensure that the algorithm would always be sampling
+from the temperature-dependent equilibrium distribution, until it reached low temperatures and
+thus the desired extremum corresponding to the most optimal configuration (Figure 15c). This
+approach is called simulated annealing (10, 11), named after the technique in materials science
+of heating and cooling a material in a specific way to change its atomic structure and thus its
+physical properties.
+(a) High temperature.
+(b) Low temperature.
+(c) Decreasing temperature.
+Figure 15: Examples of a temperature-dependant algorithm maximising a one-dimensional func-
+tion for fixed high and low temperatures (similar to uniform random sampling and hill climbing,
+respectively) and decreasing temperature (simulated annealing).
+4.2.2
+Coupling Constants
+35
+
+5
+Results
+5.1
+Small-Scale Problem
+(This paper does not directly approach the full-scale problem of redistricting Dáil constituencies,
+but rather focuses on the similar problem of allocating seats within a constituency. This was
+done to a) verify the legitimacy of the outlined frameworks, b) experiment with constraint
+applications and multi-objective optimisation, and c) locate and adjust algorithm performance
+bottlenecks, all while avoiding the higher computational expense of the full-scale problem. The
+seat allocation problem acts as a proof of concept of the constituency allocation problem, as they
+each represent the same task of forming groups of EDs to follow custom constraints, albeit at
+different scales. Might compare Carlow-Kilkenny and Ireland via distributions of ED population
+and connectivity - should probably be similar shapes so can say that analysis and investigation
+is similar.)
+5.1.1
+Potts Results - Ruaidhrí
+(normalised constraint Hamiltonians to be bounded between 0 and 1, for easier plotting and
+comparing of each Hamiltonian and also easier to translate constraint hierarchy into coupling
+constant values. constraint Hamiltonians (Equation 11) Hα →
+1
+Zα Hα, where
+ZP = 2 (Q −1) ⟨P⟩,
+ZC =
+X
+i
+1 −Q,
+ZD =
+X
+⟨i,j⟩
+1
+(18)
+are normalising factors. note: −Q in ZC not included in code, but minimal effect as 167 instead
+of 162. also have {ms} = {1} for HP as only considering single-seat groupings.)
+(notice that scaling coupling constants and temperature by same factor has no effect on
+either algorithm, i.e. we have the symmetry T →κT, Jα →κJα for some κ > 0, as ∆H ⩽
+0 =⇒κ∆H ⩽0 and ∆H
+T
+= κ∆H
+κT . can (a) remove this degeneracy (ensure uniqueness of set of
+external parameters) and (b) reduce degrees of freedom (number of external parameters) simply
+by picking a coupling constant (that we know would never be 0) and only considering the ratio
+of relevant terms to this constant (equivalent to just setting this constant to be 1, or setting
+κ as the inverse of this constant). self-righteously determined that proportional representation
+is the most important constraint (JP ̸= 0), and so picked this as the guinea pig.
+thus the
+external parameters are JC
+JP and JD
+JP , the change ∆H
+JP is calculated to accept and reject proposed
+configuration updates, and simulated annealing varies
+T
+JP from high to low)
+(initial temp for given JC, JD was chosen such that any proposal in the Metropolis algorithm
+had at least a 99% chance of being accepted, i.e.
+exp
+
+−∆Hmax
+T0
+
+= 0.99 =⇒T0
+JP
+=
+∆HP,max + JC
+JP ∆HC,max + JD
+JP ∆HD,max
+−ln 0.99
+.
+(19)
+Subsequent temperatures were found by scaling by a factor of 0.9, i.e. Tk = 0.9kT0, for a total
+of 150 temperatures)
+36
+
+5.1.2
+GA results - Cas
+5.2
+Further Work
+5.2.1
+Extending to Full-Scale Problem
+5.2.2
+Exploring the Parameter Space
+5.2.3
+Other Potential Use Cases
+We will highlight a few ways in which this framework can be utilised and what value it could
+potential provide to decision makers and the public/stakeholders.
+37
+
+6
+Conclusion
+6.1
+Algorithmic Redistricting Framework
+Benefits of Algorithmic Approach
+To put it simple the problem is that of generating valid maps as defined by the rule sets that
+an area writes to decide how their districts are drawn. In this paper, we employ mathematical
+computational techniques to tackle the complex problem of defining valid electoral districts based
+on a set of rules designed to codify aspirational goals within an electoral system. We want to
+emphasise that our work is not intended to make assertions about the correctness or morality of
+any specific electoral districting solution. Instead, we aim to provide a mathematical framework
+that assists in the evaluation and analysis of the Irish electoral system in alignment with desired
+values.
+One such value we consider is the principle of equal representation, among others. We do
+not prescribe a specific definition of representation, as it is inherently a normative concept, but
+rather, we provide the tools necessary for individuals and policymakers to assess whether their
+proposed rule sets can lead to systems that align with their values.
+Our belief is grounded in the understanding that addressing normative questions effectively
+often requires a deep understanding of the mathematical implications and impacts of the chosen
+rules. By leveraging mathematical machinery, we offer a means for stakeholders to quantitatively
+assess the consequences of their decisions and gain insights into how different rule sets may
+influence outcomes.
+While many nations grapple with issues related to electoral districting, Ireland faces a distinct
+set of challenges. Unlike the United States, where gerrymandering has been a prominent concern,
+the problem Ireland confronts is one of efficiency and ensuring that the principles of proportional
+representation are upheld.
+In this paper, we aim to address the specific challenges posed by electoral districting in
+Ireland. Our primary objectives are twofold: to enhance the efficiency of the electoral districting
+process and to explore the potential of computational methods in achieving fair representation.
+We see this endeavor as an opportunity to introduce innovative techniques, previously applied
+in different jurisdictions and systems, to the Irish electoral landscape.
+As we delve into the intricacies of electoral districting, we aim to harness the power of
+computational methods and mathematical modeling to design impartial districts, assess existing
+constraints, and test the resilience of the rules against gerrymandering.
+This paper does not aim to provide definitive answers but serves as a guide and a tool for
+decision-makers. It offers insights into the mathematical underpinnings of electoral districting,
+explores the axioms and criteria governing the process, and raises questions about the system’s
+limitations. As we delve into this exploration, we hope to contribute to the ongoing discourse
+on electoral fairness and representation in Ireland.
+Our work hopes to show the benefits of
+mathematics in shaping a more representative and equitable electoral system.
+our work serves as a mathematical toolset, providing valuable assistance to those seeking
+to navigate the normative complexities of electoral districting. We facilitate the exploration
+of how various rules and parameters can impact the realization of desired electoral system
+characteristics, without making normative judgments about what those desired characteristics
+should be.
+The decision support this framework provides could be critical, considering the significant
+challenge the commission faces in reviewing and potentially redrawing electoral boundaries at
+various levels, including EU, LEA, Dáil, and more. Especially if they all coincide together.
+38
+
+6.2
+Implementing: MCMC for Redistricting
+- We are focused on the problem of sampling from the STATE SPACE OF....
+39
+
+References
+[1] Wikipedia. Electoral district — Wikipedia, the free encyclopedia. http://en.wikipedia.
+org/w/index.php?title=Electoral%20district&oldid=1179842888, 2023. [Online; ac-
+cessed 15-October-2023].
+[2] An Coimisiún Toghcháin.
+Constituency review report 2023, 2023.
+URL https://
+ec-report.s3.eu-west-1.amazonaws.com/constituency-review-report-2023.pdf.
+[3] AMERICAN ASSOCIATION FOR THE ADVANCEMENT OF SCIENCE. Mathemati-
+cians use new tools to spot and end gerrymandering, 2020. URL https://www.youtube.
+com/watch?v=hXERC48TcWQ.
+[4] Constituency Commission. Constituency commission report 2004, 2004. URL https://
+constituency-commission.ie/cc/docs/con2004.pdf.
+[5] Constituency Commission. Constituency commission report 2007, 2007. URL https://
+constituency-commission.ie/cc/docs/con2007.pdf.
+[6] Constituency Commission. Constituency commission report 2012, 2012. URL https://
+www.constituency-commission.ie/docs/report2012.pdf.
+[7] Constituency
+Commission.
+Constituency
+commission
+report
+2017,
+2017.
+URL
+https://www.constituency-commission.ie/cc/docs/Constituency%20Commission%
+20Report%202017.pdf.
+[8] R. B. Potts. Some generalized order-disorder transformations. Mathematical Proceedings of
+the Cambridge Philosophical Society, 48(1):106–109, 1952.
+[9] Chung-I Chou and Sai Ping Li. Taming the Gerrymander—Statistical Physics Approach
+to Political Districting Problem. Physica A: Statistical Mechanics and its Applications, 369
+(2):799–808, 2006.
+[10] Scott Kirkpatrick, C. Daniel Gelatt, and Mario P. Vecchi.
+Optimization by Simulated
+Annealing. Science, 220(4598):671–680, 1983.
+[11] Sheldon M. Ross. 12. Markov Chain Monte Carlo Methods. In Simulation, pages 271–301.
+Academic Press, Cambridge, 5th edition, 2005. ISBN 9780124158252.
+[12] Dáil Constituency Commission 1990. Dail Constituency Commission: report 1990, 1990.
+URL http:///opac.oireachtas.ie/AWData/Library3/Library2/DL041355.pdf.
+[13] .
+ELECTORAL (AMENDMENT) BILL, 1980, EXPLANATORY MEMORANDUM,
+1980.
+URL https://data.oireachtas.ie/ie/oireachtas/bill/1980/20/eng/memo/
+bills1980-2g-02.pdf.
+[14] . ELECTORAL (AMENDMENT) (NO. 2) BILL, 1983, EXPLANATORY MEMORAN-
+DUM, 1983.
+URL https://data.oireachtas.ie/ie/oireachtas/bill/1983/32/eng/
+memo/bills1983s-02.pdf.
+[15] Wilfred Keith Hastings. Monte Carlo Sampling Methods Using Markov Chains and Their
+Applications. Biometrika, 57(1):97–109, 1970.
+40
+
+[16] Nicholas Metropolis, Arianna W. Rosenbluth, Marshall N. Rosenbluth, Augusta H. Teller,
+and Edward Teller. Equation of State Calculations by Fast Computing Machines. Journal
+of Chemical Physics, 21(6):1087–1092, 1953. ISSN 0021-9606. doi: 10.1063/1.1699114. URL
+<GotoISI>://WOS:A1953UC11200020.
+[17] Stuart Geman and Donald Geman. Stochastic Relaxation, Gibbs Distributions, and the
+Bayesian Restoration of Images.
+IEEE Transactions on Pattern Analysis and Machine
+Intelligence, 6(6):721–741, 1984. ISSN 0162-8828. doi: 10.1109/tpami.1984.4767596. URL
+<GotoISI>://WOS:A1984TX36100006.
+41
+
+A
+Data
+This section outlines how key data for this problem of redistricting in the Irish context was
+collected and the general issue open data.
+- You should not be required to have specialist
+knowledge to access the data necessary to answer a question
+- There are EDs and then their are CSO EDs. CSO EDs are the level at which data is
+reported. So need to note this.
+A.1
+Variance Data
+To calculate the variance as defined in equation 6 as discussed in 2.2, one requires the following
+bits of information:
+• Number of Dáil seats (members) per constituency
+But for the variance calculation per proposed constituency it is easier to make use of the
+following columns provided by the CSO int
+• Number of Dáil seats (members) per constituency
+• In most cases this data was directly calculated from tables from the CSO CSO’s PxStat
+Open Data Statistical Database.
+• In other cases we needed to go directly to the Dáil Constituency Commission reports to
+pull the tables Statistics Relating to the Proposed Constituencies (12) . This table
+is standard across all reports with the following data being given
+– Third level item 1990
+– Third level item 2
+• Also note that we have
+• Columns
+– Third level item 1990
+– Third level item 2
+For variance data older than 1990 you have to look the EXPLANATORY MEMORANDUM
+(13) and (14) where the variance column was called "Variation from national average population
+per member" instead of the 2023 name of "variance from National Average Population per TD".
+In the explanatory memorandum, it must be noted that column was reported in the number of
+people instead of the number of people/national average * 100
+A.2
+Boundary Data
+42
+
+B
+Considerations
+In this section of this submission, we will outline several key points that form the foundation
+of our positions and arguments. These points are critical to understanding our perspective and
+reasoning.
+C
+Alternative Definition for Variance
+This excerpt is taken from our team’s recent boundary submission, and put here for completeness
+sake. There is an alternative functional for variance, the output of which varies only slightly from
+the previous version, but it is formulated in a more voter- and representation-central manner.
+Let “variance" be denoted by v, “seat equivalent representation" be denoted by s, and “assigned
+seats" be denoted by a. We have:
+vold(s) = s −a
+a
+vnew(s) = s −a
+s
+What is the effect of swapping the variable in the denominator? To illustrate this, let us
+consider the maximum and minimum s afforded by the old definition of variance, for fixed a,
+and v.
+v = smax −a
+a
+=⇒smax = a + va
+−v = smin −a
+a
+=⇒smin = a −va
+(20)
+The problem with the old definition is most obvious when we speak in terms of population,
+so we rewrite the equations by multiplying by the National Ratio, as in Eq. 5.
+=⇒pmax = p + vp
+=⇒pmin = p −vp
+(21)
+Now for a maximally under-represented population, we find the number of TDs per con-
+stituent, and find the discrepancy with the number of TDs per constituent in the ideal, national
+average case. We do the same for a constituent in a maximally over-represented population.
+In the old definition of variance, we find that the overall mis-representation (absolute value of
+representational discrepancy) of extremal populations in the under- and over-represented cases
+are not equal. In other words, the bounds provided by the old definition of variance do not
+signify the same degree of misrepresentation.
+43
+
+Misrep.(pmax) =
+
+a
+pmax
+−a
+p
+
+=
+
+a
+p + vp −a
+p
+
+= a
+
+p −(p + vp)
+(p + vp)p
+
+= a
+
+−vp
+p2(1 + v)
+
+=
+av
+p(1 + v)
+Misrep.(pmin) =
+
+a
+pmin
+−a
+p
+
+=
+
+a
+p −vp −a
+p
+
+= a
+
+p −(p −vp)
+(p −vp)p
+
+= a
+
+vp
+p2(1 −v)
+
+=
+av
+p(1 −v)
+(22)
+As we can see, they are not equal. Let us follow the same procedure with the alternative,
+new definition for variance; we find the extremal populations, and contrast the extent of the
+misrepresentation of constituents in such over- and under-represented populations.
+v = smax −a
+smax
+=⇒smax =
+a
+1 −v
+=⇒pmax =
+p
+1 −v
+Misrep.(pmax) =
+
+a
+pmax
+−a
+p
+
+= a
+
+1 −v
+p
+−1
+p
+
+= a
+
+1 −v −1
+p
+
+= a
+
+−v
+p
+
+= av
+p
+−v = smin −a
+smin
+=⇒smin =
+a
+1 + v
+=⇒pmin =
+p
+1 + v
+Misrep.(pmin) =
+
+a
+pmin
+−a
+p
+
+= a
+
+1 + v
+p
+−1
+p
+
+= a
+
+1 + v −1
+p
+
+= a
+
++v
+p
+
+= av
+p
+(23)
+Under the new definition of variance, we find the populations at the bounds experience
+the same degree of misrepresentation, which is much more transparent. The generality of the
+derivation means this result holds for any a-seater constituency or choice of threshold, v. This
+happens because by putting the deserved constituency representation, (i.e. the seat equivalent
+44
+
+representation, s) in the denominator, deserved representation acts as the reference, rather than
+assigned representation.
+C.1
+Heuristics for Assigning Constituencies from Past Reports
+Joining two entire counties
+As stated in previous Constituency Commission Reports in 2017 (7, p. 16), 2012 (6, p. 13),
+2007 (5, p. 12) and (4, p. 11) the Commission has adhered to the view and practice of previous
+commissions namely that joining two entire counties in a single constituency does not consti-
+tute a breach of the boundary between them. This is an important precedent that we will be
+using thought our submission. As we assume this view and practice will be continued by this
+commission.
+Balance Between The Three Constituency Sizes
+As stated in previous Constituency Commission Reports in 2017 (7, p. 15) and the report in 2012
+(6, p. 13) it is not a constitutional or statutory criterion that the arrangement of constituencies
+should seek to achieve any particular number of, or balance between, the three constituency
+sizes.
+Importance of Provincial Boundaries
+Within previous commissions reports and their terms of reference (4),(5),(6), and(7), there has
+not been any explicit reference to the consideration of maintaining provincial boundaries.
+Previous Constituency Commission reports have not explicitly stated the importance of
+maintaining provincial boundaries. However, in earlier reports such as those in 2002 and 2007,
+the Commission did make statements acknowledging the significance of provincial boundaries,
+and that they did take them into consideration.
+For example, the 2007 report stated, “Ei-
+ther option would involve a breach of a county and a provincial boundary” and the 2002 report
+acknowledged that the existing Longford-Roscommon constituency breached a provincial bound-
+ary. In contrast, the reports from 2012 and 2017 did not mention provincial boundaries in a
+similar manner.
+It should be noted that previous Commissions were not required to avoid breaching provincial
+boundaries. While past reports indicate that provincial boundaries have been considered in the
+formation of constituencies, they have not necessarily been weighted as heavily as other factors.
+For instance, in 2017, provincial boundaries were broken when an area in Offaly was added to
+the Tipperary constituency. Similarly, in 2012, part of Donegal was transferred to Sligo-Leitrim,
+and parts of Cavan were transferred to the same constituency. Additionally, in 2012, a portion
+of Tipperary was transferred to Offaly. Thus, we believe that breaching provincial boundaries
+should not preclude a potential constituency recommendation.
+45
+
+C.2
+Variance Trade-off
+The trade-off is choosing between equality of representation and respecting the terms of reference.
+This trade off looks like, from a mathematical perspective, increasing the acceptable variance
+up from ±5% to some higher threshold for inhomogeneity of representation to facilitate a lesser
+population transfers and disruption of county boundaries. The tighter the bound on the variance
+threshold, the less mathematical flexibility there is to adhere to terms of reference such as
+maintaining county boundaries. In this sense, the holistic view of representation aimed at in the
+terms of reference, and representation from a mathematical perspective are at odds.
+An example of where this trade off might occur is with Laois and Offaly, see ?? for more
+details. In short, when the two counties are grouped together they should collectively be assigned
+a total of 6 seats. But at no point can the two counties independently form standalone 3 seat
+constituencies within the permitted ±5%. A transfer of population and area must occur under
+the mathematical purview, the question is does strictly sticking to this perspective actually
+achieve greater representation? By contrast, does willingly departing from acceptable variance
+in order to have the counties form standalone constituencies, adhering more closely to the terms
+of reference, actually result in better representation in the holistic sense? [REFERENCE OUR
+SUBMISSION]
+D
+Markov Chain Monte Carlo Methods
+Monte Carlo methods are numerical algorithms involving random sampling used to calculate
+expected values. For identically distributed random variables A1, A2, . . . with mean µ, then by
+the strong law of large numbers,
+lim
+N→∞
+1
+N
+N
+X
+i=1
+Ai = µ.
+(24)
+Thus, for a large enough N, the mean µ can be approximated by the sample mean
+ˆµ = 1
+N
+N
+X
+i=1
+Ai.
+(25)
+A Markov chain is a sequence of “memoryless” states, i.e. states which are generated based on
+the previous state alone. More formally, for a (homogeneous) Markov chain of random variables
+A1, A2, . . ., then
+P{AN+1 = ai | AN = aj, AN−1 = ajN−1, . . . , A0 = aj0} = P{AN+1 = ai | AN = aj}
+= P{AM+1 = ai | AM = aj} ∀N, M.
+(26)
+For a probability density function λ(σ) that is to be sampled from using a Markov chain, define
+the transition probability density function
+t(σ′, σ) = P{AN+1 = σ′ | AN = σ}
+(27)
+and the infinitesimal volume element dΓσ in the phase space centred around state σ. λ(σ) and
+t(σ′, σ) are probability density functions, and so
+λ(σ) ⩾0,
+Z
+dΓσ λ(σ) = 1,
+t(σ′, σ) ⩾0,
+Z
+dΓσ′ t(σ′, σ) = 1.
+(28)
+46
+
+If t(σ′, σ) satisfies detailed balance for λ(σ), that is
+t(σ′, σ)λ(σ) = t(σ, σ′)λ(σ′) ∀σ, σ′,
+(29)
+then λ(σ) is the equilibrium distribution of t(σ′, σ), i.e. choosing t(σ′, σ) as the transition
+distribution leads to a Markov chain of values sampled from λ(σ) (as
+R
+dΓσ t(σ′, σ)λ(σ) =
+R
+dΓσ t(σ, σ′)λ(σ′) = λ(σ′)
+R
+dΓσ t(σ, σ′) = λ(σ′)).
+D.1
+Metropolis-Hastings Algorithm
+The Metropolis-Hastings algorithm (15) operates using an “accept/reject” process, outlined as
+follows (11).
+Say λ(σ) is a probability density function from which values are to be sampled. Let the
+proposal density function p(σ′, σ) be a distribution corresponding to proposing a state σ′ given
+the current state σ, and the acceptance probability a(σ′, σ) be the probability that this proposed
+state is accepted as the next state, given by
+a(σ′, σ) = min
+p(σ, σ′)λ(σ′)
+p(σ′, σ)λ(σ) , 1
+
+.
+(30)
+These expressions satisfy
+a(σ′, σ)p(σ′, σ)λ(σ) = a(σ, σ′)p(σ, σ′)λ(σ′),
+(31)
+and so if the transition probability density function is defined as
+t(σ′, σ) = a(σ′, σ)p(σ′, σ),
+(32)
+then t(σ′, σ) satisfies detailed balance for λ(σ).
+In the models proposed here, the proposed state σ′ differs to the current state σ at a single
+lattice site i, i.e.
+σ′ = σ|qi→q′
+i ,
+(33)
+and the algorithm is repeated for each site in turn.
+The choice of the proposal function p(σ′, σ)
+D.1.1
+Metropolis Algorithm
+The Metropolis algorithm (16) is a specific case of the Metropolis-Hastings algorithm, where the
+proposal density function is symmetric about the current state, i.e. p(σ′, σ) = p(σ, σ′). For λ(σ)
+defined as in Equation 13,
+a(σ′, σ) = min
+p(σ′, σ)λ(σ′)
+p(σ′, σ)λ(σ) , 1
+
+= min
+
+exp
+−∆H(σ′, σ)
+T
+
+, 1
+
+,
+(34)
+and so only the difference ∆H(σ′, σ) = H(σ′) −H(σ) between the proposed and current Hamil-
+tonian is necessary to calculate for producing the next state. Notably, if the proposed state
+reduces the Hamiltonian, then it is always accepted.
+The simplest choice of a symmetric proposal function for updating site i according to Equa-
+tion 33 is a uniform distribution over the other states, i.e.
+p(σ′, σ) =
+
+1
+Q−1,
+q′
+i ̸= qi
+0,
+q′
+i = qi
+.
+(35)
+47
+
+D.1.2
+Gibbs Sampler
+The Gibbs sampler method (17) is another type of Metropolis-Hastings algorithm, where the
+proposed state is generated such that it is always accepted. In particular, the proposal density
+function is given by (11)
+p(σ′, σ) ∝λ(σ′),
+(36)
+and so
+a(σ′, σ) = min
+λ(σ)λ(σ′)
+λ(σ′)λ(σ), 1
+
+= 1.
+(37)
+The proposal function p(σ′, σ) for single-site updating according to Equation 33 has the same
+form as λ(σ′), differing only by a renormalising factor. For λ(σ) defined as in Equation 13,
+p(σ′, σ) =
+λ(σ′)
+P
+σ′′ λ(σ′′) =
+exp
+
+−H(σ′)
+T
+
+P
+σ′′ exp
+
+−H(σ′′)
+T
+ =
+exp
+
+−∆H(σ′,σ)
+T
+
+P
+σ′′ exp
+
+−∆H(σ′′,σ)
+T
+.
+(38)
+48
+
