@@ -102,7 +102,7 @@ Now let's find **your** Electoral Division.
 
 ### Interactive ED Finder
 
-<div style="margin: 2rem 0; border: 2px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 2rem 0; border: 2px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/ed_finder.html"
     width="100%"
@@ -113,7 +113,7 @@ Now let's find **your** Electoral Division.
   </iframe>
 </div>
 
-<p style="font-size: 0.9em; color: #6b7280; text-align: center; margin-top: 0.5rem;">
+<p style="font-size: 0.9em; color: var(--cothrom-muted); text-align: center; margin-top: 0.5rem;">
   <strong>Interactive Map:</strong> Search by ED name or click any area to explore.
   Hover for quick info, click for detailed statistics.
 </p>
@@ -137,24 +137,25 @@ Your ED's population directly influences how constituency boundaries are drawn. 
 
 ```{raw} html
 <div style="margin: 1.5rem 0;">
-    <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #27ae60; border-radius: 0 8px 8px 0; padding: 20px; max-width: 500px;">
+    <div style="background: linear-gradient(135deg, var(--cothrom-tint-green) 0%, var(--cothrom-tint-green) 100%); border-left: 4px solid var(--cothrom-green); border-radius: 0 8px 8px 0; padding: 20px; max-width: 500px;">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-            <div style="background: #27ae60; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold;">ED</div>
+            <div style="background: var(--cothrom-green); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold;">ED</div>
             <div>
-                <div style="font-weight: 700; color: #166534; font-size: 16px;">Rathmines West C</div>
-                <div style="font-size: 12px; color: #15803d;">Dublin Bay South</div>
+                <div style="font-weight: 700; color: var(--cothrom-green-dark); font-size: 16px;">Rathmines West C</div>
+                <div style="font-size: 12px; color: var(--cothrom-green-dark);">Dublin Bay South</div>
             </div>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div style="background: white; padding: 12px; border-radius: 6px; text-align: center;">
-                <div style="font-size: 24px; font-weight: 700; color: #27ae60;">1,234</div>
-                <div style="font-size: 11px; color: #666; text-transform: uppercase;">Population</div>
+            <div style="background: var(--cothrom-panel); padding: 12px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 24px; font-weight: 700; color: var(--cothrom-green);">1,234</div>
+                <div style="font-size: 11px; color: var(--cothrom-muted); text-transform: uppercase;">Population</div>
             </div>
-            <div style="background: white; padding: 12px; border-radius: 6px; text-align: center;">
-                <div style="font-size: 24px; font-weight: 700; color: #7b2cbf;">0.93%</div>
-                <div style="font-size: 11px; color: #666; text-transform: uppercase;">of TD's Constituents</div>
+            <div style="background: var(--cothrom-panel); padding: 12px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 24px; font-weight: 700; color: var(--cothrom-accent);">0.93%</div>
+                <div style="font-size: 11px; color: var(--cothrom-muted); text-transform: uppercase;">of TD's Constituents</div>
             </div>
         </div>
+        <div style="font-size: 11px; color: var(--cothrom-muted); margin-top: 12px; font-style: italic;">Illustrative example — the ED name and figures are made up to show what the tool displays, not official data.</div>
     </div>
 </div>
 ```
@@ -167,29 +168,29 @@ The physical size of Electoral Divisions varies dramatically between urban and r
 
 ```{raw} html
 <div style="margin: 1.5rem 0; display: flex; gap: 20px; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 200px; background: white; border: 2px solid #27ae60; border-radius: 12px; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #27ae60 0%, #32e875 100%); color: white; padding: 12px 16px; font-weight: 600;">
+    <div style="flex: 1; min-width: 200px; background: var(--cothrom-panel); border: 2px solid var(--cothrom-green); border-radius: 12px; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%); color: white; padding: 12px 16px; font-weight: 600;">
             Urban ED (Dublin)
         </div>
         <div style="padding: 16px;">
-            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border: 2px solid #27ae60; border-radius: 4px; margin: 0 auto 12px;"></div>
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--cothrom-tint-green) 0%, var(--cothrom-tint-green) 100%); border: 2px solid var(--cothrom-green); border-radius: 4px; margin: 0 auto 12px;"></div>
             <div style="text-align: center;">
-                <div style="font-size: 13px; color: #666;">Area: <strong>500m x 500m</strong></div>
-                <div style="font-size: 13px; color: #666;">Population: <strong style="color: #27ae60;">1,500</strong></div>
-                <div style="font-size: 11px; color: #999; margin-top: 8px;">High density urban core</div>
+                <div style="font-size: 13px; color: var(--cothrom-muted);">Area: <strong>500m x 500m</strong></div>
+                <div style="font-size: 13px; color: var(--cothrom-muted);">Population: <strong style="color: var(--cothrom-green);">1,500</strong></div>
+                <div style="font-size: 11px; color: var(--cothrom-muted); margin-top: 8px;">High density urban core</div>
             </div>
         </div>
     </div>
-    <div style="flex: 1; min-width: 200px; background: white; border: 2px solid #7b2cbf; border-radius: 12px; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #7b2cbf 0%, #3c096c 100%); color: white; padding: 12px 16px; font-weight: 600;">
+    <div style="flex: 1; min-width: 200px; background: var(--cothrom-panel); border: 2px solid var(--cothrom-accent); border-radius: 12px; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, var(--cothrom-accent) 0%, var(--cothrom-accent-dark) 100%); color: white; padding: 12px 16px; font-weight: 600;">
             Rural ED (Kerry)
         </div>
         <div style="padding: 16px;">
-            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); border: 2px solid #7b2cbf; border-radius: 4px; margin: 0 auto 12px;"></div>
+            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--cothrom-tint-accent) 0%, var(--cothrom-tint-accent) 100%); border: 2px solid var(--cothrom-accent); border-radius: 4px; margin: 0 auto 12px;"></div>
             <div style="text-align: center;">
-                <div style="font-size: 13px; color: #666;">Area: <strong>5km x 5km</strong></div>
-                <div style="font-size: 13px; color: #666;">Population: <strong style="color: #7b2cbf;">1,500</strong></div>
-                <div style="font-size: 11px; color: #999; margin-top: 8px;">Low density rural area</div>
+                <div style="font-size: 13px; color: var(--cothrom-muted);">Area: <strong>5km x 5km</strong></div>
+                <div style="font-size: 13px; color: var(--cothrom-muted);">Population: <strong style="color: var(--cothrom-accent);">1,500</strong></div>
+                <div style="font-size: 11px; color: var(--cothrom-muted); margin-top: 8px;">Low density rural area</div>
             </div>
         </div>
     </div>
@@ -203,29 +204,29 @@ Both Electoral Divisions shown above have identical populations of 1,500 people,
 Irish electoral law specifically mentions respect for county boundaries, making your ED's county location politically significant. Counties have deep historical and cultural meaning in Ireland, and voters often feel strong attachment to their county identity. When an ED is proposed to move from a constituency that aligns with county boundaries to one that crosses them, it can feel like a disconnection from local identity, even if the population mathematics make it necessary.
 
 ```{raw} html
-<div style="margin: 1.5rem 0; background: white; border: 2px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 500px;">
-    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 12px 16px; border-bottom: 1px solid #fcd34d;">
-        <span style="font-weight: 700; color: #92400e;">Case Study: Boundary Change Impact</span>
+<div style="margin: 1.5rem 0; background: var(--cothrom-panel); border: 2px solid var(--cothrom-border); border-radius: 12px; overflow: hidden; max-width: 500px;">
+    <div style="background: linear-gradient(135deg, var(--cothrom-warn-bg) 0%, var(--cothrom-warn-bg) 100%); padding: 12px 16px; border-bottom: 1px solid var(--cothrom-warn-border);">
+        <span style="font-weight: 700; color: var(--cothrom-warn);">Case Study: Boundary Change Impact</span>
     </div>
     <div style="padding: 16px;">
-        <div style="background: #f9fafb; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
-            <div style="font-weight: 600; color: #374151; margin-bottom: 4px;">ED: Portlaoise Urban</div>
-            <div style="font-size: 13px; color: #6b7280;">County Laois</div>
+        <div style="background: var(--cothrom-surface); border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+            <div style="font-weight: 600; color: var(--cothrom-ink-2); margin-bottom: 4px;">ED: Portlaoise Urban</div>
+            <div style="font-size: 13px; color: var(--cothrom-muted);">County Laois</div>
         </div>
         <div style="display: flex; align-items: center; gap: 12px; margin: 16px 0;">
-            <div style="flex: 1; background: #fee2e2; border-radius: 8px; padding: 12px; text-align: center;">
-                <div style="font-size: 11px; color: #991b1b; text-transform: uppercase; margin-bottom: 4px;">Current</div>
-                <div style="font-weight: 600; color: #dc2626;">Laois-Offaly</div>
-                <div style="font-size: 12px; color: #666;">5 seats</div>
+            <div style="flex: 1; background: var(--cothrom-danger-bg); border-radius: 8px; padding: 12px; text-align: center;">
+                <div style="font-size: 11px; color: var(--cothrom-danger); text-transform: uppercase; margin-bottom: 4px;">Current</div>
+                <div style="font-weight: 600; color: var(--cothrom-danger);">Laois-Offaly</div>
+                <div style="font-size: 12px; color: var(--cothrom-muted);">5 seats</div>
             </div>
-            <div style="font-size: 24px; color: #9ca3af;">→</div>
-            <div style="flex: 1; background: #dbeafe; border-radius: 8px; padding: 12px; text-align: center;">
-                <div style="font-size: 11px; color: #1e40af; text-transform: uppercase; margin-bottom: 4px;">Proposed</div>
-                <div style="font-weight: 600; color: #2563eb;">Kildare South</div>
-                <div style="font-size: 12px; color: #666;">3 seats</div>
+            <div style="font-size: 24px; color: var(--cothrom-muted);">→</div>
+            <div style="flex: 1; background: var(--cothrom-info-bg); border-radius: 8px; padding: 12px; text-align: center;">
+                <div style="font-size: 11px; color: var(--cothrom-info); text-transform: uppercase; margin-bottom: 4px;">Proposed</div>
+                <div style="font-weight: 600; color: var(--cothrom-info);">Kildare South</div>
+                <div style="font-size: 12px; color: var(--cothrom-muted);">3 seats</div>
             </div>
         </div>
-        <div style="font-size: 13px; color: #4b5563; line-height: 1.6;">
+        <div style="font-size: 13px; color: var(--cothrom-ink-2); line-height: 1.6;">
             Your county remains <strong>Laois</strong>, but your constituency changes. You would vote alongside Kildare residents instead of Offaly neighbours.
         </div>
     </div>

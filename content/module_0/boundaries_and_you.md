@@ -36,7 +36,7 @@ Think of Ireland's electoral map not as a static picture, but as a **time-lapse 
 - **Minor reviews**: Targeted adjustments to specific areas
 - **Frequency**: After each census; the most recent (2023) was the first carried out by the new statutory Electoral Commission
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_timeline.html"
     width="100%"
@@ -139,24 +139,26 @@ Even if population stayed perfectly stable (which it never does), boundaries wou
 
 The Electoral Commission must balance **multiple legal requirements** when drawing boundaries:
 
-#### Population Variance (The ±5% Target)
+#### Population Variance: the ±5% target and the ±8% reality
 
-Each constituency should have population within **±5% of the national average** per TD.
+Traditionally the Commission aimed to keep every constituency within about **±5%** of the national average people-per-TD. For the 2023 review it worked to a **wider tolerance — some constituencies reaching around ±8%** — to absorb strong population growth while reinstating broken county boundaries. Clare, the most extreme case, ends up about 8% above the average.
 
 **The Math:**
 ```
-National average: 29,593 people per TD (2023 review)
+National average:      29,593 people per TD (2023 review)
 
-Acceptable range (±5%): 28,113 to 31,073 per TD
+±5% target band:       28,113 to 31,073 per TD
+±8% actual (2023):     27,226 to 31,960 per TD
 
-3-seat constituency: 84,339 to 93,219 people
-4-seat constituency: 112,452 to 124,292 people
-5-seat constituency: 140,565 to 155,365 people
+At the ±5% target band:
+  3-seat constituency: 84,339 to 93,219 people
+  4-seat constituency: 112,452 to 124,292 people
+  5-seat constituency: 140,565 to 155,365 people
 ```
 
 **Interactive: See How Variance Works**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_variance.html"
     width="100%"
@@ -202,7 +204,7 @@ Ireland has inhabited islands (Aran Islands, Achill, etc.). They must connect to
 
 **Visual Examples: Contiguity**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_contiguity.html"
     width="100%"
@@ -230,7 +232,7 @@ The term comes from Governor Elbridge Gerry + "salamander", describing the twist
 
 **Visual Examples: Compactness**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_compactness.html"
     width="100%"
@@ -253,7 +255,7 @@ The Electoral Act mentions respecting **county boundaries** where possible, but 
 
 **Visual Examples: County Boundary Scenarios**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_counties.html"
     width="100%"
@@ -285,7 +287,7 @@ Every boundary decision involves **trade-offs**. The question is: which trade-of
 
 **Interactive: Explore Trade-Offs**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_tradeoffs.html"
     width="100%"
@@ -394,7 +396,7 @@ Your ED is **more likely** to see changes if:
 
 ### Interactive Risk Assessment
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/change_risk.html"
     width="100%"

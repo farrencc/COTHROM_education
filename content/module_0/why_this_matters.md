@@ -74,21 +74,21 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
         .cothrom-calc-container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
-            border: 2px solid #e0e0e0;
+            background: var(--cothrom-panel);
+            border: 2px solid var(--cothrom-border);
             border-radius: 12px;
             padding: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .cothrom-calc-container h3 {
-            color: #2c3e50;
+            color: var(--cothrom-ink);
             margin-bottom: 8px;
             font-size: 24px;
             text-align: center;
         }
         .cothrom-subtitle {
             text-align: center;
-            color: #7f8c8d;
+            color: var(--cothrom-muted);
             font-size: 13px;
             margin-bottom: 24px;
             font-style: italic;
@@ -98,7 +98,7 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
         }
         .cothrom-input-section label {
             display: block;
-            color: #34495e;
+            color: var(--cothrom-ink-2);
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 15px;
@@ -107,13 +107,13 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             width: 100%;
             padding: 12px 16px;
             font-size: 16px;
-            border: 2px solid #bdc3c7;
+            border: 2px solid var(--cothrom-border);
             border-radius: 8px;
-            background: white;
+            background: var(--cothrom-panel);
             cursor: pointer;
         }
         .cothrom-input-section select:focus {
-            border-color: #27ae60;
+            border-color: var(--cothrom-green);
             outline: none;
         }
         .cothrom-results {
@@ -123,7 +123,7 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             display: block;
         }
         .cothrom-shortage-banner {
-            background: linear-gradient(135deg, #27ae60 0%, #32e875 100%);
+            background: linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -141,12 +141,12 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             margin: 8px 0;
         }
         .cothrom-section-header {
-            color: #2c3e50;
+            color: var(--cothrom-ink);
             font-weight: 700;
             font-size: 16px;
             margin: 20px 0 12px 0;
             padding-bottom: 8px;
-            border-bottom: 2px solid #27ae60;
+            border-bottom: 2px solid var(--cothrom-green);
         }
         .cothrom-seat-comparison {
             display: grid;
@@ -156,35 +156,35 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             align-items: center;
         }
         .cothrom-seat-box {
-            background: white;
+            background: var(--cothrom-panel);
             padding: 16px;
             border-radius: 8px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--cothrom-border);
             text-align: center;
         }
         .cothrom-seat-box.deserved {
-            border-color: #27ae60;
-            background: #f0fdf4;
+            border-color: var(--cothrom-green);
+            background: var(--cothrom-tint-green);
         }
         .cothrom-seat-box.assigned {
-            border-color: #7b2cbf;
-            background: #faf5ff;
+            border-color: var(--cothrom-accent);
+            background: var(--cothrom-tint-accent);
         }
         .cothrom-seat-box .number {
             font-size: 28px;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--cothrom-ink);
         }
         .cothrom-seat-box .label {
             font-size: 12px;
-            color: #7f8c8d;
+            color: var(--cothrom-muted);
             margin-top: 6px;
             font-weight: 600;
         }
         .cothrom-vs {
             font-size: 20px;
             font-weight: 700;
-            color: #95a5a6;
+            color: var(--cothrom-muted);
         }
         .cothrom-stat-grid {
             display: grid;
@@ -193,13 +193,13 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             margin-bottom: 16px;
         }
         .cothrom-stat-card {
-            background: #f8f9fa;
+            background: var(--cothrom-surface);
             padding: 14px;
             border-radius: 8px;
-            border: 1px solid #e0e0e0;
+            border: 1px solid var(--cothrom-border);
         }
         .cothrom-stat-card .result-label {
-            color: #5a6c7d;
+            color: var(--cothrom-ink-2);
             font-size: 11px;
             font-weight: 500;
             margin-bottom: 4px;
@@ -207,7 +207,7 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             letter-spacing: 0.5px;
         }
         .cothrom-stat-card .result-value {
-            color: #2c3e50;
+            color: var(--cothrom-ink);
             font-size: 18px;
             font-weight: 700;
         }
@@ -217,19 +217,19 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             align-items: center;
             padding: 10px;
             margin-bottom: 8px;
-            background: #f8f9fa;
+            background: var(--cothrom-surface);
             border-radius: 6px;
         }
         .cothrom-variance-label {
             font-weight: 600;
-            color: #34495e;
+            color: var(--cothrom-ink-2);
             font-size: 13px;
             flex: 1;
         }
         .cothrom-variance-value {
             font-size: 18px;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--cothrom-ink);
         }
         .cothrom-variance-badge {
             display: inline-block;
@@ -240,15 +240,15 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             margin-left: 8px;
         }
         .cothrom-variance-over {
-            background: #fee;
-            color: #c33;
+            background: var(--cothrom-over-bg);
+            color: var(--cothrom-over);
         }
         .cothrom-variance-under {
-            background: #efe;
-            color: #3a3;
+            background: var(--cothrom-under-bg);
+            color: var(--cothrom-under);
         }
         .cothrom-vote-weight {
-            background: linear-gradient(135deg, #7b2cbf 0%, #3c096c 100%);
+            background: linear-gradient(135deg, var(--cothrom-accent) 0%, var(--cothrom-accent-dark) 100%);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -265,14 +265,14 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             font-weight: 700;
         }
         .cothrom-explanation {
-            background: #f8f9fa;
-            border-left: 4px solid #27ae60;
+            background: var(--cothrom-surface);
+            border-left: 4px solid var(--cothrom-green);
             padding: 16px;
             margin: 12px 0;
             border-radius: 4px;
         }
         .cothrom-explanation p {
-            color: #34495e;
+            color: var(--cothrom-ink-2);
             line-height: 1.6;
             margin-bottom: 10px;
             font-size: 14px;
@@ -283,11 +283,11 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
         .cothrom-loading {
             text-align: center;
             padding: 20px;
-            color: #666;
+            color: var(--cothrom-muted);
         }
         .cothrom-error {
-            background: #fee;
-            color: #c33;
+            background: var(--cothrom-over-bg);
+            color: var(--cothrom-over);
             padding: 12px;
             border-radius: 6px;
             text-align: center;
@@ -452,13 +452,13 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
                     diffElem.textContent = absSeatDiff.toFixed(2);
                     if (seatDiff > 0) {
                         labelElem.textContent = 'seats short of fair representation';
-                        banner.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
+                        banner.style.background = 'linear-gradient(135deg, var(--cothrom-red) 0%, var(--cothrom-danger) 100%)';
                     } else if (seatDiff < 0) {
                         labelElem.textContent = 'surplus seats beyond fair representation';
-                        banner.style.background = 'linear-gradient(135deg, #27ae60 0%, #32e875 100%)';
+                        banner.style.background = 'linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%)';
                     } else {
                         labelElem.textContent = 'perfectly represented!';
-                        banner.style.background = 'linear-gradient(135deg, #27ae60 0%, #32e875 100%)';
+                        banner.style.background = 'linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%)';
                     }
 
                     // Update Seat Comparison

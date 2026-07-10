@@ -6,18 +6,66 @@
    ===================================================================== */
 
 :root {
-  --cothrom-green: #27ae60;
+  /* --- Brand --- */
+  --cothrom-green: #27ae60;         /* brand primary */
+  --cothrom-green-bright: #32e875;  /* gradient partner */
   --cothrom-green-dark: #1e874b;
-  --cothrom-purple: #7b2cbf;
+  --cothrom-accent: #7b2cbf;        /* "assigned" / secondary emphasis */
+  --cothrom-accent-dark: #3c096c;   /* gradient partner */
   --cothrom-red: #e74c3c;
-  --cothrom-surface: #f8f9fa;
+  --cothrom-amber: #f59e0b;         /* medium-risk / caution accent */
+
+  /* --- Text / neutral --- */
+  --cothrom-ink: #2c3e50;           /* headings, primary text */
+  --cothrom-ink-2: #34495e;         /* secondary text */
+  --cothrom-muted: #7f8c8d;         /* captions, subtitles, faint labels */
+  --cothrom-surface: #f8f9fa;       /* subtly raised panels */
+  --cothrom-panel: #ffffff;         /* elevated cards (white in light) */
   --cothrom-border: #e0e0e0;
-  --cothrom-text: #2c3e50;
+
+  /* --- Variance (over/under national average) --- */
+  --cothrom-over: #c33;             /* above average */
+  --cothrom-over-bg: #fee;
+  --cothrom-under: #3a3;            /* below average */
+  --cothrom-under-bg: #efe;
+
+  /* --- Tints (panel backgrounds) --- */
+  --cothrom-tint-green: #f0fdf4;
+  --cothrom-tint-accent: #faf5ff;
+
+  /* --- Status (illustrative comparison cards / banners) --- */
+  --cothrom-warn: #92400e;
+  --cothrom-warn-bg: #fef3c7;
+  --cothrom-warn-border: #fcd34d;
+  --cothrom-danger: #dc2626;
+  --cothrom-danger-bg: #fee2e2;
+  --cothrom-info: #2563eb;
+  --cothrom-info-bg: #dbeafe;
+
+  /* --- Back-compat aliases (do not use in new code) --- */
+  --cothrom-purple: var(--cothrom-accent);
+  --cothrom-text: var(--cothrom-ink);
 }
 html[data-theme="dark"] {
+  --cothrom-ink: #e6e9ef;
+  --cothrom-ink-2: #c3ccd8;
+  --cothrom-muted: #9aa4b2;
+  /* "-dark" emphasis colours are only legible on light backgrounds;
+     lighten them on dark so they stay readable as text and gradient ends. */
+  --cothrom-green-dark: #5fd08a;
+  --cothrom-accent-dark: #b98fd8;
   --cothrom-surface: #1f2733;
+  --cothrom-panel: #232b38;
   --cothrom-border: #3a4453;
-  --cothrom-text: #e6e9ef;
+  --cothrom-over-bg: #3a1f22;
+  --cothrom-under-bg: #16301f;
+  --cothrom-tint-green: #14251c;
+  --cothrom-tint-accent: #1e1530;
+  --cothrom-warn: #f0c674;
+  --cothrom-warn-bg: #3a2f14;
+  --cothrom-warn-border: #6b5626;
+  --cothrom-danger-bg: #3a1c1c;
+  --cothrom-info-bg: #16233a;
 }
 
 /* ---------- Glossary term ---------- */

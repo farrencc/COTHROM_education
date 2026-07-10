@@ -14,8 +14,8 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #ffffff;
-            color: #333;
+            background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
             line-height: 1.6;
         }
 
@@ -36,23 +36,23 @@
             font-size: 32px;
             font-weight: 600;
             margin: 0 0 20px 0;
-            color: #333;
+            color: var(--cothrom-ink);
         }
 
         h2 {
             font-size: 24px;
             font-weight: 600;
             margin: 40px 0 20px 0;
-            color: #333;
+            color: var(--cothrom-ink);
             padding-bottom: 10px;
-            border-bottom: 2px solid #f5f5f5;
+            border-bottom: 2px solid var(--cothrom-surface);
         }
 
         h3 {
             font-size: 18px;
             font-weight: 600;
             margin: 25px 0 15px 0;
-            color: #333;
+            color: var(--cothrom-ink);
         }
 
         h4 {
@@ -72,13 +72,13 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #666;
+            color: var(--cothrom-muted);
             margin-bottom: 8px;
         }
 
         /* Intro box */
         .intro-box {
-            background: #f5f5f5;
+            background: var(--cothrom-surface);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 30px;
@@ -110,39 +110,39 @@
         /* Example cards */
         .example-card {
             flex: 1;
-            background: #ffffff;
+            background: var(--cothrom-panel);
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .example-card.good {
-            border-left: 3px solid #27ae60;
+            border-left: 3px solid var(--cothrom-green);
         }
 
         .example-card.good h4 {
-            color: #27ae60;
+            color: var(--cothrom-green);
         }
 
         .example-card.bad {
-            border-left: 3px solid #3c096c;
+            border-left: 3px solid var(--cothrom-accent-dark);
         }
 
         .example-card.bad h4 {
-            color: #3c096c;
+            color: var(--cothrom-accent-dark);
         }
 
         .example-card.moderate {
-            border-left: 3px solid #7b2cbf;
+            border-left: 3px solid var(--cothrom-accent);
         }
 
         .example-card.moderate h4 {
-            color: #7b2cbf;
+            color: var(--cothrom-accent);
         }
 
         /* Interactive sections */
         .interactive-section {
-            background: #f5f5f5;
+            background: var(--cothrom-surface);
             padding: 20px;
             border-radius: 12px;
             margin: 20px 0;
@@ -150,15 +150,15 @@
 
         /* Info boxes (important callouts) */
         .info-box {
-            background: linear-gradient(135deg, #27ae6010 0%, #32e87510 100%);
-            border-left: 3px solid #27ae60;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-green) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-green-bright) 6%, transparent) 100%);
+            border-left: 3px solid var(--cothrom-green);
             border-radius: 0 8px 8px 0;
             padding: 15px;
             margin: 20px 0;
         }
 
         .info-box h4 {
-            color: #27ae60;
+            color: var(--cothrom-green);
             margin-bottom: 8px;
         }
 
@@ -168,15 +168,15 @@
 
         /* Warning boxes */
         .warning-box {
-            background: linear-gradient(135deg, #7b2cbf10 0%, #3c096c10 100%);
-            border-left: 3px solid #7b2cbf;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-accent) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-accent-dark) 6%, transparent) 100%);
+            border-left: 3px solid var(--cothrom-accent);
             border-radius: 0 8px 8px 0;
             padding: 15px;
             margin: 20px 0;
         }
 
         .warning-box h4 {
-            color: #7b2cbf;
+            color: var(--cothrom-accent);
             margin-bottom: 8px;
         }
 
@@ -186,8 +186,8 @@
 
         /* Buttons */
         .btn {
-            background: #32e875;
-            color: #ffffff;
+            background: var(--cothrom-green-bright);
+            color: var(--cothrom-panel);
             border: none;
             border-radius: 8px;
             padding: 12px 20px;
@@ -198,20 +198,20 @@
         }
 
         .btn:hover {
-            background: #27ae60;
+            background: var(--cothrom-green);
         }
 
         .btn:disabled {
-            background: #ccc;
+            background: var(--cothrom-border);
             cursor: not-allowed;
         }
 
         .btn-secondary {
-            background: #7b2cbf;
+            background: var(--cothrom-accent);
         }
 
         .btn-secondary:hover {
-            background: #3c096c;
+            background: var(--cothrom-accent-dark);
         }
 
         /* Range sliders */
@@ -220,7 +220,7 @@
             margin: 10px 0;
             -webkit-appearance: none;
             height: 8px;
-            background: #ddd;
+            background: var(--cothrom-border);
             border-radius: 4px;
             outline: none;
         }
@@ -229,7 +229,7 @@
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            background: #32e875;
+            background: var(--cothrom-green-bright);
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -238,7 +238,7 @@
         input[type="range"]::-moz-range-thumb {
             width: 20px;
             height: 20px;
-            background: #32e875;
+            background: var(--cothrom-green-bright);
             border-radius: 50%;
             cursor: pointer;
             border: none;
@@ -247,7 +247,7 @@
 
         /* Visual bars */
         .bar-container {
-            background: #ddd;
+            background: var(--cothrom-border);
             border-radius: 4px;
             height: 8px;
             overflow: hidden;
@@ -261,15 +261,15 @@
         }
 
         .bar-fill.good {
-            background: #32e875;
+            background: var(--cothrom-green-bright);
         }
 
         .bar-fill.moderate {
-            background: #7b2cbf;
+            background: var(--cothrom-accent);
         }
 
         .bar-fill.bad {
-            background: #3c096c;
+            background: var(--cothrom-accent-dark);
         }
 
         /* Status indicators */
@@ -284,18 +284,18 @@
         }
 
         .status.good {
-            background: #27ae6020;
-            color: #27ae60;
+            background: color-mix(in srgb, var(--cothrom-green) 13%, transparent);
+            color: var(--cothrom-green);
         }
 
         .status.moderate {
-            background: #7b2cbf20;
-            color: #7b2cbf;
+            background: color-mix(in srgb, var(--cothrom-accent) 13%, transparent);
+            color: var(--cothrom-accent);
         }
 
         .status.bad {
-            background: #3c096c20;
-            color: #3c096c;
+            background: color-mix(in srgb, var(--cothrom-accent-dark) 13%, transparent);
+            color: var(--cothrom-accent-dark);
         }
 
         /* Data display */
@@ -307,7 +307,7 @@
         }
 
         .data-item {
-            background: #f5f5f5;
+            background: var(--cothrom-surface);
             padding: 15px;
             border-radius: 8px;
             text-align: center;
@@ -316,7 +316,7 @@
         .data-value {
             font-size: 24px;
             font-weight: 700;
-            color: #27ae60;
+            color: var(--cothrom-green);
             margin: 0;
         }
 
@@ -324,7 +324,7 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #666;
+            color: var(--cothrom-muted);
             margin-top: 4px;
         }
 
@@ -333,7 +333,7 @@
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--cothrom-border);
         }
 
         .metric-row:last-child {
@@ -341,7 +341,7 @@
         }
 
         .metric-label {
-            color: #666;
+            color: var(--cothrom-muted);
             font-size: 13px;
         }
 
@@ -352,7 +352,7 @@
 
         /* Visualization containers */
         .viz-container {
-            background: #ffffff;
+            background: var(--cothrom-panel);
             border-radius: 8px;
             padding: 20px;
             margin: 15px 0;
@@ -373,15 +373,15 @@
         }
 
         .text-good {
-            color: #27ae60;
+            color: var(--cothrom-green);
         }
 
         .text-bad {
-            color: #3c096c;
+            color: var(--cothrom-accent-dark);
         }
 
         .text-moderate {
-            color: #7b2cbf;
+            color: var(--cothrom-accent);
         }
 
         .mt-20 {
@@ -427,11 +427,11 @@
 
         /* Footer */
         footer {
-            border-top: 1px solid #ddd;
+            border-top: 1px solid var(--cothrom-border);
             margin-top: 60px;
             padding-top: 20px;
             font-size: 12px;
-            color: #666;
+            color: var(--cothrom-muted);
         }
 
         footer p {
@@ -439,6 +439,8 @@
             font-size: 12px;
         }
     </style>
+  <link rel="stylesheet" href="../cothrom.css">
+  <script src="widget-bootstrap.js"></script>
 </head>
 <body>
     <div class="embedded">
@@ -452,15 +454,15 @@
                 <div class="svg-container">
                     <svg viewBox="0 0 160 160" width="140" height="140">
                         <!-- 3x3 grid of connected EDs -->
-                        <rect x="10" y="10" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="60" y="10" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="110" y="10" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="10" y="60" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="60" y="60" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="110" y="60" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="10" y="110" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="60" y="110" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
-                        <rect x="110" y="110" width="40" height="40" rx="4" fill="#32e875" opacity="0.8"/>
+                        <rect x="10" y="10" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="60" y="10" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="110" y="10" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="10" y="60" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="60" y="60" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="110" y="60" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="10" y="110" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="60" y="110" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
+                        <rect x="110" y="110" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
                     </svg>
                 </div>
                 <p style="text-align: center; font-size: 12px;">
@@ -474,15 +476,15 @@
                 <div class="svg-container">
                     <svg viewBox="0 0 160 160" width="140" height="140">
                         <!-- Scattered, disconnected EDs -->
-                        <rect x="10" y="10" width="40" height="40" rx="4" fill="#3c096c" opacity="0.8"/>
-                        <rect x="110" y="10" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
-                        <rect x="60" y="60" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
-                        <rect x="10" y="60" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
-                        <rect x="110" y="60" width="40" height="40" rx="4" fill="#3c096c" opacity="0.8"/>
-                        <rect x="60" y="110" width="40" height="40" rx="4" fill="#3c096c" opacity="0.8"/>
-                        <rect x="10" y="110" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
-                        <rect x="110" y="110" width="40" height="40" rx="4" fill="#ddd" opacity="0.8"/>
-                        <text x="80" y="45" font-size="20" fill="#3c096c" text-anchor="middle">?</text>
+                        <rect x="10" y="10" width="40" height="40" rx="4" fill="var(--cothrom-accent-dark)" opacity="0.8"/>
+                        <rect x="110" y="10" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
+                        <rect x="60" y="60" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
+                        <rect x="10" y="60" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
+                        <rect x="110" y="60" width="40" height="40" rx="4" fill="var(--cothrom-accent-dark)" opacity="0.8"/>
+                        <rect x="60" y="110" width="40" height="40" rx="4" fill="var(--cothrom-accent-dark)" opacity="0.8"/>
+                        <rect x="10" y="110" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
+                        <rect x="110" y="110" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
+                        <text x="80" y="45" font-size="20" fill="var(--cothrom-accent-dark)" text-anchor="middle">?</text>
                     </svg>
                 </div>
                 <p style="text-align: center; font-size: 12px;">
@@ -497,17 +499,17 @@
             <div class="svg-container">
                 <svg viewBox="0 0 200 120" width="200" height="120">
                     <!-- Mainland EDs -->
-                    <rect x="10" y="40" width="35" height="35" rx="4" fill="#7b2cbf" opacity="0.8"/>
-                    <rect x="50" y="40" width="35" height="35" rx="4" fill="#7b2cbf" opacity="0.8"/>
-                    <rect x="50" y="80" width="35" height="35" rx="4" fill="#7b2cbf" opacity="0.8"/>
+                    <rect x="10" y="40" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
+                    <rect x="50" y="40" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
+                    <rect x="50" y="80" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
                     <!-- Water -->
-                    <rect x="95" y="10" width="50" height="105" fill="#e3f2fd" rx="4"/>
-                    <text x="120" y="60" font-size="10" fill="#64b5f6" text-anchor="middle">water</text>
+                    <rect x="95" y="10" width="50" height="105" fill="var(--cothrom-info-bg)" rx="4"/>
+                    <text x="120" y="60" font-size="10" fill="var(--cothrom-info)" text-anchor="middle">water</text>
                     <!-- Island -->
-                    <rect x="155" y="40" width="35" height="35" rx="4" fill="#7b2cbf" opacity="0.8"/>
+                    <rect x="155" y="40" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
                     <!-- Ferry route -->
-                    <line x1="85" y1="57" x2="155" y2="57" stroke="#7b2cbf" stroke-width="2" stroke-dasharray="5,5"/>
-                    <text x="120" y="80" font-size="8" fill="#7b2cbf" text-anchor="middle">ferry route</text>
+                    <line x1="85" y1="57" x2="155" y2="57" stroke="var(--cothrom-accent)" stroke-width="2" stroke-dasharray="5,5"/>
+                    <text x="120" y="80" font-size="8" fill="var(--cothrom-accent)" text-anchor="middle">ferry route</text>
                 </svg>
             </div>
             <p style="text-align: center; font-size: 12px;">

@@ -18,6 +18,22 @@
 (function () {
   "use strict";
 
+  // Resize an embedded widget iframe to the content height it reports
+  // (see widget-bootstrap.js). Registered immediately so it catches
+  // height messages that arrive before DOMContentLoaded.
+  window.addEventListener("message", function (e) {
+    var d = e && e.data;
+    if (!d || d.type !== "cothrom-height" || typeof d.height !== "number") return;
+    var iframes = document.getElementsByTagName("iframe");
+    for (var i = 0; i < iframes.length; i++) {
+      if (iframes[i].contentWindow === e.source) {
+        iframes[i].style.height = Math.ceil(d.height) + "px";
+        iframes[i].setAttribute("scrolling", "no");
+        break;
+      }
+    }
+  });
+
   function initQuiz(quiz) {
     var answer = parseInt(quiz.getAttribute("data-answer"), 10);
     var options = Array.prototype.slice.call(quiz.querySelectorAll(".cothrom-opt"));
