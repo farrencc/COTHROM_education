@@ -61,4 +61,39 @@
       docEl.setAttribute("data-theme", d.theme);
     }
   });
+
+  /* --- Auto-height: report content height so the host can size the iframe.
+     Skipped when standalone, or when the widget opts out with
+     data-cothrom-fixed-height (e.g. the full-viewport map in ed_finder). --- */
+  if (window.parent && window.parent !== window &&
+      !docEl.hasAttribute("data-cothrom-fixed-height")) {
+    var lastH = 0;
+    function reportHeight() {
+      var h = Math.max(
+        document.body ? document.body.scrollHeight : 0,
+        docEl.scrollHeight
+      );
+      // Guard against a resize/observe feedback loop: only post real changes.
+      if (h && h !== lastH) {
+        lastH = h;
+        window.parent.postMessage({ type: "cothrom-height", height: h }, "*");
+      }
+    }
+    function startHeightReporting() {
+      reportHeight();
+      // React to content that grows/shrinks (e.g. an interactive reveal).
+      if (window.ResizeObserver && document.body) {
+        new ResizeObserver(reportHeight).observe(document.body);
+      }
+    }
+    window.addEventListener("resize", reportHeight);
+    window.addEventListener("load", reportHeight);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", startHeightReporting);
+    } else {
+      startHeightReporting();
+    }
+    // A late pass after fonts/async layout settle.
+    setTimeout(reportHeight, 400);
+  }
 })();
