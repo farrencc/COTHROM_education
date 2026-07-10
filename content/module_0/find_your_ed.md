@@ -155,6 +155,7 @@ Your ED's population directly influences how constituency boundaries are drawn. 
                 <div style="font-size: 11px; color: #666; text-transform: uppercase;">of TD's Constituents</div>
             </div>
         </div>
+        <div style="font-size: 11px; color: #666; margin-top: 12px; font-style: italic;">Illustrative example — the ED name and figures are made up to show what the tool displays, not official data.</div>
     </div>
 </div>
 ```
