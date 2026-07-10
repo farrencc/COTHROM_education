@@ -50,6 +50,10 @@ html[data-theme="dark"] {
   --cothrom-ink: #e6e9ef;
   --cothrom-ink-2: #c3ccd8;
   --cothrom-muted: #9aa4b2;
+  /* "-dark" emphasis colours are only legible on light backgrounds;
+     lighten them on dark so they stay readable as text and gradient ends. */
+  --cothrom-green-dark: #5fd08a;
+  --cothrom-accent-dark: #b98fd8;
   --cothrom-surface: #1f2733;
   --cothrom-panel: #232b38;
   --cothrom-border: #3a4453;
