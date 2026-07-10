@@ -1,0 +1,210 @@
+source_id,target_id,relation,rationale,strength,confidence
+dail_eireann,teachta_dala,prerequisite_for,"A TD is by definition a member of the Dail; the institution must exist for the reader before its members do.",hard,high
+constituency,teachta_dala,prerequisite_for,"TDs are returned by constituencies; helpful context but a reader can grasp what a TD is without it.",soft,high
+teachta_dala,seat_magnitude,prerequisite_for,"Seat magnitude counts TDs per constituency; meaningless without knowing what a TD is.",hard,high
+constituency,seat_magnitude,prerequisite_for,"Magnitude is a property of a constituency.",hard,high
+constituency,redistricting,prerequisite_for,"Redistricting is the redrawing of constituency boundaries; there is nothing to redraw without the concept of a constituency.",hard,high
+proportional_representation,redistricting,motivates,"The paper states redistricting is a necessary consequence of PR: as population shifts, boundaries must move to keep representation even (S1).",hard,high
+census_data,boundary_review,prerequisite_for,"Reviews are triggered by and computed from the latest census; the reader must know what the census provides to see why reviews happen when they do.",hard,high
+redistricting,boundary_review,prerequisite_for,"A review is the institutionalised Irish form of redistricting.",hard,high
+electoral_commission,boundary_review,prerequisite_for,"Reviews are now conducted by the Commission, but the review concept predates it (Constituency Commissions), so this is context rather than a blocker.",soft,high
+redistricting,electoral_commission,prerequisite_for,"The Commission's role in this course is as the body that reviews and redraws boundaries; that role is unintelligible without redistricting.",hard,high
+dail_eireann,electoral_commission,prerequisite_for,"The Commission reviews Dail constituencies specifically.",soft,high
+proportional_representation,pr_stv,prerequisite_for,"PR-STV is a mechanism for achieving PR; the goal must precede the mechanism.",hard,high
+constituency,pr_stv,prerequisite_for,"STV counts happen within multi-member constituencies; the reader needs the container to understand the count.",hard,high
+pr_stv,quota_droop,prerequisite_for,"The quota is a component of the STV count.",hard,high
+quota_droop,pr_stv,part_of,"The quota is one moving part of the STV counting method.",hard,high
+pr_stv,vote_transfer,prerequisite_for,"Transfers only exist inside an STV count.",hard,high
+quota_droop,vote_transfer,prerequisite_for,"Surplus transfers are defined relative to the quota; without the quota, surpluses make no sense.",hard,high
+vote_transfer,pr_stv,part_of,"Transfers are the mechanism that makes STV proportional in practice.",hard,high
+teachta_dala,constitution_16_2,prerequisite_for,"Article 16.2 fixes member numbers and member-to-population ratios; the reader must know what a member (TD) is.",hard,high
+constituency,constitution_16_2,prerequisite_for,"Article 16.2.3 is a requirement on the ratio in each constituency.",hard,high
+census_data,constitution_16_2,prerequisite_for,"The ratio is anchored to the last preceding census; useful context, but the equal-ratio idea is graspable without it.",soft,high
+constituency,terms_of_reference,prerequisite_for,"The terms of reference are conditions on constituencies.",hard,high
+county,terms_of_reference,prerequisite_for,"Item (3) requires county boundaries to be preserved as far as practicable; the reader needs counties to parse the rule list.",hard,high
+seat_magnitude,terms_of_reference,prerequisite_for,"Item (2) is the 3-5 seat rule; the rule list cannot be read without the magnitude concept.",hard,high
+constitution_16_2,terms_of_reference,prerequisite_for,"The statutory terms sit on top of the constitutional provisions; knowing the constitutional floor clarifies what the statute adds.",soft,high
+redistricting,gerrymandering,prerequisite_for,"Gerrymandering is the abuse of the boundary-drawing power; the power must be understood before its abuse.",hard,high
+constituency,electoral_division,prerequisite_for,"EDs matter here as the building blocks constituencies are assembled from; the bare fact of 3,440 small areas is graspable alone.",soft,high
+electoral_division,map_concept,prerequisite_for,"The Map is defined as the collection of building blocks, which in Ireland are the EDs.",hard,high
+constituency,map_concept,prerequisite_for,"The Map abstraction only makes sense as the raw material from which constituencies are formed.",hard,high
+graph,adjacency_graph,prerequisite_for,"The adjacency graph is a graph; nodes and edges must be understood first.",hard,high
+electoral_division,adjacency_graph,prerequisite_for,"The nodes of the adjacency graph are EDs.",hard,high
+adjacency_graph,noncontiguous_eds,prerequisite_for,"The split EDs are exceptions to the land-connected edge definition; the reader must know the graph to appreciate the exception.",hard,high
+electoral_division,configuration,prerequisite_for,"A configuration is an assignment of every ED to a constituency.",hard,high
+constituency,configuration,prerequisite_for,"The labels being assigned are constituencies.",hard,high
+map_concept,configuration,prerequisite_for,"A configuration is one way of carving the Map; the Map framing sharpens but is not strictly required.",soft,high
+redistricting,rule_set,prerequisite_for,"The rule set is the codified criteria governing redistricting; without the activity there is nothing for rules to govern.",hard,high
+terms_of_reference,rule_set,prerequisite_for,"The Irish terms of reference are the worked example of a rule set; the abstract idea is graspable without them.",soft,high
+constitution_16_2,rule_set,prerequisite_for,"The constitutional provisions are the strictest layer of the Irish rule set.",soft,high
+configuration,boundary_set,prerequisite_for,"A Boundaries object is a configuration that passes the rules; the underlying object must exist first.",hard,high
+rule_set,boundary_set,prerequisite_for,"Validity is defined relative to the rule set.",hard,high
+configuration,solution_space,prerequisite_for,"The solution space is the set of all configurations; you cannot count what you cannot define.",hard,high
+census_data,national_average,prerequisite_for,"The numerator of the National Ratio is the census population.",hard,high
+teachta_dala,national_average,prerequisite_for,"The denominator is the number of Dail seats (TDs).",hard,high
+constitution_16_2,national_average,motivates,"The paper introduces the National Ratio explicitly in line with Article 16.2.3 (S2.2).",hard,high
+national_average,ser,prerequisite_for,"SER is defined as population divided by the National Ratio (Eq. 2).",hard,high
+constituency,ser,prerequisite_for,"SER is computed for a proposed constituency's population.",hard,high
+ser,proportional_representation,formalises,"SER quantifies the seats a population deserves, turning the PR ideal into a measurable quantity.",soft,high
+ser,variance,prerequisite_for,"Variance is defined directly in terms of SER (Eq. 6).",hard,high
+seat_magnitude,variance,prerequisite_for,"Variance compares SER to the assigned integer seat count; the reader must know seats come in whole numbers 3-5.",hard,high
+variance,constitution_16_2,formalises,"Variance from the national average operationalises Article 16.2.3's same-ratio-throughout-the-country requirement.",hard,high
+variance,variance_5pct,prerequisite_for,"The ±5 percent convention is a threshold on variance.",hard,high
+boundary_review,variance_5pct,prerequisite_for,"The convention comes from review-report practice 1980-2023; the historical context explains its status as convention rather than law.",soft,high
+variance,alt_variance,prerequisite_for,"The alternative definition is a modification of the standard one; the contrast is the content.",hard,high
+alt_variance,variance,contrasts_with,"Same numerator, different denominator: v_new divides by deserved seats so over- and under-representation at the threshold carry equal misrepresentation per person (App C).",hard,high
+constituency,contiguity,prerequisite_for,"Contiguity is a property of a constituency's territory.",hard,high
+adjacency_graph,contiguity,prerequisite_for,"The computable definition (one connected component) lives on the graph, but the one-piece idea is graspable without it.",soft,high
+terms_of_reference,contiguity,motivates,"Item (4) of the terms of reference makes contiguity a legal requirement (S1).",hard,high
+constituency,compactness,prerequisite_for,"Compactness is a property of a constituency's shape.",hard,high
+gerrymandering,compactness,motivates,"The paper introduces compactness explicitly to avoid the meandering shapes of manipulated constituencies (S2.4).",hard,high
+compactness,convex_hull,prerequisite_for,"The convex hull is one way to measure compactness; the goal precedes the instrument.",hard,high
+convex_hull,compactness,part_of,"One of several interchangeable compactness measures discussed in S2.4.",soft,high
+county,county_breach_metric,prerequisite_for,"The metric counts breaches of county boundaries.",hard,high
+adjacency_graph,county_breach_metric,prerequisite_for,"The measure is defined on county-boundary edges of the graph (S2.5).",hard,high
+terms_of_reference,county_breach_metric,motivates,"Item (3) makes county preservation a statutory consideration; the metric exists to serve it.",hard,high
+adjacency_graph,community_boundaries,prerequisite_for,"Community boundaries are implemented as designated penalty edges in the graph.",hard,high
+county_breach_metric,community_boundaries,prerequisite_for,"The paper introduces community edges as working in much the same way as county boundary edges (S2.5).",soft,high
+configuration,temporal_continuity,prerequisite_for,"Continuity compares the proposed configuration against the existing one; both must be understood as configurations.",hard,high
+boundary_review,temporal_continuity,prerequisite_for,"Continuity is judged between successive reviews; the review cycle is the natural context.",soft,high
+terms_of_reference,temporal_continuity,motivates,"Item (6) requires continuity of existing arrangements to be upheld as far as possible.",hard,high
+county_breach_metric,population_weighted_break,prerequisite_for,"The worked example (S2.7, Fig 5) weights county-boundary breaches by the population transferred.",hard,high
+ser,population_weighted_break,prerequisite_for,"The bump function's x-axis is the SER lying over the boundary; unreadable without SER.",hard,high
+temporal_continuity,population_weighted_break,prerequisite_for,"The idea of weighting a breach by people affected is introduced via the continuity function f_C (S2.6 to S2.7).",soft,high
+configuration,objective_function,prerequisite_for,"An objective function acts on configurations; the domain must exist before the function.",hard,high
+rule_set,objective_function,prerequisite_for,"The score measures adherence to the rules; without the rule set there is nothing to score.",hard,high
+objective_function,rule_set,formalises,"The objective function is the mathematical operationalisation of the legal rule set (S2).",hard,high
+objective_function,hamiltonian,prerequisite_for,"In this course the Hamiltonian is meaningful only as physics' name for a configuration score to be minimised; the score idea is the genuine comprehension blocker.",hard,high
+hamiltonian,potts_model,prerequisite_for,"The Potts model is defined by its Hamiltonian (Eq. 9); the model cannot be stated without it.",hard,high
+graph,potts_model,prerequisite_for,"Nearest-neighbour pairs on a lattice are easiest to read as graph edges, but a grid picture suffices.",soft,high
+potts_model,ferromagnetic_config,prerequisite_for,"The ferromagnetic configuration is defined as the minimiser of the Potts Hamiltonian.",hard,high
+potts_model,electoral_potts,prerequisite_for,"The electoral model is an instantiation of the Potts model; the template must precede the instance.",hard,high
+configuration,electoral_potts,prerequisite_for,"The model's states are exactly the redistricting configurations.",hard,high
+adjacency_graph,electoral_potts,prerequisite_for,"Geographical ED borders translate directly into nearest-neighbour lattice sites (S4.1.1); the graph is the lattice.",hard,high
+potts_model,electoral_potts,analogy_for,"The physics bridge: EDs are spins, constituency labels are spin values, ED borders are lattice bonds; grasping the electoral model IS grasping this analogy.",hard,high
+electoral_potts,redistricting,formalises,"The electoral Potts model is the paper's mathematical formalisation of the redistricting problem.",hard,high
+electoral_potts,h_p,prerequisite_for,"H_P is a term of the electoral Potts Hamiltonian, defined over its constituencies and populations.",hard,high
+ser,h_p,prerequisite_for,"Understanding why H_P takes a minimum over allowed seat counts m requires the seats-deserved idea that SER makes precise.",hard,high
+seat_magnitude,h_p,prerequisite_for,"The set {m_s} = {3,4,5} inside H_P is the seat-magnitude rule.",hard,high
+national_average,h_p,prerequisite_for,"H_P uses the average population per constituency <P>, a cousin of (but not identical to) the per-TD national average; the distinction should be taught, not assumed.",soft,high
+h_p,variance,formalises,"H_P penalises exactly the deviation from allowed integer representation that variance measures (Fig 13 marks the 5 percent variance line).",hard,high
+electoral_potts,h_c,prerequisite_for,"H_C is a term of the electoral Potts Hamiltonian defined over constituency groupings.",hard,high
+contiguity,h_c,prerequisite_for,"H_C counts departures from one-connected-group-per-constituency; the contiguity concept is the content.",hard,high
+h_c,contiguity,formalises,"H_C = sum |G_q - 1| is the computable form of the contiguity requirement.",hard,high
+electoral_potts,h_d,prerequisite_for,"H_D is a term of the electoral Potts Hamiltonian defined over neighbouring ED pairs.",hard,high
+compactness,h_d,prerequisite_for,"H_D is the border-length compactness measure; the compactness goal must precede its encoding.",hard,high
+h_d,compactness,formalises,"H_D counts cross-constituency neighbour pairs, the model's definition of (non-)compactness (fn 2).",hard,high
+ferromagnetic_config,h_d,analogy_for,"The physics bridge for a pitfall: H_D alone is minimised by the all-aligned (single-constituency) state, showing what pure compactness pressure does.",soft,high
+electoral_potts,h_b,prerequisite_for,"The candidate county Hamiltonians are terms of the electoral Potts model.",hard,medium
+county_breach_metric,h_b,prerequisite_for,"The three candidates H(1)-H(3) are alternative encodings of the county-breach measure; the measure and its ambiguity must come first.",hard,medium
+h_b,county_breach_metric,formalises,"Each candidate formula operationalises one legal interpretation of a county-boundary violation (S4.1.1, S2.5).",hard,medium
+multi_objective,coupling_constants,prerequisite_for,"Coupling constants only exist because several objectives must be combined into one function; without the multi-objective problem they are unmotivated.",hard,high
+constraint_hierarchy,coupling_constants,prerequisite_for,"The missing legal hierarchy is what the constants must supply; knowing the gap makes their role intelligible.",soft,high
+coupling_constants,constraint_hierarchy,formalises,"The J_alpha are the numerical translation of the (assumed) hierarchy of rules - the paper's stated first objective (S4.1.1).",hard,high
+coupling_constants,total_hamiltonian,prerequisite_for,"The total Hamiltonian is a J-weighted sum; the weights must be understood first.",hard,high
+h_p,total_hamiltonian,prerequisite_for,"The sum is unintelligible without at least its principal terms; H_P is the most important of them.",hard,high
+h_c,total_hamiltonian,prerequisite_for,"H_C is a summand of the total Hamiltonian.",hard,high
+h_d,total_hamiltonian,prerequisite_for,"H_D is a summand of the total Hamiltonian.",hard,high
+h_b,total_hamiltonian,prerequisite_for,"County terms may be added in the same manner; optional in the paper's minimal model.",soft,medium
+h_p,total_hamiltonian,part_of,"H_P is a component term of H = sum J_alpha H_alpha (Eq. 12).",hard,high
+h_c,total_hamiltonian,part_of,"H_C is a component term of Eq. 12.",hard,high
+h_d,total_hamiltonian,part_of,"H_D is a component term of Eq. 12.",hard,high
+h_b,total_hamiltonian,part_of,"A county term is an optional component of Eq. 12, pending choice among H(1)-H(3).",soft,medium
+h_d,h_p,in_tension_with,"H_D alone is minimised by one giant constituency while H_P demands Q constituencies at allowed population multiples; verifiable from Eq. 11 though not stated as a tension in the paper.",soft,medium
+hamiltonian,temperature,prerequisite_for,"Temperature only means anything here relative to an energy scale: it calibrates how much energy increase the search will tolerate.",hard,high
+optimisation,temperature,prerequisite_for,"Temperature's role is to control an optimisation's explore/exploit balance.",soft,high
+hamiltonian,boltzmann,prerequisite_for,"The Boltzmann weight is a function of the energy H.",hard,high
+temperature,boltzmann,prerequisite_for,"The Boltzmann weight is a function of T; the low-T limit is the whole point.",hard,high
+solution_space,boltzmann,prerequisite_for,"The distribution is over the space of configurations; picturing that space helps but the formula stands without it.",soft,high
+objective_function,optimisation,prerequisite_for,"Optimisation is defined as driving a function to an extremum; there must be a function to drive.",hard,high
+solution_space,optimisation,prerequisite_for,"The scale of the space explains why optimisation must be clever, but stepwise improvement is graspable without it.",soft,high
+optimisation,multi_objective,prerequisite_for,"Multi-objective optimisation is optimisation with several competing scores.",hard,high
+rule_set,multi_objective,prerequisite_for,"The multiple objectives are the multiple rules; the Irish rule set is the concrete instance.",soft,high
+optimisation,local_minima,prerequisite_for,"A local minimum is a failure mode of optimisation; the process must precede its pathology.",hard,high
+configuration,move_proposal,prerequisite_for,"A move transforms one configuration into another.",hard,high
+adjacency_graph,move_proposal,prerequisite_for,"Moves are restricted to boundary EDs flipping to graph-neighbouring constituencies; the restriction is defined on the graph.",hard,high
+contiguity,move_proposal,prerequisite_for,"The move design exists partly to preserve near-contiguity during search (S2.3).",soft,high
+solution_space,monte_carlo,prerequisite_for,"Sampling is motivated by the impossibility of enumeration, though the polling idea stands alone.",soft,high
+solution_space,markov_chain,prerequisite_for,"Our chains walk on the space of configurations, but the memoryless-walk idea is self-contained.",soft,high
+monte_carlo,mcmc,prerequisite_for,"MCMC is Monte Carlo sampling realised through a Markov chain; both parents are needed.",hard,high
+markov_chain,mcmc,prerequisite_for,"The chain is the mechanism producing the samples.",hard,high
+solution_space,mcmc,prerequisite_for,"MCMC here is a random walk on the state space of configurations (S3.4, S6.2); without the space the walk has nowhere to happen - and the space's size is why sampling is needed at all.",hard,high
+boltzmann,mcmc,prerequisite_for,"The target distribution in this application is the Boltzmann distribution, but MCMC is definable for any target.",soft,high
+markov_chain,detailed_balance,prerequisite_for,"Detailed balance is a condition on a Markov chain's transition probabilities.",hard,high
+mcmc,detailed_balance,prerequisite_for,"The condition matters because it guarantees the MCMC walk samples its target; the purpose frames the condition.",hard,high
+boltzmann,detailed_balance,prerequisite_for,"In this application the target lambda is the Boltzmann distribution.",soft,high
+mcmc,metropolis_hastings,prerequisite_for,"Metropolis-Hastings is a recipe for constructing MCMC transition kernels.",hard,high
+detailed_balance,metropolis_hastings,prerequisite_for,"The accept rule is derived precisely so that detailed balance holds (Eqs 30-32); without it the construction is unmotivated magic.",hard,high
+metropolis_hastings,metropolis,prerequisite_for,"The Metropolis algorithm is the symmetric-proposal special case of Metropolis-Hastings (D.1.1).",hard,high
+boltzmann,metropolis,prerequisite_for,"The acceptance probability exp(-Delta H/T) is the Boltzmann weight of the energy change.",hard,high
+total_hamiltonian,metropolis,prerequisite_for,"Each step computes Delta H of the full objective Hamiltonian; the algorithm as run is unintelligible without H.",hard,high
+move_proposal,metropolis,part_of,"The single-ED flip is the proposal step of the boxed Metropolis loop (S4.1.1).",hard,high
+metropolis_hastings,gibbs,prerequisite_for,"The Gibbs sampler is the always-accept special case of Metropolis-Hastings (D.1.2).",hard,high
+boltzmann,gibbs,prerequisite_for,"The Gibbs proposal weights all Q options by their Boltzmann factors.",hard,high
+total_hamiltonian,gibbs,prerequisite_for,"Each step computes Delta H for every candidate constituency of the chosen ED.",hard,high
+gibbs,metropolis,contrasts_with,"Same target distribution, different economics: Metropolis is cheap per step but rejects proposals; Gibbs never rejects but evaluates all Q options per step.",hard,high
+temperature,simulated_annealing,prerequisite_for,"Annealing IS a schedule on the temperature; nothing to schedule without it.",hard,high
+optimisation,simulated_annealing,prerequisite_for,"Annealing is a strategy for global optimisation.",hard,high
+local_minima,simulated_annealing,prerequisite_for,"Escaping local extrema is the problem annealing solves (Fig 15); without that problem the slow cooling is pointless ceremony.",hard,high
+boltzmann,simulated_annealing,prerequisite_for,"The claim that annealing tracks the temperature-dependent equilibrium distribution rests on the Boltzmann picture.",soft,high
+solution_space,ensembles,prerequisite_for,"An ensemble is a sample from the space of valid alternatives; the space is the population being sampled.",hard,high
+boundary_set,ensembles,prerequisite_for,"The ensemble members are valid boundary configurations under the same rules.",hard,high
+mcmc,ensembles,prerequisite_for,"MCMC is the paper's chosen ensemble generator, but the comparison-ensemble idea stands independently.",soft,medium
+optimisation,genetic_algorithm,prerequisite_for,"A GA is an optimisation strategy; fitness ranking presupposes something being optimised.",hard,high
+configuration,genetic_algorithm,prerequisite_for,"Each GA individual is identified with a configuration of the EDs (S4.1.2).",hard,high
+genetic_algorithm,mcmc,contrasts_with,"The paper's two search strategies (S3.4): population-based evolution versus single-walker sampling with theoretical guarantees.",hard,high
+genetic_algorithm,fitness_function,prerequisite_for,"Fitness is the GA's selection criterion; the algorithm frames the function.",hard,high
+objective_function,fitness_function,prerequisite_for,"The fitness function is an objective function (maximised rather than minimised).",hard,high
+compactness,fitness_function,prerequisite_for,"The D term rewards compactness via same-allocation edge counts.",hard,high
+adjacency_graph,fitness_function,prerequisite_for,"E and E_tot in the D term are edge counts on the ED graph.",hard,high
+national_average,fitness_function,prerequisite_for,"The P term compares each P_i to P_avg, the average population per group - kin to the national average idea.",soft,high
+fitness_function,total_hamiltonian,contrasts_with,"Two codifications of the same rules: a weighted energy to minimise versus a weighted fitness to maximise; comparing them shows the encoding is a design choice.",soft,high
+genetic_algorithm,saga,prerequisite_for,"SAGA is a genetic algorithm run under an annealing regime.",hard,high
+simulated_annealing,saga,prerequisite_for,"The annealing control regime is the SA half of SAGA.",hard,high
+fitness_function,saga,prerequisite_for,"SAGA's selection uses the fitness function of Eqs 15-17.",hard,high
+genetic_algorithm,saga,part_of,"The GA layout is one of SAGA's two components.",hard,high
+simulated_annealing,saga,part_of,"The geometric cooling schedule T_k = 0.99^k T_0 is SAGA's other component.",hard,high
+terms_of_reference,hard_vs_soft_constraints,prerequisite_for,"The hard/soft split is a classification of the terms of reference items (S1).",hard,high
+constitution_16_2,hard_vs_soft_constraints,prerequisite_for,"The constitutional provisions are the strictest layer; the split is between what law forbids and what it merely discourages.",hard,high
+hard_vs_soft_constraints,constraint_hierarchy,prerequisite_for,"The hierarchy problem concerns ranking among the soft constraints; the reader must first know which ones are soft.",hard,high
+multi_objective,constraint_hierarchy,prerequisite_for,"The hierarchy problem is the legal face of the weighting problem in multi-objective optimisation.",soft,high
+variance,variance_tradeoff,prerequisite_for,"One side of the trade-off is the variance measure itself.",hard,high
+county_breach_metric,variance_tradeoff,prerequisite_for,"The other side is county-boundary preservation.",hard,high
+variance_5pct,variance_tradeoff,prerequisite_for,"The trade-off is stated as loosening or tightening the ±5 percent threshold (App C.2); the threshold is the dial being turned.",hard,high
+variance_5pct,county_breach_metric,in_tension_with,"App C.2: the tighter the variance threshold, the less flexibility to maintain county boundaries; Laois-Offaly proves the conflict is real, not hypothetical.",hard,high
+temporal_continuity,variance,in_tension_with,"Population change means keeping boundaries still and keeping representation equal cannot both hold; every report acknowledges balancing continuity against population growth (S3.3.2).",hard,high
+contiguity,local_minima,in_tension_with,"A design tension in the search, not the law: constraining the walk to strictly contiguous maps narrows exploration and risks trapping in local minima, so the paper penalises rather than forbids breaks during search (S2.3).",soft,medium
+pr_stv,ballot_vs_term,prerequisite_for,"The proportionality half of the dilemma is a property of STV counts in multi-seat constituencies.",hard,high
+seat_magnitude,ballot_vs_term,prerequisite_for,"Seat magnitude is the dial the dilemma turns on: more seats, more proportionality, more geographic clustering.",hard,high
+boundary_set,boundary_selection,prerequisite_for,"Selection happens among valid Boundaries; the multiplicity of valid answers creates the problem.",hard,high
+constraint_hierarchy,boundary_selection,prerequisite_for,"Sorting acceptable from unacceptable boundaries encodes one's stance on the hierarchy (S3.2 process A).",soft,high
+variance_tradeoff,boundary_selection,prerequisite_for,"The concrete trade-offs are what make selection a genuine decision rather than a lookup.",soft,high
+boundary_selection,mcda,prerequisite_for,"MCDA is meaningful here as the formal home of the selection problem.",hard,medium
+multi_objective,mcda,prerequisite_for,"MCDA presupposes options scored on multiple criteria.",hard,medium
+mcda,boundary_selection,formalises,"MCDA methods make the paper's process B (choosing the recommended boundary) explicit and auditable; the paper describes the step but does not name MCDA.",hard,medium
+multi_objective,pareto_frontier,prerequisite_for,"Pareto optimality is defined with respect to multiple objectives.",hard,medium
+variance_tradeoff,pareto_frontier,prerequisite_for,"The variance/county trade-off is the concrete Irish instance a frontier would display.",soft,medium
+pareto_frontier,variance_tradeoff,formalises,"The frontier is the standard formal object capturing 'you cannot improve one objective without worsening another'; the paper exhibits the trade-off without the formalism.",hard,medium
+pareto_frontier,mcda,prerequisite_for,"MCDA typically operates on (or generates) the non-dominated set.",soft,medium
+coupling_constants,parameter_space,prerequisite_for,"The parameter space being explored is the space of coupling-constant values.",hard,high
+ensembles,parameter_space,prerequisite_for,"Comparing results across weight settings is an ensemble-style analysis.",soft,medium
+boundary_review,transparency,prerequisite_for,"The transparency critique is about what current review reports do and do not disclose; the reader must know the current process to see the gap.",hard,high
+coupling_constants,interpretability,prerequisite_for,"The interpretability claim is precisely that each of the few parameters (the J_alpha) can be individually debated.",hard,high
+optimisation,interpretability,prerequisite_for,"Contrast with thousand-parameter black-box optimisers gives the claim its force.",soft,high
+electoral_commission,decision_support,prerequisite_for,"The support is for a specific decision-maker; without the Commission the claim has no subject.",hard,high
+boundary_review,decision_support,prerequisite_for,"The workload argument (EU, LEA and Dail reviews possibly coinciding) frames why support matters.",soft,high
+multi_objective,decision_support,prerequisite_for,"What the tool supports is precisely the multi-objective weighing the human must still own.",soft,high
+rule_set,rule_design_testing,prerequisite_for,"What is being tested is the rule set; treating rules as adjustable inputs is the conceptual step.",hard,high
+seat_magnitude,rule_design_testing,prerequisite_for,"The flagship what-if (allowing 6-seaters, S3.3) is a seat-magnitude question.",hard,high
+parameter_space,rule_design_testing,prerequisite_for,"Rule experiments run through the same sweep machinery as weight experiments.",soft,medium
+gerrymandering,rule_design_testing,prerequisite_for,"Testing resilience against gerrymandering is one of the stated use cases (S1).",soft,high
+rule_set,normative_vs_math,prerequisite_for,"The values-in, maps-out claim is about what the rule set encodes; the reader needs the encoding to see where values enter.",hard,high
+objective_function,normative_vs_math,prerequisite_for,"The precise claim is that choosing the function (and its weights) is normative while minimising it is mechanical; both halves must be understood.",hard,high
+constraint_hierarchy,normative_vs_math,prerequisite_for,"The missing hierarchy is the clearest example of a normative gap mathematics cannot fill.",soft,high
+proportional_representation,democratic_legitimacy,prerequisite_for,"Equal representation is the substantive content of legitimacy in this course.",hard,high
+variance,democratic_legitimacy,prerequisite_for,"Legitimacy claims here are cashed out in variance: how far each citizen's representation departs from the national norm.",hard,high
+transparency,democratic_legitimacy,prerequisite_for,"The course's legitimacy argument rests jointly on fair outcomes and a checkable process.",hard,high
+decision_support,democratic_legitimacy,prerequisite_for,"That humans remain accountable for the final map is part of why algorithmic assistance is legitimate rather than threatening.",soft,high
+ballot_vs_term,democratic_legitimacy,prerequisite_for,"The unresolved magnitude dilemma tempers any claim that one map is simply 'the fair one'.",soft,high
+normative_vs_math,democratic_legitimacy,prerequisite_for,"Legitimacy requires knowing which choices were value judgements and which were mechanical.",soft,high
+interpretability,democratic_legitimacy,prerequisite_for,"A scrutinisable method is part of what makes algorithm-assisted boundaries defensible to the public.",soft,high
