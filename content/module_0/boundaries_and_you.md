@@ -36,7 +36,7 @@ Think of Ireland's electoral map not as a static picture, but as a **time-lapse 
 - **Minor reviews**: Targeted adjustments to specific areas
 - **Frequency**: After each census; the most recent (2023) was the first carried out by the new statutory Electoral Commission
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_timeline.html"
     width="100%"
@@ -156,7 +156,7 @@ Acceptable range (±5%): 28,113 to 31,073 per TD
 
 **Interactive: See How Variance Works**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_variance.html"
     width="100%"
@@ -202,7 +202,7 @@ Ireland has inhabited islands (Aran Islands, Achill, etc.). They must connect to
 
 **Visual Examples: Contiguity**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_contiguity.html"
     width="100%"
@@ -230,7 +230,7 @@ The term comes from Governor Elbridge Gerry + "salamander", describing the twist
 
 **Visual Examples: Compactness**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_compactness.html"
     width="100%"
@@ -253,7 +253,7 @@ The Electoral Act mentions respecting **county boundaries** where possible, but 
 
 **Visual Examples: County Boundary Scenarios**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_counties.html"
     width="100%"
@@ -285,7 +285,7 @@ Every boundary decision involves **trade-offs**. The question is: which trade-of
 
 **Interactive: Explore Trade-Offs**
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/boundaries_tradeoffs.html"
     width="100%"
@@ -394,7 +394,7 @@ Your ED is **more likely** to see changes if:
 
 ### Interactive Risk Assessment
 
-<div style="margin: 1.5rem 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
   <iframe
     src="../../_static/interactive/change_risk.html"
     width="100%"

@@ -3,8 +3,8 @@
 Welcome to the beginning of your journey into understanding democratic redistricting in Ireland.
 
 ```{raw} html
-<div style="border:1px solid var(--cothrom-border,#e0e0e0); border-radius:10px; padding:0.9rem 1.1rem; margin:1.2rem 0; background:var(--cothrom-surface,#f8f9fa);">
-  <strong>Key terms</strong> <span style="font-size:0.85em; color:#7f8c8d;">(hover or tap each one)</span><br>
+<div style="border:1px solid var(--cothrom-border); border-radius:10px; padding:0.9rem 1.1rem; margin:1.2rem 0; background:var(--cothrom-surface);">
+  <strong>Key terms</strong> <span style="font-size:0.85em; color:var(--cothrom-muted);">(hover or tap each one)</span><br>
   <span class="cothrom-term" data-def="Dáil Éireann — the lower house of the Irish parliament (the Oireachtas), with 174 members after the 2023 review.">Dáil</span> ·
   <span class="cothrom-term" data-def="Teachta Dála — a member of Dáil Éireann, elected to represent a constituency.">TD</span> ·
   <span class="cothrom-term" data-def="A geographic area that elects 3, 4 or 5 TDs. Ireland has 43 of them after the 2023 review.">constituency</span> ·
