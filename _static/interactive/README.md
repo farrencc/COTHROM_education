@@ -48,13 +48,17 @@ Embed in Jupyter Book pages using iframe:
 
 ```html
 <iframe
-  src="/_static/interactive/ed_finder.html"
+  src="../../_static/interactive/ed_finder.html"
   width="100%"
   height="600"
   frameborder="0"
   title="Electoral Division Finder">
 </iframe>
 ```
+
+The `src` must be **relative** to the embedding page (an absolute
+`/_static/...` breaks under the `/COTHROM_education/` GitHub Pages
+prefix). From a page in `content/module_0/`, that is `../../_static/...`.
 
 ## Features
 

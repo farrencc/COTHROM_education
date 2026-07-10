@@ -139,19 +139,21 @@ Even if population stayed perfectly stable (which it never does), boundaries wou
 
 The Electoral Commission must balance **multiple legal requirements** when drawing boundaries:
 
-#### Population Variance (The ±5% Target)
+#### Population Variance: the ±5% target and the ±8% reality
 
-Each constituency should have population within **±5% of the national average** per TD.
+Traditionally the Commission aimed to keep every constituency within about **±5%** of the national average people-per-TD. For the 2023 review it worked to a **wider tolerance — some constituencies reaching around ±8%** — to absorb strong population growth while reinstating broken county boundaries. Clare, the most extreme case, ends up about 8% above the average.
 
 **The Math:**
 ```
-National average: 29,593 people per TD (2023 review)
+National average:      29,593 people per TD (2023 review)
 
-Acceptable range (±5%): 28,113 to 31,073 per TD
+±5% target band:       28,113 to 31,073 per TD
+±8% actual (2023):     27,226 to 31,960 per TD
 
-3-seat constituency: 84,339 to 93,219 people
-4-seat constituency: 112,452 to 124,292 people
-5-seat constituency: 140,565 to 155,365 people
+At the ±5% target band:
+  3-seat constituency: 84,339 to 93,219 people
+  4-seat constituency: 112,452 to 124,292 people
+  5-seat constituency: 140,565 to 155,365 people
 ```
 
 **Interactive: See How Variance Works**
