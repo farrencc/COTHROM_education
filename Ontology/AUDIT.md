@@ -5,8 +5,41 @@
 `proposed_modules.md`, and `teaching_order.csv` were deliberately not read.
 Findings are ordered by severity. Edge references use `source → target
 (relation)` plus the CSV line number. Paper evidence is quoted with line
-numbers from `cothrom_paper.txt`. **No fixes have been applied** — each finding
-carries a proposed fix only.
+numbers from `cothrom_paper.txt`. The findings below are preserved as written
+at audit time; CSV line numbers refer to the pre-fix revision (`07985cf`).
+
+---
+
+## Resolution log (2026-07-11, applied on maintainer instruction)
+
+Maintainer decisions: (a) Finding 1 resolved with the per-TD average, as the
+maintainer confirmed — ⟨P⟩ is the average population per seat, so H_P compares
+each constituency's population per assigned seat against the national average
+per TD; (b) **the genetic-algorithm aspect was removed from the ontology
+entirely** (concepts `genetic_algorithm`, `fitness_function`, `saga` and all
+14 edges touching them deleted; GA/SAGA mentions scrubbed from `optimisation`
+and `simulated_annealing`), which supersedes the GA-related parts of Findings
+11 and "found sound".
+
+| Finding | Outcome |
+|---|---|
+| 1 (`h_p` / ⟨P⟩, edges 89–90) | **Fixed** — ⟨P⟩ redefined as population per seat (National Ratio) in both definitions, paper's loose wording noted in place; edge 89 promoted to hard with corrected rationale; edge 90 stands. |
+| 2 (edge 141, proposal kernels) | **Fixed** — downgraded to soft; rationale now states the boundary-flip move is not the boxed symmetric proposal and needs a Metropolis–Hastings correction. |
+| 3 (missing probability prerequisites) | **Fixed** — new concept `probability_distribution` (algorithm tier, difficulty 2) with hard edges into `monte_carlo`, `markov_chain`, `boltzmann`; "stationary (equilibrium) distribution" now defined inside `markov_chain`; "i.i.d." expanded in `monte_carlo`. |
+| 4 (`detailed_balance` overclaim) | **Fixed** — plain and formal definitions now separate stationarity from convergence (ergodicity caveat added). |
+| 5 (`potts_model` sign) | **Fixed** — J_Potts > 0 stated; plain definition rewritten as rewards-matches / counts-differences-up-to-offset; `ferromagnetic_config` conditioned on J_Potts > 0. |
+| 6 (edges 140/144) | **Fixed** — both downgraded to soft with generic-Hamiltonian rationale. |
+| 7 (missing `variance → objective_function`) | **Fixed** — hard edge added. |
+| 8 (`community_boundaries` trigger) | **Fixed** — "same mechanism, opposite trigger" now explicit in the concept and edge 67. |
+| 9 (forward references) | **Fixed** — J/T scaling remark in `coupling_constants` rewritten to flag T as introduced later, plus a soft `temperature → coupling_constants` edge; edge 149 (`boltzmann → simulated_annealing`) promoted to hard. |
+| 10 (four over-strong hard edges) | **Fixed** — lines 11, 134, 168, 177 downgraded to soft with corrected rationales. |
+| 11 (nits) | **Fixed** — `constituency` paper_ref corrected (39 vs 43); `adjacency_graph` typo-correction annotated; `gibbs` "including staying where it is"; the `saga` nit is moot (concept removed). |
+
+`validate.py` passes after the changes: 78 concepts, 200 edges, 117 hard
+prerequisites, no cycles; `teaching_order.csv` regenerated (layers 0–10).
+Note: `REVIEW.md` and `proposed_modules.md` still reference the genetic
+algorithm; they were out of scope for this cold audit (deliberately unread)
+and need a follow-up pass.
 
 ---
 
