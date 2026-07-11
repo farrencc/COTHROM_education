@@ -2,9 +2,13 @@
 
 Prioritised list of everything in this ontology a human expert should verify
 before course content inherits from it. Generated alongside `validate.py`
-output on the 2026-07-10 build (80 concepts, 209 edges, hard-prerequisite
-subgraph acyclic — **no cycles were found, so no edges needed correcting or
-removing**).
+output on the 2026-07-10 build; **revised 2026-07-11** after the AUDIT.md
+fixes were applied (now 78 concepts, 200 edges, hard-prerequisite subgraph
+acyclic). The genetic-algorithm concepts (`genetic_algorithm`,
+`fitness_function`, `saga`) were removed from the graph on maintainer
+decision — lessons may mention the GA only as a brief footnote-style aside
+("another search strategy we tried, not found quite as effective") with an
+external citation, never as taught content.
 
 Priority order: §1 modelling decisions that could mislead learners if wrong,
 then §2 low-confidence nodes, §3 low-confidence edges, §4 external
@@ -27,11 +31,14 @@ paper draft itself that the course must route around.
    range, and its own submission argued 178–181. Concept rows use the
    CLAUDE.md constants; confirm every worked figure in future lessons does too,
    and that `references.bib` covers each.
-3. **`<P>` (average population per constituency, in H_P) is NOT the national
-   average per TD (Eq. 1).** The ontology keeps these distinct
-   (`national_average` is a *soft* prerequisite of `h_p` with a warning in the
-   rationale). Confirm the distinction is taught explicitly — conflating them
-   is the likeliest learner error in Module 4.
+3. **Resolved (2026-07-11): `<P>` in H_P IS the national average per TD.**
+   The earlier build kept them distinct, following the paper's phrase "average
+   population per constituency" — AUDIT.md finding 1 showed that reading is
+   untenable (the minimum would be unattainable and Fig 13's 5% variance line
+   would not align). `h_p` now defines `<P>` as the average population per
+   seat (the National Ratio) and `national_average → h_p` is a hard
+   prerequisite. Lessons should still note the paper's loose wording so
+   readers comparing against the source are not confused.
 4. **Variance sign convention.** Concept `variance` states positive v = more
    people per TD = under-represented (per Eq. 6 with SER > assigned seats).
    The paper's prose has a typo ("−0.05% indicates a variance of −5%").
@@ -43,7 +50,7 @@ paper draft itself that the course must route around.
    `formalises` edges marked medium. Confirm TPSA endorses framing the
    trade-off layer this way before Module 6 is drafted.
 
-## 2. Concepts with confidence < high (6)
+## 2. Concepts with confidence < high (5)
 
 | id | why flagged | what to check |
 |---|---|---|
@@ -52,7 +59,6 @@ paper draft itself that the course must route around.
 | `mcda` | Not in the paper; the A/B selection processes are described but not formalised | Endorse framing; choose which MCDA family (weighted sum? outranking?) the course gestures at |
 | `parameter_space` | Grounded in §2.8, but the dedicated sections (§4.2.2 Coupling Constants, §5.2.2) are empty stubs in the draft | Confirm intended methodology with the authors before teaching it as done work |
 | `ensembles` | §3.4 leans on long verbatim quotes with no citation attached (likely the DeFord–Duchin recombination literature) | Identify and attribute the quoted source; confirm ensemble analysis is actually in COTHROM's scope |
-| `saga` | §4.1.2 cuts off mid-sentence; population size 2 and the mutation step are only partially specified | Get the completed algorithm description (or code) before the Module 5 SAGA lesson |
 
 ## 3. Edges with confidence < high (17)
 
@@ -77,7 +83,7 @@ Grouped; full list printed by `validate.py`.
   (soft, medium):** plausible workflow links, but the underlying paper
   sections are stubs.
 
-## 4. paper_ref=external claims (5)
+## 4. paper_ref=external claims (6)
 
 Facts the paper assumes but never states; each must be verified against a
 primary source and added to `references.bib` before appearing in a lesson.
@@ -89,44 +95,55 @@ primary source and added to `references.bib` before appearing in a lesson.
 | `vote_transfer` | Surplus + elimination transfer mechanics as described | Electoral Act 1992, counting rules |
 | `pareto_frontier` | Standard definition of Pareto optimality / non-dominated set | any standard MO-optimisation text (expert to nominate) |
 | `mcda` | Characterisation of MCDA as a family of structured selection methods | any standard decision-analysis text (expert to nominate) |
+| `probability_distribution` | Standard definition of a probability distribution, sampling, and i.i.d. draws (added 2026-07-11, AUDIT.md finding 3) | any standard probability text (expert to nominate) |
 
 Also external-adjacent although paper_ref points at the paper: the
 `seat_magnitude` row cites both Electoral Reform Act 2022 s.57 (§1) and the
 paper's footnote 3 citing the Electoral Act 1997 for {3,4,5} — confirm which
 statute the course should cite as currently operative.
 
-## 5. Cross-tier hard prerequisites (60)
+## 5. Cross-tier hard prerequisites (55)
 
 Cross-tier hard edges are where a mis-modelled dependency would silently
 scramble module order, so each deserves a sanity pass. `validate.py` prints
 the full list; grouped here by pattern with the genuinely debatable ones
 called out.
 
-- **background_electoral → data/metric (11 edges).** Civic facts feeding
-  definitions (`constituency→configuration`, `teachta_dala→national_average`,
-  `seat_magnitude→variance`, …). Uncontroversial.
-- **data → metric/physics/algorithm (17 edges).** The map/graph machinery
+- **background_electoral → later tiers (16 edges).** Civic facts feeding
+  definitions and, at the far end, meaning-tier concepts
+  (`constituency→configuration`, `teachta_dala→national_average`,
+  `seat_magnitude→variance`/`→h_p`, `boundary_review→transparency`, …).
+  Uncontroversial.
+- **data → later tiers (17 edges).** The map/graph machinery
   feeding everything downstream (`adjacency_graph→electoral_potts`,
   `configuration→objective_function`, `solution_space→mcmc`, …). One to
   weigh: **`census_data→boundary_review`** points *backwards* tier-wise
   (data→background); it is correct pedagogically (reviews are census-driven)
   but means Module 1 must introduce the census before the review.
-- **metric → physics_model (5 edges)** (`ser→h_p`, `contiguity→h_c`,
+- **metric → physics_model (6 edges)** (`ser→h_p`, `national_average→h_p`
+  (promoted to hard 2026-07-11, AUDIT.md finding 1), `contiguity→h_c`,
   `compactness→h_d`, `county_breach_metric→h_b`,
   `objective_function→hamiltonian`). The last is the boldest modelling choice
   in the ontology: it asserts a lay reader cannot make sense of "Hamiltonian"
   in this course except as physics' name for a score function. If the expert
   prefers Hamiltonian introduced physics-first, downgrade to soft and re-run
-  `validate.py` (layers 4–9 will shift).
-- **physics_model → algorithm (7 edges)** (`total_hamiltonian→metropolis`,
-  `boltzmann→gibbs`, `temperature→simulated_annealing`, …). These force the
-  model before the samplers — deliberate, matches the paper's structure.
-- **algorithm → physics_model (1 edge): `multi_objective→coupling_constants`.**
-  The only "upstream" edge into the physics tier; it claims weights are
-  unintelligible without the many-objectives problem. Confirm.
-- **metric/decision → decision/meaning (19 edges).** Trade-off and meaning
-  concepts consuming earlier machinery (`variance_5pct→variance_tradeoff`,
-  `coupling_constants→interpretability`, `variance→democratic_legitimacy`, …).
+  `validate.py` (downstream layers will shift).
+- **physics_model → algorithm (4 edges)** (`boltzmann→metropolis`,
+  `boltzmann→gibbs`, `boltzmann→simulated_annealing`,
+  `temperature→simulated_annealing`). These force the model before the
+  samplers — deliberate, matches the paper's structure.
+  (`total_hamiltonian→metropolis`/`→gibbs` were downgraded to soft on
+  2026-07-11 per AUDIT.md finding 6: the samplers are definable for any
+  Hamiltonian.)
+- **algorithm → physics_model (2 edges): `multi_objective→coupling_constants`
+  and `probability_distribution→boltzmann`.** The "upstream" edges into the
+  physics tier: the first claims weights are unintelligible without the
+  many-objectives problem; the second supplies the distribution idea the
+  Boltzmann weight presupposes. Confirm both.
+- **metric/physics/algorithm → algorithm/decision/meaning (10 edges).**
+  Trade-off and meaning concepts consuming earlier machinery
+  (`variance_5pct→variance_tradeoff`, `coupling_constants→interpretability`,
+  `variance→democratic_legitimacy`, `objective_function→optimisation`, …).
   Mostly narrative dependencies; check `boundary_review→transparency` and
   `electoral_commission→decision_support` don't over-constrain module order
   (they currently don't — both sit in Module 1).
@@ -138,17 +155,25 @@ must not inherit its wording:
 
 1. §1.1 (Historical Context), §3.5 (Key Issues), §4.2.2 (Coupling Constants),
    §5.1.2 (GA results), §5.2 (Further Work), §6.2 (MCMC implementation) are
-   stubs, notes-to-self, or empty.
-2. §4.1.2 (SAGA) ends mid-sentence; §3.3.3 contains an author note
+   stubs, notes-to-self, or empty. (§4.1.2/§5.1.2's genetic-algorithm content
+   is now outside the ontology's scope in any case — footnote-only, per the
+   header note.)
+2. §4.1.2 ends mid-sentence; §3.3.3 contains an author note
    ("head is too fried"); §3.3.2 contains all-caps open questions
    (Wicklow–Wexford continuity).
-3. Figures 4, 5 and 10 have placeholder captions ("Caption", incomplete
+3. App D.1 also breaks off mid-sentence at "The choice of the proposal
+   function p(σ′, σ)" — exactly where a discussion of non-uniform proposals
+   would belong. The paper therefore never reconciles the §2.3
+   geographically-restricted move with the boxed symmetric Metropolis
+   proposal (AUDIT.md finding 2); the caveat lives in the
+   `move_proposal → metropolis` edge rationale and lessons must carry it.
+4. Figures 4, 5 and 10 have placeholder captions ("Caption", incomplete
    sentence).
-4. §3.4's block quotes are unattributed (see §2 `ensembles`).
-5. The paper's "39 constituencies" reflects the pre-2023 configuration
+5. §3.4's block quotes are unattributed (see §2 `ensembles`).
+6. The paper's "39 constituencies" reflects the pre-2023 configuration
    (see §1.2).
-6. Prose typo "−0.05%" for the variance sign discussion (see §1.4).
-7. The 2023 statistic quoted twice with slightly different framing:
+7. Prose typo "−0.05%" for the variance sign discussion (see §1.4).
+8. The 2023 statistic quoted twice with slightly different framing:
    "over 1/3 (15/43)" of recommendations outside ±5% (§3.2) vs Table 1's
    15-of-43 = 34.88% — consistent, but lessons should cite Table 1 / the 2023
    report directly.

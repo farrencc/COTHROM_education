@@ -13,6 +13,12 @@ of the course, where their soft prerequisites have been met. Modules therefore
 follow tier-and-theme, with the layer numbers as a constraint rather than a
 schedule.
 
+*Updated 2026-07-11 after the AUDIT.md fixes: the genetic-algorithm concepts
+were removed from the graph (see the footnote under Module 5),
+`probability_distribution` was added to Module 5, and the
+no-forward-prerequisite invariant was re-checked by hand against the updated
+hard-prerequisite graph.*
+
 ---
 
 ## Module 0 — Your vote, your voice (how Ireland elects a Dáil)
@@ -98,27 +104,33 @@ term rewards, what each weight means, and where value judgements hide.
 13. `coupling_constants` — Coupling constants (J_α)
 14. `total_hamiltonian` — Total Hamiltonian H = Σ J_α H_α
 
-## Module 5 — Searching a googol of maps (MCMC, annealing, and evolution)
+## Module 5 — Searching a googol of maps (MCMC and annealing)
 
 **Goal:** the reader can walk through one Metropolis step by hand and explain
-why slow cooling — or breeding maps — finds good configurations that greedy
-search misses.
+why slow cooling finds good configurations that greedy search misses.
 
 1. `move_proposal` — Boundary-flip moves
 2. `temperature` — Temperature (T)
-3. `boltzmann` — Boltzmann distribution
-4. `monte_carlo` — Monte Carlo methods
-5. `markov_chain` — Markov chain
-6. `mcmc` — Markov chain Monte Carlo (MCMC)
-7. `detailed_balance` — Detailed balance
-8. `metropolis_hastings` — Metropolis-Hastings algorithm
-9. `metropolis` — Metropolis algorithm
-10. `gibbs` — Gibbs sampler
-11. `simulated_annealing` — Simulated annealing
-12. `genetic_algorithm` — Genetic algorithm
-13. `fitness_function` — Fitness function (GA)
-14. `saga` — SAGA (simulated annealing genetic algorithm)
-15. `ensembles` — Ensembles of comparison plans
+3. `probability_distribution` — Probability distribution
+4. `boltzmann` — Boltzmann distribution
+5. `monte_carlo` — Monte Carlo methods
+6. `markov_chain` — Markov chain
+7. `mcmc` — Markov chain Monte Carlo (MCMC)
+8. `detailed_balance` — Detailed balance
+9. `metropolis_hastings` — Metropolis-Hastings algorithm
+10. `metropolis` — Metropolis algorithm
+11. `gibbs` — Gibbs sampler
+12. `simulated_annealing` — Simulated annealing
+13. `ensembles` — Ensembles of comparison plans
+
+> **Footnote, not a lesson.** The paper also prototyped a genetic-algorithm
+> hybrid (SAGA, §4.1.2/§5.1.2) — per the COTHROM team it was tried and not
+> found quite as effective as the Potts/MCMC approach, so it is deliberately
+> absent from the concept graph. If a lesson mentions it at all, it should be
+> one footnote-style aside ("another search strategy we tried") linking to an
+> external explainer, not taught content. Note the paper's own GA results
+> section is a stub, so any such footnote needs an external citation rather
+> than the paper.
 
 ## Module 6 — Choosing among good maps (trade-offs and decisions)
 

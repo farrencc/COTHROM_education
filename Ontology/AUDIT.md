@@ -24,7 +24,7 @@ and `simulated_annealing`), which supersedes the GA-related parts of Findings
 | Finding | Outcome |
 |---|---|
 | 1 (`h_p` / ⟨P⟩, edges 89–90) | **Fixed** — ⟨P⟩ redefined as population per seat (National Ratio) in both definitions, paper's loose wording noted in place; edge 89 promoted to hard with corrected rationale; edge 90 stands. |
-| 2 (edge 141, proposal kernels) | **Fixed** — downgraded to soft; rationale now states the boundary-flip move is not the boxed symmetric proposal and needs a Metropolis–Hastings correction. |
+| 2 (edge 141, proposal kernels) | **Fixed** — downgraded to soft; rationale now states the boundary-flip move is not the boxed symmetric proposal and needs a Metropolis–Hastings correction. **Flag (maintainer question, 2026-07-11): the paper does NOT discuss the proposal choice.** Its only hooks are the generic MH definition (App D.1) and a sentence that breaks off mid-thought at exactly the relevant point — "The choice of the proposal function p(σ′, σ)" (line 1980) — so the reconciliation cannot be sourced from the paper; the caveat lives in the edge rationale and lessons must carry it (see also REVIEW.md §6). |
 | 3 (missing probability prerequisites) | **Fixed** — new concept `probability_distribution` (algorithm tier, difficulty 2) with hard edges into `monte_carlo`, `markov_chain`, `boltzmann`; "stationary (equilibrium) distribution" now defined inside `markov_chain`; "i.i.d." expanded in `monte_carlo`. |
 | 4 (`detailed_balance` overclaim) | **Fixed** — plain and formal definitions now separate stationarity from convergence (ergodicity caveat added). |
 | 5 (`potts_model` sign) | **Fixed** — J_Potts > 0 stated; plain definition rewritten as rewards-matches / counts-differences-up-to-offset; `ferromagnetic_config` conditioned on J_Potts > 0. |
@@ -37,9 +37,11 @@ and `simulated_annealing`), which supersedes the GA-related parts of Findings
 
 `validate.py` passes after the changes: 78 concepts, 200 edges, 117 hard
 prerequisites, no cycles; `teaching_order.csv` regenerated (layers 0–10).
-Note: `REVIEW.md` and `proposed_modules.md` still reference the genetic
-algorithm; they were out of scope for this cold audit (deliberately unread)
-and need a follow-up pass.
+Follow-up completed 2026-07-11: `REVIEW.md` and `proposed_modules.md` purged
+of genetic-algorithm content (GA survives only as a footnote-style aside
+under Module 5, per maintainer decision), their stale claims updated to match
+the fixed graph (⟨P⟩ item marked resolved, counts refreshed,
+`probability_distribution` added to Module 5 and the external-claims table).
 
 ---
 
