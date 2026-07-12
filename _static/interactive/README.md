@@ -11,9 +11,19 @@ Interactive Electoral District finder for the COTHROM education project.
 
 ## Data Sources
 
-- **Electoral Divisions**: CSO Census 2022
-- **Constituencies**: Electoral Commission 2023 (174 TDs, 43 constituencies)
-- **Boundaries**: Electoral (Amendment) Act 2023
+Real data for all 3,420 Electoral Divisions (not a sample):
+
+- **ED population & area**: [CSO PxStat table F1011](https://data.cso.ie/table/F1011),
+  Census 2022. ED populations sum to 5,149,139 (the national total).
+- **ED boundaries**: Tailte Éireann *CSO Electoral Divisions 2022 (Generalised 100m)*
+  ArcGIS FeatureServer, joined to F1011 on `ED_GUID` (100% match).
+- **Constituencies (name + seats)**: Tailte Éireann / Electoral Commission
+  *Constituency Boundaries 2023* (43 constituencies, 174 seats). Each ED is
+  assigned to a constituency by a point-in-polygon spatial join of its
+  representative point.
+
+Geometry is generalised (~130 m) and coordinates rounded to 4 decimal places to
+keep the whole-country file light (~3 MB raw, ~0.8 MB gzipped).
 
 ## Properties in eds_simplified.geojson
 
@@ -21,13 +31,13 @@ Each ED feature contains:
 
 | Property | Description |
 |----------|-------------|
-| `ED_ID` | Unique ED identifier (e.g., "07005") |
-| `ED_NAME` | English name (e.g., "Rathmines West C") |
+| `ED_ID` | Unique widget id (e.g., "E0001") |
+| `ED_NAME` | English name (e.g., "Blanchardstown-Blakestown") |
 | `COUNTY` | County name |
-| `CONSTITUENCY_2024` | Current constituency assignment |
-| `CONSTITUENCY_SEATS` | Number of TDs for the constituency |
-| `POPULATION_2022` | Census 2022 population |
-| `HOUSEHOLDS` | Number of households |
+| `CONSTITUENCY_2024` | Constituency (spatial join) |
+| `CONSTITUENCY_SEATS` | Number of TDs for that constituency |
+| `POPULATION_2022` | CSO Census 2022 population (table F1011) |
+| `AREA_KM2` | Area in km² (table F1011) |
 
 ## Updating Data
 
@@ -62,23 +72,34 @@ prefix). From a page in `content/module_0/`, that is `../../_static/...`.
 
 ## Features
 
-- Search EDs by name (fuzzy matching)
-- Click to select and view detailed info
-- Hover tooltips with ED name
-- Layer toggles for EDs and Constituencies
-- Info panel with Census data
-- Mobile responsive (min-width 320px)
-- Sample data banner when running with demo data
+- Search EDs by name (fuzzy matching) or by address/Eircode (Nominatim geocode)
+- Click to select an ED
+- **Predict-then-reveal**: on selecting an ED the tool asks the reader to guess
+  how many TDs its constituency elects (3/4/5) *before* revealing the answer
+- Reveal panel shows population, the ED's share of one TD's people (population ÷
+  29,593), and its constituency + seat count
+- Hover tooltips with ED name; layer toggles for EDs and constituency outlines
+- Illustrative-data banner shown at all times
+- Auto-reports its height to the host page (via `widget-bootstrap.js`), so the
+  embedding iframe is sized to content — no inner scrollbar
+- Inherits the host page's light/dark theme, including a dark basemap in dark mode
+- Mobile responsive (usable down to ~360px)
 
 ## Styling
 
-| Element | Color |
+All colours are drawn from the design tokens in `../cothrom.css` — there are no
+hardcoded hex values in the widget. CSS rules reference the tokens directly
+(e.g. `var(--cothrom-green)`); the Leaflet map layers, whose SVG fill/stroke
+attributes cannot take `var()`, resolve the same tokens to concrete colours at
+runtime via `getComputedStyle` and re-resolve them when the theme changes.
+
+| Element | Token |
 |---------|-------|
-| ED default fill | `#e8e8e8` |
-| ED selected fill | `#3b82f6` |
-| ED hover fill | `#b8e8b8` |
-| Constituency borders | `#dc2626` |
-| Header gradient | `#27ae60` to `#32e875` |
+| ED default fill | `--cothrom-border` |
+| ED selected fill | `--cothrom-green-bright` |
+| ED hover fill | `--cothrom-tint-green` |
+| Constituency outlines | `--cothrom-accent` |
+| Header gradient | `--cothrom-green` → `--cothrom-green-bright` |
 
 ## Browser Support
 
