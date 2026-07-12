@@ -74,13 +74,19 @@ answers.
 
 ---
 
-## <!-- Interactive exploration (optional per lesson, but predict-then-reveal when used) -->
+## <!-- Interactive exploration (optional per lesson) -->
 
 <!--
 Embed a self-contained widget from _static/interactive/ via iframe with a
-RELATIVE src (survives the /COTHROM_education/ Pages prefix). The widget must ask
-the reader to predict before it reveals, show the illustrative-data banner, and
-auto-size its height. Set a fallback height below.
+RELATIVE src (survives the /COTHROM_education/ Pages prefix). Show the
+illustrative-data banner and auto-size its height. Set a fallback height below.
+
+Decide which kind of interactive this is (CLAUDE.md §7):
+- TEST-ABLE (teaches one idea with a right answer): predict-then-reveal is
+  mandatory — the reader must commit before the answer shows.
+- KNOWLEDGE-FINDER (a lookup/exploration tool read as a source): offer the
+  predict beat but make it optional and dismissable (a visible "lookup mode"
+  toggle), defaulting on. Never trap a returning reader behind a quiz.
 -->
 
 ```{warning}

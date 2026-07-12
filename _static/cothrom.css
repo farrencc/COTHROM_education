@@ -102,6 +102,29 @@ html[data-theme="dark"] {
 .cothrom-term:hover::after,
 .cothrom-term:focus::after { opacity: 1; transform: translateY(0); }
 
+/* ---------- Key-terms box ---------- */
+.cothrom-keyterms {
+  border: 1px solid var(--cothrom-border);
+  border-left: 4px solid var(--cothrom-accent);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--cothrom-surface);
+  line-height: 2.1;
+}
+.cothrom-keyterms > strong {
+  color: var(--cothrom-ink);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+.cothrom-keyterms .cothrom-keyterms-hint {
+  color: var(--cothrom-muted);
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-left: 0.4rem;
+}
+
 /* ---------- Knowledge-check quiz ---------- */
 .cothrom-quiz {
   border: 1px solid var(--cothrom-border);
