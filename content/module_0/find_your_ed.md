@@ -1,489 +1,257 @@
-# Find Your Electoral Division
+# The smallest patch of Ireland with your name on it
 
-## Why This Matters
+Somewhere near you there is a boundary you have never seen drawn and cannot
+name, and it decides which constituency you vote in. It runs down the middle of
+a road, or along a river, or around the edge of a housing estate. On one side of
+it your ballot helps elect one set of TDs; a few streets over, it would help
+elect a different set. That patch — a few hundred to a few thousand people — is
+your <span class="cothrom-term" data-def="The smallest official area the census counts separately; Ireland is divided into roughly 3,440 of them, and each belongs whole to one constituency.">Electoral Division</span>, and it is the single building block from which your
+constituency is assembled.
 
-Before we can talk about how constituency boundaries affect you, you need to know **where you are** in the system.
+The last lesson showed that two identical votes can carry slightly different
+weight depending on which constituency they land in. This lesson is about the
+piece underneath that: the unit the Electoral Commission actually moves around
+when it decides which constituency you land in. By the end you will be able to
+find your own Electoral Division on a map, say which constituency it is bundled
+into and how many TDs that elects, and explain what its size means for your
+share of a TD.
 
-Every address in Ireland falls within a specific **Electoral Division (ED)**. Your ED is the fundamental building block of the electoral system - it groups with other EDs to form your constituency.
-
-**Key Question:** Do you know which Electoral Division you live in, and why that matters?
-
----
-
-## What Is an Electoral Division?
-
-Think of Electoral Divisions as the **Lego blocks** of Ireland's electoral system.
-
-### The Basics
-
-**Electoral Divisions (EDs)** are:
-- Small geographic areas with clearly defined boundaries
-- The smallest official administrative units in Ireland
-- Used by the Central Statistics Office (CSO) for census data
-- The **building blocks** for creating constituencies
-
-**The Numbers:**
-- **3,440 Electoral Divisions** in total across Ireland
-- Each ED contains roughly **80-200 homes**
-- Average population per ED: **around 1,400 people**
-- EDs vary significantly in size - urban EDs are geographically smaller but have higher populations
-
-### The Hierarchy
-
-Here's how you fit into Ireland's electoral system:
-
-```
-Your Address
-    ↓
-Your Electoral Division (ED)
-    ↓
-Your Constituency (groups of EDs)
-    ↓
-Your TDs (3, 4, or 5 per constituency)
-    ↓
-Dáil Éireann (174 TDs total)
-```
-
-**Example:**
-- **Address**: 123 Main Street, Dublin
-- **ED**: Rathmines West C
-- **Constituency**: Dublin Bay South
-- **TDs**: 4 TDs represent this constituency
-- **Your vote**: Helps elect one of those 4 TDs
-
----
-
-## Why Electoral Divisions Matter
-
-EDs are more than just administrative boundaries. They're **crucial for redistricting** because:
-
-### 1. EDs Are Indivisible
-
-When the Electoral Commission draws constituency boundaries:
-- **EDs cannot be split** - each ED must belong entirely to one constituency
-- This is the fundamental constraint of Irish redistricting
-- Think of it like a jigsaw puzzle where you can't cut the pieces
-
-**What this means:**
-If your ED has 1,500 people, those 1,500 people **must** all be in the same constituency. The Commission can't divide your ED between two constituencies.
-
-### 2. EDs Group Together
-
-Constituencies are formed by grouping EDs:
-- A 3-seat constituency might contain 60-90 EDs
-- A 5-seat constituency might contain 100-150 EDs
-- The Commission's job: figure out which EDs should group together
-
-### 3. Population Data Lives in EDs
-
-The CSO (Central Statistics Office) collects census data by ED:
-- Population counts
-- Demographic information
-- Housing data
-- Geographic boundaries
-
-This data is what the Electoral Commission uses to calculate:
-- **Variance** (is this constituency too big or too small?)
-- **Population balance** across constituencies
-- **Projected growth** for future planning
-
-```{important}
-**Your ED is your democratic address.** Just like your postal address determines which mail you receive, your Electoral Division determines:
-- Which constituency you vote in
-- Which TDs represent you
-- How your vote is weighted relative to others
+```{raw} html
+<div class="cothrom-keyterms">
+  <strong>Key terms</strong>
+  <span class="cothrom-keyterms-hint">(hover or tap each one)</span><br>
+  <span class="cothrom-term" data-def="The smallest official statistical area in Ireland; roughly 3,440 of them cover the State, and each is assigned whole to a single constituency.">Electoral Division (ED)</span> ·
+  <span class="cothrom-term" data-def="A small traditional land unit, often just a few dozen houses, whose name frequently survives in the name of the ED around it.">townland</span>
+</div>
 ```
 
 ---
 
-## Find Your Electoral Division
+## What an Electoral Division actually is
 
-Now let's find **your** Electoral Division.
+Take a real-sounding example. The census records an area called **Rathmines West
+C** in Dublin City, with a population of about **1,234 people** and roughly 494
+households. (That name and those figures are illustrative teaching data, not the
+official census entry — but they are the *shape* of what a real ED looks like: a
+named slice of a neighbourhood, a few hundred homes, counted as one.) The name
+itself usually comes from an old <span class="cothrom-term" data-def="A small traditional Irish land unit, often just a few dozen houses; ED names are commonly inherited from the townland or parish they grew out of.">townland</span> or parish, which is why so many EDs carry names their own
+residents rarely use. There are thousands of these across the country, most of
+them as anonymous to the people who live in them as Rathmines West C probably is
+to you.
 
-### Interactive ED Finder
+An Electoral Division is simply the smallest area the State counts as a single
+unit. When the Central Statistics Office runs the census, it does not publish a
+population for your street or your estate; it publishes one for your ED. Because
+the whole electoral map is built from census population figures, this is also
+the smallest brick the Electoral Commission has to work with. It cannot reach
+inside an ED and take half of it.
 
-<div style="margin: 2rem 0; border: 2px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
+That gives us a precise definition. An **Electoral Division** is the smallest
+official statistical area in Ireland: the census reports population, households
+and other figures at this level, and the constituency map is assembled entirely
+out of whole EDs. Ireland is covered by roughly **3,440** of them. Your home
+sits in exactly one — never two, never none.
+
+The point that matters for everything else is *indivisibility*. Whatever your
+ED's population is, all of those people move together. If Rathmines West C holds
+1,234 people, the Commission can put those 1,234 in one constituency or another,
+but it cannot split them between two. The ED is the atom: the smallest thing the
+map is made of, and the smallest thing that can be moved.
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">Why is the Electoral Division the smallest unit the Electoral Commission can work with when it draws constituencies?</p>
+  <button class="cothrom-opt" data-explain="Population isn't measured street by street. The census — which the whole map is built from — reports figures at ED level, so that's the finest resolution the Commission has.">Because streets are too small to matter politically</button>
+  <button class="cothrom-opt" data-explain="Correct. The census reports population at ED level, and the map is built from those population figures — so the ED is the smallest brick available, and it can't be cut in half.">Because the census counts people by ED, so it's the smallest brick with a known population</button>
+  <button class="cothrom-opt" data-explain="Counties are far larger than EDs and are a separate consideration; the ED is smaller than a county, not the same thing.">Because an ED is the same thing as a county</button>
+</div>
+```
+
+Knowing this changes how you should read any boundary proposal. When the
+Commission "moves your area", what it literally does is reassign one or more
+whole EDs from one constituency to another. Your ED is the resolution at which
+the whole argument happens.
+
+---
+
+## Find yours, and predict before you look
+
+Enough about Rathmines West C — find *your* patch. The map below is the same kind
+of tool the Commission's data is built on, loaded with a teaching sample of EDs.
+Search for an ED by name, or switch to the address tab and type a town near you.
+
+Here is the important part: the tool will not just tell you the answer. When you
+select an ED it stops and asks you to **predict how many TDs its constituency
+elects — 3, 4, or 5** — before it reveals anything. Commit to a guess first.
+Getting it wrong is the point: it shows you that seat numbers do not follow from
+anything you can see on a map, which is exactly the puzzle the rest of this
+module unpicks.
+
+```{warning}
+**Illustrative data.** The map below shows a small teaching sample of Electoral
+Divisions with simplified boundaries, not the full official set of roughly 3,440.
+The national figure it compares against — **29,593 people per TD** — is the real
+average from the Electoral Commission's 2023 review; the individual ED
+populations are approximate. Always check the
+[Electoral Commission](https://www.electoralcommission.ie/) and
+[CSO](https://www.cso.ie/) before relying on any number.
+```
+
+```{raw} html
+<div class="cothrom-embed">
   <iframe
     src="../../_static/interactive/ed_finder.html"
-    width="100%"
-    height="600"
-    frameborder="0"
-    style="display: block;"
-    title="Electoral Division Finder - Interactive Map">
+    title="Find your Electoral Division — interactive map with predict-then-reveal"
+    loading="lazy"
+    width="100%" height="900" style="border:0;">
   </iframe>
 </div>
-
-<p style="font-size: 0.9em; color: var(--cothrom-muted); text-align: center; margin-top: 0.5rem;">
-  <strong>Interactive Map:</strong> Search by ED name or click any area to explore.
-  Hover for quick info, click for detailed statistics.
-</p>
-
-```{tip}
-**Don't have your Eircode handy?**
-- Use the map browser to zoom into your area and click
-- Or search by landmark (e.g., "Trinity College Dublin")
-- The tool will show you the ED boundaries visually
 ```
 
----
-
-## Understanding Your ED
-
-Once you've found your ED, here's what the information tells you and why it matters for your representation.
-
-### Population Size
-
-Your ED's population directly influences how constituency boundaries are drawn. Electoral Divisions with larger populations carry more weight in the calculations that determine where constituency lines fall. When the Electoral Commission is balancing populations across constituencies, smaller EDs provide more flexibility since they can be moved between constituencies with less impact on the overall population balance. Any population growth or decline within your ED ripples through to affect your entire constituency's representation.
+Whatever you guessed, notice what the reveal shows: an ED belongs to exactly one
+named constituency, and that constituency elects a fixed number of TDs. Your ED
+did not choose either. Both were decided for it when the Commission grouped it
+with its neighbours — the process the next lesson takes apart.
 
 ```{raw} html
-<div style="margin: 1.5rem 0;">
-    <div style="background: linear-gradient(135deg, var(--cothrom-tint-green) 0%, var(--cothrom-tint-green) 100%); border-left: 4px solid var(--cothrom-green); border-radius: 0 8px 8px 0; padding: 20px; max-width: 500px;">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-            <div style="background: var(--cothrom-green); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold;">ED</div>
-            <div>
-                <div style="font-weight: 700; color: var(--cothrom-green-dark); font-size: 16px;">Rathmines West C</div>
-                <div style="font-size: 12px; color: var(--cothrom-green-dark);">Dublin Bay South</div>
-            </div>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div style="background: var(--cothrom-panel); padding: 12px; border-radius: 6px; text-align: center;">
-                <div style="font-size: 24px; font-weight: 700; color: var(--cothrom-green);">1,234</div>
-                <div style="font-size: 11px; color: var(--cothrom-muted); text-transform: uppercase;">Population</div>
-            </div>
-            <div style="background: var(--cothrom-panel); padding: 12px; border-radius: 6px; text-align: center;">
-                <div style="font-size: 24px; font-weight: 700; color: var(--cothrom-accent);">0.93%</div>
-                <div style="font-size: 11px; color: var(--cothrom-muted); text-transform: uppercase;">of TD's Constituents</div>
-            </div>
-        </div>
-        <div style="font-size: 11px; color: var(--cothrom-muted); margin-top: 12px; font-style: italic;">Illustrative example — the ED name and figures are made up to show what the tool displays, not official data.</div>
-    </div>
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">Suppose the Commission wants to shift 800 people out of an overcrowded constituency, and your ED — with exactly 800 people — sits on its edge. What can it do with your ED?</p>
+  <button class="cothrom-opt" data-explain="It can't. An ED is indivisible: the Commission cannot take some of its people and leave the rest. That's the whole constraint.">Move 400 of the people and leave 400 behind</button>
+  <button class="cothrom-opt" data-explain="Splitting a household's ED down the middle is exactly what indivisibility forbids — the ED moves as one or not at all.">Split the ED along the nearest main road</button>
+  <button class="cothrom-opt" data-explain="Correct. The ED moves as a single whole unit, all 800 people together, into the neighbouring constituency — or it stays put. There is no half-measure.">Move the whole ED — all 800 — into the neighbouring constituency</button>
 </div>
 ```
 
-In a 4-seat constituency at roughly the national average of 29,593 people per TD, an ED of 1,234 people represents about 1% of a single TD's constituents. This means your ED, combined with roughly 100 other similar EDs, collectively determines who your TD will be.
+---
 
-### Geographic Size
+## What your ED's size says about your vote
 
-The physical size of Electoral Divisions varies dramatically between urban and rural areas, even when populations are similar. This creates one of the fundamental tensions in Irish redistricting: urban constituencies can be geographically compact while serving the same population that requires a rural constituency to stretch across vast areas. The shape and size of EDs directly affects how "compact" a constituency can be drawn, which is one of the criteria the Electoral Commission considers.
+The reveal panel gave you one number worth pausing on: your ED as a share of
+**one TD's people**. Here is where it comes from, and why it matters.
 
-```{raw} html
-<div style="margin: 1.5rem 0; display: flex; gap: 20px; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 200px; background: var(--cothrom-panel); border: 2px solid var(--cothrom-green); border-radius: 12px; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%); color: white; padding: 12px 16px; font-weight: 600;">
-            Urban ED (Dublin)
-        </div>
-        <div style="padding: 16px;">
-            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--cothrom-tint-green) 0%, var(--cothrom-tint-green) 100%); border: 2px solid var(--cothrom-green); border-radius: 4px; margin: 0 auto 12px;"></div>
-            <div style="text-align: center;">
-                <div style="font-size: 13px; color: var(--cothrom-muted);">Area: <strong>500m x 500m</strong></div>
-                <div style="font-size: 13px; color: var(--cothrom-muted);">Population: <strong style="color: var(--cothrom-green);">1,500</strong></div>
-                <div style="font-size: 11px; color: var(--cothrom-muted); margin-top: 8px;">High density urban core</div>
-            </div>
-        </div>
-    </div>
-    <div style="flex: 1; min-width: 200px; background: var(--cothrom-panel); border: 2px solid var(--cothrom-accent); border-radius: 12px; overflow: hidden;">
-        <div style="background: linear-gradient(135deg, var(--cothrom-accent) 0%, var(--cothrom-accent-dark) 100%); color: white; padding: 12px 16px; font-weight: 600;">
-            Rural ED (Kerry)
-        </div>
-        <div style="padding: 16px;">
-            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--cothrom-tint-accent) 0%, var(--cothrom-tint-accent) 100%); border: 2px solid var(--cothrom-accent); border-radius: 4px; margin: 0 auto 12px;"></div>
-            <div style="text-align: center;">
-                <div style="font-size: 13px; color: var(--cothrom-muted);">Area: <strong>5km x 5km</strong></div>
-                <div style="font-size: 13px; color: var(--cothrom-muted);">Population: <strong style="color: var(--cothrom-accent);">1,500</strong></div>
-                <div style="font-size: 11px; color: var(--cothrom-muted); margin-top: 8px;">Low density rural area</div>
-            </div>
-        </div>
-    </div>
-</div>
+You already know the national average from the last lesson: across the whole
+State, each TD represents about **29,593 people** (5,149,139 people ÷ 174 TDs,
+from Census 2022 and the 2023 review). One TD, roughly 29,593 constituents. An
+Electoral Division is a small fraction of that.
+
+So the intuition is: your ED is not a constituency and not a TD — it is a *sliver
+of one TD's workload*, bundled with about a hundred other slivers. To turn that
+into a figure, divide your ED's population by 29,593.
+
+Work it through with the illustrative Rathmines West C. Its 1,234 people, divided
+by 29,593, come to **0.042** — about **4%** of the people a single TD represents.
+Now take a much larger ED from the sample, an urban core like Carlow Urban at
+roughly 20,504 people: that is **0.69**, or about **69%** of one TD's people —
+nearly a whole TD's worth of constituents in a single ED. Same kind of unit,
+sixteen times the weight in the population arithmetic.
+
+```{important}
+The ED populations here (1,234 and 20,504) are illustrative sample figures. The
+denominator — 29,593 people per TD — is the real national average from the 2023
+review. So treat the percentages as *the method*, correct in form, rather than
+as official statistics for those specific EDs.
 ```
 
-Both Electoral Divisions shown above have identical populations of 1,500 people, yet the rural ED covers 100 times more land area. This disparity means that creating constituencies with equal populations often results in rural constituencies that span multiple towns and large geographic distances, while urban constituencies might cover just a few neighbourhoods. The challenge of balancing population equality with geographic practicality is at the heart of every redistricting exercise.
-
-### County Location
-
-Irish electoral law specifically mentions respect for county boundaries, making your ED's county location politically significant. Counties have deep historical and cultural meaning in Ireland, and voters often feel strong attachment to their county identity. When an ED is proposed to move from a constituency that aligns with county boundaries to one that crosses them, it can feel like a disconnection from local identity, even if the population mathematics make it necessary.
-
-```{raw} html
-<div style="margin: 1.5rem 0; background: var(--cothrom-panel); border: 2px solid var(--cothrom-border); border-radius: 12px; overflow: hidden; max-width: 500px;">
-    <div style="background: linear-gradient(135deg, var(--cothrom-warn-bg) 0%, var(--cothrom-warn-bg) 100%); padding: 12px 16px; border-bottom: 1px solid var(--cothrom-warn-border);">
-        <span style="font-weight: 700; color: var(--cothrom-warn);">Case Study: Boundary Change Impact</span>
-    </div>
-    <div style="padding: 16px;">
-        <div style="background: var(--cothrom-surface); border-radius: 8px; padding: 12px; margin-bottom: 12px;">
-            <div style="font-weight: 600; color: var(--cothrom-ink-2); margin-bottom: 4px;">ED: Portlaoise Urban</div>
-            <div style="font-size: 13px; color: var(--cothrom-muted);">County Laois</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; margin: 16px 0;">
-            <div style="flex: 1; background: var(--cothrom-danger-bg); border-radius: 8px; padding: 12px; text-align: center;">
-                <div style="font-size: 11px; color: var(--cothrom-danger); text-transform: uppercase; margin-bottom: 4px;">Current</div>
-                <div style="font-weight: 600; color: var(--cothrom-danger);">Laois-Offaly</div>
-                <div style="font-size: 12px; color: var(--cothrom-muted);">5 seats</div>
-            </div>
-            <div style="font-size: 24px; color: var(--cothrom-muted);">→</div>
-            <div style="flex: 1; background: var(--cothrom-info-bg); border-radius: 8px; padding: 12px; text-align: center;">
-                <div style="font-size: 11px; color: var(--cothrom-info); text-transform: uppercase; margin-bottom: 4px;">Proposed</div>
-                <div style="font-weight: 600; color: var(--cothrom-info);">Kildare South</div>
-                <div style="font-size: 12px; color: var(--cothrom-muted);">3 seats</div>
-            </div>
-        </div>
-        <div style="font-size: 13px; color: var(--cothrom-ink-2); line-height: 1.6;">
-            Your county remains <strong>Laois</strong>, but your constituency changes. You would vote alongside Kildare residents instead of Offaly neighbours.
-        </div>
-    </div>
-</div>
-```
-
-This case study illustrates a common redistricting scenario. Even though the county boundary itself doesn't move, the constituency boundary does. For residents of Portlaoise Urban, this means their TDs would change, their local political community would shift, and the candidates on their ballot would be different. The county identity remains, but the democratic community with whom they share representation transforms entirely.
-
----
-
-## Your ED's Boundaries
-
-Let's explore what your ED boundary actually means.
-
-### How Boundaries Are Defined
-
-ED boundaries follow:
-- **Roads and streets** (e.g., "north side of Main Street")
-- **Natural features** (rivers, coastlines)
-- **Administrative boundaries** (townlands in rural areas)
-- **Development boundaries** (edges of housing estates)
-
-### Visualizing Your ED
-
-Use the interactive map above to explore ED boundaries. When you click on an ED:
-- The ED is highlighted in blue
-- Neighboring EDs are shown in light gray
-- Street-level detail is visible at higher zoom levels
-- Toggle the "Constituencies" layer to see how EDs group together
-
-### Understanding the Borders
-
-Your ED's borders with neighboring EDs are important because:
-
-1. **Contiguity Requirement**: Constituencies must be connected. If your ED is at the edge of a constituency, it must touch another ED in the same constituency.
-
-2. **Swap Possibilities**: EDs on constituency borders are the easiest to move during redistricting. If your ED borders another constituency, it's a candidate for swapping.
-
-3. **Community Cohesion**: ED boundaries often follow natural community divisions. Moving an ED to a different constituency might split a community.
-
----
-
-## Your ED in Context
-
-Now let's see how your ED fits into the bigger picture.
-
-### Current Constituency Membership
-
-When you select an ED in the interactive map above, the info panel shows:
-- **Your constituency name** and how many TDs it elects
-- **Your ED's population** relative to the national average
-- **Census 2022 data** for the Electoral Division
-
-Toggle the "Constituencies" layer to see the constituency boundaries overlaid on the EDs.
-
-### Historical Constituency Membership
-
-Has your ED always been in the same constituency? EDs can move between constituencies during redistricting:
-
-**Illustrative example** (showing how an ED can shift constituency over time):
-| Period | Constituency | Seats |
-|--------|--------------|-------|
-| 1980-2007 | Dublin South-Central | 5 |
-| 2007-2023 | Dublin Bay South | 4 |
-| 2024- | Dublin Bay South | 4 |
-
-Most EDs are relatively stable, changing constituencies only every 15-20 years. EDs at constituency borders are more likely to be moved during redistricting.
-
-```{note}
-**Understanding Stability:**
-- **High stability**: ED has stayed in the same constituency for 30+ years
-- **Moderate stability**: ED has changed 1-2 times in 40 years
-- **Low stability**: ED has changed 3+ times, often at constituency borders
-```
-
----
-
-## Why Knowing Your ED Empowers You
-
-Now that you know your Electoral Division, you can:
-
-### 1. Track Changes That Affect You
-
-When the Electoral Commission announces boundary recommendations:
-- Search for **your ED by name**
-- See if it's proposed to move to a different constituency
-- Understand the specific impact on your representation
-
-### 2. Make Informed Submissions
-
-During public consultations, you can:
-- Reference your specific ED in submissions
-- Explain how changes would affect your community
-- Use population data to support your arguments
-- Compare with neighboring EDs to suggest alternatives
-
-**Example Submission:**
-
-> "I live in ED Rathmines West C, which the Commission proposes to move from Dublin Bay South to Dublin Rathdown. This change would:
-> - Separate our community from neighboring Rathmines EDs
-> - Move us away from the natural catchment area of our schools and services
-> - Create a less compact constituency shape
->
-> I suggest considering [alternative configuration] instead, which would maintain community cohesion while still meeting the variance requirement."
-
-### 3. Evaluate Commission Reasoning
-
-When the Commission publishes their report, you can:
-- Check if your ED is mentioned specifically
-- Understand why it was moved (or kept in place)
-- Assess whether the reasoning makes sense
-- Compare the stated rationale with the actual data
-
-### 4. Connect with Your Community
-
-Share your ED knowledge:
-- Discuss boundary changes with neighbors
-- Organize community responses to consultations
-- Help others in your ED understand the implications
-- Build collective voice for your area
-
----
-
-## Interactive Exploration
-
-Want to explore more? Try these activities:
-
-### Activity 1: Explore Your Neighbors
-
-**Task:** Find and map all the EDs that border yours.
-
-**Questions to consider:**
-- Are they in the same constituency?
-- Do they have similar population sizes?
-- Do they share community characteristics?
-
-### Activity 2: Compare with Other Parts of Ireland
-
-**Task:** Pick an ED in a rural county and compare with yours.
-
-**Look at:**
-- Population size difference
-- Geographic size difference
-- Constituency type (3, 4, or 5 seats)
-- Variance levels
-
-### Activity 3: Trace Your ED's Journey
-
-**Task:** Look up your ED's constituency membership over time.
-
-**Discover:**
-- When did it last change?
-- Why did it change?
-- What was the public reaction?
-
----
-
-## Check Your Understanding
+This is why population, not area, is what the map-drawing turns on. A big-
+population ED like Carlow Urban carries far more weight when the Commission is
+balancing constituencies toward that 29,593 target; a small one is easier to
+shuffle between constituencies without upsetting the balance. And it is the
+same arithmetic that produced the vote-weight gap from the last lesson: an ED's
+population feeds up into its constituency's population, which sets how many
+people each of that constituency's TDs must represent — and whether your vote
+ends up carrying a little more or a little less than the national norm.
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="0">
-  <p class="cothrom-quiz-q">When the Commission draws constituency boundaries, what can it <em>not</em> do to your Electoral Division?</p>
-  <button class="cothrom-opt" data-explain="Correct — EDs are indivisible: each one must belong entirely to a single constituency.">Split it between two constituencies</button>
-  <button class="cothrom-opt" data-explain="EDs are regularly grouped with neighbours — that's exactly how constituencies are formed.">Group it with neighbouring EDs</button>
-  <button class="cothrom-opt" data-explain="Moving an ED to a different constituency is common at boundary reviews.">Move it to a different constituency</button>
+  <p class="cothrom-quiz-q">A rural ED and an inner-city ED cover wildly different amounts of land but have almost the same population. Which is more likely to be moved between constituencies at a review, and why?</p>
+  <button class="cothrom-opt" data-explain="Right. What the Commission balances is population against the 29,593-per-TD target. Land area barely enters the population sum, so the two similar-population EDs are equally movable on that measure — area is not what decides it.">Neither is favoured on population grounds — moving either shifts the same number of people, because area doesn't enter the balance</button>
+  <button class="cothrom-opt" data-explain="Bigger land area doesn't make an ED heavier in the population arithmetic — a sparsely populated 5km-wide ED can hold fewer people than a single city block.">The rural one, because covering more land gives it more weight</button>
+  <button class="cothrom-opt" data-explain="Density affects how the ED looks on a map, but the balancing sum only counts people. Two EDs with the same population contribute equally regardless of density.">The city one, because dense areas always count for more</button>
 </div>
 ```
 
-## Common Questions
-
-### "My ED seems really small. Is that normal?"
-
-Yes! ED sizes vary dramatically:
-- **Smallest EDs**: Around 200-300 people (often in city centers)
-- **Average EDs**: Around 1,400 people
-- **Largest EDs**: Around 4,000-5,000 people (rapidly growing areas)
-
-The variation exists because:
-- EDs were defined at different times
-- Population has shifted since ED boundaries were set
-- Urban vs. rural differences
-
-### "Can ED boundaries change?"
-
-Rarely. ED boundaries are set by the Ordnance Survey and CSO, and they change very infrequently - usually only when:
-- Major new developments are built
-- Administrative reorganization is needed
-- Census requirements change
-
-**Constituency boundaries** change regularly (every 4-5 years on average), but **ED boundaries** are much more stable.
-
-### "Why does my ED have a weird name?"
-
-ED names often reflect:
-- Historical townland names
-- Directional divisions (North, South, East, West)
-- Alphabetical subdivisions (A, B, C, D)
-- Local landmarks
-
-Example: "Rathmines West C" means:
-- **Rathmines**: The area name
-- **West**: The western section of Rathmines
-- **C**: The third subdivision of Rathmines West (A and B also exist)
-
 ---
 
-## What's Next?
+## Why your constituency can change when your county doesn't
 
-Now that you know:
-- ✅ What an Electoral Division is
-- ✅ How to find your specific ED
-- ✅ Why your ED matters for redistricting
+Here is a real case, not an illustrative one. Before the 2023 review, Laois and
+Offaly were stitched together into a single five-seat constituency,
+**Laois–Offaly**, that crossed the county line. The 2023 review pulled them
+apart again, restoring Laois and Offaly as separate single-county constituencies
+— one of seven county-boundary breaches the Commission removed out of ten that
+existed (Electoral Commission, 2023).
 
-We're ready to explore **what could change** in your area:
-- How likely is your ED to move constituencies?
-- What drives boundary changes?
-- What impact would changes have on you?
+Picture a voter in Portlaoise through that change. Their county never moved: they
+were in County Laois before and County Laois after. Their *Electoral Division*
+never moved on the ground either — the same streets, the same neighbours. What
+changed was the grouping. The EDs of Laois were unbundled from Offaly's and
+rebundled among themselves, so the same voter now shares a constituency, a ballot
+paper, and a set of TDs with a different set of people than before.
 
-**Ready to continue?** Let's explore the dynamics of boundary changes.
+That is the ordinary texture of redistricting, and it is why finding your ED is
+worth the trouble. County lines are stable and emotive; constituency lines are
+redrawn every few years and are what actually determine your representation. The
+two are not the same, and an ED can keep its county while changing its
+constituency. The EDs most exposed to that are the ones on a constituency's
+edge, touching a neighbour — those are the pieces a review reaches for first when
+it needs to move population across a line.
 
-**→ [Continue to Lesson 3: Boundaries and You](boundaries_and_you.md)**
+*How* the Commission decides which edge-EDs to move — keeping constituencies
+joined up in one piece, and their shapes reasonably tidy rather than
+gerrymandered — rests on two ideas, **contiguity** and **compactness**, that the
+next lesson defines properly. For now it is enough to know that border EDs are
+the movable ones, and that your ED's position — interior or edge — is a strong
+hint as to whether a future review is likely to touch you.
 
----
-
-## Key Takeaways
-
-```{important}
-**Remember These Points:**
-
-1. **Electoral Divisions are the building blocks** - Ireland has 3,440 EDs that combine to form constituencies
-
-2. **Your ED is indivisible** - It must belong entirely to one constituency; it cannot be split
-
-3. **EDs vary significantly** - Urban EDs are geographically small with high density; rural EDs are large with low density
-
-4. **Knowing your ED empowers participation** - You can track changes, make informed submissions, and engage meaningfully
-
-5. **ED boundaries are stable** - Unlike constituency boundaries, ED boundaries rarely change
-
-6. **Population data lives in EDs** - The CSO collects census data by ED, which drives redistricting calculations
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">In 2023 a Portlaoise voter's constituency changed from Laois–Offaly to a Laois-only one, but they never moved house. What actually changed?</p>
+  <button class="cothrom-opt" data-explain="Their county was Laois throughout — that's precisely what didn't change. The review reinstated the county line rather than crossing it.">Their county switched from Offaly to Laois</button>
+  <button class="cothrom-opt" data-explain="Correct. The same EDs were regrouped: unbundled from Offaly and formed into a Laois-only constituency, so the voter now shares TDs and a ballot with a different set of people.">Which EDs were grouped with theirs — and so which people they now share TDs with</button>
+  <button class="cothrom-opt" data-explain="ED boundaries on the ground are very stable and rarely move. It was the constituency grouping, not the ED itself, that was redrawn.">The boundary of their own ED was redrawn around their house</button>
+</div>
 ```
 
 ---
 
-## Further Exploration
+## Key takeaways
 
-Before moving to the next lesson:
+- An Electoral Division is the smallest official area Ireland counts — about
+  3,440 of them — and every address sits in exactly one.
+- EDs are indivisible: the Commission groups whole EDs into constituencies and
+  can never split one, so all of an ED's people move together or not at all.
+- What the map balances is population, not land area: divide an ED's population
+  by 29,593 to see its share of a single TD's people.
+- Your county can stay the same while your constituency changes, because it is
+  the grouping of EDs — not the county line — that sets your representation.
+- EDs on the edge of a constituency are the ones a review is most likely to move.
 
-1. **Find your ED** using the interactive tool (when available) or by searching CSO data
+```{raw} html
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">Pulling it together: which single sentence best captures why your Electoral Division is worth knowing?</p>
+  <button class="cothrom-opt" data-explain="EDs are stable and rarely redrawn — that stability is real, but it isn't the reason knowing yours matters for your vote.">Because ED boundaries change constantly and you must track them</button>
+  <button class="cothrom-opt" data-explain="Area is largely beside the point — the balancing arithmetic counts people, not hectares.">Because a larger ED gives your vote more weight</button>
+  <button class="cothrom-opt" data-explain="Correct. Your ED is the indivisible unit that gets grouped into a constituency; that grouping — not your county — decides which TDs you help elect and roughly what your vote is worth.">Because it is the indivisible unit that gets grouped into your constituency, and that grouping decides your representation</button>
+</div>
+```
 
-2. **Look up your neighbors** - What EDs border yours? Are they in your constituency?
+Next we turn to the process that does the grouping: what forces a boundary
+review, what the Commission is trying to balance when it redraws the map, and the
+two rules — contiguity and compactness — that decide which of those edge EDs can
+actually move.
 
-3. **Check the history** - Has your ED changed constituencies before?
+**→ [Next: What makes the lines move](boundaries_and_you.md)**
 
-4. **Compare sizes** - How does your ED's population compare to others in your constituency?
+---
 
-Understanding your specific place in the electoral system makes the abstract concept of redistricting personal and tangible.
+## Sources
+
+- [Electoral Commission — Constituency Review Report 2023](https://www.electoralcommission.ie/constituency-reviews/)
+  — 174 TDs across 43 constituencies; national average 29,593 people per TD.
+- [Electoral Commission press release, August 2023](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/)
+  — reinstatement of county boundaries; removal of seven of ten breaches, including the Laois–Offaly split.
+- [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/)
+  — total population 5,149,139; census figures are published at Electoral Division level.
 
 ---
 

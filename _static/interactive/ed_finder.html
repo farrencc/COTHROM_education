@@ -1,121 +1,94 @@
 <!DOCTYPE html>
-<html lang="en" data-cothrom-fixed-height>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electoral District Finder - Ireland</title>
+    <title>Find your Electoral Division</title>
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--cothrom-surface);
+            background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
+            line-height: 1.5;
         }
 
-        .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+        .widget {
+            border: 1px solid var(--cothrom-border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--cothrom-panel);
         }
 
-        /* Search Header */
+        /* Illustrative-data banner (always visible; shared pattern with sibling widgets) */
+        .sample-banner {
+            background: var(--cothrom-warn-bg);
+            color: var(--cothrom-warn);
+            padding: 8px 14px;
+            font-size: 12.5px;
+            line-height: 1.4;
+            text-align: center;
+            border-bottom: 1px solid var(--cothrom-warn-border);
+        }
+
+        /* Header + search */
         .search-header {
             background: linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%);
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            z-index: 1000;
+            padding: 12px 14px;
         }
-
-        .search-header h1 {
+        .search-header .step-label {
             color: white;
-            font-size: 16px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 200px;
-            max-width: 500px;
-            position: relative;
-        }
-
-        .search-tabs {
-            display: flex;
-            margin-bottom: 4px;
-        }
-
-        .search-tab {
-            padding: 4px 12px;
             font-size: 11px;
-            color: rgba(255,255,255,0.8);
-            background: rgba(255,255,255,0.1);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            opacity: 0.92;
+        }
+        .search-header .prompt {
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 2px 0 10px;
+        }
+        .search-box { position: relative; max-width: 560px; }
+        .search-tabs { display: flex; margin-bottom: 4px; }
+        .search-tab {
+            padding: 5px 12px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.12);
             border: none;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background 0.2s, color 0.2s;
         }
+        .search-tab:first-child { border-radius: 4px 0 0 4px; }
+        .search-tab:last-child { border-radius: 0 4px 4px 0; }
+        .search-tab.active { background: rgba(255,255,255,0.32); color: white; font-weight: 600; }
+        .search-tab:hover:not(.active) { background: rgba(255,255,255,0.22); }
+        .search-tab:focus-visible { outline: 2px solid white; outline-offset: 2px; }
 
-        .search-tab:first-child {
-            border-radius: 4px 0 0 4px;
-        }
-
-        .search-tab:last-child {
-            border-radius: 0 4px 4px 0;
-        }
-
-        .search-tab.active {
-            background: rgba(255,255,255,0.3);
-            color: white;
-            font-weight: 600;
-        }
-
-        .search-tab:hover:not(.active) {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .search-input-wrapper {
-            position: relative;
-        }
-
+        .search-input-wrapper { position: relative; }
         .search-box input {
             width: 100%;
-            padding: 10px 80px 10px 14px;
+            padding: 10px 74px 10px 14px;
             border: none;
             border-radius: 6px;
             font-size: 14px;
             outline: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            color: var(--cothrom-ink);
+            background: var(--cothrom-panel);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
-
-        .search-box input::placeholder {
-            color: var(--cothrom-muted);
-        }
-
-        .search-box .search-icon {
-            position: absolute;
-            right: 50px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--cothrom-muted);
-        }
-
+        .search-box input::placeholder { color: var(--cothrom-muted); }
         .search-btn {
             position: absolute;
-            right: 4px;
-            top: 50%;
+            right: 4px; top: 50%;
             transform: translateY(-50%);
             padding: 6px 12px;
             background: var(--cothrom-green);
@@ -124,544 +97,231 @@
             border-radius: 4px;
             font-size: 12px;
             cursor: pointer;
-            transition: background 0.2s;
         }
+        .search-btn:hover { background: var(--cothrom-green-dark); }
+        .search-btn:disabled { background: var(--cothrom-border); cursor: not-allowed; }
 
-        .search-btn:hover {
-            background: var(--cothrom-green-dark);
-        }
-
-        .search-btn:disabled {
-            background: var(--cothrom-border);
-            cursor: not-allowed;
-        }
-
-        .search-status {
+        .search-results, .search-status {
             position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            padding: 8px 14px;
+            top: 100%; left: 0; right: 0;
             background: var(--cothrom-panel);
             border-radius: 0 0 6px 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.18);
             z-index: 1001;
             display: none;
         }
-
-        .search-status.active {
-            display: block;
-        }
-
-        .search-status.loading {
-            color: var(--cothrom-muted);
-        }
-
-        .search-status.error {
-            color: var(--cothrom-danger);
-            background: var(--cothrom-danger-bg);
-        }
-
-        .search-status.success {
-            color: var(--cothrom-green);
-            background: var(--cothrom-tint-green);
-        }
-
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--cothrom-panel);
-            border-radius: 0 0 6px 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-            z-index: 1001;
-        }
-
-        .search-results.active {
-            display: block;
-        }
-
+        .search-results { max-height: 260px; overflow-y: auto; }
+        .search-status { padding: 8px 14px; font-size: 13px; }
+        .search-results.active, .search-status.active { display: block; }
+        .search-status.loading { color: var(--cothrom-muted); }
+        .search-status.error { color: var(--cothrom-danger); background: var(--cothrom-danger-bg); }
+        .search-status.success { color: var(--cothrom-green-dark); background: var(--cothrom-tint-green); }
         .search-result-item {
-            padding: 10px 14px;
+            padding: 9px 14px;
             border-bottom: 1px solid var(--cothrom-border);
             cursor: pointer;
-            transition: background 0.15s;
         }
-
-        .search-result-item:hover {
-            background: var(--cothrom-tint-green);
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:hover, .search-result-item:focus-visible {
+            background: var(--cothrom-tint-green); outline: none;
         }
-
-        .search-result-item .ed-name {
-            font-weight: 600;
-            color: var(--cothrom-ink);
-            font-size: 14px;
-        }
-
-        .search-result-item .ed-county {
-            font-size: 12px;
-            color: var(--cothrom-muted);
-        }
-
-        .clear-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            white-space: nowrap;
-            transition: background 0.15s;
-        }
-
-        .clear-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        /* Main content */
-        .main-content {
-            flex: 1;
-            display: flex;
-            position: relative;
-            overflow: hidden;
-        }
+        .search-result-item .ed-name { font-weight: 600; color: var(--cothrom-ink); font-size: 14px; }
+        .search-result-item .ed-county { font-size: 12px; color: var(--cothrom-muted); }
 
         /* Map */
-        #map {
-            flex: 1;
-            height: 100%;
-            z-index: 1;
-        }
+        .map-wrap { position: relative; }
+        #map { height: 440px; width: 100%; z-index: 1; background: var(--cothrom-surface); }
+        @media (max-width: 480px) { #map { height: 360px; } }
 
-        /* Info Panel */
-        .info-panel {
-            width: 320px;
-            background: var(--cothrom-panel);
-            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-            overflow-y: auto;
-            z-index: 100;
-            transition: transform 0.3s ease;
-        }
-
-        .info-panel.hidden {
-            transform: translateX(100%);
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-        }
-
-        .panel-header {
-            background: linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%);
-            color: white;
-            padding: 16px;
-        }
-
-        .panel-header h2 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .panel-header .subtitle {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        .panel-content {
-            padding: 16px;
-        }
-
-        .info-section {
-            margin-bottom: 16px;
-        }
-
-        .info-section h3 {
-            font-size: 11px;
-            color: var(--cothrom-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .info-card {
-            background: var(--cothrom-surface);
-            border-radius: 8px;
-            padding: 12px;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid var(--cothrom-border);
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
-        .info-row .label {
-            color: var(--cothrom-muted);
-            font-size: 13px;
-        }
-
-        .info-row .value {
-            color: var(--cothrom-ink);
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .info-row .value.highlight {
-            color: var(--cothrom-accent);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .stat-box {
-            background: var(--cothrom-surface);
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .stat-box .number {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .stat-box .number.green {
-            color: var(--cothrom-green);
-        }
-
-        .stat-box .number.purple {
-            color: var(--cothrom-accent);
-        }
-
-        .stat-box .label {
-            font-size: 11px;
-            color: var(--cothrom-muted);
-        }
-
-        .constituency-card {
-            background: linear-gradient(135deg, rgba(123,44,191,0.1) 0%, rgba(60,9,108,0.15) 100%);
-            border-left: 3px solid var(--cothrom-accent);
-            border-radius: 0 8px 8px 0;
-            padding: 12px;
-        }
-
-        .constituency-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--cothrom-accent-dark);
-            margin-bottom: 8px;
-        }
-
-        .initial-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--cothrom-muted);
-        }
-
-        .initial-state .icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .initial-state p {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* Layer control */
         .layer-control {
             position: absolute;
-            bottom: 20px;
-            left: 10px;
+            bottom: 14px; left: 10px;
             background: var(--cothrom-panel);
+            border: 1px solid var(--cothrom-border);
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            padding: 10px 14px;
+            padding: 8px 12px;
             z-index: 500;
         }
-
         .layer-control h4 {
-            font-size: 11px;
-            color: var(--cothrom-muted);
-            text-transform: uppercase;
-            margin-bottom: 8px;
+            font-size: 10px; color: var(--cothrom-muted);
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
         }
+        .layer-option { display: flex; align-items: center; gap: 7px; padding: 2px 0; }
+        .layer-option input { accent-color: var(--cothrom-green); }
+        .layer-option label { font-size: 12.5px; color: var(--cothrom-ink); cursor: pointer; }
 
-        .layer-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 0;
-            cursor: pointer;
-        }
-
-        .layer-option input {
-            accent-color: var(--cothrom-green);
-        }
-
-        .layer-option label {
-            font-size: 13px;
-            color: var(--cothrom-ink);
-            cursor: pointer;
-        }
-
-        /* Loading overlay */
         .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255,255,255,0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; inset: 0;
+            background: color-mix(in srgb, var(--cothrom-panel) 88%, transparent);
+            display: flex; align-items: center; justify-content: center;
             z-index: 2000;
         }
-
-        .loading-overlay.hidden {
-            display: none;
-        }
-
-        .loading-spinner {
-            text-align: center;
-        }
-
-        .loading-spinner .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--cothrom-surface);
+        .loading-overlay.hidden { display: none; }
+        .spinner {
+            width: 36px; height: 36px;
+            border: 4px solid var(--cothrom-border);
             border-top-color: var(--cothrom-green);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        /* Predict + reveal region below the map */
+        .stage { padding: 16px 16px 18px; }
+        .stage-hint {
+            text-align: center; color: var(--cothrom-muted);
+            font-size: 13.5px; padding: 22px 16px;
         }
 
-        .loading-spinner p {
-            margin-top: 12px;
-            color: var(--cothrom-muted);
-            font-size: 14px;
+        .predict {
+            border: 1px solid var(--cothrom-border);
+            border-left: 4px solid var(--cothrom-accent);
+            border-radius: 10px;
+            background: var(--cothrom-surface);
+            padding: 14px 16px;
         }
-
-        /* Sample data banner */
-        .sample-banner {
-            background: var(--cothrom-warn-bg);
-            color: var(--cothrom-warn);
-            padding: 8px 16px;
-            font-size: 13px;
-            text-align: center;
-            border-bottom: 1px solid var(--cothrom-warn-border);
+        .predict .kicker {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+            text-transform: uppercase; color: var(--cothrom-accent);
         }
-
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            .container {
-                height: 100vh;
-            }
-
-            .search-header {
-                padding: 10px;
-            }
-
-            .search-header h1 {
-                font-size: 14px;
-            }
-
-            .info-panel {
-                position: absolute;
-                width: 100%;
-                max-width: 320px;
-                right: 0;
-                top: 0;
-                bottom: 0;
-            }
-
-            .info-panel.hidden {
-                transform: translateX(100%);
-            }
-
-            .layer-control {
-                bottom: 20px;
-                left: 10px;
-                right: auto;
-                display: flex;
-                justify-content: flex-start;
-                gap: 20px;
-            }
-
-            .layer-control h4 {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .search-header h1 {
-                display: none;
-            }
-
-            .search-box {
-                max-width: none;
-            }
-        }
-
-        /* Custom popup styles */
-        .leaflet-popup-content-wrapper {
+        .predict .picked { font-size: 16px; font-weight: 700; margin: 3px 0 2px; color: var(--cothrom-ink); }
+        .predict .picked .county { color: var(--cothrom-muted); font-weight: 500; font-size: 13px; }
+        .predict .q { font-weight: 600; margin: 10px 0 4px; font-size: 14px; }
+        .predict .sub { color: var(--cothrom-muted); font-size: 12.5px; margin-bottom: 10px; }
+        .guess-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .guess-btn {
+            flex: 1 1 auto; min-width: 64px;
+            padding: 10px 12px;
+            border: 1px solid var(--cothrom-border);
             border-radius: 8px;
-            padding: 0;
-        }
-
-        .leaflet-popup-content {
-            margin: 0;
-            min-width: 200px;
-        }
-
-        .custom-popup {
-            padding: 0;
-        }
-
-        .custom-popup .popup-header {
-            background: linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%);
-            color: white;
-            padding: 10px 14px;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .custom-popup .popup-header h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .custom-popup .popup-header .county {
-            font-size: 11px;
-            opacity: 0.9;
-        }
-
-        .custom-popup .popup-body {
-            padding: 10px 14px;
-        }
-
-        .custom-popup .popup-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 4px 0;
-            font-size: 12px;
-        }
-
-        .custom-popup .popup-row .label {
-            color: var(--cothrom-muted);
-        }
-
-        .custom-popup .popup-row .value {
+            background: var(--cothrom-panel);
             color: var(--cothrom-ink);
-            font-weight: 500;
+            font-size: 14px; font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .guess-btn:hover { border-color: var(--cothrom-accent); }
+        .guess-btn:focus-visible { outline: 2px solid var(--cothrom-accent); outline-offset: 2px; }
+        .guess-btn.skip { flex: 1 1 100%; font-weight: 500; color: var(--cothrom-muted); font-size: 13px; }
+
+        .reveal { animation: fadeIn 0.25s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+        .reveal .verdict {
+            font-size: 13.5px; font-weight: 600;
+            padding: 8px 12px; border-radius: 8px; margin-bottom: 12px;
+        }
+        .reveal .verdict.hit { background: var(--cothrom-under-bg); color: var(--cothrom-under); }
+        .reveal .verdict.miss { background: var(--cothrom-warn-bg); color: var(--cothrom-warn); }
+
+        .ed-title { font-size: 18px; font-weight: 700; color: var(--cothrom-ink); }
+        .ed-sub { color: var(--cothrom-muted); font-size: 13px; margin-bottom: 12px; }
+
+        .stat-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;
+        }
+        .stat-box {
+            background: var(--cothrom-surface);
+            border-radius: 8px; padding: 12px; text-align: center;
+        }
+        .stat-box .num { font-size: 22px; font-weight: 700; }
+        .stat-box .num.green { color: var(--cothrom-green-dark); }
+        .stat-box .num.accent { color: var(--cothrom-accent); }
+        .stat-box .cap {
+            font-size: 10.5px; color: var(--cothrom-muted);
+            text-transform: uppercase; letter-spacing: 0.4px; margin-top: 3px;
         }
 
-        .custom-popup .constituency-badge {
-            background: linear-gradient(135deg, rgba(123,44,191,0.15) 0%, rgba(60,9,108,0.2) 100%);
-            border-left: 2px solid var(--cothrom-accent);
-            padding: 6px 10px;
-            margin-top: 8px;
-            border-radius: 0 4px 4px 0;
+        .constituency-card {
+            background: color-mix(in srgb, var(--cothrom-accent) 10%, transparent);
+            border-left: 3px solid var(--cothrom-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 12px;
+            margin-bottom: 12px;
         }
+        .constituency-card .name { font-size: 15px; font-weight: 700; color: var(--cothrom-accent-dark); }
+        .constituency-card .seats { font-size: 13px; color: var(--cothrom-ink-2); margin-top: 2px; }
 
-        .custom-popup .constituency-badge .name {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--cothrom-accent-dark);
+        .explain {
+            background: var(--cothrom-tint-green);
+            border-left: 3px solid var(--cothrom-green);
+            border-radius: 0 8px 8px 0;
+            padding: 12px 14px;
+            font-size: 13.5px;
+            color: var(--cothrom-ink-2);
         }
+        .explain strong { color: var(--cothrom-ink); }
 
-        .custom-popup .constituency-badge .seats {
-            font-size: 11px;
-            color: var(--cothrom-muted);
+        .reset-btn {
+            margin-top: 14px;
+            background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
+            border: 1px solid var(--cothrom-border);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .reset-btn:hover { border-color: var(--cothrom-green); }
+
+        /* Map tooltip / popup restyle to tokens */
+        .leaflet-popup-content-wrapper, .leaflet-tooltip {
+            background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
+            border-color: var(--cothrom-border);
         }
     </style>
   <link rel="stylesheet" href="../cothrom.css">
   <script src="widget-bootstrap.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Sample Data Banner -->
-        <div class="sample-banner" id="sampleBanner" style="display: none;">
-            <strong>Sample Data:</strong> Showing 15 of 3,440 Electoral Districts for demonstration
+    <div class="widget">
+        <div class="sample-banner">
+            <strong>Illustrative data:</strong> a teaching sample of Electoral Divisions, not the full official
+            set. Ireland has roughly 3,440 EDs; only a handful are shown here.
         </div>
 
-        <!-- Search Header -->
         <div class="search-header">
-            <h1>ED Finder</h1>
+            <div class="step-label">Step 1 &middot; Locate</div>
+            <div class="prompt">Where do you live on this map?</div>
             <div class="search-box">
-                <div class="search-tabs">
-                    <button class="search-tab active" data-mode="ed" id="tabED">ED Name</button>
-                    <button class="search-tab" data-mode="address" id="tabAddress">Address / Eircode</button>
+                <div class="search-tabs" role="tablist" aria-label="Search mode">
+                    <button class="search-tab active" data-mode="ed" id="tabED" role="tab" aria-selected="true">By ED name</button>
+                    <button class="search-tab" data-mode="address" id="tabAddress" role="tab" aria-selected="false">By address / Eircode</button>
                 </div>
                 <div class="search-input-wrapper">
-                    <input type="text" id="searchInput" placeholder="Search by ED name or county...">
-                    <span class="search-icon">&#128269;</span>
-                    <button class="search-btn" id="searchBtn" style="display: none;">Find</button>
+                    <input type="text" id="searchInput" aria-label="Search"
+                           placeholder="Type an ED or county, e.g. Rathmines or Clare">
+                    <button class="search-btn" id="searchBtn" style="display:none;">Find</button>
                 </div>
-                <div class="search-results" id="searchResults"></div>
-                <div class="search-status" id="searchStatus"></div>
+                <div class="search-results" id="searchResults" role="listbox"></div>
+                <div class="search-status" id="searchStatus" role="status" aria-live="polite"></div>
             </div>
-            <button class="clear-btn" id="clearBtn">Clear Selection</button>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Map -->
+        <div class="map-wrap">
             <div id="map"></div>
-
-            <!-- Layer Control -->
             <div class="layer-control">
                 <h4>Layers</h4>
                 <div class="layer-option">
                     <input type="checkbox" id="layerEDs" checked>
-                    <label for="layerEDs">Electoral Districts</label>
+                    <label for="layerEDs">Electoral Divisions</label>
                 </div>
                 <div class="layer-option">
                     <input type="checkbox" id="layerConstituencies">
-                    <label for="layerConstituencies">Constituencies</label>
+                    <label for="layerConstituencies">Constituency outlines</label>
                 </div>
             </div>
-
-            <!-- Info Panel -->
-            <div class="info-panel hidden" id="infoPanel">
-                <div class="panel-header">
-                    <h2 id="panelTitle">Select an ED</h2>
-                    <div class="subtitle" id="panelSubtitle">Click on the map to view details</div>
-                </div>
-                <div class="panel-content" id="panelContent">
-                    <div class="initial-state">
-                        <div class="icon">&#128506;</div>
-                        <p>Click on any <strong style="color: var(--cothrom-green);">green area</strong> on the map to view detailed information about that Electoral District.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Loading Overlay -->
             <div class="loading-overlay" id="loadingOverlay">
-                <div class="loading-spinner">
-                    <div class="spinner"></div>
-                    <p>Loading map data...</p>
-                </div>
+                <div class="spinner" role="status" aria-label="Loading map"></div>
+            </div>
+        </div>
+
+        <div class="stage" id="stage" aria-live="polite">
+            <div class="stage-hint" id="stageHint">
+                Click any area on the map, or search above, to pick an Electoral Division.
+                You&rsquo;ll get to make a prediction before the details are revealed.
             </div>
         </div>
     </div>
@@ -671,744 +331,352 @@
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <script>
-        // Configuration
-        const CONFIG = {
-            center: [53.4, -7.9],
-            zoom: 7,
-            minZoom: 6,
-            maxZoom: 18,
-            dataPath: '../data/'
-        };
+        // Sourced national constant (Electoral Commission 2023 review, Census 2022):
+        // 5,149,139 people / 174 TDs ≈ 29,593 people per TD.
+        const PEOPLE_PER_TD = 29593;
 
-        // Styles
-        const STYLES = {
-            ed: {
-                default: {
-                    fillColor: 'var(--cothrom-border)',
-                    color: 'var(--cothrom-muted)',
-                    weight: 0.5,
-                    fillOpacity: 0.6
-                },
-                hover: {
-                    fillColor: 'var(--cothrom-tint-green)',
-                    color: 'var(--cothrom-green)',
-                    weight: 2,
-                    fillOpacity: 0.7
-                },
-                selected: {
-                    fillColor: 'var(--cothrom-info)',
-                    color: 'var(--cothrom-info)',
-                    weight: 2,
-                    fillOpacity: 0.7
-                }
-            },
-            constituency: {
-                default: {
-                    fillColor: 'transparent',
-                    color: 'var(--cothrom-danger)',
-                    weight: 2.5,
-                    fillOpacity: 0,
-                    dashArray: '8, 4'
-                }
-            }
-        };
+        const CONFIG = { center: [53.4, -7.9], zoom: 7, minZoom: 6, maxZoom: 18, dataPath: '../data/' };
 
-        // Global state
-        let map = null;
-        let edLayer = null;
-        let constituencyLayer = null;
-        let selectedFeature = null;
-        let edData = null;
-        let constituencyData = null;
-        let edLookup = null;
-        let searchMode = 'ed'; // 'ed' or 'address'
-        let locationMarker = null;
-
-        // Initialize map
-        function initMap() {
-            map = L.map('map', {
-                center: CONFIG.center,
-                zoom: CONFIG.zoom,
-                minZoom: CONFIG.minZoom,
-                maxZoom: CONFIG.maxZoom,
-                zoomControl: true
-            });
-
-            // Add tile layer
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                subdomains: 'abcd',
-                maxZoom: 20
-            }).addTo(map);
+        // Resolve design tokens to concrete colours at runtime, so Leaflet (which
+        // writes SVG fill/stroke attributes that don't accept var()) still draws
+        // from the single source of truth in cothrom.css. Re-read on theme change.
+        function token(name) {
+            return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+        }
+        function styles() {
+            return {
+                edDefault:  { fillColor: token('--cothrom-border'), color: token('--cothrom-muted'),  weight: 0.6, fillOpacity: 0.55 },
+                edHover:    { fillColor: token('--cothrom-tint-green'), color: token('--cothrom-green'), weight: 2, fillOpacity: 0.75 },
+                edSelected: { fillColor: token('--cothrom-green-bright'), color: token('--cothrom-green-dark'), weight: 2.5, fillOpacity: 0.75 },
+                constituency: { fillColor: 'transparent', color: token('--cothrom-accent'), weight: 2.5, fillOpacity: 0, dashArray: '8,4' }
+            };
         }
 
-        // Load data
+        let map, edLayer, constituencyLayer, tileLayer;
+        let edData, constituencyData, edLookup;
+        let selectedLayer = null;
+        let searchMode = 'ed';
+        let locationMarker = null;
+
+        function tileUrl() {
+            const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+            return 'https://{s}.basemaps.cartocdn.com/' + (dark ? 'dark_all' : 'light_all') + '/{z}/{x}/{y}{r}.png';
+        }
+
+        function initMap() {
+            map = L.map('map', {
+                center: CONFIG.center, zoom: CONFIG.zoom,
+                minZoom: CONFIG.minZoom, maxZoom: CONFIG.maxZoom, zoomControl: true
+            });
+            tileLayer = L.tileLayer(tileUrl(), {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd', maxZoom: 20
+            }).addTo(map);
+
+            // Follow the host page's light/dark toggle (mirrored onto <html> by widget-bootstrap.js).
+            new MutationObserver(function () {
+                if (tileLayer) tileLayer.setUrl(tileUrl());
+                restyleLayers();
+            }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+        }
+
+        function restyleLayers() {
+            const S = styles();
+            if (edLayer) {
+                edLayer.eachLayer(function (l) {
+                    l.setStyle(l === selectedLayer ? S.edSelected : S.edDefault);
+                });
+            }
+            if (constituencyLayer) constituencyLayer.setStyle(S.constituency);
+        }
+
         async function loadData() {
             try {
-                const [edsResponse, consResponse, lookupResponse] = await Promise.all([
+                const [eds, cons, lookup] = await Promise.all([
                     fetch(CONFIG.dataPath + 'eds_simplified.geojson'),
                     fetch(CONFIG.dataPath + 'constituencies_2024.json'),
                     fetch(CONFIG.dataPath + 'ed_lookup.json')
                 ]);
-
-                edData = await edsResponse.json();
-                constituencyData = await consResponse.json();
-                edLookup = await lookupResponse.json();
-
-                // Check if sample data
-                if (edData._metadata && edData._metadata.simplified) {
-                    if (edData.features.length < 100) {
-                        document.getElementById('sampleBanner').style.display = 'block';
-                    }
-                }
-
+                edData = await eds.json();
+                constituencyData = await cons.json();
+                edLookup = await lookup.json();
                 return true;
-            } catch (error) {
-                console.error('Error loading data:', error);
+            } catch (e) {
+                console.error('Error loading data:', e);
                 return false;
             }
         }
 
-        // Create popup content
-        function createPopupContent(props) {
-            const pop = props.POPULATION_2022 ? props.POPULATION_2022.toLocaleString() : 'N/A';
-            const households = props.HOUSEHOLDS ? props.HOUSEHOLDS.toLocaleString() : 'N/A';
-            const seats = props.CONSTITUENCY_SEATS ? `${props.CONSTITUENCY_SEATS} TDs` : 'N/A';
-
-            return `
-                <div class="custom-popup">
-                    <div class="popup-header">
-                        <h4>${props.ED_NAME || 'Unknown'}</h4>
-                        <div class="county">${props.COUNTY || ''}</div>
-                    </div>
-                    <div class="popup-body">
-                        <div class="popup-row">
-                            <span class="label">ED ID</span>
-                            <span class="value">${props.ED_ID || 'N/A'}</span>
-                        </div>
-                        <div class="popup-row">
-                            <span class="label">Population</span>
-                            <span class="value">${pop}</span>
-                        </div>
-                        <div class="popup-row">
-                            <span class="label">Households</span>
-                            <span class="value">${households}</span>
-                        </div>
-                        <div class="constituency-badge">
-                            <div class="name">${props.CONSTITUENCY_2024 || 'Unknown'}</div>
-                            <div class="seats">${seats}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Update info panel
-        function updateInfoPanel(props) {
-            const panel = document.getElementById('infoPanel');
-            const title = document.getElementById('panelTitle');
-            const subtitle = document.getElementById('panelSubtitle');
-            const content = document.getElementById('panelContent');
-
-            panel.classList.remove('hidden');
-
-            title.textContent = props.ED_NAME || 'Unknown ED';
-            subtitle.textContent = 'Electoral District Details';
-
-            const pop = props.POPULATION_2022 || 0;
-            const households = props.HOUSEHOLDS || 0;
-            const avgPop = 1495; // National average
-            const variance = ((pop - avgPop) / avgPop * 100).toFixed(1);
-            const varianceClass = variance >= 0 ? 'green' : 'purple';
-            const varianceSign = variance >= 0 ? '+' : '';
-
-            content.innerHTML = `
-                <div class="info-section">
-                    <h3>Basic Information</h3>
-                    <div class="info-card">
-                        <div class="info-row">
-                            <span class="label">ED ID</span>
-                            <span class="value">${props.ED_ID || 'N/A'}</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="label">County</span>
-                            <span class="value">${props.COUNTY || 'N/A'}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-section">
-                    <h3>Census 2022</h3>
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <div class="number green">${pop.toLocaleString()}</div>
-                            <div class="label">Population</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="number purple">${households.toLocaleString()}</div>
-                            <div class="label">Households</div>
-                        </div>
-                    </div>
-                    <div class="info-card" style="margin-top: 10px;">
-                        <div class="info-row">
-                            <span class="label">vs National Average</span>
-                            <span class="value" style="color: ${varianceClass === 'green' ? 'var(--cothrom-green)' : 'var(--cothrom-accent)'}">${varianceSign}${variance}%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-section">
-                    <h3>Constituency (2024)</h3>
-                    <div class="constituency-card">
-                        <div class="constituency-name">${props.CONSTITUENCY_2024 || 'Unknown'}</div>
-                        <div class="info-row" style="margin-top: 8px; padding: 0;">
-                            <span class="label">TDs Elected</span>
-                            <span class="value highlight">${props.CONSTITUENCY_SEATS || 'N/A'}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Add ED layer
         function addEDLayer() {
+            const S = styles();
             edLayer = L.geoJSON(edData, {
-                style: STYLES.ed.default,
-                onEachFeature: function(feature, layer) {
+                style: S.edDefault,
+                onEachFeature: function (feature, layer) {
                     const props = feature.properties;
-
-                    // Tooltip
-                    layer.bindTooltip(props.ED_NAME || 'Unknown', {
-                        permanent: false,
-                        direction: 'top',
-                        className: 'ed-tooltip'
-                    });
-
-                    // Popup
-                    layer.bindPopup(createPopupContent(props), {
-                        maxWidth: 280,
-                        className: 'ed-popup'
-                    });
-
-                    // Events
+                    layer.bindTooltip(props.ED_NAME || 'Unknown', { direction: 'top' });
                     layer.on({
-                        mouseover: function(e) {
-                            if (selectedFeature !== layer) {
-                                layer.setStyle(STYLES.ed.hover);
-                            }
-                        },
-                        mouseout: function(e) {
-                            if (selectedFeature !== layer) {
-                                layer.setStyle(STYLES.ed.default);
-                            }
-                        },
-                        click: function(e) {
-                            // Reset previous selection
-                            if (selectedFeature) {
-                                selectedFeature.setStyle(STYLES.ed.default);
-                            }
-
-                            // Select new
-                            selectedFeature = layer;
-                            layer.setStyle(STYLES.ed.selected);
-
-                            // Update panel
-                            updateInfoPanel(props);
-                        }
+                        mouseover: function () { if (layer !== selectedLayer) layer.setStyle(styles().edHover); },
+                        mouseout:  function () { if (layer !== selectedLayer) layer.setStyle(styles().edDefault); },
+                        click:     function () { selectED(layer, props, false); }
                     });
                 }
             }).addTo(map);
         }
 
-        // Add constituency layer (initially hidden)
         function addConstituencyLayer() {
-            // Create constituency GeoJSON from ED data by grouping
-            const constituencyFeatures = [];
-            const grouped = {};
-
-            // Group by constituency
-            edData.features.forEach(feature => {
-                const con = feature.properties.CONSTITUENCY_2024;
-                if (!grouped[con]) {
-                    grouped[con] = [];
-                }
-                grouped[con].push(feature);
-            });
-
-            // For now, just show ED boundaries with constituency style when toggled
-            // In production, you'd have actual constituency boundaries
+            // Placeholder outlines: the sample set carries no separate constituency
+            // geometry, so we outline the same EDs in the constituency style when toggled.
             constituencyLayer = L.geoJSON(edData, {
-                style: STYLES.constituency.default,
-                onEachFeature: function(feature, layer) {
-                    layer.bindTooltip(feature.properties.CONSTITUENCY_2024 || 'Unknown', {
-                        permanent: false,
-                        direction: 'top'
-                    });
+                style: styles().constituency,
+                onEachFeature: function (feature, layer) {
+                    layer.bindTooltip(feature.properties.CONSTITUENCY_2024 || 'Unknown', { direction: 'top' });
                 }
             });
         }
 
-        // Point in polygon detection (ray casting algorithm)
-        function pointInPolygon(point, polygon) {
-            const [x, y] = point;
-            let inside = false;
+        // --- Predict-then-reveal ---------------------------------------------
 
-            for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-                const [xi, yi] = polygon[i];
-                const [xj, yj] = polygon[j];
+        function selectED(layer, props, fromSearch) {
+            const S = styles();
+            if (selectedLayer) selectedLayer.setStyle(S.edDefault);
+            selectedLayer = layer;
+            layer.setStyle(S.edSelected);
+            if (fromSearch) map.fitBounds(layer.getBounds(), { maxZoom: 12 });
+            showPrediction(props);
+        }
 
-                if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
-                    inside = !inside;
+        function showPrediction(props) {
+            const stage = document.getElementById('stage');
+            stage.innerHTML = `
+                <div class="predict">
+                    <div class="kicker">Step 2 &middot; Predict</div>
+                    <div class="picked">${props.ED_NAME || 'This ED'} <span class="county">&mdash; ${props.COUNTY || ''}</span></div>
+                    <p class="q">Before the reveal: how many TDs do you think this ED&rsquo;s constituency elects?</p>
+                    <p class="sub">Irish law allows only 3, 4 or 5. Commit to a guess &mdash; then check it.</p>
+                    <div class="guess-row">
+                        <button class="guess-btn" data-guess="3">3</button>
+                        <button class="guess-btn" data-guess="4">4</button>
+                        <button class="guess-btn" data-guess="5">5</button>
+                        <button class="guess-btn skip" data-guess="0">Not sure &mdash; just reveal it</button>
+                    </div>
+                </div>`;
+            stage.querySelectorAll('.guess-btn').forEach(function (b) {
+                b.addEventListener('click', function () {
+                    revealED(props, parseInt(b.dataset.guess, 10));
+                });
+            });
+        }
+
+        function revealED(props, guess) {
+            const pop = props.POPULATION_2022 || 0;
+            const households = props.HOUSEHOLDS || 0;
+            const seats = props.CONSTITUENCY_SEATS || null;
+            const sharePct = (pop / PEOPLE_PER_TD * 100);
+            const shareText = sharePct >= 1 ? sharePct.toFixed(0) + '%' : sharePct.toFixed(1) + '%';
+
+            let verdict = '';
+            if (guess && seats) {
+                if (guess === seats) {
+                    verdict = `<div class="verdict hit">&#10003; You said ${guess} &mdash; correct. It elects ${seats} TDs.</div>`;
+                } else {
+                    verdict = `<div class="verdict miss">You said ${guess}; it actually elects ${seats}. Seat numbers aren&rsquo;t obvious from the map &mdash; population, not area, decides them.</div>`;
                 }
             }
 
+            const explain = `
+                An ED of <strong>${pop.toLocaleString()}</strong> people is about
+                <strong>${shareText}</strong> of the <strong>29,593</strong> people one TD represents on average
+                nationally. Your ED never stands alone: it is grouped with roughly a hundred neighbouring EDs to
+                make up <strong>${props.CONSTITUENCY_2024 || 'your constituency'}</strong>, and together those EDs
+                decide who its ${seats ? seats + ' TDs' : 'TDs'} will be.`;
+
+            document.getElementById('stage').innerHTML = `
+                <div class="reveal">
+                    <div class="kicker" style="color:var(--cothrom-green-dark);font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">Step 3 &middot; Reveal</div>
+                    ${verdict}
+                    <div class="ed-title">${props.ED_NAME || 'Unknown ED'}</div>
+                    <div class="ed-sub">${props.COUNTY || ''}${props.ED_ID ? ' &middot; ED ' + props.ED_ID : ''}</div>
+                    <div class="stat-grid">
+                        <div class="stat-box"><div class="num green">${pop.toLocaleString()}</div><div class="cap">Population (2022)</div></div>
+                        <div class="stat-box"><div class="num accent">${shareText}</div><div class="cap">of one TD&rsquo;s people</div></div>
+                    </div>
+                    <div class="constituency-card">
+                        <div class="name">${props.CONSTITUENCY_2024 || 'Unknown'}</div>
+                        <div class="seats">Elects <strong>${seats || '?'}</strong> ${seats === 1 ? 'TD' : 'TDs'} &middot; ${households.toLocaleString()} households in this ED</div>
+                    </div>
+                    <div class="explain">${explain}</div>
+                    <button class="reset-btn" id="resetBtn">Pick another ED</button>
+                </div>`;
+            document.getElementById('resetBtn').addEventListener('click', clearSelection);
+        }
+
+        function clearSelection() {
+            if (selectedLayer) { selectedLayer.setStyle(styles().edDefault); selectedLayer = null; }
+            if (locationMarker) { map.removeLayer(locationMarker); locationMarker = null; }
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchResults').classList.remove('active');
+            document.getElementById('searchStatus').classList.remove('active');
+            document.getElementById('stage').innerHTML =
+                '<div class="stage-hint">Click any area on the map, or search above, to pick an Electoral Division. ' +
+                'You&rsquo;ll get to make a prediction before the details are revealed.</div>';
+            map.setView(CONFIG.center, CONFIG.zoom);
+        }
+
+        // --- Geometry + geocoding (address / Eircode) ------------------------
+
+        function pointInPolygon(point, polygon) {
+            const [x, y] = point; let inside = false;
+            for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+                const [xi, yi] = polygon[i], [xj, yj] = polygon[j];
+                if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
+            }
             return inside;
         }
-
-        // Find ED containing a point
         function findEDAtPoint(lat, lng) {
-            const point = [lng, lat]; // GeoJSON uses [lng, lat]
-
+            const point = [lng, lat];
             for (const feature of edData.features) {
-                const geom = feature.geometry;
-                let rings = [];
-
-                if (geom.type === 'Polygon') {
-                    rings = geom.coordinates;
-                } else if (geom.type === 'MultiPolygon') {
-                    // Flatten MultiPolygon
-                    geom.coordinates.forEach(poly => {
-                        rings = rings.concat(poly);
-                    });
-                }
-
-                // Check each ring (first ring is exterior, rest are holes)
-                for (const ring of rings) {
-                    if (pointInPolygon(point, ring)) {
-                        return feature;
-                    }
-                }
+                const geom = feature.geometry; let rings = [];
+                if (geom.type === 'Polygon') rings = geom.coordinates;
+                else if (geom.type === 'MultiPolygon') geom.coordinates.forEach(p => { rings = rings.concat(p); });
+                for (const ring of rings) if (pointInPolygon(point, ring)) return feature;
             }
-
             return null;
         }
 
-        // Eircode routing key to area mapping
-        // Routing keys (first 3 chars) map to general geographic areas
-        const EIRCODE_ROUTING_KEYS = {
-            // Dublin
-            'D01': 'Dublin 1', 'D02': 'Dublin 2', 'D03': 'Dublin 3', 'D04': 'Dublin 4',
-            'D05': 'Dublin 5', 'D06': 'Dublin 6', 'D6W': 'Dublin 6W', 'D07': 'Dublin 7',
-            'D08': 'Dublin 8', 'D09': 'Dublin 9', 'D10': 'Dublin 10', 'D11': 'Dublin 11',
-            'D12': 'Dublin 12', 'D13': 'Dublin 13', 'D14': 'Dublin 14', 'D15': 'Dublin 15',
-            'D16': 'Dublin 16', 'D17': 'Dublin 17', 'D18': 'Dublin 18', 'D20': 'Dublin 20',
-            'D22': 'Dublin 22', 'D24': 'Dublin 24',
-            // Dublin County
-            'A41': 'Swords, County Dublin', 'A42': 'Malahide, County Dublin', 'A43': 'Portmarnock, County Dublin',
-            'A44': 'Baldoyle, County Dublin', 'A45': 'Howth, County Dublin', 'A63': 'Clongriffin, Dublin',
-            'A67': 'Donabate, County Dublin', 'A75': 'Balbriggan, County Dublin', 'A82': 'Skerries, County Dublin',
-            'A83': 'Rush, County Dublin', 'A84': 'Lusk, County Dublin', 'A85': 'Garristown, County Dublin',
-            'A86': 'Oldtown, County Dublin', 'A92': 'Drogheda, County Louth', 'A91': 'Dundalk, County Louth',
-            'A94': 'Blackrock, County Dublin', 'A96': 'Dun Laoghaire, County Dublin', 'A98': 'Bray, County Wicklow',
-            // Cork
-            'T12': 'Cork City', 'T23': 'Cork City South', 'T45': 'Ballincollig, Cork',
-            'P12': 'Cobh, County Cork', 'P14': 'Midleton, County Cork', 'P17': 'Youghal, County Cork',
-            'P24': 'Bandon, County Cork', 'P25': 'Kinsale, County Cork', 'P31': 'Carrigaline, County Cork',
-            'P32': 'Crosshaven, County Cork', 'P36': 'Macroom, County Cork', 'P43': 'Skibbereen, County Cork',
-            'P47': 'Bantry, County Cork', 'P51': 'Fermoy, County Cork', 'P56': 'Mallow, County Cork',
-            'P61': 'Kanturk, County Cork', 'P67': 'Charleville, County Cork', 'P72': 'Mitchelstown, County Cork',
-            'P75': 'Millstreet, County Cork', 'P81': 'Dunmanway, County Cork', 'P85': 'Clonakilty, County Cork',
-            // Galway
-            'H91': 'Galway City', 'H54': 'Tuam, County Galway', 'H62': 'Ballinasloe, County Galway',
-            'H65': 'Loughrea, County Galway', 'H71': 'Clifden, County Galway',
-            // Limerick
-            'V94': 'Limerick City', 'V35': 'Newcastle West, County Limerick', 'V42': 'Rathkeale, County Limerick',
-            // Waterford
-            'X91': 'Waterford City', 'X35': 'Dungarvan, County Waterford', 'X42': 'Tramore, County Waterford',
-            // Kerry
-            'V92': 'Tralee, County Kerry', 'V93': 'Killarney, County Kerry', 'V23': 'Dingle, County Kerry',
-            'V31': 'Listowel, County Kerry', 'V14': 'Kenmare, County Kerry',
-            // Other major areas
-            'F12': 'Sligo Town', 'F23': 'Ballina, County Mayo', 'F26': 'Castlebar, County Mayo',
-            'F28': 'Westport, County Mayo', 'F31': 'Claremorris, County Mayo', 'F35': 'Ballyhaunis, County Mayo',
-            'F42': 'Roscommon Town', 'F45': 'Boyle, County Roscommon',
-            'F91': 'Athlone', 'F92': 'Longford Town', 'F93': 'Mullingar',
-            'R14': 'Athy, County Kildare', 'R21': 'Monasterevin, County Kildare', 'R32': 'Carlow Town',
-            'R35': 'Tullow, County Carlow', 'R42': 'Portlaoise', 'R45': 'Mountmellick, County Laois',
-            'R51': 'Birr, County Offaly', 'R56': 'Tullamore', 'R93': 'Kilkenny City', 'R95': 'Wexford Town',
-            'N37': 'Navan, County Meath', 'N39': 'Kells, County Meath', 'N41': 'Trim, County Meath',
-            'W12': 'Naas, County Kildare', 'W23': 'Newbridge, County Kildare', 'W34': 'Celbridge, County Kildare',
-            'W91': 'Arklow, County Wicklow', 'E21': 'Gorey, County Wexford', 'E25': 'New Ross, County Wexford',
-            'E32': 'Enniscorthy, County Wexford', 'E34': 'Ferns, County Wexford', 'E41': 'Rosslare, County Wexford',
-            'E45': 'Bunclody, County Wexford', 'E91': 'Wicklow Town',
-            'H12': 'Letterkenny, County Donegal', 'H14': 'Buncrana, County Donegal', 'H18': 'Ballybofey, County Donegal',
-            'H23': 'Donegal Town', 'C15': 'Monaghan Town', 'H16': 'Cavan Town',
-            'V14': 'Cahersiveen, County Kerry', 'V15': 'Kilrush, County Clare', 'V95': 'Ennis, County Clare',
-            'Y14': 'Clonmel, County Tipperary', 'Y21': 'Cashel, County Tipperary', 'Y25': 'Cahir, County Tipperary',
-            'Y34': 'Thurles, County Tipperary', 'Y35': 'Templemore, County Tipperary',
-            'E21': 'Nenagh, County Tipperary', 'E25': 'Roscrea, County Tipperary'
-        };
-
-        // Geocode address using Nominatim
         async function geocodeAddress(query) {
-            let searchQuery = query.trim();
-
-            // Check if it looks like an Eircode (7 characters, alphanumeric)
-            const eircodePattern = /^[A-Za-z]\d{2}\s?[A-Za-z0-9]{4}$/;
-            const cleanQuery = searchQuery.replace(/\s/g, '').toUpperCase();
-            const isEircode = eircodePattern.test(cleanQuery);
-
-            if (isEircode) {
-                // Extract routing key (first 3 characters)
-                const routingKey = cleanQuery.slice(0, 3);
-
-                // Look up the area name for this routing key
-                const areaName = EIRCODE_ROUTING_KEYS[routingKey];
-
-                if (areaName) {
-                    // Use the area name for geocoding instead of the Eircode
-                    searchQuery = areaName + ', Ireland';
-                    console.log(`Eircode ${cleanQuery} -> searching for: ${searchQuery}`);
-                } else {
-                    // Unknown routing key, try with just the formatted Eircode
-                    searchQuery = cleanQuery.slice(0, 3) + ' ' + cleanQuery.slice(3) + ', Ireland';
-                    console.log(`Unknown Eircode routing key ${routingKey}, trying: ${searchQuery}`);
-                }
-            } else {
-                // Regular address - add Ireland if not present
-                if (!searchQuery.toLowerCase().includes('ireland')) {
-                    searchQuery += ', Ireland';
-                }
-            }
-
-            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=ie&limit=5`;
-
-            try {
-                const response = await fetch(url, {
-                    headers: {
-                        'Accept': 'application/json',
-                        'User-Agent': 'COTHROM-ED-Finder/1.0'
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Geocoding service unavailable');
-                }
-
-                const data = await response.json();
-                return { results: data, isEircode: isEircode, routingKey: isEircode ? cleanQuery.slice(0, 3) : null };
-            } catch (error) {
-                console.error('Geocoding error:', error);
-                throw error;
-            }
+            let q = query.trim();
+            if (!q.toLowerCase().includes('ireland')) q += ', Ireland';
+            const url = 'https://nominatim.openstreetmap.org/search?format=json&countrycodes=ie&limit=5&q=' + encodeURIComponent(q);
+            const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+            if (!res.ok) throw new Error('Geocoding service unavailable');
+            return res.json();
         }
 
-        // Handle address/Eircode search
         async function handleAddressSearch(query) {
-            const status = document.getElementById('searchStatus');
-            const searchBtn = document.getElementById('searchBtn');
-
-            if (!query || query.length < 3) {
-                showStatus('Please enter at least 3 characters', 'error');
-                return;
-            }
-
-            // Show loading
-            searchBtn.disabled = true;
-            showStatus('🔍 Searching...', 'loading');
-
+            const btn = document.getElementById('searchBtn');
+            if (!query || query.trim().length < 3) { showStatus('Please enter at least 3 characters.', 'error'); return; }
+            btn.disabled = true;
+            showStatus('Searching…', 'loading');
             try {
-                const response = await geocodeAddress(query);
-                const results = response.results;
-                const isEircode = response.isEircode;
-                const routingKey = response.routingKey;
-
-                if (!results || results.length === 0) {
-                    if (isEircode) {
-                        showStatus(`❌ Could not find location for Eircode area ${routingKey}. Try entering your full address instead.`, 'error');
-                    } else {
-                        showStatus('❌ Address not found. Try a different format or check spelling.', 'error');
-                    }
-                    searchBtn.disabled = false;
-                    return;
+                const results = await geocodeAddress(query);
+                if (!results || !results.length) {
+                    showStatus('Address not found. Try a nearby town or an ED name instead.', 'error');
+                    btn.disabled = false; return;
                 }
-
-                // Use first result
-                const location = results[0];
-                const lat = parseFloat(location.lat);
-                const lng = parseFloat(location.lon);
-
-                // Add/update location marker
-                if (locationMarker) {
-                    map.removeLayer(locationMarker);
-                }
-
+                const lat = parseFloat(results[0].lat), lng = parseFloat(results[0].lon);
+                if (locationMarker) map.removeLayer(locationMarker);
                 locationMarker = L.marker([lat, lng], {
                     icon: L.divIcon({
                         className: 'location-marker',
-                        html: '<div style="background: var(--cothrom-danger); width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>',
-                        iconSize: [16, 16],
-                        iconAnchor: [8, 8]
+                        html: '<div style="background:var(--cothrom-danger);width:16px;height:16px;border-radius:50%;border:3px solid var(--cothrom-panel);box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>',
+                        iconSize: [16, 16], iconAnchor: [8, 8]
                     })
                 }).addTo(map);
-
-                locationMarker.bindPopup(`<strong>Your Location</strong><br>${location.display_name.split(',').slice(0, 3).join(', ')}`);
-
-                // Find the ED at this location
-                const edFeature = findEDAtPoint(lat, lng);
-
-                if (edFeature) {
-                    // Find the layer for this feature
-                    edLayer.eachLayer(function(layer) {
-                        if (layer.feature.properties.ED_ID === edFeature.properties.ED_ID) {
-                            // Reset previous selection
-                            if (selectedFeature) {
-                                selectedFeature.setStyle(STYLES.ed.default);
-                            }
-
-                            // Select this ED
-                            selectedFeature = layer;
-                            layer.setStyle(STYLES.ed.selected);
-
-                            // Zoom to ED
-                            map.fitBounds(layer.getBounds(), { maxZoom: 13 });
-
-                            // Open popup
-                            layer.openPopup();
-
-                            // Update info panel
-                            updateInfoPanel(edFeature.properties);
+                const feature = findEDAtPoint(lat, lng);
+                if (feature) {
+                    edLayer.eachLayer(function (layer) {
+                        if (layer.feature.properties.ED_ID === feature.properties.ED_ID) {
+                            selectED(layer, feature.properties, true);
                         }
                     });
-
-                    if (isEircode) {
-                        showStatus(`✓ Eircode ${routingKey}: ${edFeature.properties.ED_NAME}, ${edFeature.properties.COUNTY}`, 'success');
-                    } else {
-                        showStatus(`✓ Found: ${edFeature.properties.ED_NAME}, ${edFeature.properties.COUNTY}`, 'success');
-                    }
+                    showStatus('Found: ' + feature.properties.ED_NAME + ', ' + feature.properties.COUNTY, 'success');
                 } else {
-                    // Location found but not in any ED (sample data may not cover this area)
-                    map.setView([lat, lng], 12);
-                    if (isEircode) {
-                        showStatus(`⚠️ Eircode ${routingKey} area found, but not covered in sample data. Try a different area.`, 'error');
-                    } else {
-                        showStatus('⚠️ Location found but not within sample Electoral Districts.', 'error');
-                    }
+                    map.setView([lat, lng], 11);
+                    showStatus('Location found, but it is outside the teaching sample of EDs. Try a shown area.', 'error');
                 }
-
-            } catch (error) {
-                showStatus('❌ Error searching. Please try again.', 'error');
+            } catch (e) {
+                showStatus('Could not reach the address search. Try an ED name instead.', 'error');
             }
-
-            searchBtn.disabled = false;
+            btn.disabled = false;
         }
 
-        // Show status message
         function showStatus(message, type) {
-            const status = document.getElementById('searchStatus');
-            status.textContent = message;
-            status.className = 'search-status active ' + type;
-
-            // Auto-hide success messages
-            if (type === 'success') {
-                setTimeout(() => {
-                    status.classList.remove('active');
-                }, 5000);
-            }
+            const s = document.getElementById('searchStatus');
+            s.textContent = message;
+            s.className = 'search-status active ' + type;
+            if (type === 'success') setTimeout(() => s.classList.remove('active'), 5000);
         }
 
-        // Search functionality
         function setupSearch() {
             const input = document.getElementById('searchInput');
             const results = document.getElementById('searchResults');
-            const searchBtn = document.getElementById('searchBtn');
+            const btn = document.getElementById('searchBtn');
             const status = document.getElementById('searchStatus');
             const tabED = document.getElementById('tabED');
             const tabAddress = document.getElementById('tabAddress');
 
-            // Tab switching
-            function setSearchMode(mode) {
+            function setMode(mode) {
                 searchMode = mode;
                 input.value = '';
                 results.classList.remove('active');
                 status.classList.remove('active');
-
-                if (mode === 'ed') {
-                    tabED.classList.add('active');
-                    tabAddress.classList.remove('active');
-                    input.placeholder = 'Search by ED name or county...';
-                    searchBtn.style.display = 'none';
-                } else {
-                    tabED.classList.remove('active');
-                    tabAddress.classList.add('active');
-                    input.placeholder = 'Enter address or Eircode (e.g., D02 X285)...';
-                    searchBtn.style.display = 'block';
-                }
+                const edMode = mode === 'ed';
+                tabED.classList.toggle('active', edMode);
+                tabAddress.classList.toggle('active', !edMode);
+                tabED.setAttribute('aria-selected', edMode);
+                tabAddress.setAttribute('aria-selected', !edMode);
+                input.placeholder = edMode
+                    ? 'Type an ED or county, e.g. Rathmines or Clare'
+                    : 'Enter an address or Eircode, e.g. Ennis, Co. Clare';
+                btn.style.display = edMode ? 'none' : 'block';
             }
+            tabED.addEventListener('click', () => setMode('ed'));
+            tabAddress.addEventListener('click', () => setMode('address'));
+            btn.addEventListener('click', () => handleAddressSearch(input.value));
+            input.addEventListener('keypress', (e) => { if (e.key === 'Enter' && searchMode === 'address') handleAddressSearch(input.value); });
 
-            tabED.addEventListener('click', () => setSearchMode('ed'));
-            tabAddress.addEventListener('click', () => setSearchMode('address'));
-
-            // Address search button click
-            searchBtn.addEventListener('click', () => {
-                handleAddressSearch(input.value);
-            });
-
-            // Enter key for address search
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && searchMode === 'address') {
-                    handleAddressSearch(input.value);
-                }
-            });
-
-            input.addEventListener('input', function(e) {
-                // Only do instant search in ED mode
-                if (searchMode !== 'ed') {
-                    results.classList.remove('active');
-                    return;
-                }
-
+            input.addEventListener('input', function (e) {
+                if (searchMode !== 'ed') { results.classList.remove('active'); return; }
                 const query = e.target.value.toLowerCase().trim();
-
-                if (query.length < 2) {
-                    results.classList.remove('active');
-                    return;
-                }
-
-                // Search
-                const matches = edLookup.by_name.filter(item =>
-                    item.search_text.includes(query)
-                ).slice(0, 10);
-
-                if (matches.length === 0) {
-                    results.innerHTML = '<div class="search-result-item"><span class="ed-name">No results found</span></div>';
-                } else {
-                    results.innerHTML = matches.map(item => `
-                        <div class="search-result-item" data-id="${item.id}">
-                            <div class="ed-name">${item.name}</div>
-                            <div class="ed-county">${item.county}</div>
-                        </div>
-                    `).join('');
-                }
-
+                if (query.length < 2) { results.classList.remove('active'); return; }
+                const matches = edLookup.by_name.filter(i => i.search_text.includes(query)).slice(0, 10);
+                results.innerHTML = matches.length
+                    ? matches.map(i => `<div class="search-result-item" tabindex="0" role="option" data-id="${i.id}"><div class="ed-name">${i.name}</div><div class="ed-county">${i.county}</div></div>`).join('')
+                    : '<div class="search-result-item"><span class="ed-name">No matches in the teaching sample</span></div>';
                 results.classList.add('active');
             });
 
-            // Click on result
-            results.addEventListener('click', function(e) {
-                const item = e.target.closest('.search-result-item');
-                if (!item) return;
-
-                const edId = item.dataset.id;
-                if (!edId) return;
-
-                // Find and select the ED
-                edLayer.eachLayer(function(layer) {
-                    if (layer.feature.properties.ED_ID === edId) {
-                        // Reset previous
-                        if (selectedFeature) {
-                            selectedFeature.setStyle(STYLES.ed.default);
-                        }
-
-                        // Select
-                        selectedFeature = layer;
-                        layer.setStyle(STYLES.ed.selected);
-
-                        // Zoom to
-                        map.fitBounds(layer.getBounds(), { maxZoom: 12 });
-
-                        // Open popup
-                        layer.openPopup();
-
-                        // Update panel
-                        updateInfoPanel(layer.feature.properties);
-                    }
+            function chooseResult(item) {
+                const id = item && item.dataset ? item.dataset.id : null;
+                if (!id) return;
+                edLayer.eachLayer(function (layer) {
+                    if (layer.feature.properties.ED_ID === id) selectED(layer, layer.feature.properties, true);
                 });
-
-                // Clear search
                 input.value = '';
                 results.classList.remove('active');
+            }
+            results.addEventListener('click', (e) => chooseResult(e.target.closest('.search-result-item')));
+            results.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') chooseResult(e.target.closest('.search-result-item'));
             });
-
-            // Close results on outside click
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.search-box')) {
-                    results.classList.remove('active');
-                }
-            });
+            document.addEventListener('click', (e) => { if (!e.target.closest('.search-box')) results.classList.remove('active'); });
         }
 
-        // Clear selection
-        function setupClearButton() {
-            document.getElementById('clearBtn').addEventListener('click', function() {
-                if (selectedFeature) {
-                    selectedFeature.setStyle(STYLES.ed.default);
-                    selectedFeature = null;
-                }
-
-                // Remove location marker if present
-                if (locationMarker) {
-                    map.removeLayer(locationMarker);
-                    locationMarker = null;
-                }
-
-                // Clear search input and status
-                document.getElementById('searchInput').value = '';
-                document.getElementById('searchResults').classList.remove('active');
-                document.getElementById('searchStatus').classList.remove('active');
-
-                const panel = document.getElementById('infoPanel');
-                panel.classList.add('hidden');
-
-                map.closePopup();
-                map.setView(CONFIG.center, CONFIG.zoom);
-            });
-        }
-
-        // Layer toggles
         function setupLayerControls() {
-            document.getElementById('layerEDs').addEventListener('change', function(e) {
-                if (e.target.checked) {
-                    map.addLayer(edLayer);
-                } else {
-                    map.removeLayer(edLayer);
-                }
+            document.getElementById('layerEDs').addEventListener('change', function (e) {
+                if (e.target.checked) map.addLayer(edLayer); else map.removeLayer(edLayer);
             });
-
-            document.getElementById('layerConstituencies').addEventListener('change', function(e) {
-                if (e.target.checked) {
-                    if (constituencyLayer) {
-                        map.addLayer(constituencyLayer);
-                    }
-                } else {
-                    if (constituencyLayer) {
-                        map.removeLayer(constituencyLayer);
-                    }
-                }
+            document.getElementById('layerConstituencies').addEventListener('change', function (e) {
+                if (!constituencyLayer) return;
+                if (e.target.checked) map.addLayer(constituencyLayer); else map.removeLayer(constituencyLayer);
             });
         }
 
-        // Initialize
         async function init() {
             initMap();
-
-            const loaded = await loadData();
-
-            if (loaded) {
+            const ok = await loadData();
+            if (ok) {
                 addEDLayer();
                 addConstituencyLayer();
                 setupSearch();
-                setupClearButton();
                 setupLayerControls();
+                setTimeout(() => map.invalidateSize(), 200);
             } else {
-                alert('Failed to load map data. Please refresh the page.');
+                document.getElementById('stage').innerHTML =
+                    '<div class="stage-hint">The map data could not be loaded. Please refresh the page.</div>';
             }
-
-            // Hide loading
             document.getElementById('loadingOverlay').classList.add('hidden');
         }
-
-        // Start
         init();
     </script>
 </body>

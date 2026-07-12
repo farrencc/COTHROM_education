@@ -62,23 +62,34 @@ prefix). From a page in `content/module_0/`, that is `../../_static/...`.
 
 ## Features
 
-- Search EDs by name (fuzzy matching)
-- Click to select and view detailed info
-- Hover tooltips with ED name
-- Layer toggles for EDs and Constituencies
-- Info panel with Census data
-- Mobile responsive (min-width 320px)
-- Sample data banner when running with demo data
+- Search EDs by name (fuzzy matching) or by address/Eircode (Nominatim geocode)
+- Click to select an ED
+- **Predict-then-reveal**: on selecting an ED the tool asks the reader to guess
+  how many TDs its constituency elects (3/4/5) *before* revealing the answer
+- Reveal panel shows population, the ED's share of one TD's people (population ÷
+  29,593), and its constituency + seat count
+- Hover tooltips with ED name; layer toggles for EDs and constituency outlines
+- Illustrative-data banner shown at all times
+- Auto-reports its height to the host page (via `widget-bootstrap.js`), so the
+  embedding iframe is sized to content — no inner scrollbar
+- Inherits the host page's light/dark theme, including a dark basemap in dark mode
+- Mobile responsive (usable down to ~360px)
 
 ## Styling
 
-| Element | Color |
+All colours are drawn from the design tokens in `../cothrom.css` — there are no
+hardcoded hex values in the widget. CSS rules reference the tokens directly
+(e.g. `var(--cothrom-green)`); the Leaflet map layers, whose SVG fill/stroke
+attributes cannot take `var()`, resolve the same tokens to concrete colours at
+runtime via `getComputedStyle` and re-resolve them when the theme changes.
+
+| Element | Token |
 |---------|-------|
-| ED default fill | `#e8e8e8` |
-| ED selected fill | `#3b82f6` |
-| ED hover fill | `#b8e8b8` |
-| Constituency borders | `#dc2626` |
-| Header gradient | `#27ae60` to `#32e875` |
+| ED default fill | `--cothrom-border` |
+| ED selected fill | `--cothrom-green-bright` |
+| ED hover fill | `--cothrom-tint-green` |
+| Constituency outlines | `--cothrom-accent` |
+| Header gradient | `--cothrom-green` → `--cothrom-green-bright` |
 
 ## Browser Support
 

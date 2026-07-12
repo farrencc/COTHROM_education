@@ -158,3 +158,30 @@ html[data-theme="dark"] .cothrom-quiz .cothrom-opt { background: #141a22; }
 .cothrom-quiz .cothrom-feedback.show { display: block; }
 .cothrom-quiz .cothrom-feedback.correct { background: rgba(39, 174, 96, 0.14); color: var(--cothrom-green-dark); }
 .cothrom-quiz .cothrom-feedback.incorrect { background: rgba(231, 76, 60, 0.12); color: var(--cothrom-red); }
+
+/* ---------- Key-terms box ---------- */
+.cothrom-keyterms {
+  border: 1px solid var(--cothrom-border);
+  border-left: 4px solid var(--cothrom-accent);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.4rem 0;
+  background: var(--cothrom-surface);
+  line-height: 2;
+}
+.cothrom-keyterms > strong { color: var(--cothrom-ink); }
+.cothrom-keyterms-hint {
+  color: var(--cothrom-muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+/* ---------- Interactive-embed wrapper ---------- */
+.cothrom-embed {
+  margin: 1.6rem 0;
+  border: 1px solid var(--cothrom-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--cothrom-surface);
+}
+.cothrom-embed iframe { display: block; width: 100%; }
