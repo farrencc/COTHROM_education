@@ -80,12 +80,15 @@ Enough about Rathmines West C — find *your* patch. The map below is the same k
 of tool the Commission's data is built on, loaded with a teaching sample of EDs.
 Search for an ED by name, or switch to the address tab and type a town near you.
 
-Here is the important part: the tool will not just tell you the answer. When you
-select an ED it stops and asks you to **predict how many TDs its constituency
-elects — 3, 4, or 5** — before it reveals anything. Commit to a guess first.
-Getting it wrong is the point: it shows you that seat numbers do not follow from
-anything you can see on a map, which is exactly the puzzle the rest of this
-module unpicks.
+Here is the one thing the tool asks of you. When you select an ED it does not
+just recite its details — it first asks you to estimate **how large a share of a
+single TD's people that one ED holds**, and only then shows the figure. You
+already know from the last lesson that a TD stands for about 29,593 people on
+average; the question is how small a piece of that your own patch turns out to
+be. There is no trick and no score — the estimate is there to make the reveal
+land, because the thing that surprises most people is just how tiny a single ED
+is against a whole TD's worth of constituents, and therefore how many EDs have
+to be bundled together before anyone gets represented at all.
 
 ```{warning}
 **Illustrative data.** The map below shows a small teaching sample of Electoral
@@ -108,9 +111,9 @@ populations are approximate. Always check the
 </div>
 ```
 
-Whatever you guessed, notice what the reveal shows: an ED belongs to exactly one
-named constituency, and that constituency elects a fixed number of TDs. Your ED
-did not choose either. Both were decided for it when the Commission grouped it
+Whatever you estimated, notice what else the reveal shows: an ED belongs to
+exactly one named constituency, and that constituency elects a fixed number of
+TDs. Your ED did not choose either. Both were decided for it when the Commission grouped it
 with its neighbours — the process the next lesson takes apart.
 
 ```{raw} html

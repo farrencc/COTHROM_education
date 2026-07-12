@@ -203,7 +203,8 @@
         }
         .guess-btn:hover { border-color: var(--cothrom-accent); }
         .guess-btn:focus-visible { outline: 2px solid var(--cothrom-accent); outline-offset: 2px; }
-        .guess-btn.skip { flex: 1 1 100%; font-weight: 500; color: var(--cothrom-muted); font-size: 13px; }
+        .guess-btn span { display: block; font-weight: 400; font-size: 11px; color: var(--cothrom-muted); margin-top: 3px; }
+        .guess-btn:hover span { color: inherit; }
 
         .reveal { animation: fadeIn 0.25s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -445,50 +446,57 @@
             showPrediction(props);
         }
 
+        const BAND_WORDS = {
+            small: 'a small slice (under 10%)',
+            chunk: 'a sizeable chunk (10–50%)',
+            most:  'most of a TD (over 50%)'
+        };
+        function bandFor(sharePct) {
+            return sharePct < 10 ? 'small' : (sharePct <= 50 ? 'chunk' : 'most');
+        }
+
         function showPrediction(props) {
             const stage = document.getElementById('stage');
             stage.innerHTML = `
                 <div class="predict">
-                    <div class="kicker">Step 2 &middot; Predict</div>
+                    <div class="kicker">Step 2 &middot; Think first</div>
                     <div class="picked">${props.ED_NAME || 'This ED'} <span class="county">&mdash; ${props.COUNTY || ''}</span></div>
-                    <p class="q">Before the reveal: how many TDs do you think this ED&rsquo;s constituency elects?</p>
-                    <p class="sub">Irish law allows only 3, 4 or 5. Commit to a guess &mdash; then check it.</p>
+                    <p class="q">One TD speaks for about 29,593 people. How big a slice of a single TD&rsquo;s people do you reckon this one ED holds?</p>
+                    <p class="sub">There&rsquo;s no catch &mdash; estimate from how built-up the area feels, then see the real figure.</p>
                     <div class="guess-row">
-                        <button class="guess-btn" data-guess="3">3</button>
-                        <button class="guess-btn" data-guess="4">4</button>
-                        <button class="guess-btn" data-guess="5">5</button>
-                        <button class="guess-btn skip" data-guess="0">Not sure &mdash; just reveal it</button>
+                        <button class="guess-btn" data-band="small">A small slice<span>under 10%</span></button>
+                        <button class="guess-btn" data-band="chunk">A sizeable chunk<span>10&ndash;50%</span></button>
+                        <button class="guess-btn" data-band="most">Most of a TD<span>over 50%</span></button>
                     </div>
                 </div>`;
             stage.querySelectorAll('.guess-btn').forEach(function (b) {
-                b.addEventListener('click', function () {
-                    revealED(props, parseInt(b.dataset.guess, 10));
-                });
+                b.addEventListener('click', function () { revealED(props, b.dataset.band); });
             });
         }
 
-        function revealED(props, guess) {
+        function revealED(props, band) {
             const pop = props.POPULATION_2022 || 0;
             const households = props.HOUSEHOLDS || 0;
             const seats = props.CONSTITUENCY_SEATS || null;
             const sharePct = (pop / PEOPLE_PER_TD * 100);
             const shareText = sharePct >= 1 ? sharePct.toFixed(0) + '%' : sharePct.toFixed(1) + '%';
+            const actualBand = bandFor(sharePct);
 
             let verdict = '';
-            if (guess && seats) {
-                if (guess === seats) {
-                    verdict = `<div class="verdict hit">&#10003; You said ${guess} &mdash; correct. It elects ${seats} TDs.</div>`;
+            if (band) {
+                if (band === actualBand) {
+                    verdict = `<div class="verdict hit">Good instinct &mdash; it works out at <strong>${shareText}</strong>, ${BAND_WORDS[actualBand]}.</div>`;
                 } else {
-                    verdict = `<div class="verdict miss">You said ${guess}; it actually elects ${seats}. Seat numbers aren&rsquo;t obvious from the map &mdash; population, not area, decides them.</div>`;
+                    verdict = `<div class="verdict miss">You reckoned ${BAND_WORDS[band]}; it works out at <strong>${shareText}</strong>, ${BAND_WORDS[actualBand]}. EDs vary enormously &mdash; which is why it is population, not how the place looks, that the map has to balance.</div>`;
                 }
             }
 
             const explain = `
-                An ED of <strong>${pop.toLocaleString()}</strong> people is about
-                <strong>${shareText}</strong> of the <strong>29,593</strong> people one TD represents on average
-                nationally. Your ED never stands alone: it is grouped with roughly a hundred neighbouring EDs to
-                make up <strong>${props.CONSTITUENCY_2024 || 'your constituency'}</strong>, and together those EDs
-                decide who its ${seats ? seats + ' TDs' : 'TDs'} will be.`;
+                This ED&rsquo;s <strong>${pop.toLocaleString()}</strong> people come to about
+                <strong>${shareText}</strong> of the <strong>29,593</strong> a single TD represents on average.
+                It is never counted on its own: it is grouped whole with roughly a hundred neighbouring EDs to build
+                <strong>${props.CONSTITUENCY_2024 || 'your constituency'}</strong>, and together those EDs decide who
+                its ${seats ? seats + ' TDs' : 'TDs'} will be.`;
 
             document.getElementById('stage').innerHTML = `
                 <div class="reveal">
