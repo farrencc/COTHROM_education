@@ -1,71 +1,290 @@
-# Why This Matters
+# Why your vote might not weigh the same as your neighbour's
 
-## Why This Matters
+Two people vote in the same general election, on the same day, with the same
+biro. One of them quietly gets more say over who sits in the Dáil than the
+other — not through fraud, not through any choice either of them made, but
+because of where a line was drawn on a map years earlier. That is the puzzle
+this lesson is about, and by the end of it you will be able to measure it for
+your own constituency and say, in numbers, how fair your slice of the Dáil
+actually is.
 
-You probably know you have a vote. But did you know that **your vote might not count the same** as someone else's in Ireland?
-
-Not because of fraud or corruption - but because of something much more subtle: the way constituency boundaries are drawn.
-
-**Key Question:** When you cast your vote in the next general election, will it carry the same weight as a vote cast in Dublin, Cork, or Galway?
+```{raw} html
+<div class="cothrom-keyterms">
+  <strong>Key terms</strong>
+  <span class="cothrom-keyterms-hint">(hover or tap each one)</span><br>
+  <span class="cothrom-term" data-def="Ireland's electoral system, in which the makeup of the Dáil is meant to mirror how the country actually voted.">proportional representation</span> ·
+  <span class="cothrom-term" data-def="Teachta Dála: an elected member of Dáil Éireann. Each constituency returns three, four or five of them.">TD</span> ·
+  <span class="cothrom-term" data-def="A geographic area whose voters together elect a fixed number of TDs. Ireland currently has 43.">constituency</span> ·
+  <span class="cothrom-term" data-def="The national average number of people per TD — the yardstick for one fair share of representation.">National Ratio</span> ·
+  <span class="cothrom-term" data-def="Seat Equivalent Representation: the number of TDs a constituency's population would earn at the national rate.">SER</span> ·
+  <span class="cothrom-term" data-def="How many TDs a constituency elects. Irish law allows only three, four or five.">seat magnitude</span> ·
+  <span class="cothrom-term" data-def="How far a constituency's fair entitlement sits above or below the seats it actually holds, as a percentage.">variance</span>
+</div>
+```
 
 ---
 
-## The Hidden Inequality
+## A tale of two constituencies
 
-Here's something most Irish voters don't realize: **some TDs represent significantly more people than others.**
+Picture two places. They are illustrative — invented to make the idea land
+cleanly before we turn to real figures — so call them **Ardville** and
+**Baytown**.
 
-Let me show you what this means in practice.
+Ardville is a busy, growing constituency. Work out how many people each of its
+TDs has to answer to and you get roughly **38,000 people per TD**. Baytown, down
+the coast, has been losing population for a decade; each of its TDs speaks for
+about **25,000 people**.
 
-### A Tale of Two Constituencies
+Now stand in each place and cast one vote. In Baytown your vote is one of fewer
+voices competing for the same TD's attention, and one of fewer voters deciding
+who fills that seat. In Ardville it is one of many more. Divide it out and a
+single vote in Baytown pulls **roughly one and a half times the weight** of a
+vote in Ardville when it comes to electing a TD — 38,000 divided by 25,000.
 
-To see how this works, picture two illustrative constituencies — call them
-**Ardville** and **Baytown** — each electing TDs to the Dáil.
+Neither voter did anything to earn that difference. It was handed to them by a
+boundary. The rest of this lesson is about how large that gap really is in
+Ireland, how we measure it, and why it is worth caring about.
 
-**Ardville:**
-- A constituency with **about 38,000 people per TD**
-- Each TD has to speak for far more voters than average
+---
 
-**Baytown:**
-- A constituency with **about 25,000 people per TD**
-- Each TD speaks for far fewer voters than average
+## The promise your vote is supposed to keep
 
-**What this means:** a vote in Baytown effectively carries roughly **1.5 times more weight** than a vote in Ardville when it comes to electing a TD.
+Before we can call that gap unfair, we have to say what "fair" would even mean.
+Start with the anchor we already have: the Baytown voter getting one and a half
+votes' worth of weight while the Ardville voter gets one. Is that just how it
+goes, or is it a broken promise?
 
-```{important}
-This isn't about urban vs. rural - it's about **mathematical representation**. The principle of "one person, one vote" means each TD should represent roughly the same number of people. When they don't, some votes mathematically count for more than others.
+It is a broken promise, and it helps to know whose. Ireland elects its Dáil by
+**proportional representation** — the whole design is meant to make the
+composition of parliament track how the country actually voted, rather than
+handing everything to whoever comes first past the post. But proportionality
+between votes and seats only holds if every vote starts from the same place. If
+one constituency packs far more people behind each TD than another, the people in
+the crowded constituency have had their votes watered down *before a single
+ballot is counted*. The count can be scrupulously fair and the outcome still be
+lopsided, because the starting lines were uneven.
 
-The Ardville/Baytown figures above are illustrative, chosen to make the idea clear. For the real picture: the 2023 Electoral Commission review put the **national average at 29,593 people per TD**. The constituency with the *highest* population per TD is **Clare, at about 31,995 — roughly 8% above the average** — so each Clare voter has slightly less representation than the national norm.
+This is not merely an ideal. The Constitution requires that the ratio between
+population and TDs be, so far as it is practicable, **the same across the whole
+country**, and that the map be revised as people move (Article 16). "One person,
+one vote" is really shorthand for "one person, one *equal* vote" — and equality
+here is a matter of arithmetic, not good intentions.
+
+```{note}
+This is not a claim about town versus country, or rich versus poor. A crowded
+constituency can be urban or rural. The unfairness is purely mathematical: when
+TDs represent very different numbers of people, some votes count for more than
+others, and the Constitution says they are not supposed to.
 ```
 
-### Understanding Seat Equivalent Representation
+```{raw} html
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">Baytown's TDs each represent about 25,000 people; Ardville's each represent about 38,000. Whose vote carries more weight, and why?</p>
+  <button class="cothrom-opt" data-explain="Ardville has more people per TD, which means each voter is one of a larger crowd competing for that seat — that dilutes a vote, it doesn't strengthen it.">Ardville's, because a bigger constituency is more important.</button>
+  <button class="cothrom-opt" data-explain="Population size alone isn't the point — it's population per TD. Equal weight would mean roughly equal people behind each seat, which these two do not have.">Neither — every Irish vote counts exactly the same by law.</button>
+  <button class="cothrom-opt" data-explain="Right. Fewer people per TD means each Baytown voter is a larger share of the electorate choosing that seat, so their vote pulls more weight.">Baytown's, because fewer people share each of its TDs.</button>
+</div>
+```
 
-To make this inequality more concrete, electoral researchers use a concept called **Seat Equivalent Representation (SER)**. It answers a simple question:
+So the question worth measuring is not "is the count honest?" — it usually is —
+but "did every vote start from the same line?" To answer that, we need a
+yardstick.
 
-**"Given this constituency's population, how many TDs should it have?"**
+---
 
-The calculation is straightforward:
+## The yardstick: one fair share of a TD
 
-**SER = Constituency Population ÷ National Ratio**
+Here is the whole country in two numbers. Ireland's population at Census 2022 was
+**5,149,139**, and after the Electoral Commission's 2023 review the Dáil is made
+up of **174 TDs**. Those are the two figures every fairness judgement in this
+lesson hangs off.
 
-Where the **National Ratio** = Total Population ÷ Total TDs = 5,149,139 ÷ 174 ≈ **29,593 people per TD** (Census 2022 population, 174-seat Dáil).
+If representation were shared out perfectly evenly, each TD would answer to the
+same slice of the population. That slice is just the total divided up equally —
+share 5,149,139 people across 174 TDs and see how many fall to each. We call the
+result the **National Ratio**: the number of people that entitles a place to
+exactly one TD.
 
-**A real example — Clare:**
-- Population: about 127,980
-- SER = 127,980 ÷ 29,593 = **4.32 seats** "deserved" on strict population
-- Actually assigned: **4 seats**
-- **Shortfall: about 0.32 of a seat** - the largest such gap after the 2023 review
+$$\text{National Ratio} = \frac{\text{Total population}}{\text{Total TDs}} = \frac{5{,}149{,}139}{174} \approx 29{,}593 \text{ people per TD}$$
 
-**A case the Commission corrected — Dublin Rathdown:**
-Before the 2023 review, Dublin Rathdown had one of the *highest* populations per TD in the country with only 3 seats. The Commission's response was to **give it a fourth seat** for the 2024 election, pulling it back toward the national average. That is exactly the kind of rebalancing a review is meant to do.
+So the national standard is roughly **29,593 people for every TD** (Census 2022
+population over the 174-seat Dáil set by the 2023 review). That is the line every
+constituency is measured against. A place with far more than 29,593 people behind
+each TD is under-represented; a place with far fewer is over-represented.
 
-When you can see the **actual seat shortfall or surplus**, the inequality becomes tangible rather than abstract.
+```{raw} html
+<div class="cothrom-quiz" data-answer="0">
+  <p class="cothrom-quiz-q">The National Ratio comes out at about 29,593. What does that number actually represent?</p>
+  <button class="cothrom-opt" data-explain="Right — it's the total population divided by the total number of TDs, i.e. the population that earns one TD if representation is shared out evenly.">The number of people that, shared out evenly, is worth exactly one TD.</button>
+  <button class="cothrom-opt" data-explain="That would be the size of a whole constituency (three to five TDs' worth), not the share behind a single TD.">The number of people in an average constituency.</button>
+  <button class="cothrom-opt" data-explain="Turnout doesn't enter into it — the ratio is built from resident population and seat totals, not votes cast.">The number of people who typically vote for each TD.</button>
+</div>
+```
 
-### Your Representation Right Now
+The National Ratio matters because it turns a vague sense of unfairness into
+something you can check with a calculator. Once you know the fair share, you can
+ask of any constituency: how many TDs does its population actually earn?
 
-Use this interactive calculator to explore a constituency's seat shortfall or surplus, and see how it compares to the national standard using the COTHROM framework:
+---
+
+## Seat Equivalent Representation: the seats a place has earned
+
+Take a real constituency now. **Clare** had a population of about **127,980** at
+the last census. (That per-constituency figure is illustrative teaching data —
+approximate, not an official return — so treat the exact digits lightly; the
+national constants above are the sourced ones.) At the national rate of one TD
+per 29,593 people, how many TDs has a population that size earned?
+
+That question has a name: **Seat Equivalent Representation**, or SER. It is simply
+a constituency's population measured in units of the National Ratio — how many
+"fair shares" of a TD its people add up to.
+
+$$\text{SER} = \frac{\text{Constituency population}}{\text{National Ratio}}$$
+
+Before you read on, commit to an answer for Clare. Its 127,980 people, divided by
+29,593 people per TD — is that closer to three seats' worth, four and a bit, or
+five?
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">Clare's population is about 127,980 and the National Ratio is about 29,593. Roughly how many TDs has Clare's population earned?</p>
+  <button class="cothrom-opt" data-explain="Too low — 3 × 29,593 is only about 88,800, well short of Clare's 127,980.">About 3 seats' worth.</button>
+  <button class="cothrom-opt" data-explain="Right: 127,980 ÷ 29,593 ≈ 4.32. Clare's population is worth just over four and a quarter TDs.">About 4.3 seats' worth.</button>
+  <button class="cothrom-opt" data-explain="Too high — 5 × 29,593 is about 147,965, which is well above Clare's population.">About 5 seats' worth.</button>
+</div>
+```
+
+Working it through: $\dfrac{127{,}980}{29{,}593} \approx 4.32$. Clare's people
+have earned **4.32 TDs** at the national rate. That decimal is the point of SER —
+it says, in a single number, that Clare's population deserves rather more than
+four TDs and not quite four and a half. Hold onto the 4.32; the whole rest of the
+lesson turns on the gap between what Clare has earned and what it can actually be
+given.
+
+---
+
+## Why 4.32 becomes 4: seat magnitude
+
+You cannot elect 4.32 TDs. A constituency returns whole people to the Dáil, and
+Irish law is stricter still: a constituency's **seat magnitude** — the number of
+TDs it elects — can only ever be **three, four or five**. The Constitution sets the
+floor at three; the 2023 review kept the ceiling at five. There is no such thing
+as a 4.32-seat constituency.
+
+So Clare's earned 4.32 has to be handed over as a whole number, and it was rounded
+down to **4** actual seats. That rounding is not a rounding error to shrug at — it
+is exactly where the fairness leaks out. Clare earned 4.32 and got 4, so about
+**0.32 of a TD's worth of representation** has quietly gone missing. Its people are
+pushed above the national rate: 127,980 shared across only 4 TDs works out at
+nearly **31,995 people per TD**, well above the 29,593 standard.
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">Clare earns 4.32 seats but the law only lets it elect a whole number, three to five. It was given 4. What follows?</p>
+  <button class="cothrom-opt" data-explain="Rounding up to 5 would over-represent Clare instead — 5 is further from 4.32 than 4 is. The Commission rounds to the nearest workable whole number, and 4 is closer.">Clare should simply be given 5 seats to be safe.</button>
+  <button class="cothrom-opt" data-explain="Right: earning 4.32 but electing 4 leaves about a third of a TD's worth of representation unfilled, so each Clare TD carries more people than the national average.">Clare is left about a third of a seat short, so it is under-represented.</button>
+  <button class="cothrom-opt" data-explain="Not so — 4.32 is above 4, so the whole-number seat count sits below what the population earned. Clare loses representation in the rounding, it doesn't gain it.">Rounding to 4 slightly over-represents Clare.</button>
+</div>
+```
+
+Whole-seat rounding is unavoidable — you genuinely cannot post a third of a TD to
+Leinster House — but it means perfect equality is impossible even in principle.
+The realistic goal is to keep every constituency's gap small. To do that, you
+first have to measure it.
+
+---
+
+## Variance: putting a number on the gap
+
+Clare's shortfall of 0.32 of a seat is concrete, but on its own it does not
+travel. Is 0.32 of a seat out of 4 worse than 0.4 out of 5? To compare
+constituencies of different sizes you turn the gap into a percentage. That
+percentage is the **variance**.
+
+The formula the Constituency Commissions have long used measures the gap against
+the seats a constituency was actually assigned:
+
+$$\text{Variance} = \frac{\text{SER} - \text{Assigned seats}}{\text{Assigned seats}} \times 100\%$$
+
+For Clare that is $\dfrac{4.32 - 4}{4} \times 100 \approx +8.1\%$. The plus sign
+matters and carries the meaning on its own: a positive variance means the
+constituency earned *more* than it got — it is under-represented, over the
+national rate. Clare sits about **8.1% over**. A negative variance would mean a
+constituency earned fewer seats than it holds, and is over-represented.
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="0">
+  <p class="cothrom-quiz-q">Clare's variance works out at about +8.1%. Reading the sign, what is that telling you?</p>
+  <button class="cothrom-opt" data-explain="Right: a positive variance means SER is above the assigned seats — Clare earned more than the 4 it holds, so it is under-represented and each TD carries extra people.">Clare is under-represented — it earned more seats than it holds.</button>
+  <button class="cothrom-opt" data-explain="A positive sign points the other way. Over-representation (earning fewer than you hold) would show as a negative variance.">Clare is over-represented — it holds more seats than it earned.</button>
+  <button class="cothrom-opt" data-explain="+8.1% is a real, measurable gap, not noise. It's the largest such gap in the country after the 2023 review.">The gap is basically zero and can be ignored.</button>
+</div>
+```
+
+Variance is the number the Electoral Commission actually works to. Its target is
+to keep every constituency within a tight band of the national average, so that no
+one's vote strays too far from equal weight. We will see in a moment just how tight
+that band is.
+
+---
+
+## A fairer denominator: the COTHROM variance
+
+The traditional formula has a quiet flaw, and it is worth seeing because the
+COTHROM project's whole pitch starts here. Look again at what it divides by: the
+*assigned* seats. That makes the number depend on the very quantity we already know
+is a compromised, rounded figure — and it means a constituency that is 5% over and
+one that is 5% under do not actually suffer the same real dilution of their votes.
+The yardstick shifts depending on which side of the line you fall.
+
+COTHROM proposes dividing by the SER instead — measuring the gap against the seats
+a constituency truly *earned*, which does not move:
+
+$$\text{Variance} = \frac{\text{SER} - \text{Assigned seats}}{\text{SER}} \times 100\%$$
+
+For Clare that is $\dfrac{4.32 - 4}{4.32} \times 100 \approx +7.5\%$. Notice it
+describes the *same reality* — Clare is still under-represented, still short by a
+third of a seat — but reports it as +7.5% rather than +8.1%. Nothing about Clare
+changed; only the choice of denominator did.
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">The traditional formula gives Clare +8.1%; the COTHROM formula gives +7.5%. Which of these is true?</p>
+  <button class="cothrom-opt" data-explain="No — the underlying shortfall is identical (about a third of a seat). Only the number reporting it changed, because the denominator changed.">The COTHROM formula shows Clare is treated more fairly than the old one did.</button>
+  <button class="cothrom-opt" data-explain="Both are legitimate — neither is a mistake. They're two honest ways of expressing one gap; COTHROM's just uses a denominator that doesn't shift with the rounded seat count.">One of the two formulas must be wrong.</button>
+  <button class="cothrom-opt" data-explain="Right: same shortfall, same under-representation — the two formulas just divide by different things, so the percentage differs while the reality is unchanged.">Both describe the same gap; only the denominator differs.</button>
+</div>
+```
+
+Keep both formulas in mind — the calculator below shows them side by side, so you
+can watch the number shift while the underlying fairness stays put.
+
+---
+
+## Check it for yourself
+
+You have now done, by hand, everything the tool below does: take a population,
+divide by the National Ratio to get SER, compare it to the assigned seats, and
+express the gap as variance and as vote weight. Use it to pin down Clare and then
+to roam the rest of the country.
+
+It asks you to predict first, on purpose. You have just worked Clare out, so lock
+in what you expect before the tool confirms it — then change the dropdown and try a
+constituency you *haven't* worked out, where the prediction is a genuine guess.
+
+Because the per-constituency populations are simplified teaching figures, a few
+constituencies in the tool show gaps wider than anything in the real post-2023 map,
+where the extremes stay within about ±8% and Clare is the genuine outlier. Read the
+calculator for how the metrics move, not for any one constituency's exact real-world
+standing.
 
 ```{warning}
-**Illustrative data.** The figures in the calculator below are **simplified teaching data**, not official figures. The national constants (174 TDs, average 29,593 people per TD) follow the Electoral Commission's 2023 review, but the per-constituency populations are approximate and the list is not exhaustive. Always check the official [Electoral Commission](https://www.electoralcommission.ie/) and [CSO](https://www.cso.ie/) sources before relying on any number.
+**Illustrative data.** The per-constituency populations in the tool below are
+**simplified teaching figures**, not official returns, and the list is not
+exhaustive. The national constants it uses — 174 TDs, a National Ratio of 29,593 —
+follow the Electoral Commission's 2023 review, but always check the official
+[Electoral Commission](https://www.electoralcommission.ie/) and
+[CSO](https://www.cso.ie/) sources before relying on any single number.
 ```
 
 ```{raw} html
@@ -90,11 +309,26 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             text-align: center;
             color: var(--cothrom-muted);
             font-size: 13px;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             font-style: italic;
         }
+        .cothrom-calc-banner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            background: var(--cothrom-warn-bg);
+            color: var(--cothrom-warn);
+            border: 1px solid var(--cothrom-warn-border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+        }
         .cothrom-input-section {
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
         .cothrom-input-section label {
             display: block;
@@ -110,11 +344,64 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             border: 2px solid var(--cothrom-border);
             border-radius: 8px;
             background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
             cursor: pointer;
         }
         .cothrom-input-section select:focus {
             border-color: var(--cothrom-green);
             outline: none;
+        }
+        .cothrom-predict {
+            display: none;
+            background: var(--cothrom-surface);
+            border: 1px solid var(--cothrom-border);
+            border-left: 4px solid var(--cothrom-green);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+        .cothrom-predict.show { display: block; }
+        .cothrom-predict-q {
+            font-weight: 600;
+            color: var(--cothrom-ink);
+            margin: 0 0 12px;
+            font-size: 15px;
+        }
+        .cothrom-predict-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 11px 14px;
+            margin: 8px 0;
+            border: 1px solid var(--cothrom-border);
+            border-radius: 8px;
+            background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
+            cursor: pointer;
+            font-size: 14px;
+            transition: border-color 0.15s ease, background 0.15s ease;
+        }
+        .cothrom-predict-btn:hover { border-color: var(--cothrom-green); }
+        .cothrom-predict-btn:focus-visible {
+            outline: 2px solid var(--cothrom-green);
+            outline-offset: 2px;
+        }
+        .cothrom-predict-note {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            display: none;
+        }
+        .cothrom-predict-note.show { display: block; }
+        .cothrom-predict-note.correct {
+            background: var(--cothrom-under-bg);
+            color: var(--cothrom-under);
+        }
+        .cothrom-predict-note.incorrect {
+            background: var(--cothrom-over-bg);
+            color: var(--cothrom-over);
         }
         .cothrom-results {
             display: none;
@@ -280,18 +567,6 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
         .cothrom-explanation p:last-child {
             margin-bottom: 0;
         }
-        .cothrom-loading {
-            text-align: center;
-            padding: 20px;
-            color: var(--cothrom-muted);
-        }
-        .cothrom-error {
-            background: var(--cothrom-over-bg);
-            color: var(--cothrom-over);
-            padding: 12px;
-            border-radius: 6px;
-            text-align: center;
-        }
         @media (max-width: 768px) {
             .cothrom-stat-grid {
                 grid-template-columns: 1fr;
@@ -307,18 +582,27 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
 
     <div class="cothrom-calc-container">
         <h3>COTHROM Representation Calculator</h3>
-        <div class="cothrom-subtitle">Based on Seat Equivalent Representation Framework</div>
+        <div class="cothrom-subtitle">Based on the Seat Equivalent Representation framework</div>
+        <div class="cothrom-calc-banner">⚠ Illustrative teaching data — not official figures</div>
 
         <div class="cothrom-input-section">
-            <label for="cothrom-constituency-select">Select your constituency:</label>
+            <label for="cothrom-constituency-select">Select a constituency:</label>
             <select id="cothrom-constituency-select" disabled>
                 <option value="">Loading constituencies...</option>
             </select>
         </div>
 
+        <div id="cothrom-predict" class="cothrom-predict">
+            <p class="cothrom-predict-q" id="cothrom-predict-q">Predict first…</p>
+            <button class="cothrom-predict-btn" data-pred="more">Earned <strong>more</strong> seats than it holds — under-represented</button>
+            <button class="cothrom-predict-btn" data-pred="same">Earned <strong>about</strong> what it holds — close to fair</button>
+            <button class="cothrom-predict-btn" data-pred="fewer">Earned <strong>fewer</strong> seats than it holds — over-represented</button>
+            <div class="cothrom-predict-note" id="cothrom-predict-note" role="status" aria-live="polite"></div>
+        </div>
+
         <div id="cothrom-results" class="cothrom-results">
             <div class="cothrom-shortage-banner" id="cothrom-shortage-banner">
-                <div class="label">SEAT SHORTAGE/SURPLUS</div>
+                <div class="label">SEAT SHORTAGE / SURPLUS</div>
                 <div class="main-stat" id="cothrom-seat-difference">-</div>
                 <div class="label" id="cothrom-shortage-label">seats</div>
             </div>
@@ -327,19 +611,19 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
             <div class="cothrom-seat-comparison">
                 <div class="cothrom-seat-box deserved">
                     <div class="number" id="cothrom-seats-deserved">-</div>
-                    <div class="label">Seats Deserved (SER)</div>
+                    <div class="label">Seats earned (SER)</div>
                 </div>
                 <div class="cothrom-vs">vs</div>
                 <div class="cothrom-seat-box assigned">
                     <div class="number" id="cothrom-seats-assigned">-</div>
-                    <div class="label">Seats Assigned</div>
+                    <div class="label">Seats assigned</div>
                 </div>
             </div>
 
             <div class="cothrom-section-header">POPULATION STATS</div>
             <div class="cothrom-stat-grid">
                 <div class="cothrom-stat-card">
-                    <div class="result-label">Your TDs represent</div>
+                    <div class="result-label">Each TD represents</div>
                     <div class="result-value" id="cothrom-people-per-td">-</div>
                 </div>
                 <div class="cothrom-stat-card">
@@ -366,9 +650,9 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
 
             <div class="cothrom-section-header">YOUR VOTE WEIGHT</div>
             <div class="cothrom-vote-weight">
-                <div class="label">Your vote counts as</div>
+                <div class="label">A vote here counts as</div>
                 <div class="value" id="cothrom-vote-weight">1.00</div>
-                <div class="label">votes</div>
+                <div class="label">votes, against a national average of 1.00</div>
             </div>
 
             <div class="cothrom-explanation">
@@ -380,25 +664,29 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
     <script>
         (function() {
             let constituencyData = null;
+            let current = null;
 
-            // Helper functions
             function calculateSER(population, nationalRatio) {
                 return population / nationalRatio;
             }
-
             function calculateTraditionalVariance(ser, assignedSeats) {
                 return ((ser - assignedSeats) / assignedSeats) * 100;
             }
-
             function calculateAlternativeVariance(ser, assignedSeats) {
                 return ((ser - assignedSeats) / ser) * 100;
             }
-
             function calculateVoteWeight(nationalAverage, peoplePerTD) {
                 return nationalAverage / peoplePerTD;
             }
+            // Coarse category of a constituency's representation, from the gap
+            // between seats earned (SER) and seats actually assigned.
+            function entitlementCategory(ser, assigned) {
+                var d = ser - assigned;
+                if (d > 0.15) return 'more';
+                if (d < -0.15) return 'fewer';
+                return 'same';
+            }
 
-            // Load data from external JSON file
             async function loadData() {
                 try {
                     const response = await fetch('../../_static/data/sample_constituencies.json');
@@ -412,10 +700,137 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
                 }
             }
 
+            // Show the predict-first gate for the currently selected constituency,
+            // hiding any results until the reader commits to a prediction.
+            function showPrediction() {
+                const select = document.getElementById('cothrom-constituency-select');
+                const predict = document.getElementById('cothrom-predict');
+                const results = document.getElementById('cothrom-results');
+                const note = document.getElementById('cothrom-predict-note');
+                const name = select.value;
+
+                results.classList.remove('show');
+                note.className = 'cothrom-predict-note';
+                note.textContent = '';
+
+                if (!name) {
+                    predict.classList.remove('show');
+                    current = null;
+                    return;
+                }
+                current = constituencyData.constituencies.find(c => c.name === name);
+                if (!current) { predict.classList.remove('show'); return; }
+
+                document.getElementById('cothrom-predict-q').textContent =
+                    'Predict: at one TD per ' + constituencyData.nationalAverage.toLocaleString() +
+                    ' people, how many seats has ' + name + '’s population earned, compared with the ' +
+                    current.tds + ' it actually holds?';
+
+                const btns = predict.querySelectorAll('.cothrom-predict-btn');
+                btns.forEach(function (b) { b.disabled = false; });
+                predict.classList.add('show');
+            }
+
+            function reveal(predicted) {
+                const constituency = current;
+                if (!constituency) return;
+
+                const nationalRatio = constituencyData.nationalAverage;
+                const ser = calculateSER(constituency.population, nationalRatio);
+                const varianceTrad = calculateTraditionalVariance(ser, constituency.tds);
+                const varianceAlt = calculateAlternativeVariance(ser, constituency.tds);
+                const voteWeight = calculateVoteWeight(nationalRatio, constituency.peoplePerTD);
+                const seatDiff = ser - constituency.tds;
+                const absSeatDiff = Math.abs(seatDiff);
+                const actual = entitlementCategory(ser, constituency.tds);
+
+                // Feedback on the reader's prediction (only when one was made).
+                if (predicted) {
+                    const note = document.getElementById('cothrom-predict-note');
+                    const correct = predicted === actual;
+                    const actualWord = actual === 'more' ? 'more seats than it holds (under-represented)'
+                        : actual === 'fewer' ? 'fewer seats than it holds (over-represented)'
+                        : 'about what it holds (close to fair)';
+                    note.className = 'cothrom-predict-note show ' + (correct ? 'correct' : 'incorrect');
+                    note.innerHTML = (correct ? '<strong>Right. </strong>' : '<strong>Not quite. </strong>') +
+                        constituency.name + ' earned about ' + ser.toFixed(2) + ' seats — ' + actualWord + '.';
+                    const btns = document.getElementById('cothrom-predict').querySelectorAll('.cothrom-predict-btn');
+                    btns.forEach(function (b) { b.disabled = true; });
+                }
+
+                const banner = document.getElementById('cothrom-shortage-banner');
+                const diffElem = document.getElementById('cothrom-seat-difference');
+                const labelElem = document.getElementById('cothrom-shortage-label');
+
+                diffElem.textContent = absSeatDiff.toFixed(2);
+                if (seatDiff > 0) {
+                    labelElem.textContent = 'seats short of a fair share';
+                    banner.style.background = 'linear-gradient(135deg, var(--cothrom-red) 0%, var(--cothrom-danger) 100%)';
+                } else if (seatDiff < 0) {
+                    labelElem.textContent = 'seats above a fair share';
+                    banner.style.background = 'linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%)';
+                } else {
+                    labelElem.textContent = 'exactly a fair share';
+                    banner.style.background = 'linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%)';
+                }
+
+                document.getElementById('cothrom-seats-deserved').textContent = ser.toFixed(2);
+                document.getElementById('cothrom-seats-assigned').textContent = constituency.tds;
+
+                document.getElementById('cothrom-people-per-td').textContent =
+                    constituency.peoplePerTD.toLocaleString() + ' people';
+                document.getElementById('cothrom-national-avg').textContent =
+                    nationalRatio.toLocaleString() + ' people';
+
+                document.getElementById('cothrom-variance-trad').textContent =
+                    (varianceTrad > 0 ? '+' : '') + varianceTrad.toFixed(1) + '%';
+                document.getElementById('cothrom-variance-alt').textContent =
+                    (varianceAlt > 0 ? '+' : '') + varianceAlt.toFixed(1) + '%';
+
+                const badgeTrad = document.getElementById('cothrom-badge-trad');
+                const badgeAlt = document.getElementById('cothrom-badge-alt');
+
+                if (varianceTrad > 0) {
+                    badgeTrad.className = 'cothrom-variance-badge cothrom-variance-over';
+                    badgeTrad.textContent = 'UNDER-REP';
+                    badgeAlt.className = 'cothrom-variance-badge cothrom-variance-over';
+                    badgeAlt.textContent = 'UNDER-REP';
+                } else if (varianceTrad < 0) {
+                    badgeTrad.className = 'cothrom-variance-badge cothrom-variance-under';
+                    badgeTrad.textContent = 'OVER-REP';
+                    badgeAlt.className = 'cothrom-variance-badge cothrom-variance-under';
+                    badgeAlt.textContent = 'OVER-REP';
+                } else {
+                    badgeTrad.className = 'cothrom-variance-badge';
+                    badgeTrad.textContent = 'EVEN';
+                    badgeAlt.className = 'cothrom-variance-badge';
+                    badgeAlt.textContent = 'EVEN';
+                }
+
+                document.getElementById('cothrom-vote-weight').textContent = voteWeight.toFixed(3);
+
+                let explanation = '';
+                const absVarTrad = Math.abs(varianceTrad);
+                if (varianceTrad > 10) {
+                    explanation = `<strong>${constituency.name}</strong> earned <strong>${ser.toFixed(2)} seats</strong> but holds only <strong>${constituency.tds}</strong> — short by <strong>${absSeatDiff.toFixed(2)}</strong>. Each TD there carries about <strong>${absVarTrad.toFixed(1)}% more people</strong> than the national standard, so a vote counts as about <strong>${voteWeight.toFixed(3)}</strong> — roughly <strong>${((1 - voteWeight) * 100).toFixed(1)}% less</strong> weight than the average Irish vote.`;
+                } else if (varianceTrad < -10) {
+                    explanation = `<strong>${constituency.name}</strong> earned <strong>${ser.toFixed(2)} seats</strong> but holds <strong>${constituency.tds}</strong> — a surplus of <strong>${absSeatDiff.toFixed(2)}</strong>. Each TD there carries about <strong>${absVarTrad.toFixed(1)}% fewer people</strong> than the standard, so a vote counts as about <strong>${voteWeight.toFixed(3)}</strong> — roughly <strong>${((voteWeight - 1) * 100).toFixed(1)}% more</strong> weight than the average Irish vote.`;
+                } else if (varianceTrad > 0) {
+                    explanation = `<strong>${constituency.name}</strong> is slightly under-represented: it earned <strong>${ser.toFixed(2)}</strong> seats and holds <strong>${constituency.tds}</strong>. A vote here counts as about <strong>${voteWeight.toFixed(3)}</strong>, just under the ideal of 1.00.`;
+                } else if (varianceTrad < 0) {
+                    explanation = `<strong>${constituency.name}</strong> is slightly over-represented: it earned <strong>${ser.toFixed(2)}</strong> seats and holds <strong>${constituency.tds}</strong>. A vote here counts as about <strong>${voteWeight.toFixed(3)}</strong>, just over the ideal of 1.00.`;
+                } else {
+                    explanation = `<strong>${constituency.name}</strong> is represented almost exactly in line with the national average. A vote here counts as close to <strong>1.00</strong>.`;
+                }
+                document.getElementById('cothrom-explanation').innerHTML = explanation;
+
+                document.getElementById('cothrom-results').classList.add('show');
+            }
+
             function initializeCalculator() {
                 const select = document.getElementById('cothrom-constituency-select');
                 select.disabled = false;
-                select.innerHTML = '<option value="">Choose your constituency...</option>';
+                select.innerHTML = '<option value="">Choose a constituency…</option>';
 
                 const sorted = [...constituencyData.constituencies].sort((a, b) => a.name.localeCompare(b.name));
                 sorted.forEach(c => {
@@ -425,385 +840,152 @@ Use this interactive calculator to explore a constituency's seat shortfall or su
                     select.appendChild(option);
                 });
 
-                // Handle selection
-                select.addEventListener('change', function(e) {
-                    const selectedName = e.target.value;
-                    if (!selectedName) {
-                        document.getElementById('cothrom-results').classList.remove('show');
-                        return;
-                    }
+                select.addEventListener('change', showPrediction);
 
-                    const constituency = constituencyData.constituencies.find(c => c.name === selectedName);
-                    if (!constituency) return;
-
-                    const nationalRatio = constituencyData.nationalAverage;
-                    const ser = calculateSER(constituency.population, nationalRatio);
-                    const varianceTrad = calculateTraditionalVariance(ser, constituency.tds);
-                    const varianceAlt = calculateAlternativeVariance(ser, constituency.tds);
-                    const voteWeight = calculateVoteWeight(nationalRatio, constituency.peoplePerTD);
-                    const seatDiff = ser - constituency.tds;
-                    const absSeatDiff = Math.abs(seatDiff);
-
-                    // Update Seat Shortage Banner
-                    const banner = document.getElementById('cothrom-shortage-banner');
-                    const diffElem = document.getElementById('cothrom-seat-difference');
-                    const labelElem = document.getElementById('cothrom-shortage-label');
-
-                    diffElem.textContent = absSeatDiff.toFixed(2);
-                    if (seatDiff > 0) {
-                        labelElem.textContent = 'seats short of fair representation';
-                        banner.style.background = 'linear-gradient(135deg, var(--cothrom-red) 0%, var(--cothrom-danger) 100%)';
-                    } else if (seatDiff < 0) {
-                        labelElem.textContent = 'surplus seats beyond fair representation';
-                        banner.style.background = 'linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%)';
-                    } else {
-                        labelElem.textContent = 'perfectly represented!';
-                        banner.style.background = 'linear-gradient(135deg, var(--cothrom-green) 0%, var(--cothrom-green-bright) 100%)';
-                    }
-
-                    // Update Seat Comparison
-                    document.getElementById('cothrom-seats-deserved').textContent = ser.toFixed(2);
-                    document.getElementById('cothrom-seats-assigned').textContent = constituency.tds;
-
-                    // Update Population Stats
-                    document.getElementById('cothrom-people-per-td').textContent =
-                        constituency.peoplePerTD.toLocaleString() + ' people';
-                    document.getElementById('cothrom-national-avg').textContent =
-                        nationalRatio.toLocaleString() + ' people';
-
-                    // Update Variance Comparison
-                    document.getElementById('cothrom-variance-trad').textContent =
-                        (varianceTrad > 0 ? '+' : '') + varianceTrad.toFixed(1) + '%';
-                    document.getElementById('cothrom-variance-alt').textContent =
-                        (varianceAlt > 0 ? '+' : '') + varianceAlt.toFixed(1) + '%';
-
-                    // Update variance badges
-                    const badgeTrad = document.getElementById('cothrom-badge-trad');
-                    const badgeAlt = document.getElementById('cothrom-badge-alt');
-
-                    if (varianceTrad > 0) {
-                        badgeTrad.className = 'cothrom-variance-badge cothrom-variance-over';
-                        badgeTrad.textContent = 'OVER';
-                        badgeAlt.className = 'cothrom-variance-badge cothrom-variance-over';
-                        badgeAlt.textContent = 'OVER';
-                    } else if (varianceTrad < 0) {
-                        badgeTrad.className = 'cothrom-variance-badge cothrom-variance-under';
-                        badgeTrad.textContent = 'UNDER';
-                        badgeAlt.className = 'cothrom-variance-badge cothrom-variance-under';
-                        badgeAlt.textContent = 'UNDER';
-                    } else {
-                        badgeTrad.className = 'cothrom-variance-badge';
-                        badgeTrad.textContent = 'EQUAL';
-                        badgeAlt.className = 'cothrom-variance-badge';
-                        badgeAlt.textContent = 'EQUAL';
-                    }
-
-                    // Update Vote Weight
-                    document.getElementById('cothrom-vote-weight').textContent = voteWeight.toFixed(3);
-
-                    // Generate explanation
-                    let explanation = '';
-                    const absVarTrad = Math.abs(varianceTrad);
-
-                    if (varianceTrad > 10) {
-                        explanation = `<strong>${constituency.name}</strong> deserves <strong>${ser.toFixed(2)} seats</strong> but has only <strong>${constituency.tds} assigned</strong> - a shortage of <strong>${absSeatDiff.toFixed(2)} seats</strong>. Each TD represents <strong>${absVarTrad.toFixed(1)}% more people</strong> than they should. Your vote effectively counts as <strong>${voteWeight.toFixed(3)} votes</strong> - giving you <strong>${((1 - voteWeight) * 100).toFixed(1)}% less democratic influence</strong> than the average Irish voter.`;
-                    } else if (varianceTrad < -10) {
-                        explanation = `<strong>${constituency.name}</strong> deserves <strong>${ser.toFixed(2)} seats</strong> but has <strong>${constituency.tds} assigned</strong> - a surplus of <strong>${absSeatDiff.toFixed(2)} seats</strong>. Each TD represents <strong>${absVarTrad.toFixed(1)}% fewer people</strong> than they should. Your vote effectively counts as <strong>${voteWeight.toFixed(3)} votes</strong> - giving you <strong>${((voteWeight - 1) * 100).toFixed(1)}% more democratic influence</strong> than the average Irish voter.`;
-                    } else if (varianceTrad > 0) {
-                        explanation = `<strong>${constituency.name}</strong> is slightly over-represented with <strong>${constituency.tds} seats</strong> (deserves ${ser.toFixed(2)}). Your vote counts as <strong>${voteWeight.toFixed(3)}</strong>, slightly less than the ideal of 1.00.`;
-                    } else if (varianceTrad < 0) {
-                        explanation = `<strong>${constituency.name}</strong> is slightly under-represented with <strong>${constituency.tds} seats</strong> (deserves ${ser.toFixed(2)}). Your vote counts as <strong>${voteWeight.toFixed(3)}</strong>, slightly more than the ideal of 1.00.`;
-                    } else {
-                        explanation = `<strong>${constituency.name}</strong> has perfect representation! Your vote counts as exactly <strong>1.00</strong>.`;
-                    }
-
-                    document.getElementById('cothrom-explanation').innerHTML = explanation;
-
-                    document.getElementById('cothrom-results').classList.add('show');
+                const predict = document.getElementById('cothrom-predict');
+                predict.querySelectorAll('.cothrom-predict-btn').forEach(function (btn) {
+                    btn.setAttribute('type', 'button');
+                    btn.addEventListener('click', function () {
+                        reveal(btn.getAttribute('data-pred'));
+                    });
                 });
+
+                // Start the reader on Clare — the worked example from the lesson —
+                // and prompt a prediction before revealing anything.
+                if (constituencyData.constituencies.some(c => c.name === 'Clare')) {
+                    select.value = 'Clare';
+                }
+                showPrediction();
             }
 
-            // Start loading data
             loadData();
         })();
     </script>
 </div>
 ```
 
-*National constants based on the Electoral Commission's 2023 review and CSO Census 2022; per-constituency figures are illustrative.*
+*National constants follow the Electoral Commission's 2023 review and CSO Census 2022; per-constituency populations are illustrative.*
 
 ---
 
-## The 2023 Review
+## What the 2023 review actually changed
 
-In August 2023, **An Coimisiún Toghcháin (the Electoral Commission)** published its first constituency review and made recommendations that reshaped the political map:
+Clare's gap is smaller than it might once have been, because the map was recently
+redrawn. In August 2023 **An Coimisiún Toghcháin (the Electoral Commission)**
+published its first constituency review, and the changes were substantial: the
+Dáil grew from 160 TDs to **174**, the number of constituencies rose from 39 to
+**43**, and the average population behind each TD fell from about 32,182 to the
+**29,593** we have been using. More TDs spread across more constituencies pulls the
+crowded places back toward the standard.
 
-- The Dáil grows from **160 TDs to 174 TDs** — 14 more seats.
-- The number of constituencies rises from **39 to 43**.
-- The average drops from **32,182 to 29,593 people per TD**.
+Two design choices in that review are worth understanding, because they explain why
+some gap remains. The first is tolerance. Earlier reviews aimed to hold every
+constituency within about **±5%** of the national average people-per-TD. Absorbing
+a decade of uneven population growth while also repairing the map forced the 2023
+Commission to work to a looser band — some constituencies ended up around **±8%**
+out, which is why Clare's +8.1% is the largest gap rather than an outlier the
+Commission failed to catch. The second choice was to put **county boundaries back**.
+Previous maps had sliced across county lines in ten places; the 2023 review removed
+seven of those breaches, for instance by splitting the long-combined Laois–Offaly
+constituency back into single-county seats. Keeping counties whole and keeping every
+constituency within ±5% pull against each other, and the Commission chose to loosen
+the percentage to protect the counties.
 
-Two features of the review are worth understanding:
+That trade-off — equal numbers versus intact communities — is the real texture of
+redistricting, and it is why "just make every constituency exactly average" is not
+an option on the table. You will meet the county side of that bargain properly in
+the next two lessons.
 
-```{note}
-**A wider tolerance, and county boundaries restored**
-
-Previous reviews aimed to keep every constituency within about **±5%** of the national average people-per-TD. To absorb strong population growth *and* repair broken county lines, the 2023 Commission worked to a wider tolerance, with some constituencies reaching around **±8%**.
-
-At the same time it **reinstated county boundaries**, removing seven of the ten existing breaches of county lines — for example by separating the long-combined Laois–Offaly constituency back into single-county constituencies.
-```
-
-### What Does This Mean for You?
-
-Even after the review, representation is not perfectly equal. The constituency with the highest population per TD (**Clare**, ~31,995) sits about **8% above** the one closest to balance. So a vote in a low-population-per-TD constituency still carries somewhat more weight than a vote where each TD represents many more people — the gap is just narrower than the headline numbers some commentators quoted.
-
-### Two Ways to Measure the Same Problem
-
-Researchers use two different formulas to calculate variance, and it's important to understand both:
-
-**Traditional Variance** (used by Constituency Commissions):
-```
-Variance = (SER - Assigned Seats) / Assigned Seats × 100%
-```
-
-**Alternative Variance** (COTHROM proposal):
-```
-Variance = (SER - Assigned Seats) / SER × 100%
-```
-
-**Why two formulas?** The traditional formula has a mathematical quirk: constituencies that are +5% over and -5% under the ideal don't actually experience the same degree of voter misrepresentation. The alternative formula fixes this asymmetry, making it more transparent and voter-centered.
-
-**Example - Clare** (SER ≈ 4.32, assigned 4 seats):
-- Traditional variance: (4.32 − 4) / 4 = **+8.1%**
-- Alternative variance: (4.32 − 4) / 4.32 = **+7.5%**
-- Both measure the same gap - the choice of denominator just changes the number
-
-The calculator above shows **both** methods side-by-side so you can understand how the choice of measurement affects the numbers (but not the underlying reality).
-
----
-
-## The Analogy That Makes It Clear
-
-Think of it this way:
-
-Imagine you and nine friends go out for dinner. The bill is €200, so you agree to split it evenly - €20 each.
-
-But then someone suggests: "Actually, some of us should pay €13 and others should pay €27, because we sat at different tables."
-
-You'd probably ask: **Why should where we sit change what we pay?**
-
-That's essentially what's happening with constituency boundaries. The principle says **equal representation**, but the practice delivers **slightly unequal weight to votes** based on which constituency you happen to live in.
-
-**In practice:** the difference is real but bounded — after the 2023 review the most and least favourably represented constituencies differ by roughly the gap between paying €19 and €21 on that €20 bill, not €13 and €27. The job of a boundary review is to keep that gap as small as the rules allow.
-
-```{note}
-To be clear: the Electoral Commission isn't being malicious or incompetent. They're facing an incredibly difficult puzzle with competing constraints:
-- 3,440 Electoral Divisions (EDs) that cannot be split
-- Requirements for 3-5 seats per constituency
-- Geographic contiguity requirements
-- County boundary preferences
-- Population equality targets
-
-The question is: could **algorithmic tools** help them explore more options systematically and find better solutions?
+```{raw} html
+<div class="cothrom-quiz" data-answer="0">
+  <p class="cothrom-quiz-q">Why did the 2023 review allow constituencies to stray up to about ±8% of the average, rather than holding the tighter ±5% earlier reviews used?</p>
+  <button class="cothrom-opt" data-explain="Right — reinstating county boundaries and absorbing uneven growth couldn't be done while also keeping everyone inside ±5%, so the Commission loosened the band to protect the county lines.">To reinstate county boundaries and absorb population growth at the same time.</button>
+  <button class="cothrom-opt" data-explain="The opposite happened — the number of TDs rose from 160 to 174, which reduced the average, it didn't force a wider tolerance.">Because the number of TDs was cut, so each seat had to stretch further.</button>
+  <button class="cothrom-opt" data-explain="The wider band wasn't about convenience — it was the price of keeping counties whole while populations shifted unevenly.">Because measuring variance precisely is too difficult to do accurately.</button>
+</div>
 ```
 
 ---
 
-## What Could Change This?
+## Why this is a genuinely hard problem
 
-The traditional approach to drawing constituencies is **manual and time-consuming**:
-- The Commission examines the population data
-- They try different boundary configurations by hand
-- They check if each option meets the legal requirements
-- After months of work, they propose **one option**
-- That's what goes to the Dáil for a vote
+It is tempting to read all this as the Commission doing a sloppy job. It is not.
+The Commission is solving a puzzle with constraints that fight each other, and the
+number of ways to arrange the map is astronomically large.
 
-**The limitation:** With 3,440 Electoral Divisions to arrange into 43 constituencies, the number of possible combinations is **astronomically large**.
+The country is not redrawn freehand. It is assembled from several thousand small,
+fixed building blocks — you will meet them in the next lesson as Electoral
+Divisions — which are grouped into constituencies without being split. Every
+grouping has to satisfy several rules at once: each constituency must hold three,
+four or five TDs and no other number; its population per TD should sit as close to
+the national average as possible; the area has to hang together as one connected
+piece rather than a scatter of disconnected patches; and, where it can, the map
+should respect county lines. Tighten any one of those and you loosen another. There
+is no arrangement that is best on all of them at once, and with thousands of blocks
+to combine, no human working by hand can examine more than a sliver of the
+possibilities before settling on one workable map to send to the Dáil.
 
-The Commission, working manually, can only explore a tiny fraction of possibilities. They might find a good solution - but how do they know if there's a better one?
-
-### The COTHROM Approach
-
-COTHROM (which is Irish for "fairness" or "balance") is a framework developed by **The Problem Solving Association (TPSA)** that proposes using **algorithmic redistricting** to:
-
-1. **Systematically explore thousands** of possible boundary configurations
-2. **Check each one** against all legal requirements automatically
-3. **Calculate metrics** like SER and variance for objective comparison
-4. **Identify trade-offs** transparently so everyone can see the options
-5. **Let the Commission focus** on judgment calls about which trade-offs to accept
-
-The framework doesn't replace human judgment - it **enhances** it by ensuring we're choosing from the best possible options rather than just the first workable solution we find.
-
-### What Algorithms Can (and Can't) Do
-
-**Algorithms excel at:**
-- Exploring vast numbers of configurations quickly
-- Calculating complex metrics accurately
-- Finding solutions that humans might miss
-- Making trade-offs transparent
-
-**Algorithms cannot:**
-- Make value judgments (e.g., "is keeping county X together worth 2% more variance?")
-- Understand local community connections that aren't in the data
-- Replace democratic deliberation
-- Decide what constraints matter most
-
-**The key insight:** Algorithms are tools for **democratic enhancement**, not replacement. They help us make better-informed collective decisions.
+That is the gap the **COTHROM** project — *cothrom* is Irish for fairness or
+balance, and it is the work of The Problem Solving Association — sets out to close.
+The idea is not to take the decision away from people. It is to let a computer do
+the part computers are good at: generate and score thousands of legal maps, measure
+the SER and variance of each, and lay the trade-offs out in the open, so that the
+human choice at the end — is keeping this county whole worth two percentage points
+of variance? — is made in full view of the alternatives rather than against the
+first workable option anyone happened to find. The judgement stays human; the
+search for options stops being a bottleneck.
 
 ---
 
-## The Promise of This Journey
+## So what — this is your vote
 
-By the end of this learning pathway, you'll understand:
+Return to where we started. The Baytown voter and the Ardville voter were
+illustrative, but Clare is real, and a vote cast in Clare carries about **0.925** of
+the weight of an average Irish vote — about **7.5% less** — purely because of how the
+map divides. That is small. It is not zero, and it is not something you chose.
 
-1. **Why redistricting is hard** - the mathematical and political complexity involved
-2. **What the COTHROM framework offers** - how algorithms can explore more options systematically
-3. **How to read metrics like SER and variance** - building quantitative literacy
-4. **What trade-offs exist** - no solution is perfect; understanding the choices is crucial
-5. **How to evaluate proposals** - whether from traditional methods or algorithmic tools
-
-Most importantly, you'll be able to **participate meaningfully** in the next constituency review with informed understanding rather than passive acceptance.
-
----
-
-## Your Role in Democracy
-
-This isn't just abstract mathematics. **Constituency boundaries shape your representation** in Dáil Éireann.
-
-When the next Constituency Review happens (likely around 2028-2029, following the 2027 Census), there will be:
-- **Public consultations** - where you can make submissions
-- **Commission hearings** - where they explain their reasoning
-- **Dáil debates** - where TDs vote on the final boundaries
-
-**The question is:** Will you understand what's being proposed well enough to engage meaningfully?
-
-Right now, you can use the calculator above to:
-1. **See your own constituency's situation** - are you in surplus or deficit?
-2. **Check the extremes** - compare a high-population-per-TD constituency like Clare with one closer to the average
-3. **Understand both variance methods** - see how the choice of formula affects the numbers
-4. **Calculate vote weight** - discover your actual democratic influence compared to others
-
-```{important}
-**Democracy works best when citizens can:**
-- Understand the rules that govern them
-- Evaluate whether those rules are being applied fairly
-- Participate in changing rules when needed
-- Engage with quantitative evidence meaningfully
-
-This resource aims to give you those capabilities for redistricting.
-```
+Knowing how to measure it changes what you can do about it. The next constituency
+review is due after the 2027 census, likely around 2028–2029, and it will run
+through public consultations, Commission hearings and a Dáil vote. Someone who can
+look at a proposed map and work out that their area is being left a third of a seat
+short — and say so, in the Commission's own language of variance — is a citizen the
+process has to answer to. Someone who cannot is left trusting that it all came out
+fair. This lesson was about becoming the first kind.
 
 ---
 
-## The COTHROM Framework in Context
+## Key takeaways
 
-The calculator you used above is based on the COTHROM framework, which emphasizes:
-
-**1. Voter-Centered Metrics**
-- Seat Equivalent Representation makes inequality concrete: "about a third of a seat short"
-- Vote weight shows personal impact: e.g. in Clare "your vote counts as roughly 0.93 votes"
-- Rankings show where you stand: "highest population per TD in the country"
-
-**2. Transparent Measurement**
-- Shows both traditional and alternative variance formulas
-- Explains the mathematics clearly
-- Makes trade-offs visible
-
-**3. Historical Context**
-- Compares 2023 to previous decades
-- Shows this is unprecedented
-- Creates urgency for better solutions
-
-**4. Algorithmic Solutions**
-- Proposes computational exploration of alternatives
-- Maintains human judgment at the center
-- Enhances rather than replaces democratic deliberation
-
-This isn't just about better math - it's about **better democracy**.
-
----
-
-## What's Next?
-
-In the next lesson, we'll help you **find your Electoral Division** - your specific place in Ireland's electoral system. You'll discover:
-- What an Electoral Division actually is (the 3,440 building blocks)
-- How to locate yours using an interactive tool
-- Why knowing your ED matters for understanding boundary changes
-- How your ED groups with others to form your constituency
-
-Then we'll explore what changes might be coming to your area and why.
-
-**Ready to continue?** Let's find out exactly where you fit in the electoral map.
-
-**→ [Continue to Lesson 2: Find Your ED](find_your_ed.md)**
-
----
-
-## Key Takeaways
-
-```{important}
-**Remember These Points:**
-
-1. **Your vote's weight varies between constituencies** - after the 2023 review the most extreme case (Clare) is about 8% from the national average, so votes are close to equal but not identical
-
-2. **Seat Equivalent Representation (SER) makes inequality tangible** - "about a third of a seat short" is more concrete than "8% variance"
-
-3. **The 2023 review reshaped the map** - the Dáil grew from 160 to 174 TDs across 43 constituencies, using a wider (~±8%) tolerance while reinstating county boundaries
-
-4. **Two variance formulas exist** - the traditional Commission method and the symmetric COTHROM alternative
-
-5. **This isn't about malice** - it's about an incredibly complex optimization problem with competing constraints
-
-6. **Manual methods have limits** - the Commission can only explore a tiny fraction of possible boundary configurations
-
-7. **Algorithmic tools could help** - the COTHROM framework proposes systematic exploration while maintaining human judgment
-
-8. **You have a role to play** - understanding these metrics empowers you to participate meaningfully in democratic processes
-```
-
----
-
-## Check Your Understanding
+- Equal representation means roughly equal people behind each TD; where that fails, some votes quietly outweigh others, and the Constitution says they shouldn't.
+- The **National Ratio** (about 29,593 people per TD) is the yardstick: total population 5,149,139 shared across 174 TDs.
+- **SER** = population ÷ National Ratio gives the seats a constituency has earned; Clare earned about 4.32.
+- Because **seat magnitude** must be a whole 3, 4 or 5, Clare's 4.32 became 4 — leaving it about a third of a seat short.
+- **Variance** turns that shortfall into a percentage; Clare is about +8.1% (traditional) or +7.5% (the COTHROM denominator) — the same gap, measured two ways.
+- After the 2023 review the worst gap is about ±8%, widened from ±5% deliberately, to keep counties whole.
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="1">
-  <p class="cothrom-quiz-q">After the 2023 review, roughly how many people does each TD represent on average?</p>
-  <button class="cothrom-opt" data-explain="That was closer to the figure for the most under-represented constituencies, not the average.">About 45,000</button>
-  <button class="cothrom-opt" data-explain="Exactly — 5,149,139 people ÷ 174 TDs ≈ 29,593.">About 29,600</button>
-  <button class="cothrom-opt" data-explain="That's far below the real average; no constituency is that small per TD.">About 20,000</button>
-</div>
-
-<div class="cothrom-quiz" data-answer="2">
-  <p class="cothrom-quiz-q">What does Seat Equivalent Representation (SER) tell you?</p>
-  <button class="cothrom-opt" data-explain="The number of people in a constituency is its population, not its SER.">A constituency's total population</button>
-  <button class="cothrom-opt" data-explain="Turnout isn't part of the SER calculation.">How many people turned out to vote</button>
-  <button class="cothrom-opt" data-explain="Right — SER = population ÷ national average, i.e. the seats a constituency 'deserves' on population alone.">How many seats a constituency deserves on population alone</button>
+  <p class="cothrom-quiz-q">A constituency's population earns it an SER of 3.7, but it holds 3 seats. What can you say about it?</p>
+  <button class="cothrom-opt" data-explain="Over-representation would mean it holds more seats than it earned — here it earned 3.7 and holds only 3, so it's the other way round.">It is over-represented, so votes there carry extra weight.</button>
+  <button class="cothrom-opt" data-explain="Right: it earned 3.7 but holds 3, so it's about 0.7 of a seat short — under-represented, with each TD carrying more than the national average and votes worth slightly less.">It is under-represented by about 0.7 of a seat, so votes there carry slightly less weight.</button>
+  <button class="cothrom-opt" data-explain="An SER of 3.7 can't simply be handed over as 3.7 seats — seat magnitude must be a whole 3, 4 or 5, which is exactly why a gap opens up.">It should just be given 3.7 seats to be fair.</button>
 </div>
 ```
 
-## Further Reflection
-
-Before moving on, consider:
-
-1. **What is your constituency's seat shortage or surplus?** Use the calculator above to find out.
-
-2. **Which variance formula makes more intuitive sense to you?** The traditional (Commission) method or the alternative (COTHROM) method?
-
-3. **What matters more to you:** Perfect population equality, or keeping your county together? (Spoiler: you might not be able to have both - we'll explore these trade-offs later.)
-
-4. **Do you think algorithms should help** with redistricting? What concerns do you have? What opportunities do you see?
-
-The journey from "my vote matters" to "I understand how algorithmic redistricting works" starts with understanding that the current system, while well-intentioned, has significant limitations.
-
-Let's explore those limitations - and the opportunities for improvement - together.
+**→ [Next: Find your Electoral Division](find_your_ed.md)** — the fixed building
+block your constituency is assembled from, and how to find the one you live in.
 
 ---
 
 ## Sources
 
-- [Electoral Commission — Constituency Review Report 2023](https://www.electoralcommission.ie/constituency-reviews/) (174 TDs across 43 constituencies; average 29,593 per TD)
-- [Electoral Commission press release, August 2023](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/)
-- [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/) (population 5,149,139)
-- [The Irish Times — on the ±5%/±8% variance change (1 Sept 2023)](https://www.irishtimes.com/politics/2023/09/01/electoral-commission-may-face-legal-challenge-over-constituency-review/)
+- [Electoral Commission — Constituency Review Report 2023](https://www.electoralcommission.ie/constituency-reviews/) (174 TDs across 43 constituencies; average 29,593 people per TD).
+- [Electoral Commission press release, August 2023](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/) (14 more TDs; average down from 32,182; seven of ten county breaches removed).
+- [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/) (population of the State: 5,149,139).
+- [The Irish Times — on the ±5%/±8% variance change (1 Sept 2023)](https://www.irishtimes.com/politics/2023/09/01/electoral-commission-may-face-legal-challenge-over-constituency-review/).
+- [Bunreacht na hÉireann, Article 16](https://www.irishstatutebook.ie/eli/cons/en) (equal ratio of population to members so far as practicable; minimum three members per constituency; revision at least every twelve years).
+
+*Per-constituency populations (including Clare's ~127,980) are illustrative teaching figures, not official returns; the national constants above are sourced as listed.*
 
 ---
 

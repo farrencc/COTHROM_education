@@ -28,7 +28,7 @@
     {"name": "Dun Laoghaire", "population": 137877, "tds": 4, "peoplePerTD": 34469, "variance": 13.5},
     {"name": "Carlow-Kilkenny", "population": 145388, "tds": 5, "peoplePerTD": 29078, "variance": -4.2},
     {"name": "Cavan-Monaghan", "population": 127772, "tds": 4, "peoplePerTD": 31943, "variance": 5.2},
-    {"name": "Clare", "population": 118817, "tds": 4, "peoplePerTD": 29704, "variance": -2.2},
+    {"name": "Clare", "population": 127980, "tds": 4, "peoplePerTD": 31995, "variance": 8.1},
     {"name": "Cork East", "population": 104627, "tds": 4, "peoplePerTD": 26157, "variance": -13.9},
     {"name": "Cork North-Central", "population": 120349, "tds": 4, "peoplePerTD": 30087, "variance": -0.9},
     {"name": "Cork North-West", "population": 90694, "tds": 3, "peoplePerTD": 30231, "variance": -0.4},
