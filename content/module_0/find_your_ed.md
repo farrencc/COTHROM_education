@@ -80,15 +80,16 @@ Enough about Rathmines West C — find *your* patch. The map below is the same k
 of tool the Commission's data is built on, loaded with a teaching sample of EDs.
 Search for an ED by name, or switch to the address tab and type a town near you.
 
-Here is the one thing the tool asks of you. When you select an ED it does not
-just recite its details — it first asks you to estimate **how large a share of a
-single TD's people that one ED holds**, and only then shows the figure. You
-already know from the last lesson that a TD stands for about 29,593 people on
-average; the question is how small a piece of that your own patch turns out to
-be. There is no trick and no score — the estimate is there to make the reveal
-land, because the thing that surprises most people is just how tiny a single ED
-is against a whole TD's worth of constituents, and therefore how many EDs have
-to be bundled together before anyone gets represented at all.
+One thing the tool does before it hands over an ED's details: now and again it
+pauses to ask you a quick question about the ED you just picked — what share of a
+single TD's people it holds, how many EDs its size it would take to build the
+whole constituency, or simply how many people live in it — and only reveals the
+answer once you've committed to a rough estimate. There is no score, and you can
+switch the questions off entirely with the toggle if you would rather just
+browse. They are there because committing to a guess first makes the real figure
+land, and because the thing that surprises most people is just how tiny a single
+ED is against a whole TD's worth of constituents — and therefore how many EDs
+have to be bundled together before anyone gets represented at all.
 
 ```{warning}
 **Illustrative data.** The map below shows a small teaching sample of Electoral

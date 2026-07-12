@@ -56,6 +56,13 @@
             font-weight: 600;
             margin: 2px 0 10px;
         }
+        .predict-toggle {
+            display: inline-flex; align-items: center; gap: 7px;
+            margin-top: 10px; color: white; font-size: 12.5px; cursor: pointer;
+        }
+        .predict-toggle input { accent-color: white; cursor: pointer; }
+        .predict-toggle:focus-within { outline: 2px solid white; outline-offset: 2px; border-radius: 3px; }
+
         .search-box { position: relative; max-width: 560px; }
         .search-tabs { display: flex; margin-bottom: 4px; }
         .search-tab {
@@ -284,7 +291,7 @@
         </div>
 
         <div class="search-header">
-            <div class="step-label">Step 1 &middot; Locate</div>
+            <div class="step-label">Find your Electoral Division</div>
             <div class="prompt">Where do you live on this map?</div>
             <div class="search-box">
                 <div class="search-tabs" role="tablist" aria-label="Search mode">
@@ -299,6 +306,10 @@
                 <div class="search-results" id="searchResults" role="listbox"></div>
                 <div class="search-status" id="searchStatus" role="status" aria-live="polite"></div>
             </div>
+            <label class="predict-toggle">
+                <input type="checkbox" id="predictToggle" checked>
+                Ask me to predict before revealing
+            </label>
         </div>
 
         <div class="map-wrap">
@@ -437,57 +448,108 @@
 
         // --- Predict-then-reveal ---------------------------------------------
 
+        function predictionOn() {
+            const t = document.getElementById('predictToggle');
+            return t ? t.checked : true;
+        }
+
         function selectED(layer, props, fromSearch) {
             const S = styles();
             if (selectedLayer) selectedLayer.setStyle(S.edDefault);
             selectedLayer = layer;
             layer.setStyle(S.edSelected);
             if (fromSearch) map.fitBounds(layer.getBounds(), { maxZoom: 12 });
-            showPrediction(props);
+            // When prediction is on, a ~1-in-3 chance to pause and ask; otherwise reveal straight away.
+            if (predictionOn() && Math.random() < 1 / 3) {
+                const types = predictionTypes(props);
+                showPrediction(props, types[Math.floor(Math.random() * types.length)]);
+            } else {
+                revealED(props, null);
+            }
         }
 
-        const BAND_WORDS = {
-            small: 'a small slice (under 10%)',
-            chunk: 'a sizeable chunk (10–50%)',
-            most:  'most of a TD (over 50%)'
-        };
-        function bandFor(sharePct) {
-            return sharePct < 10 ? 'small' : (sharePct <= 50 ? 'chunk' : 'most');
+        // Three interchangeable prediction questions about the selected ED. One is
+        // chosen at random each time the prediction fires. Each returns its question,
+        // three answer bands, the reader's-eye-view band the ED actually falls in,
+        // and the concrete figure to reveal.
+        function predictionTypes(props) {
+            const pop = props.POPULATION_2022 || 0;
+            const seats = props.CONSTITUENCY_SEATS || 4;
+            const conPop = seats * PEOPLE_PER_TD;            // estimated constituency population
+            const edsToFill = pop ? conPop / pop : 0;
+            const sharePct = pop / PEOPLE_PER_TD * 100;
+            const shareText = sharePct >= 1 ? sharePct.toFixed(0) + '%' : sharePct.toFixed(1) + '%';
+            return [
+                {
+                    q: `This ED sits inside ${props.CONSTITUENCY_2024 || 'a constituency'}, which needs about ${conPop.toLocaleString()} people in all. Roughly how many EDs the size of this one would it take to build the whole constituency?`,
+                    sub: 'The bigger the ED, the fewer you need. Estimate, then see.',
+                    bands: [
+                        { id: 'few',     label: 'Just a handful', hint: 'under 15' },
+                        { id: 'dozens',  label: 'Dozens',         hint: '15–60' },
+                        { id: 'hundred', label: 'Nearly a hundred', hint: 'over 60' }
+                    ],
+                    words: { few: 'just a handful (under 15)', dozens: 'dozens (15–60)', hundred: 'nearly a hundred (over 60)' },
+                    actual: edsToFill < 15 ? 'few' : (edsToFill <= 60 ? 'dozens' : 'hundred'),
+                    actualText: 'about ' + Math.round(edsToFill).toLocaleString() + ' EDs'
+                },
+                {
+                    q: 'One TD represents about 29,593 people. What share of a single TD’s people do you reckon this one ED holds?',
+                    sub: 'Most EDs are a small sliver — estimate yours.',
+                    bands: [
+                        { id: 'tiny',  label: 'A tiny sliver', hint: 'under 5%' },
+                        { id: 'small', label: 'A small slice', hint: '5–10%' },
+                        { id: 'big',   label: 'A large share', hint: 'over 10%' }
+                    ],
+                    words: { tiny: 'a tiny sliver (under 5%)', small: 'a small slice (5–10%)', big: 'a large share (over 10%)' },
+                    actual: sharePct < 5 ? 'tiny' : (sharePct <= 10 ? 'small' : 'big'),
+                    actualText: shareText + ' of one TD'
+                },
+                {
+                    q: 'How many people do you think live in this one Electoral Division?',
+                    sub: 'A typical ED runs from a few hundred to a few thousand people.',
+                    bands: [
+                        { id: 'lt1k',  label: 'Under 1,000', hint: '' },
+                        { id: 'mid',   label: '1,000–3,000', hint: '' },
+                        { id: 'gt3k',  label: 'Over 3,000', hint: '' }
+                    ],
+                    words: { lt1k: 'under 1,000', mid: '1,000–3,000', gt3k: 'over 3,000' },
+                    actual: pop < 1000 ? 'lt1k' : (pop <= 3000 ? 'mid' : 'gt3k'),
+                    actualText: pop.toLocaleString() + ' people'
+                }
+            ];
         }
 
-        function showPrediction(props) {
+        function showPrediction(props, type) {
             const stage = document.getElementById('stage');
             stage.innerHTML = `
                 <div class="predict">
-                    <div class="kicker">Step 2 &middot; Think first</div>
+                    <div class="kicker">Quick question first</div>
                     <div class="picked">${props.ED_NAME || 'This ED'} <span class="county">&mdash; ${props.COUNTY || ''}</span></div>
-                    <p class="q">One TD speaks for about 29,593 people. How big a slice of a single TD&rsquo;s people do you reckon this one ED holds?</p>
-                    <p class="sub">There&rsquo;s no catch &mdash; estimate from how built-up the area feels, then see the real figure.</p>
+                    <p class="q">${type.q}</p>
+                    <p class="sub">No score, no catch. ${type.sub}</p>
                     <div class="guess-row">
-                        <button class="guess-btn" data-band="small">A small slice<span>under 10%</span></button>
-                        <button class="guess-btn" data-band="chunk">A sizeable chunk<span>10&ndash;50%</span></button>
-                        <button class="guess-btn" data-band="most">Most of a TD<span>over 50%</span></button>
+                        ${type.bands.map(b => `<button class="guess-btn" data-band="${b.id}">${b.label}${b.hint ? '<span>' + b.hint + '</span>' : ''}</button>`).join('')}
                     </div>
                 </div>`;
             stage.querySelectorAll('.guess-btn').forEach(function (b) {
-                b.addEventListener('click', function () { revealED(props, b.dataset.band); });
+                b.addEventListener('click', function () { revealED(props, { type: type, band: b.dataset.band }); });
             });
         }
 
-        function revealED(props, band) {
+        function revealED(props, guess) {
             const pop = props.POPULATION_2022 || 0;
             const households = props.HOUSEHOLDS || 0;
             const seats = props.CONSTITUENCY_SEATS || null;
             const sharePct = (pop / PEOPLE_PER_TD * 100);
             const shareText = sharePct >= 1 ? sharePct.toFixed(0) + '%' : sharePct.toFixed(1) + '%';
-            const actualBand = bandFor(sharePct);
 
             let verdict = '';
-            if (band) {
-                if (band === actualBand) {
-                    verdict = `<div class="verdict hit">Good instinct &mdash; it works out at <strong>${shareText}</strong>, ${BAND_WORDS[actualBand]}.</div>`;
+            if (guess && guess.type && guess.band) {
+                const t = guess.type;
+                if (guess.band === t.actual) {
+                    verdict = `<div class="verdict hit">Good instinct &mdash; the answer is <strong>${t.actualText}</strong> (${t.words[t.actual]}).</div>`;
                 } else {
-                    verdict = `<div class="verdict miss">You reckoned ${BAND_WORDS[band]}; it works out at <strong>${shareText}</strong>, ${BAND_WORDS[actualBand]}. EDs vary enormously &mdash; which is why it is population, not how the place looks, that the map has to balance.</div>`;
+                    verdict = `<div class="verdict miss">You reckoned ${t.words[guess.band]}; the answer is <strong>${t.actualText}</strong> (${t.words[t.actual]}). EDs vary enormously &mdash; which is why the map is balanced on population, not on how a place looks.</div>`;
                 }
             }
 
@@ -500,7 +562,7 @@
 
             document.getElementById('stage').innerHTML = `
                 <div class="reveal">
-                    <div class="kicker" style="color:var(--cothrom-green-dark);font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">Step 3 &middot; Reveal</div>
+                    <div class="kicker" style="color:var(--cothrom-green-dark);font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">Electoral Division</div>
                     ${verdict}
                     <div class="ed-title">${props.ED_NAME || 'Unknown ED'}</div>
                     <div class="ed-sub">${props.COUNTY || ''}${props.ED_ID ? ' &middot; ED ' + props.ED_ID : ''}</div>
