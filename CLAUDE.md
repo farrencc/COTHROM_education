@@ -163,10 +163,28 @@ reader can.
 
 ## 7. Interactivity doctrine
 
-- **Predict-then-reveal, not decoration.** An interactive must require the
-  reader to make a prediction or choice *before* it shows the answer. A
-  calculator that just computes on load teaches less than one that asks "how
-  many seats do you think Clare deserves?" first.
+- **Match the pattern to the interactive's purpose — there are two kinds.**
+  Before building, decide which one you have, because they carry different
+  obligations. The wrong pattern either teaches nothing or turns a tool into a
+  chore.
+  - *Test-able interactive.* Teaches one specific idea that has a right answer
+    the reader can commit to (e.g. "how many seats does Clare deserve?"). Here
+    the prediction **is** the learning, so predict-then-reveal is mandatory:
+    require a prediction or choice before showing the answer. A version that
+    just computes on load is decoration and teaches too little.
+  - *Knowledge-finder interactive.* A reference or exploration tool the reader
+    returns to as a source — a lookup calculator, a map, a browser (e.g. "what
+    is my constituency's variance?"). Forcing a prediction on every use makes a
+    reference feel like an exam. Offer the predict-then-reveal beat, but make it
+    **optional and dismissable**: a clearly visible control that switches the
+    widget into plain lookup mode. Default the beat *on* so a first-time reader
+    still meets it, but never trap a returning reader behind a quiz to read a
+    number they came for.
+  - When unsure which you have, ask: would a reader plausibly come back to use
+    this as a source rather than to learn one idea once? If yes, it is a
+    knowledge-finder and the prediction must be escapable. Decoration —
+    computing on load with no predict beat available at all — is forbidden in
+    both cases.
 - **Reuse the existing scaffolding.** Extend, don't replace:
   - Glossary terms: `<span class="cothrom-term" data-def="…">term</span>`
     (made keyboard-focusable by `cothrom.js`).

@@ -351,6 +351,33 @@ follow the Electoral Commission's 2023 review, but always check the official
             border-color: var(--cothrom-green);
             outline: none;
         }
+        .cothrom-mode {
+            margin-bottom: 20px;
+        }
+        .cothrom-mode-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--cothrom-ink-2);
+            cursor: pointer;
+        }
+        .cothrom-mode-toggle input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--cothrom-green);
+            cursor: pointer;
+        }
+        .cothrom-mode-toggle input:focus-visible {
+            outline: 2px solid var(--cothrom-green);
+            outline-offset: 2px;
+        }
+        .cothrom-mode-hint {
+            color: var(--cothrom-muted);
+            font-weight: 400;
+            font-style: italic;
+        }
         .cothrom-predict {
             display: none;
             background: var(--cothrom-surface);
@@ -585,6 +612,13 @@ follow the Electoral Commission's 2023 review, but always check the official
         <div class="cothrom-subtitle">Based on the Seat Equivalent Representation framework</div>
         <div class="cothrom-calc-banner">⚠ Illustrative teaching data — not official figures</div>
 
+        <div class="cothrom-mode">
+            <label class="cothrom-mode-toggle" for="cothrom-predict-toggle">
+                <input type="checkbox" id="cothrom-predict-toggle" checked>
+                <span>Quiz me before revealing <span class="cothrom-mode-hint">— uncheck to use as a plain lookup tool</span></span>
+            </label>
+        </div>
+
         <div class="cothrom-input-section">
             <label for="cothrom-constituency-select">Select a constituency:</label>
             <select id="cothrom-constituency-select" disabled>
@@ -700,13 +734,16 @@ follow the Electoral Commission's 2023 review, but always check the official
                 }
             }
 
-            // Show the predict-first gate for the currently selected constituency,
-            // hiding any results until the reader commits to a prediction.
+            // Respond to the current selection. In quiz mode this shows the
+            // predict-first gate and hides results until the reader commits; in
+            // lookup mode (toggle off) it skips the gate and reveals directly,
+            // so a reader using the tool as a reference isn't tested every time.
             function showPrediction() {
                 const select = document.getElementById('cothrom-constituency-select');
                 const predict = document.getElementById('cothrom-predict');
                 const results = document.getElementById('cothrom-results');
                 const note = document.getElementById('cothrom-predict-note');
+                const quizMode = document.getElementById('cothrom-predict-toggle').checked;
                 const name = select.value;
 
                 results.classList.remove('show');
@@ -720,6 +757,13 @@ follow the Electoral Commission's 2023 review, but always check the official
                 }
                 current = constituencyData.constituencies.find(c => c.name === name);
                 if (!current) { predict.classList.remove('show'); return; }
+
+                if (!quizMode) {
+                    // Lookup mode: no prediction step, reveal straight away.
+                    predict.classList.remove('show');
+                    reveal(null);
+                    return;
+                }
 
                 document.getElementById('cothrom-predict-q').textContent =
                     'Predict: at one TD per ' + constituencyData.nationalAverage.toLocaleString() +
@@ -841,6 +885,11 @@ follow the Electoral Commission's 2023 review, but always check the official
                 });
 
                 select.addEventListener('change', showPrediction);
+                // Switching modes re-applies to whatever is currently selected:
+                // unchecking reveals immediately, re-checking re-gates behind a
+                // fresh prediction.
+                document.getElementById('cothrom-predict-toggle')
+                    .addEventListener('change', showPrediction);
 
                 const predict = document.getElementById('cothrom-predict');
                 predict.querySelectorAll('.cothrom-predict-btn').forEach(function (btn) {
