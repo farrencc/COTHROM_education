@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contiguity - Visual Examples</title>
+    <title>Contiguity — Judge the Constituency</title>
     <style>
-        /* Reset and base styles */
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -19,55 +16,17 @@
             line-height: 1.6;
         }
 
-        /* Main container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* For embedded components - no extra padding */
-        .embedded {
-            padding: 10px;
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            margin: 0 0 20px 0;
-            color: var(--cothrom-ink);
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin: 40px 0 20px 0;
-            color: var(--cothrom-ink);
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--cothrom-surface);
-        }
-
-        h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 25px 0 15px 0;
-            color: var(--cothrom-ink);
-        }
+        .embedded { padding: 12px; }
 
         h4 {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             margin: 0 0 10px 0;
+            color: var(--cothrom-ink);
         }
 
-        p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 0 0 15px 0;
-        }
+        p { font-size: 14px; line-height: 1.6; margin: 0 0 14px 0; }
 
-        /* Micro labels */
         .micro-label {
             font-size: 11px;
             text-transform: uppercase;
@@ -76,448 +35,368 @@
             margin-bottom: 8px;
         }
 
-        /* Intro box */
-        .intro-box {
-            background: var(--cothrom-surface);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-
-        .intro-box p {
-            margin: 0;
-            font-size: 15px;
-        }
-
-        /* Section containers */
-        .section {
-            margin-bottom: 40px;
-        }
-
-        /* Comparison container - flex layout for side-by-side */
-        .comparison-container {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        @media (max-width: 768px) {
-            .comparison-container {
-                flex-direction: column;
-            }
-        }
-
-        /* Example cards */
-        .example-card {
-            flex: 1;
-            background: var(--cothrom-panel);
-            padding: 15px;
+        /* Illustrative-data banner (shared pattern; mirrors other widgets) */
+        .sample-banner {
+            background: var(--cothrom-warn-bg);
+            color: var(--cothrom-warn);
+            padding: 8px 16px;
+            font-size: 13px;
+            line-height: 1.4;
+            text-align: center;
+            border: 1px solid var(--cothrom-warn-border);
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 18px;
         }
 
-        .example-card.good {
-            border-left: 3px solid var(--cothrom-green);
-        }
-
-        .example-card.good h4 {
-            color: var(--cothrom-green);
-        }
-
-        .example-card.bad {
-            border-left: 3px solid var(--cothrom-accent-dark);
-        }
-
-        .example-card.bad h4 {
-            color: var(--cothrom-accent-dark);
-        }
-
-        .example-card.moderate {
-            border-left: 3px solid var(--cothrom-accent);
-        }
-
-        .example-card.moderate h4 {
-            color: var(--cothrom-accent);
-        }
-
-        /* Interactive sections */
-        .interactive-section {
+        .stage {
             background: var(--cothrom-surface);
-            padding: 20px;
             border-radius: 12px;
-            margin: 20px 0;
+            padding: 18px;
         }
 
-        /* Info boxes (important callouts) */
-        .info-box {
-            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-green) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-green-bright) 6%, transparent) 100%);
-            border-left: 3px solid var(--cothrom-green);
-            border-radius: 0 8px 8px 0;
-            padding: 15px;
-            margin: 20px 0;
+        .progress {
+            font-size: 12px;
+            color: var(--cothrom-muted);
+            margin-bottom: 6px;
         }
 
-        .info-box h4 {
-            color: var(--cothrom-green);
-            margin-bottom: 8px;
+        .prompt { font-weight: 600; margin: 0 0 14px 0; }
+
+        .map-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 18px;
         }
 
-        .info-box p {
-            margin: 0;
-        }
+        svg { max-width: 100%; height: auto; }
 
-        /* Warning boxes */
-        .warning-box {
-            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-accent) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-accent-dark) 6%, transparent) 100%);
-            border-left: 3px solid var(--cothrom-accent);
-            border-radius: 0 8px 8px 0;
-            padding: 15px;
-            margin: 20px 0;
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--cothrom-muted);
+            margin-bottom: 14px;
         }
+        .legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
 
-        .warning-box h4 {
-            color: var(--cothrom-accent);
-            margin-bottom: 8px;
+        .choices { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+        .predict-btn {
+            flex: 1 1 160px;
+            min-width: 140px;
+            background: var(--cothrom-panel);
+            color: var(--cothrom-ink);
+            border: 2px solid var(--cothrom-border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.15s ease, background 0.15s ease;
         }
+        .predict-btn:hover:not(:disabled) { border-color: var(--cothrom-green); }
+        .predict-btn:focus-visible { outline: 3px solid var(--cothrom-green); outline-offset: 2px; }
+        .predict-btn:disabled { cursor: default; opacity: 0.9; }
+        .predict-btn.chosen { border-color: var(--cothrom-ink); }
+        .predict-btn.correct { border-color: var(--cothrom-under); background: var(--cothrom-under-bg); }
+        .predict-btn.wrong { border-color: var(--cothrom-over); background: var(--cothrom-over-bg); }
 
-        .warning-box p {
-            margin: 0;
+        .verdict {
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            border-left: 4px solid var(--cothrom-border);
+            background: var(--cothrom-panel);
         }
+        .verdict.right { border-left-color: var(--cothrom-under); }
+        .verdict.nope { border-left-color: var(--cothrom-over); }
+        .verdict .tag {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        .verdict.right .tag { color: var(--cothrom-under); }
+        .verdict.nope .tag { color: var(--cothrom-over); }
+        .verdict p { margin: 8px 0 0; }
 
-        /* Buttons */
+        .nav-row { margin-top: 16px; text-align: center; }
         .btn {
             background: var(--cothrom-green-bright);
             color: var(--cothrom-panel);
             border: none;
             border-radius: 8px;
-            padding: 12px 20px;
+            padding: 11px 20px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s ease;
         }
+        .btn:hover { background: var(--cothrom-green); }
+        .btn:focus-visible { outline: 3px solid var(--cothrom-green); outline-offset: 2px; }
 
-        .btn:hover {
-            background: var(--cothrom-green);
-        }
+        .hidden { display: none; }
 
-        .btn:disabled {
-            background: var(--cothrom-border);
-            cursor: not-allowed;
-        }
-
-        .btn-secondary {
-            background: var(--cothrom-accent);
-        }
-
-        .btn-secondary:hover {
-            background: var(--cothrom-accent-dark);
-        }
-
-        /* Range sliders */
-        input[type="range"] {
-            width: 100%;
-            margin: 10px 0;
-            -webkit-appearance: none;
-            height: 8px;
-            background: var(--cothrom-border);
-            border-radius: 4px;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--cothrom-green-bright);
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: var(--cothrom-green-bright);
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        /* Visual bars */
-        .bar-container {
-            background: var(--cothrom-border);
-            border-radius: 4px;
-            height: 8px;
-            overflow: hidden;
-            margin: 5px 0;
-        }
-
-        .bar-fill {
-            height: 100%;
-            transition: width 0.5s ease;
-            border-radius: 4px;
-        }
-
-        .bar-fill.good {
-            background: var(--cothrom-green-bright);
-        }
-
-        .bar-fill.moderate {
-            background: var(--cothrom-accent);
-        }
-
-        .bar-fill.bad {
-            background: var(--cothrom-accent-dark);
-        }
-
-        /* Status indicators */
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .status.good {
-            background: color-mix(in srgb, var(--cothrom-green) 13%, transparent);
-            color: var(--cothrom-green);
-        }
-
-        .status.moderate {
-            background: color-mix(in srgb, var(--cothrom-accent) 13%, transparent);
-            color: var(--cothrom-accent);
-        }
-
-        .status.bad {
-            background: color-mix(in srgb, var(--cothrom-accent-dark) 13%, transparent);
-            color: var(--cothrom-accent-dark);
-        }
-
-        /* Data display */
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .data-item {
-            background: var(--cothrom-surface);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .data-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--cothrom-green);
-            margin: 0;
-        }
-
-        .data-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--cothrom-muted);
-            margin-top: 4px;
-        }
-
-        /* Metric row */
-        .metric-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--cothrom-border);
-        }
-
-        .metric-row:last-child {
-            border-bottom: none;
-        }
-
-        .metric-label {
-            color: var(--cothrom-muted);
-            font-size: 13px;
-        }
-
-        .metric-value {
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        /* Visualization containers */
-        .viz-container {
-            background: var(--cothrom-panel);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        /* SVG visualizations */
-        .svg-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* Utility classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .text-good {
-            color: var(--cothrom-green);
-        }
-
-        .text-bad {
-            color: var(--cothrom-accent-dark);
-        }
-
-        .text-moderate {
-            color: var(--cothrom-accent);
-        }
-
-        .mt-20 {
-            margin-top: 20px;
-        }
-
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .container, .embedded {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 26px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            .data-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Animation classes */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-in {
-            animation: fadeIn 0.3s ease forwards;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--cothrom-border);
-            margin-top: 60px;
-            padding-top: 20px;
-            font-size: 12px;
-            color: var(--cothrom-muted);
-        }
-
-        footer p {
-            margin: 5px 0;
-            font-size: 12px;
+        .done-note {
+            margin-top: 16px;
+            font-size: 14px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: var(--cothrom-tint-green);
+            border-left: 4px solid var(--cothrom-green);
         }
     </style>
-  <link rel="stylesheet" href="../cothrom.css">
-  <script src="widget-bootstrap.js"></script>
+    <link rel="stylesheet" href="../cothrom.css">
+    <script src="widget-bootstrap.js"></script>
 </head>
 <body>
-    <div class="embedded">
-        
-        <h4>Visual Examples: Contiguity</h4>
-
-        <div class="comparison-container">
-            <div class="example-card good">
-                <h4>CONTIGUOUS (Good)</h4>
-                <p class="micro-label">All EDs form one connected region</p>
-                <div class="svg-container">
-                    <svg viewBox="0 0 160 160" width="140" height="140">
-                        <!-- 3x3 grid of connected EDs -->
-                        <rect x="10" y="10" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="60" y="10" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="110" y="10" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="10" y="60" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="60" y="60" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="110" y="60" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="10" y="110" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="60" y="110" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                        <rect x="110" y="110" width="40" height="40" rx="4" fill="var(--cothrom-green-bright)" opacity="0.8"/>
-                    </svg>
-                </div>
-                <p style="text-align: center; font-size: 12px;">
-                    <span class="status good">&#10003; All EDs touch at least one other ED</span>
-                </p>
-            </div>
-
-            <div class="example-card bad">
-                <h4>NON-CONTIGUOUS (Bad)</h4>
-                <p class="micro-label">Constituency broken into isolated pieces</p>
-                <div class="svg-container">
-                    <svg viewBox="0 0 160 160" width="140" height="140">
-                        <!-- Scattered, disconnected EDs -->
-                        <rect x="10" y="10" width="40" height="40" rx="4" fill="var(--cothrom-accent-dark)" opacity="0.8"/>
-                        <rect x="110" y="10" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
-                        <rect x="60" y="60" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
-                        <rect x="10" y="60" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
-                        <rect x="110" y="60" width="40" height="40" rx="4" fill="var(--cothrom-accent-dark)" opacity="0.8"/>
-                        <rect x="60" y="110" width="40" height="40" rx="4" fill="var(--cothrom-accent-dark)" opacity="0.8"/>
-                        <rect x="10" y="110" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
-                        <rect x="110" y="110" width="40" height="40" rx="4" fill="var(--cothrom-border)" opacity="0.8"/>
-                        <text x="80" y="45" font-size="20" fill="var(--cothrom-accent-dark)" text-anchor="middle">?</text>
-                    </svg>
-                </div>
-                <p style="text-align: center; font-size: 12px;">
-                    <span class="status bad">&#10007; EDs separated by other constituencies</span>
-                </p>
-            </div>
-        </div>
-
-        <div class="example-card moderate" style="max-width: 400px; margin: 20px auto;">
-            <h4>ISLAND EXCEPTION</h4>
-            <p class="micro-label">Islands connect via ferry departure point</p>
-            <div class="svg-container">
-                <svg viewBox="0 0 200 120" width="200" height="120">
-                    <!-- Mainland EDs -->
-                    <rect x="10" y="40" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
-                    <rect x="50" y="40" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
-                    <rect x="50" y="80" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
-                    <!-- Water -->
-                    <rect x="95" y="10" width="50" height="105" fill="var(--cothrom-info-bg)" rx="4"/>
-                    <text x="120" y="60" font-size="10" fill="var(--cothrom-info)" text-anchor="middle">water</text>
-                    <!-- Island -->
-                    <rect x="155" y="40" width="35" height="35" rx="4" fill="var(--cothrom-accent)" opacity="0.8"/>
-                    <!-- Ferry route -->
-                    <line x1="85" y1="57" x2="155" y2="57" stroke="var(--cothrom-accent)" stroke-width="2" stroke-dasharray="5,5"/>
-                    <text x="120" y="80" font-size="8" fill="var(--cothrom-accent)" text-anchor="middle">ferry route</text>
-                </svg>
-            </div>
-            <p style="text-align: center; font-size: 12px;">
-                <span class="status moderate">&#10003; Acceptable exception</span>
-            </p>
-        </div>
-    
+<div class="embedded">
+    <div class="sample-banner">
+        <strong>Illustrative data:</strong> the maps below are simplified teaching shapes, not real Electoral Divisions.
     </div>
-    
+
+    <h4>You be the Commission: is this one legal constituency?</h4>
+    <p>A constituency must be <strong>contiguous</strong> — a single connected piece of territory.
+       Look at each candidate map, decide before you check, then see whether it passes.</p>
+
+    <div class="stage">
+        <div class="progress" id="progress" aria-live="polite">Example 1 of 3</div>
+        <p class="prompt" id="prompt"></p>
+
+        <div class="legend">
+            <span><span class="swatch" style="background: var(--cothrom-green-bright);"></span> This constituency</span>
+            <span><span class="swatch" style="background: var(--cothrom-border);"></span> Neighbouring areas</span>
+        </div>
+
+        <div class="map-wrap" id="mapWrap"></div>
+
+        <div class="choices" id="choices" role="group" aria-label="Your judgement"></div>
+
+        <div class="verdict hidden" id="verdict" aria-live="polite"></div>
+
+        <div class="nav-row hidden" id="navRow">
+            <button class="btn" id="nextBtn" type="button">Next example →</button>
+        </div>
+
+        <div class="done-note hidden" id="doneNote">
+            <strong>That is contiguity.</strong> Two of these maps are single connected pieces; one is not, and no
+            amount of population balancing can rescue it. This is why contiguity is a rule that is never bent in the
+            final map — a voter should never be marooned in a detached fragment of a constituency centred somewhere else.
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    // Grid model: 5 columns x 4 rows. Each scenario lists the cells that belong
+    // to "this constituency" (green). Orthogonally-adjacent green cells are
+    // connected; the reveal draws those links so the reader can see the pieces.
+    var COLS = 5, ROWS = 4, CELL = 58, GAP = 6, PAD = 10;
+
+    var scenarios = [
+        {
+            prompt: "Is this candidate constituency a single connected piece?",
+            cells: [[0,1],[1,1],[1,2],[2,2],[2,1],[3,1]],
+            water: null,
+            options: [
+                { label: "One connected piece", correct: true },
+                { label: "Broken into pieces", correct: false }
+            ],
+            right: "Correct — every shaded area touches at least one other along an edge, so you could walk across the whole constituency without leaving it. This one is legal.",
+            wrong: "Look again — every shaded area here touches a neighbour edge-to-edge, forming one unbroken chain. It <em>is</em> a single connected piece, so it passes."
+        },
+        {
+            prompt: "Is this candidate constituency a single connected piece?",
+            cells: [[0,0],[0,1],[4,2],[4,3]],
+            water: null,
+            options: [
+                { label: "One connected piece", correct: false },
+                { label: "Broken into pieces", correct: true }
+            ],
+            right: "Correct — there are two separate clumps with other areas in between. You cannot reach the top-left pair from the bottom-right pair without crossing another constituency, so this map is illegal however good its population numbers look.",
+            wrong: "Look again — there is a gap. The top-left pair and the bottom-right pair never touch, so this is two islands of territory, not one constituency. It fails the contiguity rule."
+        },
+        {
+            prompt: "The shaded island sits across open water from the mainland part. Can they be one legal constituency?",
+            cells: [[0,1],[0,2],[1,1],[1,2],[4,1]],
+            water: { col: 3 },
+            options: [
+                { label: "Yes — it can be legal", correct: true },
+                { label: "No — water breaks it", correct: false }
+            ],
+            right: "Correct — Ireland's inhabited islands are handled by a long-standing convention: an island is placed in the constituency its ferry sails from, so the sea crossing does not count as a break. The Aran Islands, Achill and others are contiguous by this rule.",
+            wrong: "Not quite — open water does not disqualify an island. The convention assigns each inhabited island to the constituency its ferry departs from, so island and mainland count as connected. Think of the Aran Islands."
+        }
+    ];
+
+    var idx = 0, answered = false;
+    var svgNS = "http://www.w3.org/2000/svg";
+
+    function xOf(c) { return PAD + c * (CELL + GAP); }
+    function yOf(r) { return PAD + r * (CELL + GAP); }
+
+    function drawMap(sc, reveal) {
+        var w = PAD * 2 + COLS * CELL + (COLS - 1) * GAP;
+        var h = PAD * 2 + ROWS * CELL + (ROWS - 1) * GAP;
+        var svg = document.createElementNS(svgNS, "svg");
+        svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+        svg.setAttribute("width", w);
+        svg.setAttribute("role", "img");
+        svg.setAttribute("aria-label", "A grid map of a candidate constituency.");
+
+        var isGreen = {};
+        sc.cells.forEach(function (p) { isGreen[p[0] + "," + p[1]] = true; });
+
+        // Water column (island scenario)
+        if (sc.water) {
+            var wx = xOf(sc.water.col) - GAP / 2;
+            var water = document.createElementNS(svgNS, "rect");
+            water.setAttribute("x", wx);
+            water.setAttribute("y", PAD - GAP / 2);
+            water.setAttribute("width", CELL + GAP);
+            water.setAttribute("height", ROWS * CELL + (ROWS - 1) * GAP + GAP);
+            water.setAttribute("fill", "var(--cothrom-info-bg)");
+            water.setAttribute("rx", "6");
+            svg.appendChild(water);
+            var wlabel = document.createElementNS(svgNS, "text");
+            wlabel.setAttribute("x", wx + (CELL + GAP) / 2);
+            wlabel.setAttribute("y", h / 2);
+            wlabel.setAttribute("text-anchor", "middle");
+            wlabel.setAttribute("font-size", "12");
+            wlabel.setAttribute("fill", "var(--cothrom-info)");
+            wlabel.textContent = "water";
+            svg.appendChild(wlabel);
+        }
+
+        // Cells
+        for (var r = 0; r < ROWS; r++) {
+            for (var c = 0; c < COLS; c++) {
+                if (sc.water && c === sc.water.col) continue;
+                var green = isGreen[r + "," + c];
+                var rect = document.createElementNS(svgNS, "rect");
+                rect.setAttribute("x", xOf(c));
+                rect.setAttribute("y", yOf(r));
+                rect.setAttribute("width", CELL);
+                rect.setAttribute("height", CELL);
+                rect.setAttribute("rx", "6");
+                rect.setAttribute("fill", green ? "var(--cothrom-green-bright)" : "var(--cothrom-border)");
+                rect.setAttribute("opacity", green ? "0.9" : "0.5");
+                svg.appendChild(rect);
+            }
+        }
+
+        // On reveal: draw connectors between adjacent green cells (skipping the
+        // water gap), plus a ferry line for the island scenario.
+        if (reveal) {
+            sc.cells.forEach(function (p) {
+                var r = p[0], c = p[1];
+                [[0, 1], [1, 0]].forEach(function (d) {
+                    var nr = r + d[0], nc = c + d[1];
+                    if (isGreen[nr + "," + nc] &&
+                        !(sc.water && (c === sc.water.col || nc === sc.water.col))) {
+                        var line = document.createElementNS(svgNS, "line");
+                        line.setAttribute("x1", xOf(c) + CELL / 2);
+                        line.setAttribute("y1", yOf(r) + CELL / 2);
+                        line.setAttribute("x2", xOf(nc) + CELL / 2);
+                        line.setAttribute("y2", yOf(nr) + CELL / 2);
+                        line.setAttribute("stroke", "var(--cothrom-green-dark)");
+                        line.setAttribute("stroke-width", "4");
+                        line.setAttribute("stroke-linecap", "round");
+                        svg.appendChild(line);
+                    }
+                });
+            });
+            if (sc.water) {
+                var ferry = document.createElementNS(svgNS, "line");
+                ferry.setAttribute("x1", xOf(2) + CELL / 2);
+                ferry.setAttribute("y1", yOf(1) + CELL / 2);
+                ferry.setAttribute("x2", xOf(4) + CELL / 2);
+                ferry.setAttribute("y2", yOf(4 - 3) + CELL / 2);
+                ferry.setAttribute("stroke", "var(--cothrom-accent)");
+                ferry.setAttribute("stroke-width", "3");
+                ferry.setAttribute("stroke-dasharray", "6,5");
+                svg.appendChild(ferry);
+                var flabel = document.createElementNS(svgNS, "text");
+                flabel.setAttribute("x", xOf(3) + CELL / 2);
+                flabel.setAttribute("y", yOf(1) + CELL / 2 - 8);
+                flabel.setAttribute("text-anchor", "middle");
+                flabel.setAttribute("font-size", "11");
+                flabel.setAttribute("fill", "var(--cothrom-accent)");
+                flabel.textContent = "ferry";
+                svg.appendChild(flabel);
+            }
+        }
+        return svg;
+    }
+
+    function render() {
+        var sc = scenarios[idx];
+        answered = false;
+        document.getElementById("progress").textContent =
+            "Example " + (idx + 1) + " of " + scenarios.length;
+        document.getElementById("prompt").innerHTML = sc.prompt;
+
+        var mapWrap = document.getElementById("mapWrap");
+        mapWrap.innerHTML = "";
+        mapWrap.appendChild(drawMap(sc, false));
+
+        var choices = document.getElementById("choices");
+        choices.innerHTML = "";
+        sc.options.forEach(function (opt, i) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "predict-btn";
+            b.textContent = opt.label;
+            b.addEventListener("click", function () { choose(i); });
+            choices.appendChild(b);
+        });
+
+        var v = document.getElementById("verdict");
+        v.className = "verdict hidden";
+        v.innerHTML = "";
+        document.getElementById("navRow").className = "nav-row hidden";
+        document.getElementById("doneNote").className = "done-note hidden";
+    }
+
+    function choose(i) {
+        if (answered) return;
+        answered = true;
+        var sc = scenarios[idx];
+        var opt = sc.options[i];
+        var btns = document.querySelectorAll("#choices .predict-btn");
+        btns.forEach(function (b, j) {
+            b.disabled = true;
+            if (j === i) b.classList.add("chosen", opt.correct ? "correct" : "wrong");
+            if (sc.options[j].correct && j !== i) b.classList.add("correct");
+        });
+
+        // Re-draw the map with connectivity revealed.
+        var mapWrap = document.getElementById("mapWrap");
+        mapWrap.innerHTML = "";
+        mapWrap.appendChild(drawMap(sc, true));
+
+        var v = document.getElementById("verdict");
+        v.className = "verdict " + (opt.correct ? "right" : "nope");
+        v.innerHTML = '<span class="tag">' + (opt.correct ? "✓ Right" : "✗ Not quite") +
+            '</span><p>' + (opt.correct ? sc.right : sc.wrong) + "</p>";
+
+        var navRow = document.getElementById("navRow");
+        if (idx < scenarios.length - 1) {
+            navRow.className = "nav-row";
+        } else {
+            document.getElementById("doneNote").className = "done-note";
+        }
+    }
+
+    document.getElementById("nextBtn").addEventListener("click", function () {
+        if (idx < scenarios.length - 1) { idx++; render(); }
+    });
+
+    render();
+})();
+</script>
 </body>
 </html>

@@ -1,750 +1,411 @@
 # Boundaries and You
 
-## Why This Matters
+In 2023, people who had spent their whole lives voting in a single Laois–Offaly
+constituency were told that at the next election there would be two: a Laois seat
+and an Offaly seat, each standing on its own. Nobody moved house. No law about who
+may vote changed. A committee simply redrew a line on a map, and with it changed
+which candidates appear on which ballot papers, which TDs answer to which voters,
+and whose local concerns get grouped with whose.
 
-Your constituency boundaries aren't permanent. They've changed before, and they'll change again.
-
-The question isn't **if** boundaries will be redrawn - it's **when**, **how**, and **will your area be affected**.
-
-Understanding boundary dynamics helps you anticipate changes and participate meaningfully when they're proposed.
-
-**Key Question:** When boundaries are redrawn next, will your Electoral District stay in the same constituency, or move to a different one?
+That line-drawing happens every few years, and it is not done freely. The Electoral
+Commission works to a rulebook. What makes redistricting genuinely hard — and what
+the rest of this course is built on — is that the rules in that book pull against
+one another. You cannot obey all of them at once, so every map is a set of choices
+about which rule to bend. This lesson walks through the main rules the Commission
+must weigh — that a constituency stays in
+<span class="cothrom-term" data-def="The requirement that a constituency be a single connected piece of territory, with no detached fragments.">one connected piece</span>,
+that it has a
+<span class="cothrom-term" data-def="Whether a constituency has a sensible, roughly rounded shape rather than a long, snaking one drawn to capture particular voters.">sensible compact shape</span>,
+and that it respects
+<span class="cothrom-term" data-def="A constituency crossing a county line so that one seat contains people from more than one county; the law asks the Commission to avoid these where practicable.">county boundaries</span>
+— and then shows you exactly where those rules collide.
 
 ---
 
-## Boundaries Are Alive
+## The 2023 review, and the rulebook behind it
 
-Here's something that might surprise you: **Ireland's constituencies have been revised around ten times since 1980.**
+Start with what the last review actually did. The 2023 review, the first run by the
+new statutory Electoral Commission, grew the Dáil from 160 TDs to **174**, spread
+across **43** constituencies instead of 39. Because it added seats faster than the
+population had grown, the average number of people each TD represents *fell*, from
+about **32,182** to **29,593**. And it deliberately put county lines back together:
+of ten places where the old map had cut across a county boundary, the new map
+repaired **seven** — the Laois–Offaly split being one of them (Electoral Commission,
+2023).
 
-In practice, the constituencies are reviewed after most censuses - roughly every five years - even though the Constitution only *requires* a revision at least once every twelve years.
-
-### A Living Map
-
-Think of Ireland's electoral map not as a static picture, but as a **time-lapse video**:
-- Electoral Divisions (the building blocks) stay mostly the same
-- But which EDs group together into constituencies? **That changes constantly.**
-- Population shifts drive these changes - people moving to cities, new housing developments, demographic trends
-
-**Historical revisions (approximate):**
-
-```
-1980 → 1983 → 1990 → 1995 → 1998 → 2005 → 2009 → 2013 → 2017 → 2023
-```
-
-**Pattern Recognition:**
-- **Major reviews**: Significant changes affecting many constituencies
-- **Minor reviews**: Targeted adjustments to specific areas
-- **Frequency**: After each census; the most recent (2023) was the first carried out by the new statutory Electoral Commission
-
-<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
+```{raw} html
+<div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
   <iframe
     src="../../_static/interactive/boundaries_timeline.html"
-    width="100%"
-    height="520"
-    frameborder="0"
-    style="display: block;"
-    title="Timeline of Ireland's Dáil size and constituencies">
+    title="Timeline of the size of the Dáil and the number of constituencies"
+    loading="lazy"
+    width="100%" height="520" style="border:0;display:block;">
   </iframe>
 </div>
-
-```{note}
-**Fun Fact:** If you were born in 1980, your constituency boundaries have likely changed at least twice in your lifetime - possibly three or four times depending on where you live.
 ```
+
+None of that was optional tinkering. Under the Electoral Reform Act 2022, a review
+has to observe a fixed list of conditions, and the reason redistricting is difficult
+is hidden in how that list is written. Some of the conditions are stated as absolutes.
+The Dáil must have between 171 and 181 members; every constituency must return either
+three, four or five TDs; and every constituency must be contiguous. These are not
+negotiable, and the Commission never publishes a map that breaks them.
+
+The rest of the list is written with an escape hatch. County boundaries are to be
+respected *as far as practicable*. The Commission is to have regard to geographic
+considerations and to continuity with the existing arrangement — again, so far as it
+reasonably can. That phrase, "as far as practicable", is doing enormous work. It is a
+statutory admission that these goals sometimes cannot be met, and that when they
+conflict, someone has to decide which one gives way. Every argument you will ever hear
+about a boundary review is really an argument about how that discretion was used.
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">The rules a review must follow come in two kinds. Which of these may the Commission actually bend?</p>
+  <button class="cothrom-opt" data-explain="No — contiguity is one of the hard rules. A final map is never allowed to contain a constituency in disconnected pieces.">The requirement that each constituency be a single connected piece</button>
+  <button class="cothrom-opt" data-explain="No — the 3-to-5 seats-per-constituency rule is fixed in law; the Commission cannot draw a 2-seat or 6-seat constituency.">The rule that a constituency elects 3, 4 or 5 TDs</button>
+  <button class="cothrom-opt" data-explain="Right — county boundaries are to be respected 'as far as practicable'. That escape hatch is exactly what lets population balance override county lines when the two collide.">Respecting county boundaries</button>
+</div>
+```
+
+The three sections that follow take the rules one at a time, starting with the one
+that is never bent.
 
 ---
 
-## What Drives Boundary Changes?
+## Rule one: a constituency has to be in one piece
 
-Boundaries don't change randomly. Three main forces drive redistricting:
+Picture a proposed constituency made of one busy suburb in north Dublin and one
+parish in west Cork, with two hundred kilometres of other people's constituencies in
+between. It could be drawn to have exactly the right population. It would still be
+illegal, because you could not travel from one half of it to the other without
+leaving it. That is the whole of the idea called **contiguity**: a constituency has to
+be a single connected piece of ground.
 
-### 1. Population Growth and Decline
+Formally, if you imagine every
+<span class="cothrom-term" data-def="The small building-block area — a few thousand people — that constituencies are assembled from; the subject of the previous lesson.">Electoral Division</span>
+as a tile and join two tiles wherever they share a border, a constituency is contiguous
+when all of its tiles form one connected group — you can step from any tile to any other
+without lifting your foot off the constituency. A final map is required to satisfy this everywhere, with no
+exceptions bargained away for the sake of better population numbers.
 
-**The National Pattern:**
+The interesting case is the coast. Ireland has inhabited islands — the Aran Islands,
+Achill, and others — that plainly cannot touch the mainland along a land border. The
+convention that resolves this is simple: an island is placed in the constituency its
+ferry sails from, and the sea crossing is treated as a connection rather than a break.
+The rule bends to geography without abandoning the principle that a voter should be
+able to reach the rest of their own constituency.
 
-Ireland's population has grown significantly since 1980 (CSO census counts):
-- **1981**: about 3.44 million people
-- **2002**: about 3.92 million people
-- **2022**: **5,149,139** people
-
-But this growth hasn't been even:
-
-**Growing Areas:**
-- **Dublin region**: +50% population growth since 1990
-- **Commuter counties**: Kildare, Meath, Wicklow expanding rapidly
-- **Urban centers**: Cork, Galway, Limerick growing steadily
-
-**Stable/Declining Areas:**
-- **Rural midlands**: Population mostly stable
-- **Border counties**: Some areas seeing population decline
-- **Remote areas**: Young people moving to cities for work
-
-**What This Means for Boundaries:**
-
-```
-┌─────────────────────────────────────────────────┐
-│  REDISTRICTING PRESSURE MAP                     │
-│                                                  │
-│  🔴 High pressure (population growing fast)     │
-│     → Need more TDs or larger constituencies    │
-│     → Boundaries must expand or split           │
-│                                                  │
-│  🟡 Moderate pressure (some growth)             │
-│     → Minor boundary adjustments likely         │
-│     → ED swaps with neighbors                   │
-│                                                  │
-│  🟢 Low pressure (stable population)            │
-│     → Boundaries might stay the same            │
-│     → But could be affected by neighbors        │
-│                                                  │
-│  🔵 Negative pressure (population declining)    │
-│     → Might lose TDs                            │
-│     → Could merge with neighboring constituencies│
-└─────────────────────────────────────────────────┘
-```
-
-**Real Example - Dublin's Expansion:**
-
-Over the decades:
-- Dublin's share of TDs has grown steadily as its population has risen
-- New constituencies have been created (e.g. Dublin Fingal was split into Fingal East and Fingal West in the 2023 review)
-- Existing constituencies are repeatedly redrawn
-- Commuter counties (Kildare, Meath) have absorbed growth spillover
-
-### 2. The Constitutional Requirement
-
-**Article 16.2.4° of the Irish Constitution** requires that the constituencies be revised **at least once every twelve years**, with regard to changes in the distribution of the population.
-
-**Why This Matters:**
-
-Even if population stayed perfectly stable (which it never does), boundaries would still be reviewed regularly. This prevents:
-- **Gerrymandering**: Manipulating boundaries for political advantage
-- **Stagnation**: Boundaries becoming outdated
-- **Unfairness**: Growing inequities in representation
-
-**Recent Review Timeline:**
-
-```
-2011 Census → 2012 Review → 2013 Implementation
-    ↓
-2016 Census → 2017 Review → 2017 Implementation
-    ↓
-2022 Census → 2023 Review → 2024 Implementation (proposed)
-    ↓
-2027 Census → 2028/2029 Review → ???
-```
-
-**Your Takeaway:** The next boundary review is **never more than 6-7 years away**. If you're reading this in 2024, expect another review around 2028-2029.
-
-### 3. Legal Requirements and Constraints
-
-The Electoral Commission must balance **multiple legal requirements** when drawing boundaries:
-
-#### Population Variance: the ±5% target and the ±8% reality
-
-Traditionally the Commission aimed to keep every constituency within about **±5%** of the national average people-per-TD. For the 2023 review it worked to a **wider tolerance — some constituencies reaching around ±8%** — to absorb strong population growth while reinstating broken county boundaries. Clare, the most extreme case, ends up about 8% above the average.
-
-**The Math:**
-```
-National average:      29,593 people per TD (2023 review)
-
-±5% target band:       28,113 to 31,073 per TD
-±8% actual (2023):     27,226 to 31,960 per TD
-
-At the ±5% target band:
-  3-seat constituency: 84,339 to 93,219 people
-  4-seat constituency: 112,452 to 124,292 people
-  5-seat constituency: 140,565 to 155,365 people
-```
-
-**Interactive: See How Variance Works**
-
-<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
-  <iframe
-    src="../../_static/interactive/boundaries_variance.html"
-    width="100%"
-    height="520"
-    frameborder="0"
-    style="display: block;"
-    title="Population Variance Interactive">
-  </iframe>
-</div>
-
-**The Challenge:**
-
-With 3,440 EDs of varying sizes, creating constituencies that:
-- Meet the variance requirement
-- Use whole EDs (can't split them)
-- Stay geographically contiguous
-- Respect county boundaries
-
-...is mathematically **extremely difficult**.
-
-```{important}
-**The 2023 review and the ±5% tolerance:**
-
-Previous reviews aimed to keep every constituency within about **±5%** of the national average. To absorb strong population growth *and* repair broken county lines, the 2023 Commission worked to a **wider tolerance, with some constituencies reaching around ±8%**.
-
-This sparked debate:
-- **Commission's view**: a wider band was needed to add 14 TDs and reinstate county boundaries at the same time
-- **Critics' view**: not enough alternatives were explored before settling on one map
-- **Opportunity**: could algorithmic tools help explore more options systematically?
-```
-
-#### Contiguity (Must Be Connected)
-
-Every constituency must be **geographically contiguous** - you must be able to travel from any ED to any other ED in the same constituency without leaving the constituency.
-
-**Why This Matters:**
-
-You can't have a constituency that includes EDs in Dublin **and** Cork with nothing in between. Each constituency must be a connected shape.
-
-**Island Challenge:**
-
-Ireland has inhabited islands (Aran Islands, Achill, etc.). They must connect to the mainland constituency somehow - usually defined as "the constituency the ferry departs from."
-
-**Visual Examples: Contiguity**
-
-<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
-  <iframe
-    src="../../_static/interactive/boundaries_contiguity.html"
-    width="100%"
-    height="420"
-    frameborder="0"
-    style="display: block;"
-    title="Contiguity Visual Examples">
-  </iframe>
-</div>
-
-#### Compactness (Avoiding Gerrymandering)
-
-Constituencies should have **compact, regular shapes** - not long, winding "salamander" configurations that snake across the map to include specific voters.
-
-**Why This Matters:**
-
-- Compact shapes prevent deliberate manipulation (gerrymandering)
-- Makes constituencies easier to understand and navigate
-- Reflects natural geographic communities
-- Reduces travel distances for TDs
-
-**The Origin of "Gerrymandering":**
-
-The term comes from Governor Elbridge Gerry + "salamander", describing the twisted shape of a manipulated district in 1812 Massachusetts.
-
-**Visual Examples: Compactness**
-
-<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
-  <iframe
-    src="../../_static/interactive/boundaries_compactness.html"
-    width="100%"
-    height="520"
-    frameborder="0"
-    style="display: block;"
-    title="Compactness Visual Examples">
-  </iframe>
-</div>
-
-#### County Boundaries (Respect Where Possible)
-
-The Electoral Act mentions respecting **county boundaries** where possible, but this isn't absolute.
-
-**The Tension:**
-
-- **Tradition**: Counties have strong cultural identity in Ireland
-- **Mathematics**: Perfect population balance often requires breaking counties
-- **Politics**: Breaking counties is always controversial
-
-**Visual Examples: County Boundary Scenarios**
-
-<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
-  <iframe
-    src="../../_static/interactive/boundaries_counties.html"
-    width="100%"
-    height="620"
-    frameborder="0"
-    style="display: block;"
-    title="County Boundaries Visual Examples">
-  </iframe>
-</div>
-
-**Case Study - Laois-Offaly:**
-
-Laois and Offaly had been paired together in various combinations for years:
-- **Recent history**: the two counties shared a single constituency, which had grown too large for its seats
-- **2023 recommendation**: **separate them into single-county constituencies** — a 3-seat **Laois** and a 3-seat **Offaly** — as part of the Commission's wider move to *reinstate* county boundaries
-- **The trade-off**: restoring clean county lines here meant other county boundaries elsewhere still had to be crossed; every fix shifts the pressure somewhere else
+Before reading on, try the three cases below. For each candidate map, decide whether
+it is a single legal piece before you check — the tool scores your judgement against
+the rule.
 
 ```{warning}
-**There Is No Perfect Solution:**
-
-You cannot always achieve:
-- Perfect population equality AND
-- Keep all counties intact AND
-- Create compact shapes AND
-- Avoid breaking community ties
-
-Every boundary decision involves **trade-offs**. The question is: which trade-offs are acceptable?
+**Illustrative data.** The maps in the tool below are simplified teaching shapes, not
+real Electoral Divisions. Check the [Electoral Commission](https://www.electoralcommission.ie/)
+for the actual constituency maps.
 ```
 
-**Interactive: Explore Trade-Offs**
+```{raw} html
+<div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_contiguity.html"
+    title="Judge whether each candidate constituency is a single connected piece"
+    loading="lazy"
+    width="100%" height="560" style="border:0;display:block;">
+  </iframe>
+</div>
+```
 
-<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
+Why insist on this so strictly? Because a detached fragment has no real political
+existence. If your Electoral Division were stranded inside a constituency centred fifty
+kilometres away, your TD would have no reason to know your roads, your school places or
+your flooding, and no natural way to reach you. Contiguity is the rule that keeps a
+constituency a *place* rather than a spreadsheet of convenient population totals.
+
+---
+
+## Rule two: no shapes that reach too far
+
+In 1812 the governor of Massachusetts, Elbridge Gerry, signed off on an electoral
+district so contorted — bending around the edge of the state to gather up the right
+voters — that a newspaper cartoonist drew it as a salamander and called it a
+"Gerry-mander". The shape was legal and connected. It was also a giveaway: no honest
+attempt to group a community produces an outline like that. The word has meant
+manipulating boundaries for advantage ever since, and it is the reason the second rule
+exists.
+
+That rule is **compactness**. A gerrymander betrays itself through its shape, so if you
+prefer constituencies that are reasonably rounded and reject ones that snake across the
+map on thin tendrils, you make deliberate manipulation much harder to hide. Compactness
+is the map's defence against the salamander.
+
+To reject a shape you first have to score it, and the common way is to compare a
+constituency to its *convex hull* — the tightest band you could stretch around it, as if
+with an elastic. A blob that nearly fills its own band scores close to 1; a shape that
+wanders around inside a much larger band scores far lower. The exact formula is less
+important than the instinct it puts numbers on: does this look like a place, or like a
+shape drawn around a result?
+
+Test that instinct now. Each pair below shows two shapes; pick the one you think is
+*more* compact before the scores appear.
+
+```{warning}
+**Illustrative data.** The shapes and compactness scores in the tool below are teaching
+examples, not measurements of real constituencies.
+```
+
+```{raw} html
+<div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_compactness.html"
+    title="Pick the more compact shape in each pair, then compare scores"
+    loading="lazy"
+    width="100%" height="600" style="border:0;display:block;">
+  </iframe>
+</div>
+```
+
+The second pair carries the sting in the tail. A low compactness score is a reason to
+look harder, not a conviction. A constituency that faithfully follows a jagged coastline
+or bends to keep an awkward county whole will score below a perfect circle — not because
+anyone cheated, but because the real geography is not round. Compactness has to be
+weighed against the other rules, which is precisely why it is written as a goal to pursue
+rather than a threshold to clear. Hold that thought: it is the first hint that the rules
+disagree with each other.
+
+---
+
+## Rule three: don't cut a county unless you must
+
+Return to Laois and Offaly. For years the two shared a single constituency, and to a lot
+of people that pairing never sat right: someone from Portlaoise would say plainly that
+they were *from Laois*, even as their ballot lumped them in with Offaly. County is one of
+the strongest senses of belonging in Irish life, older than the State and stronger for
+many people than any party. When a constituency crosses a county line — a **county
+breach** — it asks voters on one side to share their single most local contest with
+people they may feel little in common with.
+
+The law recognises this. County boundaries are among the things a review must respect,
+though only "as far as practicable". So the Commission counts breaches and works to keep
+the count down, but it is allowed to cut a county when the sums leave no realistic
+alternative. The 2023 review leaned hard in the county-friendly direction: it repaired
+seven of the ten breaches on the old map, separating Laois from Offaly among them. Yet it
+could not repair all ten. Constituencies such as Sligo–Leitrim and Cavan–Monaghan remain
+stitched across county lines, and the review even created a new cross-county seat,
+Wicklow–Wexford, because the population arithmetic in that corner of the country did not
+add up any other way.
+
+Explore how that arithmetic forces the choice. The tool below lets you see, before you
+commit to a split, what keeping a county whole does to the population balance around it.
+
+```{warning}
+**Illustrative data.** The scenarios in the tool below use simplified teaching figures,
+not official Electoral Commission numbers.
+```
+
+```{raw} html
+<div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
+  <iframe
+    src="../../_static/interactive/boundaries_counties.html"
+    title="County boundary scenarios and the trade-offs they force"
+    loading="lazy"
+    width="100%" height="620" style="border:0;display:block;">
+  </iframe>
+</div>
+```
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="1">
+  <p class="cothrom-quiz-q">The 2023 review reinstated county boundaries where it could — but not everywhere. Why not?</p>
+  <button class="cothrom-opt" data-explain="No — the Commission does count and try to minimise county breaches. The reason some survive is not indifference.">Because the Commission does not actually track how many counties are split</button>
+  <button class="cothrom-opt" data-explain="Right — with a fixed 3-to-5 seats per constituency and a target population per seat, some counties simply cannot be made to fit on their own, so the line has to cross.">Because keeping every county whole would break other fixed rules, like population balance and the 3–5 seat range</button>
+  <button class="cothrom-opt" data-explain="No — the Constitution sets a minimum of three seats per constituency and the Act allows up to five; the Commission cannot draw a constituency of any size it likes to fit a county.">Because a constituency can be made any size, so counties could always be kept whole if the Commission chose</button>
+</div>
+```
+
+---
+
+## Why the rules can't all win
+
+You now have the pieces to see the thing this whole course turns on. The rules are not
+just numerous; specific pairs of them are in direct tension, so satisfying one *costs*
+you the other. Two of those tensions matter most.
+
+**Equal representation pulls against keeping counties whole.** From the last lesson,
+recall <span class="cothrom-term" data-def="How far a constituency's people-per-TD sits from the national average; the official gauge of representational fairness.">variance</span>
+— how far a constituency's population per TD strays from the national average.
+Traditionally the Commission tried to hold every constituency within about ±5% of that
+average. But the tighter you draw that band, the fewer ways there are to arrange whole
+counties into constituencies that land inside it — a county of the wrong size has to be
+split to hit a narrow population target. In 2023 the Commission wanted two things at once:
+absorb a decade of population growth *and* put county lines back together. It could not do
+both inside ±5%, so it widened its working tolerance to roughly ±8%, with the most
+stretched constituency, Clare, sitting about 8% above the national average (Irish Times,
+2023). Laois–Offaly is this tension made concrete: reuniting each county with itself was
+bought by accepting constituencies further from perfect population equality. Tighten the
+population rule and you break more counties; protect the counties and you loosen the
+population rule. There is no setting that satisfies both.
+
+**Stability pulls against equal representation, too.** People value continuity — not
+being shuffled into a new contest with new candidates every few years — and the law asks
+the Commission to have regard to it. But Ireland's population does not sit still. Dublin
+and the commuter counties keep growing while other areas grow slowly or shrink, so a map
+that was perfectly balanced in one census is out of balance by the next. Keeping the lines
+still and keeping every vote equal are, over time, simply incompatible: honour continuity
+and representation drifts unequal; restore equal representation and you must move the lines
+again. Every review is a negotiation between those two, which is why the map is never
+finished.
+
+Try steering between the goals yourself. As you push one slider up, watch what the tool is
+forced to give up elsewhere — there is no position that scores full marks on everything.
+
+```{warning}
+**Illustrative data.** The tool below is a simplified teaching model of the trade-offs, not
+official Electoral Commission figures.
+```
+
+```{raw} html
+<div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
   <iframe
     src="../../_static/interactive/boundaries_tradeoffs.html"
-    width="100%"
-    height="480"
-    frameborder="0"
-    style="display: block;"
-    title="Trade-Offs Interactive">
+    title="Adjust priorities and see the trade-offs between competing boundary criteria"
+    loading="lazy"
+    width="100%" height="480" style="border:0;display:block;">
   </iframe>
 </div>
+```
+
+```{raw} html
+<div class="cothrom-quiz" data-answer="0">
+  <p class="cothrom-quiz-q">The 2023 review widened its population tolerance from about ±5% to about ±8%. What was it buying with that extra room?</p>
+  <button class="cothrom-opt" data-explain="Right — a looser population band left enough flexibility to reinstate county boundaries while still absorbing population growth. The two goals were in tension, and equal-population had to give a little.">The room to reinstate county boundaries while still absorbing population growth</button>
+  <button class="cothrom-opt" data-explain="No — a wider variance band means constituencies are allowed to sit further from the national average, which is less equal on population, not more.">More equal populations across constituencies</button>
+  <button class="cothrom-opt" data-explain="No — contiguity is a hard rule that is never traded away; the variance tolerance has nothing to do with it.">Permission to draw a few constituencies in disconnected pieces</button>
+</div>
+```
+
+This is the idea to carry forward. Later modules will make each of these criteria precise
+and even put a single map through them all at once, but the shape of the problem never
+changes: there is no perfect map, only a defensible balance of competing goods. Even
+"restoring" a county boundary, which sounds purely virtuous, spends something — a little
+population equality, a settled political community — somewhere else.
 
 ---
 
-## Could Your Area Change Next Time?
+## So will your area move?
 
-While we can't predict the future with certainty, we can identify **risk factors** that suggest your area might see boundary changes.
+Because the map is redrawn to chase a moving population, some Electoral Divisions are far
+more exposed than others, and you can reason about your own. An ED sitting on the edge of
+its constituency is the easiest kind to reassign — like a jigsaw piece on the rim, it can
+be handed to a neighbour without disturbing the interior — whereas one buried in the middle
+is expensive to move because everything around it has to shift too. Exposure rises again if
+your constituency already sits far from the national average, since those are the first the
+next review will try to rebalance, and it rises if your area is building fast, because new
+estates can push a balanced constituency over the line within a single census. Living in a
+constituency stitched across a county boundary adds its own pressure: each review faces the
+question of whether this is finally the time to reunite the counties. And smaller three-seat
+constituencies are simply easier to reconfigure than five-seat ones, so they are more often
+in play.
 
-### High-Risk Indicators
+One caution ties this back to the ripple you saw in the trade-offs tool: even a constituency
+with textbook-perfect population can be redrawn because a *neighbour* had to be fixed. Moving
+EDs out of an overfull constituency pushes them into the one next door, which may then need to
+shed some of its own, and so the adjustment travels. Your own numbers being fine is no
+guarantee of a quiet review.
 
-Your ED is **more likely** to see changes if:
-
-#### 1. Edge of Constituency
-
-**Why?**
-- EDs at constituency borders are easiest to swap
-- Like pieces at the edge of a jigsaw puzzle
-- Moving an interior ED creates cascading changes
-
-**Check Your Risk:**
-- Open a constituency map
-- Find your ED
-- Is it touching another constituency's border?
-  - **Yes**: Higher risk
-  - **No**: Lower risk
-
-#### 2. Current Constituency Has High Variance
-
-**Why?**
-- Constituencies outside ±5% are prime candidates for adjustment
-- Commission will target these first in next review
-- Your ED might be moved to rebalance
-
-**Check Your Risk:**
-```
-┌─────────────────────────────────────────────────┐
-│  VARIANCE CHECK                                  │
-│                                                  │
-│  Your Constituency: Dublin Bay South            │
-│  Population per TD: 30,244                      │
-│  National Average: 29,593                       │
-│  Variance: +2.2%                                │
-│                                                  │
-│  Risk Level: 🟡 MODERATE                        │
-│                                                  │
-│  Within acceptable range, but close enough      │
-│  that population changes could push it over.    │
-└─────────────────────────────────────────────────┘
+```{warning}
+**Illustrative data.** The estimator below is a simplified teaching tool. It does not use
+your real constituency's official figures — treat its output as a way to reason about
+exposure, not a prediction.
 ```
 
-#### 3. Rapid Local Development
-
-**Why?**
-- New housing estates add hundreds of voters
-- Can quickly push a constituency over variance limits
-- Creates pressure for boundary adjustment
-
-**Examples:**
-- New apartment complexes near Dublin/Cork
-- Growing commuter towns (Naas, Navan, Bray)
-- Major redevelopment areas (Dublin docklands)
-
-**Check Your Risk:**
-- Look around your area
-- See construction cranes?
-- New estates being built?
-- Population growing noticeably?
-
-#### 4. Cross-County Constituencies
-
-**Why?**
-- Already controversial (broke county identity once)
-- Extra scrutiny in each review
-- Pressure to "restore" county integrity
-
-**Examples of cross-county constituencies (2024):**
-- Sligo-Leitrim
-- Cavan-Monaghan
-- Wicklow-Wexford (a new constituency created in the 2023 review)
-
-**Check Your Risk:**
-- Is your constituency named after two counties?
-- Does it span traditional county boundaries?
-- Was this controversial when it was created?
-
-#### 5. Small Population Constituencies
-
-**Why?**
-- 3-seat constituencies are easier to merge or reconfigure
-- More flexibility than 5-seat constituencies
-- Natural targets when reducing total TD numbers
-
-**Check Your Risk:**
-- How many seats in your constituency?
-  - **3 seats**: Higher flexibility (higher risk)
-  - **4 seats**: Moderate
-  - **5 seats**: Lower flexibility (lower risk)
-
-### Interactive Risk Assessment
-
-<div style="margin: 1.5rem 0; border: 1px solid var(--cothrom-border); border-radius: 8px; overflow: hidden;">
+```{raw} html
+<div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
   <iframe
     src="../../_static/interactive/change_risk.html"
-    width="100%"
-    height="780"
-    frameborder="0"
-    style="display: block;"
-    title="Boundary-change risk estimator">
+    title="Estimate how exposed your Electoral Division is to a boundary change"
+    loading="lazy"
+    width="100%" height="780" style="border:0;display:block;">
   </iframe>
 </div>
-
----
-
-## The Ripple Effect
-
-Here's something many people don't realize: **changing one constituency affects others**.
-
-### The Cascade
-
-Imagine the Commission needs to fix a constituency that's +7% over the average:
-
-```
-Step 1: Remove EDs from over-populated constituency
-   ↓
-Step 2: Those EDs must go somewhere
-   ↓
-Step 3: Receiving constituency might now be too large
-   ↓
-Step 4: Must adjust that constituency too
-   ↓
-Step 5: Chain reaction across region
-```
-
-**Real Example - The 2023 Dublin Shuffle:**
-
-The 2023 recommendations showed this ripple effect clearly:
-- Dublin population growth required redistribution
-- Dublin Fingal was significantly over variance
-- Moving EDs from Fingal to Dublin West
-- Dublin West then needed to shed EDs to Dublin Mid-West
-- Dublin Mid-West adjustments affected Dublin South-Central
-- Five constituencies changed because of one initial imbalance
-
-```{note}
-**Why This Matters To You:**
-
-Even if your constituency has perfect variance, you might still see boundary changes because of problems in **neighboring constituencies**. The system is interconnected.
 ```
 
 ---
 
-## The Human Impact of Boundary Changes
+## Having your say
 
-This isn't just about lines on a map. When boundaries change, **real consequences** follow:
+The next review is not far off. The Constitution requires the constituencies to be revised
+at least once every twelve years, and in practice the Commission reviews them after most
+censuses; with the next census due in 2027, another review around 2028–2029 is a reasonable
+expectation. When it comes, it will not be decided behind closed doors. Reviews open a public
+submission window in which anyone — an individual, a residents' association, a county council —
+can argue in writing for how the lines in their area should be drawn.
 
-### What Changes for Voters
+What this lesson gives you is the vocabulary to make a submission that lands. A plea to "keep
+our area together" is easy to set aside; an argument that a proposed line breaches a county
+boundary that could be respected within the population tolerance, or that a shape is needlessly
+non-compact, speaks the same language the Commission has to answer in. Knowing which rules are
+hard and which can bend tells you which arguments are worth making.
 
-**If your ED moves to a different constituency:**
+---
 
-#### 1. Different Candidates
+## Key takeaways
 
-You'll vote in a **different electoral contest**:
-- New candidates to research
-- Different party dynamics
-- Different incumbent TDs (or no incumbent advantage)
+- A review follows a rulebook, and the rulebook splits in two: hard rules (171–181 TDs, 3–5
+  seats per constituency, contiguity) that are never broken, and "as far as practicable" goals
+  (county boundaries, geography, continuity) that can be.
+- Contiguity means a constituency is one connected piece; inhabited islands join the constituency
+  their ferry sails from.
+- Compactness rejects the snaking shapes that signal gerrymandering — but a low score can also come
+  from an honest coastline or county line, so it is a flag, not a verdict.
+- County breaches are counted and minimised; the 2023 review repaired seven of ten, yet some, like
+  Sligo–Leitrim, had to remain.
+- The rules are in genuine tension: tighter population equality forces more county breaks, and
+  keeping lines stable forces representation to drift unequal as people move. There is no perfect map.
+- Your Electoral Division is more exposed to change if it sits on a constituency edge, in an unbalanced
+  or fast-growing area, in a cross-county seat, or in a small constituency — and even a balanced area can
+  be moved to fix a neighbour.
 
-**Example:**
-```
-Before: Dublin Bay South
-Your choices: Kate O'Connell (FG), Jim O'Callaghan (FF),
-              Ivana Bacik (Lab), Eamon Ryan (GP)
-
-After: Dublin Rathdown
-Your choices: Completely different slate of candidates
-              representing different communities
-```
-
-#### 2. Different Community
-
-Your political "neighborhood" shifts:
-- Different local issues dominate
-- Different community concerns
-- Different constituent base for your TD
-
-**Example:**
-```
-Before: Urban South Dublin constituency
-Issues: Public transport, housing density,
-        city center amenities
-
-After: Suburban/mixed constituency
-Issues: School places, car infrastructure,
-        green space preservation
-```
-
-#### 3. Different Representation
-
-Your voice joins a different electorate:
-- Your priorities might be majority or minority in new constituency
-- Your TD represents a different mix of voters
-- Your vote's impact on outcomes changes
-
-### What Changes for Communities
-
-#### Loss of Identity
-
-Many Irish people strongly identify with their county:
-- Breaking counties feels like breaking identity
-- "I'm from Laois" - but voting in Kildare?
-- Generational connection to place disrupted
-
-#### Disrupted Relationships
-
-Long-standing TD-constituent relationships can break:
-- "I've always contacted my Laois-Offaly TD about local issues"
-- After boundary change: "They no longer represent me"
-- Need to build new relationships from scratch
-
-#### Changed Priorities
-
-Different constituencies prioritize different issues:
-- Rural constituency: Farming, rural broadband, local services
-- Urban constituency: Housing, public transport, density
-- Mixed constituency: Competing priorities, potential conflict
-
-**Case Study - The Laois-Offaly Debate:**
-
-The 2023 review *separated* the combined Laois-Offaly constituency back into single-county Laois and Offaly constituencies. Even a change like this, made to *respect* county identity, involves trade-offs:
-
-**In favour:**
-- Restores clean county boundaries that many voters value
-- Each county gets a constituency tied to its own identity
-
-**Against:**
-- Ends a long-standing shared Laois-Offaly political community
-- Smaller 3-seat constituencies can be less proportional than a larger combined one
-- Rebalancing here pushes population pressure onto neighbouring constituencies
-
-**Both sides have valid points.** This is the fundamental tension in redistricting: even "restoring" a boundary is a value choice, not a purely technical one.
-
-```{important}
-**Democracy Requires Trade-offs:**
-
-There is **no perfect map**. Every choice prioritizes some values over others:
-- Population equality vs. county integrity
-- Compact shapes vs. community cohesion
-- Mathematical fairness vs. historical continuity
-
-Understanding this is the first step to participating meaningfully in redistricting debates.
+```{raw} html
+<div class="cothrom-quiz" data-answer="2">
+  <p class="cothrom-quiz-q">A friend says a proposed constituency "must be gerrymandered because it's such a weird, stretched-out shape." Using what this lesson covered, what's the fairest response?</p>
+  <button class="cothrom-opt" data-explain="Too credulous — a non-compact shape is a reason to look closer, not proof. Coastlines and county lines produce stretched shapes for honest reasons.">They're right: any non-compact shape is proof of manipulation</button>
+  <button class="cothrom-opt" data-explain="Too dismissive — shape genuinely is the classic fingerprint of gerrymandering, which is exactly why compactness is a criterion. It shouldn't be waved away.">Shape is irrelevant; only population numbers matter</button>
+  <button class="cothrom-opt" data-explain="Right — an odd shape is a flag worth investigating, but it may reflect a coastline, an island link, or a respected county boundary rather than manipulation. Check why the shape is the way it is.">It's worth checking — but the shape might follow a coastline or protect a county line, so oddness alone isn't proof</button>
+</div>
 ```
 
 ---
 
-## How to Stay Informed
-
-Boundary changes are coming. Here's how to stay ahead:
-
-### 1. Know When the Next Review Is
-
-**Current Pattern:**
-- Census every 5 years (2027 is next)
-- Review typically 1-2 years after census
-- Implementation before next general election
-
-**Next Expected Review:** 2028-2029
-
-### 2. Monitor Census Results
-
-When census results are published:
-- Check your area's population growth/decline
-- Compare with national averages
-- Identify constituencies likely to need adjustment
-
-**CSO publishes data by ED** - you can look up your specific area.
-
-### 3. Watch for Commission Announcements
-
-The Electoral Commission announces reviews publicly:
-- Start date of review process
-- Call for public submissions
-- Timeline for recommendations
-- Publication of draft recommendations
-
-**Sign up for notifications** from the Electoral Commission website.
-
-### 4. Participate in Public Consultations
-
-When a review is announced:
-- **Public submission period**: Typically 6-8 weeks
-- **Anyone can submit**: Citizens, groups, organizations
-- **Format**: Written submissions explaining your views
-- **Hearings**: Sometimes public hearings where you can speak
-
-### 5. Engage Your Representatives
-
-Your current TDs care about boundary changes:
-- Contact them with concerns
-- Ask their position on proposals
-- Request they raise issues in Dáil
-- Join community groups making submissions
-
----
-
-## Preparing for the Next Review
-
-What can you do **now** to prepare for the next boundary review?
-
-### Build Your Knowledge
-
-✅ **Understand your current situation:**
-- Know your ED
-- Know your constituency
-- Know the current variance
-- Know the historical changes
-
-✅ **Learn the system:**
-- Understand the constraints (variance, contiguity, county boundaries)
-- Recognize trade-offs
-- Read past Commission reports
-- Study the reasoning used
-
-### Connect with Your Community
-
-✅ **Talk to neighbors:**
-- Share knowledge about EDs and boundaries
-- Discuss community priorities
-- Build consensus on what matters locally
-- Prepare for collective voice
-
-✅ **Engage with local organizations:**
-- Residents' associations
-- Community groups
-- Local development committees
-- They often make formal submissions
-
-### Develop Your Critical Thinking
-
-✅ **Question claims:**
-- When Commission says "minimal county breaks" - can you verify?
-- When politicians claim "gerrymandering" - do the numbers support it?
-- When maps are proposed - what trade-offs were made?
-
-✅ **Evaluate evidence:**
-- Look at actual population data
-- Compare alternative configurations
-- Ask: "What other options exist?"
-
-This educational pathway is designed to give you these skills.
-
----
-
-## What's Next in Your Learning Journey
-
-You've now completed **Module 0: Why This Matters**. You understand:
-
-✅ **Why boundaries affect you personally** (Lesson 1)
-✅ **Where you fit in the system** (Lesson 2)
-✅ **How and why boundaries change** (Lesson 3)
-
-**Next Stop: Module 1 - Understanding the Basics**
-
-In Module 1, we'll dive deeper into:
-- **The Irish electoral system**: How PR-STV works and why it matters for boundaries
-- **Reading electoral maps**: How to interpret boundary maps and population data
-- **Defining "fair representation"**: What does population equality really mean?
-
-This foundation will prepare you for understanding **the rules and trade-offs** that make redistricting so challenging.
-
-```{note}
-**Module 1 is coming soon.** For now, revisit the interactive tools in this module or
-head back to the [course overview](../index.md) to explore what's available.
-```
-
----
-
-## Key Takeaways
-
-```{important}
-**Remember These Points:**
-
-1. **Boundaries change regularly** - Ireland has revised its constituencies around ten times since 1980, typically after each census
-
-2. **Three forces drive changes** - Population shifts, constitutional requirements, and legal constraints
-
-3. **Your risk depends on multiple factors** - Edge location, constituency variance, local development, county status, and size
-
-4. **Changes create ripple effects** - Fixing one constituency often requires adjusting several others
-
-5. **Real people are affected** - Boundary changes impact community identity, representation, and political relationships
-
-6. **No perfect solution exists** - Every map involves trade-offs between competing values
-
-7. **You can participate** - Public consultations allow citizen input, but only if you understand the system
-
-8. **Next review is coming** - Likely 2028-2029 based on 2027 census
-```
-
----
-
-## Check Your Understanding
+## Check your understanding
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="1">
   <p class="cothrom-quiz-q">What did the 2023 review do about county boundaries?</p>
-  <button class="cothrom-opt" data-explain="The opposite happened — the review reduced the number of county breaches.">Broke more counties apart to balance population</button>
-  <button class="cothrom-opt" data-explain="Correct — it reinstated county boundaries, removing seven of the ten existing breaches (for example, separating Laois-Offaly).">Reinstated county boundaries, removing 7 of 10 existing breaches</button>
-  <button class="cothrom-opt" data-explain="County boundaries changed significantly in this review; they were not left untouched.">Left county boundaries completely unchanged</button>
+  <button class="cothrom-opt" data-explain="The opposite happened — the review reduced the number of county breaches rather than adding to them.">Broke more counties apart to balance population</button>
+  <button class="cothrom-opt" data-explain="Correct — it reinstated county boundaries, repairing seven of the ten existing breaches (for example, separating Laois from Offaly).">Reinstated county boundaries, repairing 7 of 10 existing breaches</button>
+  <button class="cothrom-opt" data-explain="County boundaries changed substantially in this review; they were not left untouched.">Left county boundaries completely unchanged</button>
 </div>
 
 <div class="cothrom-quiz" data-answer="2">
   <p class="cothrom-quiz-q">Which of these makes your ED <em>more</em> likely to move constituency at the next review?</p>
-  <button class="cothrom-opt" data-explain="Interior EDs are harder to move because moving them splits a constituency.">Sitting deep in the interior of a constituency</button>
+  <button class="cothrom-opt" data-explain="Interior EDs are harder to move, because reassigning one splits the constituency around it.">Sitting deep in the interior of a constituency</button>
   <button class="cothrom-opt" data-explain="A constituency already close to the national average is under less pressure to change.">Being in a constituency with near-zero variance</button>
-  <button class="cothrom-opt" data-explain="Right — EDs on a constituency border, in a high-variance or fast-growing area, are the easiest to reassign.">Sitting on a constituency border in a fast-growing area</button>
+  <button class="cothrom-opt" data-explain="Right — an ED on a constituency border, in a high-variance or fast-growing area, is the easiest to reassign.">Sitting on a constituency border in a fast-growing area</button>
 </div>
 ```
-
-## Reflection Questions
-
-Before moving to Module 1, take a moment to reflect:
-
-1. **How would you feel if your ED moved to a different constituency tomorrow?**
-   - What would you gain? What would you lose?
-   - Which matters more: population equality or community continuity?
-
-2. **If you were on the Electoral Commission, what would you prioritize?**
-   - Perfect variance within ±5%?
-   - Never breaking counties?
-   - Compact constituency shapes?
-   - Respecting community boundaries?
-
-3. **What questions would you ask about proposed boundary changes?**
-   - What alternatives were considered?
-   - Why this configuration over others?
-   - What trade-offs were made?
-
-There are no "right" answers - these questions reflect genuine value judgments that Irish democracy must grapple with every few years.
-
-**Understanding this complexity is the first step to meaningful participation.**
 
 ---
 
 ## Sources
 
-- [Electoral Commission — Constituency Review Report 2023](https://www.electoralcommission.ie/constituency-reviews/)
-- [Electoral Commission press release, August 2023 — reinstatement of county boundaries](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/)
-- [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/)
-- [Bunreacht na hÉireann (Constitution of Ireland), Article 16](https://www.irishstatutebook.ie/eli/cons/en)
-- [The Irish Times — on the ±5%/±8% variance change (1 Sept 2023)](https://www.irishtimes.com/politics/2023/09/01/electoral-commission-may-face-legal-challenge-over-constituency-review/)
+- [Electoral Commission — Constituency Review Report 2023](https://www.electoralcommission.ie/constituency-reviews/) (174 TDs across 43 constituencies; average 29,593 per TD)
+- [Electoral Commission press release, August 2023 — 14 more TDs and the reinstatement of county boundaries](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/) (average down from 32,182; seven of ten county breaches removed)
+- [The Irish Times — on the ±5%/±8% variance change (1 Sept 2023)](https://www.irishtimes.com/politics/2023/09/01/electoral-commission-may-face-legal-challenge-over-constituency-review/) (working tolerance widened; variances up to about 8%)
+- [Electoral Reform Act 2022](https://www.irishstatutebook.ie/eli/2022/act/30/enacted/en/html) (terms of reference: 171–181 members, 3–5 seats, contiguity, county boundaries and continuity as far as practicable)
+- [Bunreacht na hÉireann (Constitution of Ireland), Article 16](https://www.irishstatutebook.ie/eli/cons/en) (constituencies revised at least once every twelve years)
+- [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/) (population 5,149,139)
 
 ---
 

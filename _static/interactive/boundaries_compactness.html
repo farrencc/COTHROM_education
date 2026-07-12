@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compactness - Shape Comparison</title>
+    <title>Compactness — Spot the Suspicious Shape</title>
     <style>
-        /* Reset and base styles */
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -19,426 +16,11 @@
             line-height: 1.6;
         }
 
-        /* Main container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .embedded { padding: 12px; }
 
-        /* For embedded components - no extra padding */
-        .embedded {
-            padding: 10px;
-        }
+        h4 { font-size: 15px; font-weight: 600; margin: 0 0 10px 0; color: var(--cothrom-ink); }
+        p { font-size: 14px; line-height: 1.6; margin: 0 0 14px 0; }
 
-        /* Typography */
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            margin: 0 0 20px 0;
-            color: var(--cothrom-ink);
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin: 40px 0 20px 0;
-            color: var(--cothrom-ink);
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--cothrom-surface);
-        }
-
-        h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 25px 0 15px 0;
-            color: var(--cothrom-ink);
-        }
-
-        h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0 0 10px 0;
-        }
-
-        p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 0 0 15px 0;
-        }
-
-        /* Micro labels */
-        .micro-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--cothrom-muted);
-            margin-bottom: 8px;
-        }
-
-        /* Intro box */
-        .intro-box {
-            background: var(--cothrom-surface);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-
-        .intro-box p {
-            margin: 0;
-            font-size: 15px;
-        }
-
-        /* Section containers */
-        .section {
-            margin-bottom: 40px;
-        }
-
-        /* Comparison container - flex layout for side-by-side */
-        .comparison-container {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        @media (max-width: 768px) {
-            .comparison-container {
-                flex-direction: column;
-            }
-        }
-
-        /* Example cards */
-        .example-card {
-            flex: 1;
-            background: var(--cothrom-panel);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .example-card.good {
-            border-left: 3px solid var(--cothrom-green);
-        }
-
-        .example-card.good h4 {
-            color: var(--cothrom-green);
-        }
-
-        .example-card.bad {
-            border-left: 3px solid var(--cothrom-accent-dark);
-        }
-
-        .example-card.bad h4 {
-            color: var(--cothrom-accent-dark);
-        }
-
-        .example-card.moderate {
-            border-left: 3px solid var(--cothrom-accent);
-        }
-
-        .example-card.moderate h4 {
-            color: var(--cothrom-accent);
-        }
-
-        /* Interactive sections */
-        .interactive-section {
-            background: var(--cothrom-surface);
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-
-        /* Info boxes (important callouts) */
-        .info-box {
-            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-green) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-green-bright) 6%, transparent) 100%);
-            border-left: 3px solid var(--cothrom-green);
-            border-radius: 0 8px 8px 0;
-            padding: 15px;
-            margin: 20px 0;
-        }
-
-        .info-box h4 {
-            color: var(--cothrom-green);
-            margin-bottom: 8px;
-        }
-
-        .info-box p {
-            margin: 0;
-        }
-
-        /* Warning boxes */
-        .warning-box {
-            background: linear-gradient(135deg, color-mix(in srgb, var(--cothrom-accent) 6%, transparent) 0%, color-mix(in srgb, var(--cothrom-accent-dark) 6%, transparent) 100%);
-            border-left: 3px solid var(--cothrom-accent);
-            border-radius: 0 8px 8px 0;
-            padding: 15px;
-            margin: 20px 0;
-        }
-
-        .warning-box h4 {
-            color: var(--cothrom-accent);
-            margin-bottom: 8px;
-        }
-
-        .warning-box p {
-            margin: 0;
-        }
-
-        /* Buttons */
-        .btn {
-            background: var(--cothrom-green-bright);
-            color: var(--cothrom-panel);
-            border: none;
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .btn:hover {
-            background: var(--cothrom-green);
-        }
-
-        .btn:disabled {
-            background: var(--cothrom-border);
-            cursor: not-allowed;
-        }
-
-        .btn-secondary {
-            background: var(--cothrom-accent);
-        }
-
-        .btn-secondary:hover {
-            background: var(--cothrom-accent-dark);
-        }
-
-        /* Range sliders */
-        input[type="range"] {
-            width: 100%;
-            margin: 10px 0;
-            -webkit-appearance: none;
-            height: 8px;
-            background: var(--cothrom-border);
-            border-radius: 4px;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--cothrom-green-bright);
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: var(--cothrom-green-bright);
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        /* Visual bars */
-        .bar-container {
-            background: var(--cothrom-border);
-            border-radius: 4px;
-            height: 8px;
-            overflow: hidden;
-            margin: 5px 0;
-        }
-
-        .bar-fill {
-            height: 100%;
-            transition: width 0.5s ease;
-            border-radius: 4px;
-        }
-
-        .bar-fill.good {
-            background: var(--cothrom-green-bright);
-        }
-
-        .bar-fill.moderate {
-            background: var(--cothrom-accent);
-        }
-
-        .bar-fill.bad {
-            background: var(--cothrom-accent-dark);
-        }
-
-        /* Status indicators */
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .status.good {
-            background: color-mix(in srgb, var(--cothrom-green) 13%, transparent);
-            color: var(--cothrom-green);
-        }
-
-        .status.moderate {
-            background: color-mix(in srgb, var(--cothrom-accent) 13%, transparent);
-            color: var(--cothrom-accent);
-        }
-
-        .status.bad {
-            background: color-mix(in srgb, var(--cothrom-accent-dark) 13%, transparent);
-            color: var(--cothrom-accent-dark);
-        }
-
-        /* Data display */
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .data-item {
-            background: var(--cothrom-surface);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .data-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--cothrom-green);
-            margin: 0;
-        }
-
-        .data-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--cothrom-muted);
-            margin-top: 4px;
-        }
-
-        /* Metric row */
-        .metric-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--cothrom-border);
-        }
-
-        .metric-row:last-child {
-            border-bottom: none;
-        }
-
-        .metric-label {
-            color: var(--cothrom-muted);
-            font-size: 13px;
-        }
-
-        .metric-value {
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        /* Visualization containers */
-        .viz-container {
-            background: var(--cothrom-panel);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        /* SVG visualizations */
-        .svg-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* Utility classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .text-good {
-            color: var(--cothrom-green);
-        }
-
-        .text-bad {
-            color: var(--cothrom-accent-dark);
-        }
-
-        .text-moderate {
-            color: var(--cothrom-accent);
-        }
-
-        .mt-20 {
-            margin-top: 20px;
-        }
-
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .container, .embedded {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 26px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            .data-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Animation classes */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-in {
-            animation: fadeIn 0.3s ease forwards;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--cothrom-border);
-            margin-top: 60px;
-            padding-top: 20px;
-            font-size: 12px;
-            color: var(--cothrom-muted);
-        }
-
-        footer p {
-            margin: 5px 0;
-            font-size: 12px;
-        }
-        /* Illustrative-data banner (shared pattern; mirrors ed_finder.html) */
         .sample-banner {
             background: var(--cothrom-warn-bg);
             color: var(--cothrom-warn);
@@ -446,125 +28,304 @@
             font-size: 13px;
             line-height: 1.4;
             text-align: center;
-            border-bottom: 1px solid var(--cothrom-warn-border);
+            border: 1px solid var(--cothrom-warn-border);
+            border-radius: 8px;
+            margin-bottom: 18px;
+        }
+
+        .stage { background: var(--cothrom-surface); border-radius: 12px; padding: 18px; }
+        .progress { font-size: 12px; color: var(--cothrom-muted); margin-bottom: 6px; }
+        .prompt { font-weight: 600; margin: 0 0 14px 0; }
+
+        .pair {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .shape-btn {
+            flex: 1 1 200px;
+            max-width: 260px;
+            background: var(--cothrom-panel);
+            border: 2px solid var(--cothrom-border);
+            border-radius: 12px;
+            padding: 14px;
+            cursor: pointer;
+            text-align: center;
+            transition: border-color 0.15s ease;
+            color: var(--cothrom-ink);
+        }
+        .shape-btn:hover:not(:disabled) { border-color: var(--cothrom-green); }
+        .shape-btn:focus-visible { outline: 3px solid var(--cothrom-green); outline-offset: 2px; }
+        .shape-btn:disabled { cursor: default; }
+        .shape-btn .shape-name { font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+        .shape-btn svg { width: 130px; height: 130px; max-width: 100%; }
+
+        .score-line { margin-top: 10px; font-size: 13px; min-height: 22px; color: var(--cothrom-muted); }
+        .score-num { font-weight: 700; font-size: 18px; }
+        .shape-btn.more .score-num { color: var(--cothrom-under); }
+        .shape-btn.less .score-num { color: var(--cothrom-over); }
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+        .shape-btn.more .badge { background: var(--cothrom-under-bg); color: var(--cothrom-under); }
+        .shape-btn.less .badge { background: var(--cothrom-over-bg); color: var(--cothrom-over); }
+        .shape-btn.picked { border-color: var(--cothrom-ink); }
+
+        .verdict {
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            border-left: 4px solid var(--cothrom-border);
+            background: var(--cothrom-panel);
+        }
+        .verdict.right { border-left-color: var(--cothrom-under); }
+        .verdict.nope { border-left-color: var(--cothrom-over); }
+        .verdict .tag { font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+        .verdict.right .tag { color: var(--cothrom-under); }
+        .verdict.nope .tag { color: var(--cothrom-over); }
+        .verdict p { margin: 8px 0 0; }
+
+        .hull-key {
+            font-size: 12px;
+            color: var(--cothrom-muted);
+            text-align: center;
+            margin-top: 10px;
+        }
+        .hull-key .dash {
+            display: inline-block;
+            width: 20px;
+            border-top: 2px dashed var(--cothrom-accent);
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        .nav-row { margin-top: 16px; text-align: center; }
+        .btn {
+            background: var(--cothrom-green-bright);
+            color: var(--cothrom-panel);
+            border: none;
+            border-radius: 8px;
+            padding: 11px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn:hover { background: var(--cothrom-green); }
+        .btn:focus-visible { outline: 3px solid var(--cothrom-green); outline-offset: 2px; }
+
+        .hidden { display: none; }
+
+        .done-note {
+            margin-top: 16px;
+            font-size: 14px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: var(--cothrom-tint-green);
+            border-left: 4px solid var(--cothrom-green);
         }
     </style>
-  <link rel="stylesheet" href="../cothrom.css">
-  <script src="widget-bootstrap.js"></script>
+    <link rel="stylesheet" href="../cothrom.css">
+    <script src="widget-bootstrap.js"></script>
 </head>
 <body>
-    <div class="embedded">
-        <div class="sample-banner">
-            <strong>Illustrative data:</strong> simplified teaching figures, not official Electoral Commission numbers.
-        </div>
-
-        <h4>Shape Comparison: Compactness</h4>
-
-        <div class="comparison-container">
-            <div class="example-card good">
-                <h4>COMPACT (Good)</h4>
-                <div class="svg-container">
-                    <svg viewBox="0 0 120 120" width="100" height="100">
-                        <!-- Roughly circular shape -->
-                        <path d="M60,15 Q95,15 100,50 Q105,85 70,100 Q35,105 20,70 Q10,35 45,20 Q55,15 60,15"
-                              fill="var(--cothrom-green-bright)" opacity="0.7" stroke="var(--cothrom-green)" stroke-width="2"/>
-                    </svg>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Shape</span>
-                    <span class="metric-value">Nearly circular</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Compactness Score</span>
-                    <span class="metric-value text-good">0.85</span>
-                </div>
-                <p style="font-size: 12px; margin-top: 10px; text-align: center;">
-                    <span class="status good">&#10003; Natural, easy to navigate</span>
-                </p>
-            </div>
-
-            <div class="example-card moderate">
-                <h4>MODERATE</h4>
-                <div class="svg-container">
-                    <svg viewBox="0 0 120 120" width="100" height="100">
-                        <!-- Boot-like shape -->
-                        <path d="M30,20 L80,20 L90,40 L85,70 L100,90 L80,100 L50,95 L40,80 L25,85 L20,60 L30,20"
-                              fill="var(--cothrom-accent)" opacity="0.7" stroke="var(--cothrom-accent)" stroke-width="2"/>
-                    </svg>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Shape</span>
-                    <span class="metric-value">Follows geography</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Compactness Score</span>
-                    <span class="metric-value text-moderate">0.62</span>
-                </div>
-                <p style="font-size: 12px; margin-top: 10px; text-align: center;">
-                    <span class="status moderate">&#9888; Acceptable but less ideal</span>
-                </p>
-            </div>
-
-            <div class="example-card bad">
-                <h4>GERRYMANDERED (Bad)</h4>
-                <div class="svg-container">
-                    <svg viewBox="0 0 120 120" width="100" height="100">
-                        <!-- Snake-like gerrymandered shape -->
-                        <path d="M10,30 L25,25 L35,35 L50,20 L70,25 L85,15 L100,25 L110,40 L95,50 L100,65 L85,75 L70,65 L55,80 L40,70 L25,85 L15,70 L25,55 L10,45 L10,30"
-                              fill="var(--cothrom-accent-dark)" opacity="0.7" stroke="var(--cothrom-accent-dark)" stroke-width="2"/>
-                    </svg>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Shape</span>
-                    <span class="metric-value">Highly elongated</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Compactness Score</span>
-                    <span class="metric-value text-bad">0.23</span>
-                </div>
-                <p style="font-size: 12px; margin-top: 10px; text-align: center;">
-                    <span class="status bad">&#10007; Suspicious, likely manipulated</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- Compactness measurement explanation -->
-        <div class="interactive-section">
-            <h4>How Compactness is Measured</h4>
-            <p>
-                One common method compares the constituency area to its "convex hull" - the smallest
-                convex shape that contains all EDs (imagine stretching a rubber band around the shape).
-            </p>
-            <div class="viz-container">
-                <div style="text-align: center;">
-                    <svg viewBox="0 0 300 150" width="300" height="150">
-                        <!-- Constituency shape -->
-                        <path d="M50,30 L100,25 L130,50 L120,90 L80,110 L40,95 L30,60 Z"
-                              fill="var(--cothrom-green-bright)" opacity="0.6" stroke="var(--cothrom-green)" stroke-width="2"/>
-                        <!-- Convex hull overlay -->
-                        <path d="M30,25 L130,25 L135,90 L80,115 L25,95 L30,25"
-                              fill="none" stroke="var(--cothrom-accent-dark)" stroke-width="2" stroke-dasharray="5,3"/>
-
-                        <!-- Labels -->
-                        <text x="80" y="70" font-size="10" fill="var(--cothrom-ink)" text-anchor="middle">Constituency</text>
-
-                        <!-- Formula -->
-                        <text x="220" y="50" font-size="11" fill="var(--cothrom-ink)" text-anchor="middle">Compactness =</text>
-                        <line x1="170" y1="70" x2="270" y2="70" stroke="var(--cothrom-ink)" stroke-width="1"/>
-                        <text x="220" y="65" font-size="10" fill="var(--cothrom-green)" text-anchor="middle">Constituency Area</text>
-                        <text x="220" y="85" font-size="10" fill="var(--cothrom-accent-dark)" text-anchor="middle">Convex Hull Area</text>
-                        <text x="220" y="110" font-size="10" fill="var(--cothrom-muted)" text-anchor="middle">Range: 0 (worst) to 1 (circle)</text>
-                    </svg>
-
-                    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 10px; font-size: 11px;">
-                        <span><span style="display: inline-block; width: 12px; height: 12px; background: var(--cothrom-green-bright); border-radius: 2px; margin-right: 4px;"></span> Constituency</span>
-                        <span><span style="display: inline-block; width: 12px; height: 3px; background: var(--cothrom-accent-dark); margin-right: 4px; border-style: dashed;"></span> Convex Hull</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+<div class="embedded">
+    <div class="sample-banner">
+        <strong>Illustrative data:</strong> the shapes and compactness scores below are teaching examples, not measurements of real constituencies.
     </div>
-    
+
+    <h4>Which shape would you trust?</h4>
+    <p><strong>Compactness</strong> asks whether a constituency has a sensible, roughly rounded shape rather than a
+       long, snaking one that reaches out to capture particular voters. Before you see any score, pick the shape in
+       each pair you think is <em>more</em> compact.</p>
+
+    <div class="stage">
+        <div class="progress" id="progress" aria-live="polite">Pair 1 of 2</div>
+        <p class="prompt" id="prompt">Which of these two constituencies is more compact?</p>
+
+        <div class="pair" id="pair" role="group" aria-label="Pick the more compact shape"></div>
+
+        <div class="hull-key hidden" id="hullKey">
+            <span class="dash"></span> dashed outline = the "convex hull", the tightest band you could stretch around the shape
+        </div>
+
+        <div class="verdict hidden" id="verdict" aria-live="polite"></div>
+
+        <div class="nav-row hidden" id="navRow">
+            <button class="btn" id="nextBtn" type="button">Next pair →</button>
+        </div>
+
+        <div class="done-note hidden" id="doneNote">
+            <strong>That is compactness — and its catch.</strong> A snaking shape with no natural reason for its
+            wanderings is the classic fingerprint of gerrymandering, so optimising for compactness steers the map away
+            from manipulation. But a modest score is not proof of foul play: a constituency that faithfully follows a
+            jagged coastline or an awkward county line will score lower for entirely honest reasons. That is exactly
+            why the Commission weighs compactness against the other criteria instead of chasing the roundest possible
+            shapes.
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    // Illustrative shapes. "hull" is a hand-drawn convex-hull outline for the
+    // reveal; "score" is an illustrative compactness value in [0,1].
+    var rounds = [
+        {
+            prompt: "Which of these two constituencies is more compact?",
+            shapes: [
+                {
+                    name: "Shape A — rounded",
+                    fill: "path",
+                    path: "M65,15 Q105,18 108,58 Q112,98 72,110 Q32,112 18,74 Q10,34 48,20 Q56,15 65,15 Z",
+                    hull: "M48,20 L72,15 L105,18 L112,60 L108,90 L72,110 L28,104 L14,60 L18,40 Z",
+                    score: 0.86
+                },
+                {
+                    name: "Shape B — snaking",
+                    fill: "path",
+                    path: "M10,28 L28,22 L38,34 L54,18 L74,26 L90,14 L108,26 L114,42 L98,50 L110,66 L92,78 L74,66 L58,84 L42,72 L24,88 L14,72 L26,56 L10,44 Z",
+                    hull: "M10,28 L90,14 L114,42 L110,66 L58,84 L24,88 L10,44 Z",
+                    score: 0.24
+                }
+            ],
+            explainRight: "Right. Shape&nbsp;A is close to round: it nearly fills the band you could stretch around it, so its score is high. Shape&nbsp;B doubles back on itself again and again — the tell-tale look of a boundary drawn to scoop up scattered pockets of voters. This is the shape compactness exists to rule out.",
+            explainWrong: "Not this time. Shape&nbsp;B doubles back on itself repeatedly and fills only a fraction of the band you could stretch around it — the classic gerrymander fingerprint. Shape&nbsp;A, nearly round, is the more compact of the two."
+        },
+        {
+            prompt: "Both of these are less than perfectly round. Which is still the more compact?",
+            shapes: [
+                {
+                    name: "Shape C — hugs a coastline",
+                    fill: "path",
+                    path: "M28,22 L74,20 L96,40 L88,68 L104,92 L70,104 L44,96 L36,78 L20,84 L22,54 Z",
+                    hull: "M28,22 L74,20 L96,40 L104,92 L70,104 L36,90 L20,84 L22,54 Z",
+                    score: 0.61
+                },
+                {
+                    name: "Shape D — thin and reaching",
+                    fill: "path",
+                    path: "M18,54 L44,48 L52,26 L66,30 L60,52 L86,44 L96,58 L70,66 L92,84 L74,94 L58,74 L44,96 L36,74 L18,66 Z",
+                    hull: "M52,26 L66,30 L96,58 L92,84 L44,96 L18,66 L18,54 Z",
+                    score: 0.33
+                }
+            ],
+            explainRight: "Right. Shape&nbsp;C is not a circle, but its lower score has an honest cause — it is tracing a real coastline. Shape&nbsp;D is thin and sends fingers out in several directions with no such excuse, so it scores worse. A modest score is only a flag to investigate, not a verdict.",
+            explainWrong: "Look again. Shape&nbsp;D is spindly and throws out fingers in several directions, filling little of its surrounding band. Shape&nbsp;C is chunkier — it bends only to follow a real coastline — so it is the more compact, and the less suspicious, of the two."
+        }
+    ];
+
+    var idx = 0, answered = false;
+    var svgNS = "http://www.w3.org/2000/svg";
+
+    function buildSvg(shape, reveal) {
+        var svg = document.createElementNS(svgNS, "svg");
+        svg.setAttribute("viewBox", "0 0 128 128");
+        svg.setAttribute("role", "img");
+        svg.setAttribute("aria-label", shape.name);
+        var p = document.createElementNS(svgNS, "path");
+        p.setAttribute("d", shape.path);
+        p.setAttribute("fill", "var(--cothrom-green-bright)");
+        p.setAttribute("opacity", "0.65");
+        p.setAttribute("stroke", "var(--cothrom-green-dark)");
+        p.setAttribute("stroke-width", "2");
+        svg.appendChild(p);
+        if (reveal) {
+            var hull = document.createElementNS(svgNS, "path");
+            hull.setAttribute("d", shape.hull);
+            hull.setAttribute("fill", "none");
+            hull.setAttribute("stroke", "var(--cothrom-accent)");
+            hull.setAttribute("stroke-width", "2");
+            hull.setAttribute("stroke-dasharray", "5,4");
+            svg.appendChild(hull);
+        }
+        return svg;
+    }
+
+    function render() {
+        var rd = rounds[idx];
+        answered = false;
+        document.getElementById("progress").textContent = "Pair " + (idx + 1) + " of " + rounds.length;
+        document.getElementById("prompt").textContent = rd.prompt;
+
+        var pair = document.getElementById("pair");
+        pair.innerHTML = "";
+        rd.shapes.forEach(function (shape, i) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "shape-btn";
+            b.setAttribute("aria-label", "Choose " + shape.name + " as the more compact shape");
+            var name = document.createElement("div");
+            name.className = "shape-name";
+            name.textContent = shape.name;
+            b.appendChild(name);
+            b.appendChild(buildSvg(shape, false));
+            var sl = document.createElement("div");
+            sl.className = "score-line";
+            b.appendChild(sl);
+            b.addEventListener("click", function () { choose(i); });
+            pair.appendChild(b);
+        });
+
+        document.getElementById("hullKey").className = "hull-key hidden";
+        var v = document.getElementById("verdict");
+        v.className = "verdict hidden";
+        v.innerHTML = "";
+        document.getElementById("navRow").className = "nav-row hidden";
+        document.getElementById("doneNote").className = "done-note hidden";
+    }
+
+    function choose(i) {
+        if (answered) return;
+        answered = true;
+        var rd = rounds[idx];
+        var scores = rd.shapes.map(function (s) { return s.score; });
+        var bestIdx = scores[0] >= scores[1] ? 0 : 1;
+        var correct = i === bestIdx;
+
+        var btns = document.querySelectorAll("#pair .shape-btn");
+        btns.forEach(function (b, j) {
+            b.disabled = true;
+            var shape = rd.shapes[j];
+            var isMore = j === bestIdx;
+            b.classList.add(isMore ? "more" : "less");
+            if (j === i) b.classList.add("picked");
+            // Redraw with convex hull revealed.
+            var oldSvg = b.querySelector("svg");
+            b.replaceChild(buildSvg(shape, true), oldSvg);
+            var sl = b.querySelector(".score-line");
+            sl.innerHTML = 'compactness <span class="score-num">' + shape.score.toFixed(2) +
+                '</span><br><span class="badge">' +
+                (isMore ? "More compact ✓" : "Less compact") + "</span>";
+        });
+
+        document.getElementById("hullKey").className = "hull-key";
+
+        var v = document.getElementById("verdict");
+        v.className = "verdict " + (correct ? "right" : "nope");
+        v.innerHTML = '<span class="tag">' + (correct ? "✓ Right" : "✗ Not quite") + "</span><p>" +
+            (correct ? rd.explainRight : rd.explainWrong) + "</p>";
+
+        if (idx < rounds.length - 1) {
+            document.getElementById("navRow").className = "nav-row";
+        } else {
+            document.getElementById("doneNote").className = "done-note";
+        }
+    }
+
+    document.getElementById("nextBtn").addEventListener("click", function () {
+        if (idx < rounds.length - 1) { idx++; render(); }
+    });
+
+    render();
+})();
+</script>
 </body>
 </html>
