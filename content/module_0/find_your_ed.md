@@ -4,8 +4,9 @@ Somewhere near you there is a boundary you have never seen drawn and cannot
 name, and it decides which constituency you vote in. It runs down the middle of
 a road, or along a river, or around the edge of a housing estate. On one side of
 it your ballot helps elect one set of TDs; a few streets over, it would help
-elect a different set. That patch — a few hundred to a few thousand people — is
-your <span class="cothrom-term" data-def="The smallest official area the census counts separately; Ireland is divided into roughly 3,440 of them, and each belongs whole to one constituency.">Electoral Division</span>, and it is the single building block from which your
+elect a different set. That patch — anything from a few dozen people to more than
+forty thousand — is
+your <span class="cothrom-term" data-def="The smallest official area the census counts separately; the CSO divides Ireland into 3,420 of them, and each belongs whole to one constituency.">Electoral Division</span>, and it is the single building block from which your
 constituency is assembled.
 
 The last lesson showed that two identical votes can carry slightly different
@@ -20,7 +21,7 @@ share of a TD.
 <div class="cothrom-keyterms">
   <strong>Key terms</strong>
   <span class="cothrom-keyterms-hint">(hover or tap each one)</span><br>
-  <span class="cothrom-term" data-def="The smallest official statistical area in Ireland; roughly 3,440 of them cover the State, and each is assigned whole to a single constituency.">Electoral Division (ED)</span> ·
+  <span class="cothrom-term" data-def="The smallest official statistical area in Ireland; 3,420 of them cover the State, and each is assigned whole to a single constituency.">Electoral Division (ED)</span> ·
   <span class="cothrom-term" data-def="A small traditional land unit, often just a few dozen houses, whose name frequently survives in the name of the ED around it.">townland</span>
 </div>
 ```
@@ -29,15 +30,15 @@ share of a TD.
 
 ## What an Electoral Division actually is
 
-Take a real-sounding example. The census records an area called **Rathmines West
-C** in Dublin City, with a population of about **1,234 people** and roughly 494
-households. (That name and those figures are illustrative teaching data, not the
-official census entry — but they are the *shape* of what a real ED looks like: a
-named slice of a neighbourhood, a few hundred homes, counted as one.) The name
-itself usually comes from an old <span class="cothrom-term" data-def="A small traditional Irish land unit, often just a few dozen houses; ED names are commonly inherited from the townland or parish they grew out of.">townland</span> or parish, which is why so many EDs carry names their own
-residents rarely use. There are thousands of these across the country, most of
-them as anonymous to the people who live in them as Rathmines West C probably is
-to you.
+Take the real range. The Central Statistics Office counts 3,420 Electoral
+Divisions, and they are wildly uneven. The smallest, **Castletown in Co. Clare**,
+had just **71 people** at Census 2022. The largest, **Blanchardstown-Blakestown
+in Fingal**, had **43,905** — more people in one ED than the average TD
+represents. But those are the outliers: the *typical* ED is tiny, with a middle
+value of about **675 people**. Each one carries a name — usually inherited from
+an old <span class="cothrom-term" data-def="A small traditional Irish land unit, often just a few dozen houses; ED names are commonly inherited from the townland or parish they grew out of.">townland</span> or parish — that its own residents rarely use, which is
+why yours is probably as anonymous to you as Castletown is to the rest of the
+country.
 
 An Electoral Division is simply the smallest area the State counts as a single
 unit. When the Central Statistics Office runs the census, it does not publish a
@@ -47,16 +48,18 @@ the smallest brick the Electoral Commission has to work with. It cannot reach
 inside an ED and take half of it.
 
 That gives us a precise definition. An **Electoral Division** is the smallest
-official statistical area in Ireland: the census reports population, households
-and other figures at this level, and the constituency map is assembled entirely
-out of whole EDs. Ireland is covered by roughly **3,440** of them. Your home
+official statistical area in Ireland: the census reports population, area and
+other figures at this level, and the constituency map is assembled entirely
+out of whole EDs. Ireland is covered by **3,420** of them. Your home
 sits in exactly one — never two, never none.
 
 The point that matters for everything else is *indivisibility*. Whatever your
-ED's population is, all of those people move together. If Rathmines West C holds
-1,234 people, the Commission can put those 1,234 in one constituency or another,
-but it cannot split them between two. The ED is the atom: the smallest thing the
-map is made of, and the smallest thing that can be moved.
+ED's population is, all of those people move together. Blanchardstown-Blakestown's
+43,905 people can be placed in one constituency or another, but the Commission
+cannot split them between two — even though, at nearly a seat and a half's worth
+of people, that single ED strains any constituency it lands in. The ED is the
+atom: the smallest thing the map is made of, and the smallest thing that can be
+moved.
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="1">
@@ -76,9 +79,9 @@ the whole argument happens.
 
 ## Find yours, and predict before you look
 
-Enough about Rathmines West C — find *your* patch. The map below is the same kind
-of tool the Commission's data is built on, loaded with a teaching sample of EDs.
-Search for an ED by name, or switch to the address tab and type a town near you.
+Enough about the extremes — find *your* patch. The map below carries all 3,420
+Electoral Divisions, with their real Census 2022 populations. Search for an ED by
+name, or switch to the address tab and type a town near you.
 
 One thing the tool does before it hands over an ED's details: now and again it
 pauses to ask you a quick question about the ED you just picked — what share of a
@@ -91,14 +94,15 @@ land, and because the thing that surprises most people is just how tiny a single
 ED is against a whole TD's worth of constituents — and therefore how many EDs
 have to be bundled together before anyone gets represented at all.
 
-```{warning}
-**Illustrative data.** The map below shows a small teaching sample of Electoral
-Divisions with simplified boundaries, not the full official set of roughly 3,440.
-The national figure it compares against — **29,593 people per TD** — is the real
-average from the Electoral Commission's 2023 review; the individual ED
-populations are approximate. Always check the
-[Electoral Commission](https://www.electoralcommission.ie/) and
-[CSO](https://www.cso.ie/) before relying on any number.
+```{note}
+**Real data, generalised boundaries.** Populations are the official
+[CSO Census 2022](https://data.cso.ie/table/F1011) figures for all 3,420
+Electoral Divisions; the boundaries come from
+[Tailte Éireann](https://www.tailte.ie/) and have been generalised (simplified)
+so the whole country loads quickly in your browser — so treat the shapes as
+approximate outlines, not survey-grade lines. The figure everything is compared
+against, **29,593 people per TD**, is the national average from the Electoral
+Commission's 2023 review.
 ```
 
 ```{raw} html
@@ -139,27 +143,21 @@ from Census 2022 and the 2023 review). One TD, roughly 29,593 constituents. An
 Electoral Division is a small fraction of that.
 
 So the intuition is: your ED is not a constituency and not a TD — it is a *sliver
-of one TD's workload*, bundled with about a hundred other slivers. To turn that
-into a figure, divide your ED's population by 29,593.
+of one TD's workload*, bundled with scores of other slivers (about eighty per
+constituency, on average: 3,420 EDs shared across 43 constituencies). To turn
+that into a figure, divide your ED's population by 29,593.
 
-Work it through with the illustrative Rathmines West C. Its 1,234 people, divided
-by 29,593, come to **0.042** — about **4%** of the people a single TD represents.
-Now take a much larger ED from the sample, an urban core like Carlow Urban at
-roughly 20,504 people: that is **0.69**, or about **69%** of one TD's people —
-nearly a whole TD's worth of constituents in a single ED. Same kind of unit,
-sixteen times the weight in the population arithmetic.
-
-```{important}
-The ED populations here (1,234 and 20,504) are illustrative sample figures. The
-denominator — 29,593 people per TD — is the real national average from the 2023
-review. So treat the percentages as *the method*, correct in form, rather than
-as official statistics for those specific EDs.
-```
+Work it through on the real extremes. Castletown in Co. Clare, with 71 people,
+comes to **0.0024** — about a **quarter of one percent** of what a single TD
+represents. The typical ED of 675 people is **2.3%**. And Blanchardstown-Blakestown,
+at 43,905 people, comes to **1.48** — nearly one and a half TDs' worth of people
+in one indivisible block. That is a spread of more than six hundred to one
+between the smallest ED and the largest, all of them counted as single units.
 
 This is why population, not area, is what the map-drawing turns on. A big-
-population ED like Carlow Urban carries far more weight when the Commission is
-balancing constituencies toward that 29,593 target; a small one is easier to
-shuffle between constituencies without upsetting the balance. And it is the
+population ED carries far more weight when the Commission is balancing
+constituencies toward that 29,593 target; a small one is easier to shuffle
+between constituencies without upsetting the balance. And it is the
 same arithmetic that produced the vote-weight gap from the last lesson: an ED's
 population feeds up into its constituency's population, which sets how many
 people each of that constituency's TDs must represent — and whether your vote
@@ -220,8 +218,8 @@ hint as to whether a future review is likely to touch you.
 
 ## Key takeaways
 
-- An Electoral Division is the smallest official area Ireland counts — about
-  3,440 of them — and every address sits in exactly one.
+- An Electoral Division is the smallest official area Ireland counts — 3,420
+  of them — and every address sits in exactly one.
 - EDs are indivisible: the Commission groups whole EDs into constituencies and
   can never split one, so all of an ED's people move together or not at all.
 - What the map balances is population, not land area: divide an ED's population
@@ -255,7 +253,12 @@ actually move.
 - [Electoral Commission press release, August 2023](https://www.electoralcommission.ie/latest-news-and-research/dail-euro-constituency-review-2023-recommends14-more-tds-the-reinstatement-of-county-boundaries/)
   — reinstatement of county boundaries; removal of seven of ten breaches, including the Laois–Offaly split.
 - [CSO — Census of Population 2022](https://www.cso.ie/en/statistics/population/censusofpopulation2022/)
-  — total population 5,149,139; census figures are published at Electoral Division level.
+  — total population 5,149,139.
+- [CSO PxStat table F1011 — Population Density and Area Size by Electoral Division, 2022](https://data.cso.ie/table/F1011)
+  — population and area for all 3,420 EDs (populations sum to 5,149,139); source for every ED figure and the map.
+- [Tailte Éireann — CSO Electoral Divisions 2022 boundaries](https://www.tailte.ie/) and
+  [2023 Dáil constituency boundaries](https://www.electoralcommission.ie/constituency-reviews/)
+  — ED and constituency geometry, used (generalised) for the interactive map.
 
 ---
 

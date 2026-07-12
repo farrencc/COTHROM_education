@@ -11,9 +11,19 @@ Interactive Electoral District finder for the COTHROM education project.
 
 ## Data Sources
 
-- **Electoral Divisions**: CSO Census 2022
-- **Constituencies**: Electoral Commission 2023 (174 TDs, 43 constituencies)
-- **Boundaries**: Electoral (Amendment) Act 2023
+Real data for all 3,420 Electoral Divisions (not a sample):
+
+- **ED population & area**: [CSO PxStat table F1011](https://data.cso.ie/table/F1011),
+  Census 2022. ED populations sum to 5,149,139 (the national total).
+- **ED boundaries**: Tailte Éireann *CSO Electoral Divisions 2022 (Generalised 100m)*
+  ArcGIS FeatureServer, joined to F1011 on `ED_GUID` (100% match).
+- **Constituencies (name + seats)**: Tailte Éireann / Electoral Commission
+  *Constituency Boundaries 2023* (43 constituencies, 174 seats). Each ED is
+  assigned to a constituency by a point-in-polygon spatial join of its
+  representative point.
+
+Geometry is generalised (~130 m) and coordinates rounded to 4 decimal places to
+keep the whole-country file light (~3 MB raw, ~0.8 MB gzipped).
 
 ## Properties in eds_simplified.geojson
 
@@ -21,13 +31,13 @@ Each ED feature contains:
 
 | Property | Description |
 |----------|-------------|
-| `ED_ID` | Unique ED identifier (e.g., "07005") |
-| `ED_NAME` | English name (e.g., "Rathmines West C") |
+| `ED_ID` | Unique widget id (e.g., "E0001") |
+| `ED_NAME` | English name (e.g., "Blanchardstown-Blakestown") |
 | `COUNTY` | County name |
-| `CONSTITUENCY_2024` | Current constituency assignment |
-| `CONSTITUENCY_SEATS` | Number of TDs for the constituency |
-| `POPULATION_2022` | Census 2022 population |
-| `HOUSEHOLDS` | Number of households |
+| `CONSTITUENCY_2024` | Constituency (spatial join) |
+| `CONSTITUENCY_SEATS` | Number of TDs for that constituency |
+| `POPULATION_2022` | CSO Census 2022 population (table F1011) |
+| `AREA_KM2` | Area in km² (table F1011) |
 
 ## Updating Data
 

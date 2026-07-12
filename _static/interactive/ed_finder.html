@@ -140,23 +140,6 @@
         #map { height: 440px; width: 100%; z-index: 1; background: var(--cothrom-surface); }
         @media (max-width: 480px) { #map { height: 360px; } }
 
-        .layer-control {
-            position: absolute;
-            bottom: 14px; left: 10px;
-            background: var(--cothrom-panel);
-            border: 1px solid var(--cothrom-border);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            padding: 8px 12px;
-            z-index: 500;
-        }
-        .layer-control h4 {
-            font-size: 10px; color: var(--cothrom-muted);
-            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
-        }
-        .layer-option { display: flex; align-items: center; gap: 7px; padding: 2px 0; }
-        .layer-option input { accent-color: var(--cothrom-green); }
-        .layer-option label { font-size: 12.5px; color: var(--cothrom-ink); cursor: pointer; }
 
         .loading-overlay {
             position: absolute; inset: 0;
@@ -286,8 +269,8 @@
 <body>
     <div class="widget">
         <div class="sample-banner">
-            <strong>Illustrative data:</strong> a teaching sample of Electoral Divisions, not the full official
-            set. Ireland has roughly 3,440 EDs; only a handful are shown here.
+            <strong>Real data.</strong> All 3,420 Electoral Divisions &mdash; population from CSO Census 2022,
+            boundaries from Tailte Éireann (generalised for the web).
         </div>
 
         <div class="search-header">
@@ -314,17 +297,6 @@
 
         <div class="map-wrap">
             <div id="map"></div>
-            <div class="layer-control">
-                <h4>Layers</h4>
-                <div class="layer-option">
-                    <input type="checkbox" id="layerEDs" checked>
-                    <label for="layerEDs">Electoral Divisions</label>
-                </div>
-                <div class="layer-option">
-                    <input type="checkbox" id="layerConstituencies">
-                    <label for="layerConstituencies">Constituency outlines</label>
-                </div>
-            </div>
             <div class="loading-overlay" id="loadingOverlay">
                 <div class="spinner" role="status" aria-label="Loading map"></div>
             </div>
@@ -359,13 +331,12 @@
             return {
                 edDefault:  { fillColor: token('--cothrom-border'), color: token('--cothrom-muted'),  weight: 0.6, fillOpacity: 0.55 },
                 edHover:    { fillColor: token('--cothrom-tint-green'), color: token('--cothrom-green'), weight: 2, fillOpacity: 0.75 },
-                edSelected: { fillColor: token('--cothrom-green-bright'), color: token('--cothrom-green-dark'), weight: 2.5, fillOpacity: 0.75 },
-                constituency: { fillColor: 'transparent', color: token('--cothrom-accent'), weight: 2.5, fillOpacity: 0, dashArray: '8,4' }
+                edSelected: { fillColor: token('--cothrom-green-bright'), color: token('--cothrom-green-dark'), weight: 2.5, fillOpacity: 0.75 }
             };
         }
 
-        let map, edLayer, constituencyLayer, tileLayer;
-        let edData, constituencyData, edLookup;
+        let map, edLayer, tileLayer;
+        let edData, edLookup;
         let selectedLayer = null;
         let searchMode = 'ed';
         let locationMarker = null;
@@ -378,7 +349,8 @@
         function initMap() {
             map = L.map('map', {
                 center: CONFIG.center, zoom: CONFIG.zoom,
-                minZoom: CONFIG.minZoom, maxZoom: CONFIG.maxZoom, zoomControl: true
+                minZoom: CONFIG.minZoom, maxZoom: CONFIG.maxZoom, zoomControl: true,
+                preferCanvas: true   // canvas renderer keeps 3,420 polygons responsive
             });
             tileLayer = L.tileLayer(tileUrl(), {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -399,18 +371,15 @@
                     l.setStyle(l === selectedLayer ? S.edSelected : S.edDefault);
                 });
             }
-            if (constituencyLayer) constituencyLayer.setStyle(S.constituency);
         }
 
         async function loadData() {
             try {
-                const [eds, cons, lookup] = await Promise.all([
+                const [eds, lookup] = await Promise.all([
                     fetch(CONFIG.dataPath + 'eds_simplified.geojson'),
-                    fetch(CONFIG.dataPath + 'constituencies_2024.json'),
                     fetch(CONFIG.dataPath + 'ed_lookup.json')
                 ]);
                 edData = await eds.json();
-                constituencyData = await cons.json();
                 edLookup = await lookup.json();
                 return true;
             } catch (e) {
@@ -433,17 +402,6 @@
                     });
                 }
             }).addTo(map);
-        }
-
-        function addConstituencyLayer() {
-            // Placeholder outlines: the sample set carries no separate constituency
-            // geometry, so we outline the same EDs in the constituency style when toggled.
-            constituencyLayer = L.geoJSON(edData, {
-                style: styles().constituency,
-                onEachFeature: function (feature, layer) {
-                    layer.bindTooltip(feature.properties.CONSTITUENCY_2024 || 'Unknown', { direction: 'top' });
-                }
-            });
         }
 
         // --- Predict-then-reveal ---------------------------------------------
@@ -479,41 +437,43 @@
             const edsToFill = pop ? conPop / pop : 0;
             const sharePct = pop / PEOPLE_PER_TD * 100;
             const shareText = sharePct >= 1 ? sharePct.toFixed(0) + '%' : sharePct.toFixed(1) + '%';
+            // Band cut-offs are the real terciles of the CSO Census 2022 ED
+            // distribution, so each answer is a genuine ~1-in-3 across the 3,420 EDs.
             return [
                 {
-                    q: `This ED sits inside ${props.CONSTITUENCY_2024 || 'a constituency'}, which needs about ${conPop.toLocaleString()} people in all. Roughly how many EDs the size of this one would it take to build the whole constituency?`,
+                    q: `This ED sits inside ${props.CONSTITUENCY_2024 || 'a constituency'}, which holds about ${conPop.toLocaleString()} people in all. Roughly how many EDs the size of this one would it take to build the whole constituency?`,
                     sub: 'The bigger the ED, the fewer you need. Estimate, then see.',
                     bands: [
-                        { id: 'few',     label: 'Just a handful', hint: 'under 15' },
-                        { id: 'dozens',  label: 'Dozens',         hint: '15–60' },
-                        { id: 'hundred', label: 'Nearly a hundred', hint: 'over 60' }
+                        { id: 'dozens',  label: 'Dozens',          hint: 'under 100' },
+                        { id: 'hundred', label: 'A hundred or two', hint: '100–250' },
+                        { id: 'hundreds',label: 'Hundreds',         hint: 'over 250' }
                     ],
-                    words: { few: 'just a handful (under 15)', dozens: 'dozens (15–60)', hundred: 'nearly a hundred (over 60)' },
-                    actual: edsToFill < 15 ? 'few' : (edsToFill <= 60 ? 'dozens' : 'hundred'),
+                    words: { dozens: 'dozens (under 100)', hundred: 'a hundred or two (100–250)', hundreds: 'hundreds (over 250)' },
+                    actual: edsToFill < 100 ? 'dozens' : (edsToFill <= 250 ? 'hundred' : 'hundreds'),
                     actualText: 'about ' + Math.round(edsToFill).toLocaleString() + ' EDs'
                 },
                 {
                     q: 'One TD represents about 29,593 people. What share of a single TD’s people do you reckon this one ED holds?',
                     sub: 'Most EDs are a small sliver — estimate yours.',
                     bands: [
-                        { id: 'tiny',  label: 'A tiny sliver', hint: 'under 5%' },
-                        { id: 'small', label: 'A small slice', hint: '5–10%' },
-                        { id: 'big',   label: 'A large share', hint: 'over 10%' }
+                        { id: 'tiny',  label: 'A tiny sliver', hint: 'under 2%' },
+                        { id: 'small', label: 'A small slice', hint: '2–5%' },
+                        { id: 'big',   label: 'A bigger share', hint: 'over 5%' }
                     ],
-                    words: { tiny: 'a tiny sliver (under 5%)', small: 'a small slice (5–10%)', big: 'a large share (over 10%)' },
-                    actual: sharePct < 5 ? 'tiny' : (sharePct <= 10 ? 'small' : 'big'),
+                    words: { tiny: 'a tiny sliver (under 2%)', small: 'a small slice (2–5%)', big: 'a bigger share (over 5%)' },
+                    actual: sharePct < 2 ? 'tiny' : (sharePct <= 5 ? 'small' : 'big'),
                     actualText: shareText + ' of one TD'
                 },
                 {
                     q: 'How many people do you think live in this one Electoral Division?',
-                    sub: 'A typical ED runs from a few hundred to a few thousand people.',
+                    sub: 'Most EDs are smaller than people expect — estimate this one.',
                     bands: [
-                        { id: 'lt1k',  label: 'Under 1,000', hint: '' },
-                        { id: 'mid',   label: '1,000–3,000', hint: '' },
-                        { id: 'gt3k',  label: 'Over 3,000', hint: '' }
+                        { id: 'lt500', label: 'Under 500', hint: '' },
+                        { id: 'mid',   label: '500–1,100', hint: '' },
+                        { id: 'gt1100',label: 'Over 1,100', hint: '' }
                     ],
-                    words: { lt1k: 'under 1,000', mid: '1,000–3,000', gt3k: 'over 3,000' },
-                    actual: pop < 1000 ? 'lt1k' : (pop <= 3000 ? 'mid' : 'gt3k'),
+                    words: { lt500: 'under 500', mid: '500–1,100', gt1100: 'over 1,100' },
+                    actual: pop < 500 ? 'lt500' : (pop <= 1100 ? 'mid' : 'gt1100'),
                     actualText: pop.toLocaleString() + ' people'
                 }
             ];
@@ -538,10 +498,11 @@
 
         function revealED(props, guess) {
             const pop = props.POPULATION_2022 || 0;
-            const households = props.HOUSEHOLDS || 0;
+            const area = props.AREA_KM2 || 0;
             const seats = props.CONSTITUENCY_SEATS || null;
             const sharePct = (pop / PEOPLE_PER_TD * 100);
             const shareText = sharePct >= 1 ? sharePct.toFixed(0) + '%' : sharePct.toFixed(1) + '%';
+            const areaText = area >= 100 ? Math.round(area).toLocaleString() : area.toFixed(1);
 
             let verdict = '';
             if (guess && guess.type && guess.band) {
@@ -572,7 +533,7 @@
                     </div>
                     <div class="constituency-card">
                         <div class="name">${props.CONSTITUENCY_2024 || 'Unknown'}</div>
-                        <div class="seats">Elects <strong>${seats || '?'}</strong> ${seats === 1 ? 'TD' : 'TDs'} &middot; ${households.toLocaleString()} households in this ED</div>
+                        <div class="seats">Elects <strong>${seats || '?'}</strong> ${seats === 1 ? 'TD' : 'TDs'} &middot; this ED covers ${areaText} km²</div>
                     </div>
                     <div class="explain">${explain}</div>
                     <button class="reset-btn" id="resetBtn">Pick another ED</button>
@@ -722,24 +683,12 @@
             document.addEventListener('click', (e) => { if (!e.target.closest('.search-box')) results.classList.remove('active'); });
         }
 
-        function setupLayerControls() {
-            document.getElementById('layerEDs').addEventListener('change', function (e) {
-                if (e.target.checked) map.addLayer(edLayer); else map.removeLayer(edLayer);
-            });
-            document.getElementById('layerConstituencies').addEventListener('change', function (e) {
-                if (!constituencyLayer) return;
-                if (e.target.checked) map.addLayer(constituencyLayer); else map.removeLayer(constituencyLayer);
-            });
-        }
-
         async function init() {
             initMap();
             const ok = await loadData();
             if (ok) {
                 addEDLayer();
-                addConstituencyLayer();
                 setupSearch();
-                setupLayerControls();
                 setTimeout(() => map.invalidateSize(), 200);
             } else {
                 document.getElementById('stage').innerHTML =
