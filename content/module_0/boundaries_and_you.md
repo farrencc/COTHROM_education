@@ -33,6 +33,12 @@ of ten places where the old map had cut across a county boundary, the new map
 repaired **seven** — the Laois–Offaly split being one of them (Electoral Commission,
 2023).
 
+That leap in size was dramatic but not unprecedented: the Dáil has been resized at
+almost every review. Drag through the timeline to watch the count change from one
+election to the next — 166 seats through the 1980s and 1990s, down to 158, and back
+up to today's 174. There is no single "correct" size fixed for all time; each review
+works to whatever range the law sets for it.
+
 ```{raw} html
 <div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
   <iframe
@@ -47,9 +53,11 @@ repaired **seven** — the Laois–Offaly split being one of them (Electoral Com
 None of that was optional tinkering. Under the Electoral Reform Act 2022, a review
 has to observe a fixed list of conditions, and the reason redistricting is difficult
 is hidden in how that list is written. Some of the conditions are stated as absolutes.
-The Dáil must have between 171 and 181 members; every constituency must return either
-three, four or five TDs; and every constituency must be contiguous. These are not
-negotiable, and the Commission never publishes a map that breaks them.
+For this review the Act fixed the Dáil at between 171 and 181 members — a range reset
+in law from time to time, which is why the total could climb from the previous 160 to
+174; every constituency must elect three, four or five TDs; and every constituency
+must be contiguous, meaning in one connected piece. These are not negotiable, and the
+Commission never publishes a map that breaks them.
 
 The rest of the list is written with an escape hatch. County boundaries are to be
 respected *as far as practicable*. The Commission is to have regard to geographic
@@ -166,7 +174,7 @@ examples, not measurements of real constituencies.
 </div>
 ```
 
-The second pair carries the sting in the tail. A low compactness score is a reason to
+A low compactness score is a reason to
 look harder, not a conviction. A constituency that faithfully follows a jagged coastline
 or bends to keep an awkward county whole will score below a perfect circle — not because
 anyone cheated, but because the real geography is not round. Compactness has to be
@@ -196,8 +204,11 @@ stitched across county lines, and the review even created a new cross-county sea
 Wicklow–Wexford, because the population arithmetic in that corner of the country did not
 add up any other way.
 
-Explore how that arithmetic forces the choice. The tool below lets you see, before you
-commit to a split, what keeping a county whole does to the population balance around it.
+Explore how that arithmetic forces the choice. The panel below works through what a
+county breach looks like — none, one, or several — then sets the Laois–Offaly sums out
+side by side: hold the two counties together and the population per TD drifts outside the
+old ±5% band, split them and it fits. Both options are defensible; decide which you would
+back before reading on.
 
 ```{warning}
 **Illustrative data.** The scenarios in the tool below use simplified teaching figures,
@@ -308,16 +319,19 @@ question of whether this is finally the time to reunite the counties. And smalle
 constituencies are simply easier to reconfigure than five-seat ones, so they are more often
 in play.
 
-One caution ties this back to the ripple you saw in the trade-offs tool: even a constituency
+One caution follows from how connected the map is: even a constituency
 with textbook-perfect population can be redrawn because a *neighbour* had to be fixed. Moving
 EDs out of an overfull constituency pushes them into the one next door, which may then need to
 shed some of its own, and so the adjustment travels. Your own numbers being fine is no
 guarantee of a quiet review.
 
+The estimator below turns exactly these factors — edge or interior, balanced or stretched,
+fast-growing or steady, small or large constituency, county-crossing or not — into a rough
+exposure score. Answer the questions for your own area to see where it lands.
+
 ```{warning}
-**Illustrative data.** The estimator below is a simplified teaching tool. It does not use
-your real constituency's official figures — treat its output as a way to reason about
-exposure, not a prediction.
+**Illustrative data.** The estimator weighs a few plain questions about your own area, not
+official figures, so its score is a way to reason about exposure, not a prediction.
 ```
 
 ```{raw} html
