@@ -461,10 +461,28 @@
         </div>
 
         <h4>The Impossible Triangle</h4>
-        <p>Adjust the sliders to see how prioritizing one objective affects the others.</p>
+        <p>You have a limited budget of priority to spread across the three goals — at most
+           <strong>200</strong> points out of a possible 300. The balanced default
+           (50&nbsp;+&nbsp;50&nbsp;+&nbsp;50&nbsp;=&nbsp;150) sits comfortably inside it, but once the
+           budget is spent, pushing one goal up forces the others down. There is no setting that
+           maxes out all three.</p>
 
         <div class="viz-container">
             <div style="max-width: 500px; margin: 0 auto;">
+                <!-- Priority budget -->
+                <div style="margin-bottom: 22px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label style="font-size: 13px; font-weight: 600;">Priority budget used</label>
+                        <span id="budget-value" style="font-size: 13px; font-weight: 700;">150 / 200</span>
+                    </div>
+                    <div class="bar-container" style="height: 10px;">
+                        <div class="bar-fill good" id="budget-bar" style="width: 75%;"></div>
+                    </div>
+                    <p id="budget-note" style="font-size: 11px; color: var(--cothrom-muted); margin: 6px 0 0;">
+                        50 points spare — you can still improve a goal without cost.
+                    </p>
+                </div>
+
                 <!-- Priority sliders -->
                 <div style="margin-bottom: 25px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -528,6 +546,39 @@
     const countySlider = document.getElementById('county-slider');
     const compactSlider = document.getElementById('compact-slider');
 
+    // The three priorities share a fixed budget: their values may sum to at most
+    // CAP (out of a possible 300). Raising one past the budget pulls the other
+    // two down, so no map can max out all three — the "impossible" triangle.
+    const CAP = 200;
+
+    function clampInt(v) { return Math.max(0, Math.min(100, Math.round(v))); }
+
+    function enforceBudget(changed) {
+        if (!balanceSlider || !countySlider || !compactSlider) return;
+        const v = {
+            balance: parseInt(balanceSlider.value, 10),
+            county: parseInt(countySlider.value, 10),
+            compact: parseInt(compactSlider.value, 10)
+        };
+        let sum = v.balance + v.county + v.compact;
+        if (sum <= CAP) return;
+        const excess = sum - CAP;
+        const others = ['balance', 'county', 'compact'].filter(function (k) { return k !== changed; });
+        const otherSum = v[others[0]] + v[others[1]];
+        if (otherSum <= 0) {
+            // Nothing left to take from the others; cap the slider being moved.
+            v[changed] = clampInt(v[changed] - excess);
+        } else {
+            // Take the overspend from the other two, in proportion to their size.
+            others.forEach(function (k) { v[k] = clampInt(v[k] - excess * (v[k] / otherSum)); });
+            const newSum = v.balance + v.county + v.compact;
+            if (newSum > CAP) v[changed] = clampInt(v[changed] - (newSum - CAP));
+        }
+        balanceSlider.value = v.balance;
+        countySlider.value = v.county;
+        compactSlider.value = v.compact;
+    }
+
     function updateTradeoffs() {
         const balance = parseInt(balanceSlider?.value || 50);
         const county = parseInt(countySlider?.value || 50);
@@ -536,6 +587,22 @@
         document.getElementById('balance-value').textContent = balance + '%';
         document.getElementById('county-value').textContent = county + '%';
         document.getElementById('compact-value').textContent = compact + '%';
+
+        const total = balance + county + compact;
+        const spare = CAP - total;
+        const budgetVal = document.getElementById('budget-value');
+        if (budgetVal) budgetVal.textContent = total + ' / ' + CAP;
+        const budgetBar = document.getElementById('budget-bar');
+        if (budgetBar) {
+            budgetBar.style.width = Math.min(100, total / CAP * 100) + '%';
+            budgetBar.className = 'bar-fill ' + (spare <= 0 ? 'bad' : spare <= 25 ? 'moderate' : 'good');
+        }
+        const budgetNote = document.getElementById('budget-note');
+        if (budgetNote) {
+            budgetNote.textContent = spare <= 0
+                ? 'Budget spent — raising one goal now pulls the others down.'
+                : spare + ' points spare — you can still improve a goal without cost.';
+        }
 
         const varianceResult = balance >= 80 ? '&plusmn;2%' :
                               balance >= 60 ? '&plusmn;3-4%' :
@@ -569,9 +636,9 @@
         document.getElementById('result-description').textContent = desc;
     }
 
-    if (balanceSlider) balanceSlider.addEventListener('input', updateTradeoffs);
-    if (countySlider) countySlider.addEventListener('input', updateTradeoffs);
-    if (compactSlider) compactSlider.addEventListener('input', updateTradeoffs);
+    if (balanceSlider) balanceSlider.addEventListener('input', function () { enforceBudget('balance'); updateTradeoffs(); });
+    if (countySlider) countySlider.addEventListener('input', function () { enforceBudget('county'); updateTradeoffs(); });
+    if (compactSlider) compactSlider.addEventListener('input', function () { enforceBudget('compact'); updateTradeoffs(); });
 
     function resetTradeoffs() {
         if (balanceSlider) balanceSlider.value = 50;
