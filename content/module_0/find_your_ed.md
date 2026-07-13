@@ -179,8 +179,11 @@ Here is a real case, not an illustrative one. Before the 2023 review, Laois and
 Offaly were stitched together into a single five-seat constituency,
 **Laois–Offaly**, that crossed the county line. The 2023 review pulled them
 apart again, restoring Laois and Offaly as separate single-county constituencies
-— one of seven such county-line crossings the Commission undid, of ten that then
-existed (Electoral Commission, 2023).
+— one of seven county-boundary breaches the Commission removed out of ten that
+existed (Electoral Commission, 2023). A *breach* is just that — a constituency
+reaching across a county line — but what should formally count as one, and how
+breaches are weighed against equal representation, is a harder question a later
+module on measuring fairness (Module 3) takes up.
 
 Picture a voter in Portlaoise through that change. Their county never moved: they
 were in County Laois before and County Laois after. Their *Electoral Division*
