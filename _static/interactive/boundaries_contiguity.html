@@ -210,7 +210,7 @@
         },
         {
             prompt: "Is this candidate constituency a single connected piece?",
-            cells: [[0,0],[0,1],[4,2],[4,3]],
+            cells: [[0,0],[0,1],[3,3],[3,4]],
             water: null,
             options: [
                 { label: "One connected piece", correct: false },
@@ -220,9 +220,13 @@
             wrong: "Look again — there is a gap. The top-left pair and the bottom-right pair never touch, so this is two islands of territory, not one constituency. It fails the contiguity rule."
         },
         {
-            prompt: "The shaded island sits across open water from the mainland part. Can they be one legal constituency?",
-            cells: [[0,1],[0,2],[1,1],[1,2],[4,1]],
+            prompt: "This constituency has a mainland part and an island part across open water. Can they be one legal constituency?",
+            cells: [[0,1],[0,2],[1,1],[1,2],[0,4],[1,4]],
             water: { col: 3 },
+            regionLabels: [
+                { text: "mainland", col: 1.5, row: 0 },
+                { text: "island", col: 4, row: 0 }
+            ],
             options: [
                 { label: "Yes — it can be legal", correct: true },
                 { label: "No — water breaks it", correct: false }
@@ -288,6 +292,27 @@
             }
         }
 
+        // Region labels (e.g. mainland vs island) so the two parts are
+        // distinguishable at a glance; drawn with a panel-coloured halo so the
+        // text stays legible over the green cells in both light and dark modes.
+        if (sc.regionLabels) {
+            sc.regionLabels.forEach(function (rl) {
+                var t = document.createElementNS(svgNS, "text");
+                t.setAttribute("x", xOf(rl.col) + CELL / 2);
+                t.setAttribute("y", yOf(rl.row) + CELL / 2 + 4);
+                t.setAttribute("text-anchor", "middle");
+                t.setAttribute("font-size", "11");
+                t.setAttribute("font-weight", "700");
+                t.setAttribute("paint-order", "stroke");
+                t.setAttribute("stroke", "var(--cothrom-panel)");
+                t.setAttribute("stroke-width", "3");
+                t.setAttribute("stroke-linejoin", "round");
+                t.setAttribute("fill", "var(--cothrom-green-dark)");
+                t.textContent = rl.text;
+                svg.appendChild(t);
+            });
+        }
+
         // On reveal: draw connectors between adjacent green cells (skipping the
         // water gap), plus a ferry line for the island scenario.
         if (reveal) {
@@ -314,7 +339,7 @@
                 ferry.setAttribute("x1", xOf(2) + CELL / 2);
                 ferry.setAttribute("y1", yOf(1) + CELL / 2);
                 ferry.setAttribute("x2", xOf(4) + CELL / 2);
-                ferry.setAttribute("y2", yOf(4 - 3) + CELL / 2);
+                ferry.setAttribute("y2", yOf(1) + CELL / 2);
                 ferry.setAttribute("stroke", "var(--cothrom-accent)");
                 ferry.setAttribute("stroke-width", "3");
                 ferry.setAttribute("stroke-dasharray", "6,5");
