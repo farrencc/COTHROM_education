@@ -33,9 +33,9 @@ share of a TD.
 Take the real range. The Central Statistics Office counts 3,420 Electoral
 Divisions, and they are wildly uneven. The smallest, **Castletown in Co. Clare**,
 had just **71 people** at Census 2022. The largest, **Blanchardstown-Blakestown
-in Fingal**, had **43,905** — more people in one ED than the average TD
-represents. But those are the outliers: the *typical* ED is tiny, with a middle
-value of about **675 people**. Each one carries a name — usually inherited from
+in Fingal**, had **43,905** — more people in one ED than the roughly **29,593**
+a single TD represents nationally. But those are the outliers: the *typical* ED
+is tiny, with a middle value of about **675 people**. Each one carries a name — usually inherited from
 an old <span class="cothrom-term" data-def="A small traditional Irish land unit, often just a few dozen houses; ED names are commonly inherited from the townland or parish they grew out of.">townland</span> or parish — that its own residents rarely use, which is
 why yours is probably as anonymous to you as Castletown is to the rest of the
 country.
@@ -56,10 +56,10 @@ sits in exactly one — never two, never none.
 The point that matters for everything else is *indivisibility*. Whatever your
 ED's population is, all of those people move together. Blanchardstown-Blakestown's
 43,905 people can be placed in one constituency or another, but the Commission
-cannot split them between two — even though, at nearly a seat and a half's worth
-of people, that single ED strains any constituency it lands in. The ED is the
-atom: the smallest thing the map is made of, and the smallest thing that can be
-moved.
+cannot split them between two — even though, at nearly one and a half times what
+a single TD represents, that single ED strains any constituency it lands in. The
+ED is the atom: the smallest thing the map is made of, and the smallest thing
+that can be moved.
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="1">
@@ -84,14 +84,13 @@ Electoral Divisions, with their real Census 2022 populations. Search for an ED b
 name, or switch to the address tab and type a town near you.
 
 One thing the tool does before it hands over an ED's details: now and again it
-pauses to ask you a quick question about the ED you just picked — what share of a
-single TD's people it holds, how many EDs its size it would take to build the
-whole constituency, or simply how many people live in it — and only reveals the
-answer once you've committed to a rough estimate. There is no score, and you can
-switch the questions off entirely with the toggle if you would rather just
-browse. They are there because committing to a guess first makes the real figure
-land, and because the thing that surprises most people is just how tiny a single
-ED is against a whole TD's worth of constituents — and therefore how many EDs
+pauses to ask one quick question about the ED you just picked — how many people
+live in it, say, or what share of a single TD's 29,593 it comes to — and only
+reveals the answer once you've committed to a rough estimate. There is no score,
+and you can switch the questions off entirely with the toggle if you would rather
+just browse. They are there because committing to a guess first makes the real
+figure land, and because the thing that surprises most people is just how tiny a
+single ED is against a whole TD's worth of constituents — and therefore how many EDs
 have to be bundled together before anyone gets represented at all.
 
 ```{note}
@@ -100,9 +99,9 @@ have to be bundled together before anyone gets represented at all.
 Electoral Divisions; the boundaries come from
 [Tailte Éireann](https://www.tailte.ie/) and have been generalised (simplified)
 so the whole country loads quickly in your browser — so treat the shapes as
-approximate outlines, not survey-grade lines. The figure everything is compared
-against, **29,593 people per TD**, is the national average from the Electoral
-Commission's 2023 review.
+approximate outlines, not survey-grade lines. That **29,593 people per TD** — the
+figure every ED here is measured against — is the national average from the
+Electoral Commission's 2023 review.
 ```
 
 ```{raw} html
@@ -154,7 +153,7 @@ at 43,905 people, comes to **1.48** — nearly one and a half TDs' worth of peop
 in one indivisible block. That is a spread of more than six hundred to one
 between the smallest ED and the largest, all of them counted as single units.
 
-This is why population, not area, is what the map-drawing turns on. A big-
+Population, not land area, is what the map-drawing turns on. A big-
 population ED carries far more weight when the Commission is balancing
 constituencies toward that 29,593 target; a small one is easier to shuffle
 between constituencies without upsetting the balance. And it is the
@@ -180,7 +179,7 @@ Here is a real case, not an illustrative one. Before the 2023 review, Laois and
 Offaly were stitched together into a single five-seat constituency,
 **Laois–Offaly**, that crossed the county line. The 2023 review pulled them
 apart again, restoring Laois and Offaly as separate single-county constituencies
-— one of seven county-boundary breaches the Commission removed out of ten that
+— one of seven such county-line crossings the Commission undid, of ten that then
 existed (Electoral Commission, 2023).
 
 Picture a voter in Portlaoise through that change. Their county never moved: they

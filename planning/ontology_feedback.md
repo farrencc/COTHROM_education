@@ -77,3 +77,55 @@ so the 1.5× figure is checkable, and the COTHROM-variance section now gives the
 `29,593 ÷ 31,995 ≈ 0.925` derivation once, so the reader can see where the
 three-decimal figure comes from. Neither gives vote weight the first-class §6
 treatment it should get once it is a graph node.
+
+---
+
+## 2. Nothing in the graph says *why* a constituency is multi-seat
+
+- **Lesson:** `content/module_0/find_your_ed.md`
+- **Red-team finding addressed:** `redteam_find_your_ed.md` finding 2
+  ("Constituencies elect several TDs, but I am never told why, or that Ireland
+  uses multi-seat constituencies").
+- **Concept id(s):** `seat_magnitude`; related `proportional_representation`,
+  `pr_stv`, `teachta_dala`, `constituency`.
+
+**The missing/wrong edge.** `seat_magnitude` ("how many TDs a constituency
+elects — 3, 4 or 5") has exactly two hard prerequisites in
+`relationships.csv`: `teachta_dala → seat_magnitude` and
+`constituency → seat_magnitude`. Both concern *what* a seat count is. Neither
+carries the reader over the prior question the red-team stalled on: *why does a
+constituency elect several TDs at all?* A voter who pictures one representative
+per area has no edge in the graph that would prompt an author to answer this
+before using the multi-seat framing. The answer is proportionality delivered
+through a transferable vote — `proportional_representation` and `pr_stv` — yet:
+
+- there is **no edge** from `proportional_representation` to `seat_magnitude`;
+- there is **no edge** from `pr_stv` to `seat_magnitude`,
+
+even though `pr_stv`'s own `why_it_matters` states plainly, "Without PR-STV you
+cannot see why multi-seat constituencies exist at all." So the graph's own text
+asserts a dependency that the graph's edges omit. An author who sequenced
+strictly from hard prerequisites would introduce seat magnitude with only TD +
+constituency in hand and reproduce exactly the gap the cold reader hit.
+
+**Proposed fix.** Add a `motivates` edge
+`proportional_representation → seat_magnitude` (strength `hard`), rationale:
+multi-member constituencies exist to make representation proportional; the
+purpose must precede the parameter. Optionally add
+`pr_stv → seat_magnitude` (`motivates`, `soft`) to capture that the *mechanism*
+(the transferable vote) is what makes a 3–5 seat range meaningful — kept soft
+because the paper treats PR-STV as assumed background and the mechanism is
+legitimately deferrable.
+
+**Minimal local wording applied in the meantime.** None required. The multi-seat
+*fact* is already established upstream — `why_this_matters.md`'s key-terms box
+glosses TD as "an elected member of Dáil Éireann; each constituency returns
+three, four or five of them" and its prose repeats the 3/4/5 range — and
+`index.md` mandates reading that lesson first ("best read in order — each one
+builds on the last"). The *mechanism* (how a ranked ballot becomes 3–5 TDs) is
+deliberately deferred to Module 1, which `index.md` flags explicitly. So the
+in-order reader is not stranded; the fix is the graph edge, not prose in this
+lesson. (This also corrects `planning/module_0_concept_order.md`, which was
+written against a superseded lesson state and reports `proportional_representation`
+as MISSING from Module 0; the current `why_this_matters.md` defines it in its
+key-terms box and prose.)
