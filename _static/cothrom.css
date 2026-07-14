@@ -33,6 +33,12 @@
   --cothrom-tint-green: #f0fdf4;
   --cothrom-tint-accent: #faf5ff;
 
+  /* --- Tooltip (glossary definition bubble) --- */
+  /* Dedicated pair so the surface never tracks the inverting ink colour:
+     a dark bubble with light text reads in light mode and dark mode alike. */
+  --cothrom-tooltip-bg: #2c3e50;
+  --cothrom-tooltip-fg: #ffffff;
+
   /* --- Status (illustrative comparison cards / banners) --- */
   --cothrom-warn: #92400e;
   --cothrom-warn-bg: #fef3c7;
@@ -59,6 +65,9 @@ html[data-theme="dark"] {
   --cothrom-border: #3a4453;
   --cothrom-over-bg: #3a1f22;
   --cothrom-under-bg: #16301f;
+  /* Lift the tooltip off the dark page: darker-than-surface bubble, light text. */
+  --cothrom-tooltip-bg: #111a26;
+  --cothrom-tooltip-fg: #e6e9ef;
   --cothrom-tint-green: #14251c;
   --cothrom-tint-accent: #1e1530;
   --cothrom-warn: #f0c674;
@@ -88,8 +97,8 @@ html[data-theme="dark"] {
   max-width: 18rem;
   padding: 0.5rem 0.7rem;
   border-radius: 8px;
-  background: var(--cothrom-text);
-  color: #fff;
+  background: var(--cothrom-tooltip-bg);
+  color: var(--cothrom-tooltip-fg);
   font-weight: 400;
   font-size: 0.85rem;
   line-height: 1.4;
