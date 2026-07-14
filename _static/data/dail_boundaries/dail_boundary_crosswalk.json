@@ -15,7 +15,8 @@
         "name": "Houses of the Oireachtas Open Data API",
         "url": "https://api.oireachtas.ie/v1/houses",
         "used_for": "First-sitting and dissolution dates of each Dáil",
-        "retrieved": "2026-07-14"
+        "retrieved": "2026-07-14",
+        "caveat": "The /v1/houses dateRange fields are unreliable at day granularity for six of the eighteen houses (see _metadata.date_corrections); dates here were corrected against the Oireachtas debates record and the documentary record. Do not re-ingest dateRange verbatim."
       },
       {
         "name": "Civgraph — historic Dáil constituency geometry",
@@ -25,6 +26,48 @@
       }
     ],
     "verification": "TD totals and constituency counts were independently recomputed from the committed geometry (sum of per-constituency seats, feature counts) and match Wikipedia's figures for every regime.",
+    "date_corrections": {
+      "audited": "2026-07-14",
+      "description": "A cold audit (planning/changing_dail_crosswalk_audit.md) found six day-level date errors, all inherited verbatim from the Oireachtas /v1/houses dateRange fields. Corrected here; year-level fields were unaffected.",
+      "corrections": [
+        {
+          "field": "dail 22 dissolved",
+          "was": "1982-02-27",
+          "now": "1982-01-27",
+          "source": "Wikipedia '22nd Dáil' and 'February 1982 Irish general election' (dissolution 27 January 1982; the committed date postdated the 18 February election)"
+        },
+        {
+          "field": "dail 24 dissolved",
+          "was": "1987-01-21",
+          "now": "1987-01-20",
+          "source": "Wikipedia '24th Dáil' and '1987 Irish general election' (dissolved 20 January 1987, four weeks before the 17 February poll)"
+        },
+        {
+          "field": "dail 29 dissolved",
+          "was": "2007-04-30",
+          "now": "2007-04-29",
+          "source": "Gallagher & Marsh, How Ireland Voted 2007, ch. 1, and Michael Gallagher's TCD 2007 election page (dissolved on Sunday morning, 29 April 2007; 30 April was a Monday)"
+        },
+        {
+          "field": "dail 31 dissolved",
+          "was": "2016-03-09",
+          "now": "2016-02-03",
+          "source": "Wikipedia '31st Dáil' (dissolved 3 February 2016; the API value is the eve of the 32nd Dáil's first sitting and postdated the 26 February election)"
+        },
+        {
+          "field": "dail 33 first_sitting",
+          "was": "2020-02-08",
+          "now": "2020-02-20",
+          "source": "Oireachtas debates record (earliest 33rd-Dáil sitting 2020-02-20) and Wikipedia '33rd Dáil'; the API value is polling day"
+        },
+        {
+          "field": "dail 34 first_sitting",
+          "was": "2024-11-29",
+          "now": "2024-12-18",
+          "source": "Oireachtas debates record (earliest 34th-Dáil sitting 2024-12-18) and Wikipedia '34th Dáil'; the API value is polling day"
+        }
+      ]
+    },
     "generated": "2026-07-14"
   },
   "regimes": [
@@ -172,7 +215,7 @@
           "start_year": 1981,
           "end_year": 1982,
           "first_sitting": "1981-06-30",
-          "dissolved": "1982-02-27"
+          "dissolved": "1982-01-27"
         },
         {
           "dail": 23,
@@ -186,7 +229,7 @@
           "start_year": 1982,
           "end_year": 1987,
           "first_sitting": "1982-12-14",
-          "dissolved": "1987-01-21"
+          "dissolved": "1987-01-20"
         }
       ],
       "geojson": "dail_1980.geojson",
@@ -311,7 +354,7 @@
           "start_year": 2002,
           "end_year": 2007,
           "first_sitting": "2002-06-06",
-          "dissolved": "2007-04-30"
+          "dissolved": "2007-04-29"
         }
       ],
       "geojson": "dail_1998.geojson",
@@ -369,7 +412,7 @@
           "start_year": 2011,
           "end_year": 2016,
           "first_sitting": "2011-03-09",
-          "dissolved": "2016-03-09"
+          "dissolved": "2016-02-03"
         }
       ],
       "geojson": "dail_2009.geojson",
@@ -426,7 +469,7 @@
           "dail": 33,
           "start_year": 2020,
           "end_year": 2024,
-          "first_sitting": "2020-02-08",
+          "first_sitting": "2020-02-20",
           "dissolved": "2024-11-08"
         }
       ],
@@ -455,7 +498,7 @@
           "dail": 34,
           "start_year": 2024,
           "end_year": null,
-          "first_sitting": "2024-11-29",
+          "first_sitting": "2024-12-18",
           "dissolved": null
         }
       ],
