@@ -1,0 +1,466 @@
+{
+  "_metadata": {
+    "title": "Dáil constituency boundary regimes, 1961 to present",
+    "description": "Crosswalk from each Electoral (Amendment) Act to the boundary regime it created: the general elections fought on those boundaries, the Dála that sat under them, seat and constituency counts, and the committed GeoJSON outline for the regime.",
+    "data_status": "real-sourced-data",
+    "timing_semantics": "An Electoral (Amendment) Act's boundaries take effect only on the dissolution of the Dáil sitting when the Act is passed. The Act year therefore precedes the first general election (and first Dáil) that used its boundaries; by-elections held in the interim are fought on the previous regime's boundaries; and one regime usually spans several Dála until the next Act. The act-to-Dáil relationship is one-to-many.",
+    "sources": [
+      {
+        "name": "Wikipedia — Historic Dáil constituencies",
+        "url": "https://en.wikipedia.org/wiki/Historic_D%C3%A1il_constituencies",
+        "used_for": "Acts, seat and constituency counts, elections at which each regime was used",
+        "retrieved": "2026-07-14"
+      },
+      {
+        "name": "Houses of the Oireachtas Open Data API",
+        "url": "https://api.oireachtas.ie/v1/houses",
+        "used_for": "First-sitting and dissolution dates of each Dáil",
+        "retrieved": "2026-07-14"
+      },
+      {
+        "name": "Civgraph — historic Dáil constituency geometry",
+        "url": "https://civgraph.net/agent/maps-index.json",
+        "used_for": "Boundary geometry (see per-file _metadata and NOTICE.md)",
+        "retrieved": "2026-07-14"
+      }
+    ],
+    "verification": "TD totals and constituency counts were independently recomputed from the committed geometry (sum of per-constituency seats, feature counts) and match Wikipedia's figures for every regime.",
+    "generated": "2026-07-14"
+  },
+  "regimes": [
+    {
+      "regime_id": "dail_1961",
+      "act": {
+        "name": "Electoral (Amendment) Act 1961",
+        "year": 1961
+      },
+      "tds": 144,
+      "constituencies": 38,
+      "general_elections": [
+        {
+          "election": "1961",
+          "date": "1961-10-04",
+          "dail_elected": 17
+        },
+        {
+          "election": "1965",
+          "date": "1965-04-07",
+          "dail_elected": 18
+        }
+      ],
+      "first_general_election": "1961",
+      "last_general_election": "1965",
+      "dala": [
+        {
+          "dail": 17,
+          "start_year": 1961,
+          "end_year": 1965,
+          "first_sitting": "1961-10-11",
+          "dissolved": "1965-03-18"
+        },
+        {
+          "dail": 18,
+          "start_year": 1965,
+          "end_year": 1969,
+          "first_sitting": "1965-04-21",
+          "dissolved": "1969-05-22"
+        }
+      ],
+      "geojson": "dail_1961.geojson",
+      "note": "Enacted after the Electoral (Amendment) Act 1959 was found repugnant to the Constitution (O'Donovan v Attorney General, 1961); first regime drawn to respect the constitutional population-per-TD ratio."
+    },
+    {
+      "regime_id": "dail_1969",
+      "act": {
+        "name": "Electoral (Amendment) Act 1969",
+        "year": 1969
+      },
+      "tds": 144,
+      "constituencies": 42,
+      "general_elections": [
+        {
+          "election": "1969",
+          "date": "1969-06-18",
+          "dail_elected": 19
+        },
+        {
+          "election": "1973",
+          "date": "1973-02-28",
+          "dail_elected": 20
+        }
+      ],
+      "first_general_election": "1969",
+      "last_general_election": "1973",
+      "dala": [
+        {
+          "dail": 19,
+          "start_year": 1969,
+          "end_year": 1973,
+          "first_sitting": "1969-07-02",
+          "dissolved": "1973-02-05"
+        },
+        {
+          "dail": 20,
+          "start_year": 1973,
+          "end_year": 1977,
+          "first_sitting": "1973-03-14",
+          "dissolved": "1977-05-25"
+        }
+      ],
+      "geojson": "dail_1969.geojson",
+      "note": "Government-drawn revision ('Kevin Boland' scheme); widely described as a gerrymander of its era."
+    },
+    {
+      "regime_id": "dail_1974",
+      "act": {
+        "name": "Electoral (Amendment) Act 1974",
+        "year": 1974
+      },
+      "tds": 148,
+      "constituencies": 42,
+      "general_elections": [
+        {
+          "election": "1977",
+          "date": "1977-06-16",
+          "dail_elected": 21
+        }
+      ],
+      "first_general_election": "1977",
+      "last_general_election": "1977",
+      "dala": [
+        {
+          "dail": 21,
+          "start_year": 1977,
+          "end_year": 1981,
+          "first_sitting": "1977-07-05",
+          "dissolved": "1981-05-21"
+        }
+      ],
+      "geojson": "dail_1974.geojson",
+      "note": "The 'Tullymander': drawn by Minister James Tully to favour the coalition; backfired at the 1977 election. Used at one general election only. The last regime drawn directly by a government; from 1977 an independent commission recommended boundaries."
+    },
+    {
+      "regime_id": "dail_1980",
+      "act": {
+        "name": "Electoral (Amendment) Act 1980",
+        "year": 1980
+      },
+      "tds": 166,
+      "constituencies": 41,
+      "general_elections": [
+        {
+          "election": "1981",
+          "date": "1981-06-11",
+          "dail_elected": 22
+        },
+        {
+          "election": "1982 (Feb)",
+          "date": "1982-02-18",
+          "dail_elected": 23
+        },
+        {
+          "election": "1982 (Nov)",
+          "date": "1982-11-24",
+          "dail_elected": 24
+        }
+      ],
+      "first_general_election": "1981",
+      "last_general_election": "1982 (Nov)",
+      "dala": [
+        {
+          "dail": 22,
+          "start_year": 1981,
+          "end_year": 1982,
+          "first_sitting": "1981-06-30",
+          "dissolved": "1982-02-27"
+        },
+        {
+          "dail": 23,
+          "start_year": 1982,
+          "end_year": 1982,
+          "first_sitting": "1982-03-09",
+          "dissolved": "1982-11-04"
+        },
+        {
+          "dail": 24,
+          "start_year": 1982,
+          "end_year": 1987,
+          "first_sitting": "1982-12-14",
+          "dissolved": "1987-01-21"
+        }
+      ],
+      "geojson": "dail_1980.geojson",
+      "note": "First regime based on an independent boundary commission report (1980). Spans three general elections and three Dála in under 18 months of polling."
+    },
+    {
+      "regime_id": "dail_1983",
+      "act": {
+        "name": "Electoral (Amendment) Act 1983",
+        "year": 1983
+      },
+      "tds": 166,
+      "constituencies": 41,
+      "general_elections": [
+        {
+          "election": "1987",
+          "date": "1987-02-17",
+          "dail_elected": 25
+        },
+        {
+          "election": "1989",
+          "date": "1989-06-15",
+          "dail_elected": 26
+        }
+      ],
+      "first_general_election": "1987",
+      "last_general_election": "1989",
+      "dala": [
+        {
+          "dail": 25,
+          "start_year": 1987,
+          "end_year": 1989,
+          "first_sitting": "1987-03-10",
+          "dissolved": "1989-05-25"
+        },
+        {
+          "dail": 26,
+          "start_year": 1989,
+          "end_year": 1992,
+          "first_sitting": "1989-06-29",
+          "dissolved": "1992-11-05"
+        }
+      ],
+      "geojson": "dail_1983.geojson"
+    },
+    {
+      "regime_id": "dail_1990",
+      "act": {
+        "name": "Electoral (Amendment) Act 1990",
+        "year": 1990
+      },
+      "tds": 166,
+      "constituencies": 41,
+      "general_elections": [
+        {
+          "election": "1992",
+          "date": "1992-11-25",
+          "dail_elected": 27
+        }
+      ],
+      "first_general_election": "1992",
+      "last_general_election": "1992",
+      "dala": [
+        {
+          "dail": 27,
+          "start_year": 1992,
+          "end_year": 1997,
+          "first_sitting": "1992-12-14",
+          "dissolved": "1997-05-15"
+        }
+      ],
+      "geojson": "dail_1990.geojson"
+    },
+    {
+      "regime_id": "dail_1995",
+      "act": {
+        "name": "Electoral (Amendment) Act 1995",
+        "year": 1995
+      },
+      "tds": 166,
+      "constituencies": 41,
+      "general_elections": [
+        {
+          "election": "1997",
+          "date": "1997-06-06",
+          "dail_elected": 28
+        }
+      ],
+      "first_general_election": "1997",
+      "last_general_election": "1997",
+      "dala": [
+        {
+          "dail": 28,
+          "start_year": 1997,
+          "end_year": 2002,
+          "first_sitting": "1997-06-26",
+          "dissolved": "2002-04-25"
+        }
+      ],
+      "geojson": "dail_1995.geojson"
+    },
+    {
+      "regime_id": "dail_1998",
+      "act": {
+        "name": "Electoral (Amendment) (No. 2) Act 1998",
+        "year": 1998
+      },
+      "tds": 166,
+      "constituencies": 42,
+      "general_elections": [
+        {
+          "election": "2002",
+          "date": "2002-05-17",
+          "dail_elected": 29
+        }
+      ],
+      "first_general_election": "2002",
+      "last_general_election": "2002",
+      "dala": [
+        {
+          "dail": 29,
+          "start_year": 2002,
+          "end_year": 2007,
+          "first_sitting": "2002-06-06",
+          "dissolved": "2007-04-30"
+        }
+      ],
+      "geojson": "dail_1998.geojson",
+      "note": "Formally the '(No. 2)' Act of 1998 — a first Electoral (Amendment) Act 1998 dealt with other electoral matters."
+    },
+    {
+      "regime_id": "dail_2005",
+      "act": {
+        "name": "Electoral (Amendment) Act 2005",
+        "year": 2005
+      },
+      "tds": 166,
+      "constituencies": 43,
+      "general_elections": [
+        {
+          "election": "2007",
+          "date": "2007-05-24",
+          "dail_elected": 30
+        }
+      ],
+      "first_general_election": "2007",
+      "last_general_election": "2007",
+      "dala": [
+        {
+          "dail": 30,
+          "start_year": 2007,
+          "end_year": 2011,
+          "first_sitting": "2007-06-14",
+          "dissolved": "2011-02-01"
+        }
+      ],
+      "geojson": "dail_2005.geojson",
+      "note": "Civgraph's source file for this regime is named 2007_Dail.fgb after the election year, not the Act year."
+    },
+    {
+      "regime_id": "dail_2009",
+      "act": {
+        "name": "Electoral (Amendment) Act 2009",
+        "year": 2009
+      },
+      "tds": 166,
+      "constituencies": 43,
+      "general_elections": [
+        {
+          "election": "2011",
+          "date": "2011-02-25",
+          "dail_elected": 31
+        }
+      ],
+      "first_general_election": "2011",
+      "last_general_election": "2011",
+      "dala": [
+        {
+          "dail": 31,
+          "start_year": 2011,
+          "end_year": 2016,
+          "first_sitting": "2011-03-09",
+          "dissolved": "2016-03-09"
+        }
+      ],
+      "geojson": "dail_2009.geojson",
+      "note": "Civgraph's source file for this regime is named 2011_Dail.fgb after the election year, not the Act year. Geometry digitised from CSO census mapping."
+    },
+    {
+      "regime_id": "dail_2013",
+      "act": {
+        "name": "Electoral (Amendment) (Dáil Constituencies) Act 2013",
+        "year": 2013
+      },
+      "tds": 158,
+      "constituencies": 40,
+      "general_elections": [
+        {
+          "election": "2016",
+          "date": "2016-02-26",
+          "dail_elected": 32
+        }
+      ],
+      "first_general_election": "2016",
+      "last_general_election": "2016",
+      "dala": [
+        {
+          "dail": 32,
+          "start_year": 2016,
+          "end_year": 2020,
+          "first_sitting": "2016-03-10",
+          "dissolved": "2020-01-14"
+        }
+      ],
+      "geojson": "dail_2013.geojson",
+      "note": "Implemented the 2012 Constituency Commission report; cut the Dáil to its smallest size since 1977."
+    },
+    {
+      "regime_id": "dail_2017",
+      "act": {
+        "name": "Electoral (Amendment) (Dáil Constituencies) Act 2017",
+        "year": 2017
+      },
+      "tds": 160,
+      "constituencies": 39,
+      "general_elections": [
+        {
+          "election": "2020",
+          "date": "2020-02-08",
+          "dail_elected": 33
+        }
+      ],
+      "first_general_election": "2020",
+      "last_general_election": "2020",
+      "dala": [
+        {
+          "dail": 33,
+          "start_year": 2020,
+          "end_year": 2024,
+          "first_sitting": "2020-02-08",
+          "dissolved": "2024-11-08"
+        }
+      ],
+      "geojson": "dail_2017.geojson",
+      "note": "In force during the 33rd Dáil while the 2023 Act was passed; the November 2019 by-elections were fought on the previous (2013 Act) boundaries because this Act only took effect at the January 2020 dissolution."
+    },
+    {
+      "regime_id": "dail_2023",
+      "act": {
+        "name": "Electoral (Amendment) Act 2023",
+        "year": 2023
+      },
+      "tds": 174,
+      "constituencies": 43,
+      "general_elections": [
+        {
+          "election": "2024",
+          "date": "2024-11-29",
+          "dail_elected": 34
+        }
+      ],
+      "first_general_election": "2024",
+      "last_general_election": "2024",
+      "dala": [
+        {
+          "dail": 34,
+          "start_year": 2024,
+          "end_year": null,
+          "first_sitting": "2024-11-29",
+          "dissolved": null
+        }
+      ],
+      "geojson": "dail_2023.geojson",
+      "note": "First regime recommended by An Coimisiún Toghcháin (the Electoral Commission, 2023 review) rather than an ad-hoc Constituency Commission. 174 TDs across 43 constituencies — the largest Dáil ever. In force for the 34th Dáil (sitting as of July 2026)."
+    }
+  ]
+}
