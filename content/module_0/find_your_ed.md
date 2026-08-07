@@ -1,5 +1,21 @@
 # The smallest patch of Ireland with your name on it
 
+:::{div} cothrom-concise
+Somewhere near you there is a boundary you have never seen drawn and cannot name,
+and it decides which constituency you vote in. On one side of it your ballot helps
+elect one set of TDs; a few streets over, a different set. That patch — anything
+from a few dozen people to more than forty thousand — is
+your <span class="cothrom-term" data-def="The smallest official area the census counts separately; the CSO divides Ireland into 3,420 of them, and each belongs whole to one constituency.">Electoral Division</span>, the single building block from which your constituency
+is assembled.
+
+The last lesson showed two identical votes carrying different weight. This one is
+about the piece underneath: the unit the Electoral Commission actually moves. By
+the end you will be able to find your own Electoral Division, say which
+constituency it is bundled into and how many TDs that elects, and explain what its
+size means for your share of a TD.
+:::
+
+:::{div} cothrom-full
 Somewhere near you there is a boundary you have never seen drawn and cannot
 name, and it decides which constituency you vote in. It runs down the middle of
 a road, or along a river, or around the edge of a housing estate. On one side of
@@ -16,6 +32,7 @@ when it decides which constituency you land in. By the end you will be able to
 find your own Electoral Division on a map, say which constituency it is bundled
 into and how many TDs that elects, and explain what its size means for your
 share of a TD.
+:::
 
 ```{raw} html
 <div class="cothrom-keyterms">
@@ -30,6 +47,29 @@ share of a TD.
 
 ## What an Electoral Division actually is
 
+:::{div} cothrom-concise
+Take the real range. The Central Statistics Office counts **3,420** Electoral
+Divisions, and they are wildly uneven. The smallest, **Castletown in Co. Clare**,
+had just **71 people** at Census 2022; the largest, **Blanchardstown-Blakestown
+in Fingal**, had **43,905** — more people in one ED than the roughly **29,593** a
+single TD represents nationally. Those are outliers: the *typical* ED is tiny, a
+middle value of about **675 people**. Each carries a name inherited from an old
+<span class="cothrom-term" data-def="A small traditional Irish land unit, often just a few dozen houses; ED names are commonly inherited from the townland or parish they grew out of.">townland</span> or parish that its own residents rarely use.
+
+An **Electoral Division** is the smallest official statistical area in Ireland.
+The census does not publish a population for your street; it publishes one for
+your ED — and since the whole electoral map is built from census population
+figures, that makes the ED the smallest brick the Commission has. Your home sits
+in exactly one, never two and never none.
+
+What matters for everything else is *indivisibility*: all of an ED's people move
+together. Blanchardstown-Blakestown's 43,905 can be placed in one constituency or
+another, but never split between two — even though, at nearly one and a half times
+what a single TD represents, that one ED strains any constituency it lands in. The
+ED is the atom of the map.
+:::
+
+:::{div} cothrom-full
 Take the real range. The Central Statistics Office counts 3,420 Electoral
 Divisions, and they are wildly uneven. The smallest, **Castletown in Co. Clare**,
 had just **71 people** at Census 2022. The largest, **Blanchardstown-Blakestown
@@ -60,6 +100,7 @@ cannot split them between two — even though, at nearly one and a half times wh
 a single TD represents, that single ED strains any constituency it lands in. The
 ED is the atom: the smallest thing the map is made of, and the smallest thing
 that can be moved.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="1">
@@ -70,15 +111,37 @@ that can be moved.
 </div>
 ```
 
+:::{div} cothrom-concise
+So when the Commission "moves your area", what it literally does is reassign one
+or more whole EDs. Your ED is the resolution at which the whole argument happens.
+:::
+
+:::{div} cothrom-full
 Knowing this changes how you should read any boundary proposal. When the
 Commission "moves your area", what it literally does is reassign one or more
 whole EDs from one constituency to another. Your ED is the resolution at which
 the whole argument happens.
+:::
 
 ---
 
 ## Find yours, and predict before you look
 
+:::{div} cothrom-concise
+Enough about the extremes — find *your* patch. The map below carries all 3,420
+Electoral Divisions with their real Census 2022 populations; search by ED name, or
+switch to the address tab and type a town near you.
+
+Now and again it pauses to ask one quick question about the ED you just picked —
+how many people live in it, or what share of a single TD's 29,593 it comes to —
+and reveals the answer once you have committed to an estimate. There is no score,
+and a toggle switches the questions off if you would rather just browse. They are
+there because guessing first makes the real figure land, and because what
+surprises most people is how tiny a single ED is against a whole TD's worth of
+constituents.
+:::
+
+:::{div} cothrom-full
 Enough about the extremes — find *your* patch. The map below carries all 3,420
 Electoral Divisions, with their real Census 2022 populations. Search for an ED by
 name, or switch to the address tab and type a town near you.
@@ -92,6 +155,7 @@ just browse. They are there because committing to a guess first makes the real
 figure land, and because the thing that surprises most people is just how tiny a
 single ED is against a whole TD's worth of constituents — and therefore how many EDs
 have to be bundled together before anyone gets represented at all.
+:::
 
 ```{note}
 **Real data, generalised boundaries.** Populations are the official
@@ -115,10 +179,18 @@ Electoral Commission's 2023 review.
 </div>
 ```
 
+:::{div} cothrom-concise
+Notice what else the reveal shows: an ED belongs to exactly one named
+constituency, and that constituency elects a fixed number of TDs. Both were
+decided for it when the Commission grouped it with its neighbours.
+:::
+
+:::{div} cothrom-full
 Whatever you estimated, notice what else the reveal shows: an ED belongs to
 exactly one named constituency, and that constituency elects a fixed number of
 TDs. Your ED did not choose either. Both were decided for it when the Commission grouped it
 with its neighbours — the process the next lesson takes apart.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="2">
@@ -133,6 +205,30 @@ with its neighbours — the process the next lesson takes apart.
 
 ## What your ED's size says about your vote
 
+:::{div} cothrom-concise
+The reveal panel gave you one number worth pausing on: your ED as a share of **one
+TD's people**. Each TD represents about **29,593 people** (5,149,139 ÷ 174 TDs,
+from Census 2022 and the 2023 review), so your ED is not a constituency and not a
+TD — it is a *sliver of one TD's workload*, bundled with scores of others (about
+eighty per constituency: 3,420 EDs across 43 constituencies). Divide your ED's
+population by 29,593 to get the figure.
+
+On the real extremes: Castletown, 71 people, comes to **0.0024** — about a
+**quarter of one percent** of a single TD. The typical ED of 675 people is
+**2.3%**. Blanchardstown-Blakestown, at 43,905, comes to **1.48** — nearly one and
+a half TDs' worth in one indivisible block. That is a spread of more than six
+hundred to one.
+
+Population, not land area, is what the map-drawing turns on. A big-population ED
+carries far more weight when the Commission balances constituencies toward that
+29,593 target; a small one is easier to shuffle without upsetting the balance. It
+is the same arithmetic that produced the vote-weight gap from the last lesson: an
+ED's population feeds up into its constituency's, which sets how many people each
+of its TDs must represent — and whether your vote carries a little more or a little
+less than the national norm.
+:::
+
+:::{div} cothrom-full
 The reveal panel gave you one number worth pausing on: your ED as a share of
 **one TD's people**. Here is where it comes from, and why it matters.
 
@@ -161,6 +257,7 @@ same arithmetic that produced the vote-weight gap from the last lesson: an ED's
 population feeds up into its constituency's population, which sets how many
 people each of that constituency's TDs must represent — and whether your vote
 ends up carrying a little more or a little less than the national norm.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="0">
@@ -175,6 +272,31 @@ ends up carrying a little more or a little less than the national norm.
 
 ## Why your constituency can change when your county doesn't
 
+:::{div} cothrom-concise
+A real case. Before the 2023 review, Laois and Offaly were stitched together into
+a single five-seat constituency, **Laois–Offaly**, that crossed the county line.
+The review pulled them apart, restoring each as a single-county constituency — one
+of seven county-boundary breaches the Commission removed out of ten that existed
+(Electoral Commission, 2023). A *breach* is just that, a constituency reaching
+across a county line; what should formally count as one, and how breaches are
+weighed against equal representation, is taken up in Module 3.
+
+A voter in Portlaoise never moved: County Laois before, County Laois after, the
+same streets and the same neighbours in the same Electoral Division. What changed
+was the grouping — Laois's EDs were unbundled from Offaly's and rebundled among
+themselves, so that voter now shares a ballot paper and a set of TDs with a
+different set of people.
+
+That is why finding your ED is worth the trouble. County lines are stable and
+emotive; constituency lines are redrawn every few years and are what actually
+determine your representation, so an ED can keep its county while changing its
+constituency. The EDs most exposed are the ones on a constituency's edge, touching
+a neighbour — the pieces a review reaches for first. *How* it chooses among them
+rests on two ideas, **contiguity** and **compactness**, that the next lesson
+defines properly.
+:::
+
+:::{div} cothrom-full
 Here is a real case, not an illustrative one. Before the 2023 review, Laois and
 Offaly were stitched together into a single five-seat constituency,
 **Laois–Offaly**, that crossed the county line. The 2023 review pulled them
@@ -206,6 +328,7 @@ gerrymandered — rests on two ideas, **contiguity** and **compactness**, that t
 next lesson defines properly. For now it is enough to know that border EDs are
 the movable ones, and that your ED's position — interior or edge — is a strong
 hint as to whether a future review is likely to touch you.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="1">
@@ -239,10 +362,12 @@ hint as to whether a future review is likely to touch you.
 </div>
 ```
 
+:::{div} cothrom-full
 Next we turn to the process that does the grouping: what forces a boundary
 review, what the Commission is trying to balance when it redraws the map, and the
 two rules — contiguity and compactness — that decide which of those edge EDs can
 actually move.
+:::
 
 **→ [Next: What makes the lines move](boundaries_and_you.md)**
 

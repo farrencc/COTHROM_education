@@ -1,5 +1,21 @@
 # How Ireland Draws the Lines Behind Your Vote
 
+:::{div} cothrom-concise
+A vote cast in Clare is worth a little less than a vote cast in most of the country
+— not because anyone cheated, but measurably. After the Electoral Commission's 2023
+constituency review, each TD in Clare represents about 31,995 people against a
+national average of 29,593: roughly 8% above the norm, so a Clare voter's share of a
+TD is roughly 8% smaller than a voter's elsewhere. No one in Clare chose that. A line
+on a map did.
+
+This resource is about those lines: how Ireland's constituency boundaries are set,
+why they move, and how to judge whether a map treats voters fairly. It is the
+public-facing companion to [COTHROM](https://tpsa.ie/problemsolving), a project of
+The Problem Solving Association, written for the ordinary Irish voter — no maths
+background assumed, and no party's case being made.
+:::
+
+:::{div} cothrom-full
 A vote cast in Clare is worth a little less than a vote cast in most of the
 country. Not because anyone cheated, and not by much — but measurably. After the
 Electoral Commission's 2023 constituency review, each TD in Clare represents
@@ -13,6 +29,7 @@ fairly. It is the public-facing companion to
 [COTHROM](https://tpsa.ie/problemsolving), a project of The Problem Solving
 Association, and it is written for the ordinary Irish voter — no maths
 background assumed, and no party's case being made.
+:::
 
 ## The problem in one paragraph
 
@@ -91,6 +108,17 @@ what it means to be an informed voter.
 
 ## Start here
 
+:::{div} cothrom-concise
+Module 0 is the personal on-ramp: in about 30 to 45 minutes it shows how identical
+ballots end up carrying different weight, how to find the small area you actually
+live in, and how likely your own constituency is to be redrawn next time.
+
+Head to [Module 0: Your Vote and the Map](module_0/index.md) to begin, or go straight
+to [Find Your ED](module_0/find_your_ed.md) for the interactive map. Further modules,
+on the voting system and the mathematics of fair maps, follow from there.
+:::
+
+:::{div} cothrom-full
 Module 0 is available now. It is the personal on-ramp: in about 30 to 45
 minutes it shows you how identical ballots end up carrying different weight, how
 to find the small area you actually live in, and how likely your own
@@ -100,6 +128,7 @@ Head to [Module 0: Your Vote and the Map](module_0/index.md) to begin, or go
 straight to [Find Your ED](module_0/find_your_ed.md) to locate yourself on the
 map and start with the interactive tool. Further modules, taking up the voting
 system and the mathematics of fair maps in depth, follow from there.
+:::
 
 The national figures on this page — 174 TDs, 43 constituencies, an average of
 29,593 people per TD, and a total population of 5,149,139 — come from the

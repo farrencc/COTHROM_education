@@ -1,12 +1,36 @@
 # Boundaries and You
 
+:::{div} cothrom-concise
+In 2023, people who had spent their whole lives voting in a single Laois–Offaly
+constituency were told that at the next election there would be two: a Laois seat
+and an Offaly seat. Nobody moved house and no law about who may vote changed — a
+committee redrew a line on a map, and with it changed which candidates appear on
+which ballot papers and which TDs answer to which voters.
+:::
+
+:::{div} cothrom-full
 In 2023, people who had spent their whole lives voting in a single Laois–Offaly
 constituency were told that at the next election there would be two: a Laois seat
 and an Offaly seat, each standing on its own. Nobody moved house. No law about who
 may vote changed. A committee simply redrew a line on a map, and with it changed
 which candidates appear on which ballot papers, which TDs answer to which voters,
 and whose local concerns get grouped with whose.
+:::
 
+:::{div} cothrom-concise
+That line-drawing happens every few years and is not done freely: the Electoral
+Commission works to a rulebook whose rules pull against one another, so every map is
+a set of choices about which rule to bend. This lesson walks through the main rules —
+that a constituency stays in
+<span class="cothrom-term" data-def="The requirement that a constituency be a single connected piece of territory, with no detached fragments.">one connected piece</span>,
+that it has a
+<span class="cothrom-term" data-def="Whether a constituency has a sensible, roughly rounded shape rather than a long, snaking one drawn to capture particular voters.">sensible compact shape</span>,
+and that it respects
+<span class="cothrom-term" data-def="A constituency crossing a county line so that one seat contains people from more than one county; the law asks the Commission to avoid these where practicable.">county boundaries</span>
+— and shows you where they collide.
+:::
+
+:::{div} cothrom-full
 That line-drawing happens every few years, and it is not done freely. The Electoral
 Commission works to a rulebook. What makes redistricting genuinely hard — and what
 the rest of this course is built on — is that the rules in that book pull against
@@ -19,11 +43,28 @@ that it has a
 and that it respects
 <span class="cothrom-term" data-def="A constituency crossing a county line so that one seat contains people from more than one county; the law asks the Commission to avoid these where practicable.">county boundaries</span>
 — and then shows you exactly where those rules collide.
+:::
 
 ---
 
 ## The 2023 review, and the rulebook behind it
 
+:::{div} cothrom-concise
+The 2023 review, the first run by the new statutory Electoral Commission, grew the
+Dáil from 160 TDs to **174** across **43** constituencies instead of 39. Because it
+added seats faster than the population had grown, the average number of people each
+TD represents *fell*, from about **32,182** to **29,593**. It also put county lines
+back together: of ten places where the old map cut across a county boundary, the new
+map repaired **seven**, the Laois–Offaly split among them (Electoral Commission,
+2023).
+
+That leap was not unprecedented — the Dáil has been resized at almost every review.
+Drag through the timeline: 166 seats through the 1980s and 1990s, down to 158, and
+back up to today's 174. There is no single "correct" size; each review works to
+whatever range the law sets for it.
+:::
+
+:::{div} cothrom-full
 Start with what the last review actually did. The 2023 review, the first run by the
 new statutory Electoral Commission, grew the Dáil from 160 TDs to **174**, spread
 across **43** constituencies instead of 39. Because it added seats faster than the
@@ -38,6 +79,7 @@ almost every review. Drag through the timeline to watch the count change from on
 election to the next — 166 seats through the 1980s and 1990s, down to 158, and back
 up to today's 174. There is no single "correct" size fixed for all time; each review
 works to whatever range the law sets for it.
+:::
 
 ```{raw} html
 <div class="cothrom-embed" style="margin:1.5rem 0;border:1px solid var(--cothrom-border);border-radius:8px;overflow:hidden;">
@@ -50,6 +92,23 @@ works to whatever range the law sets for it.
 </div>
 ```
 
+:::{div} cothrom-concise
+None of that was optional tinkering. Under the Electoral Reform Act 2022 a review must
+observe a fixed list of conditions, and the reason redistricting is difficult is hidden
+in how that list is written. Some conditions are absolutes: the Act fixed the Dáil at
+between 171 and 181 members — a range reset in law from time to time, which is why the
+total could climb from 160 to 174 — every constituency must elect three, four or five
+TDs, and every constituency must be contiguous, in one connected piece.
+
+The rest carries an escape hatch: county boundaries are to be respected *as far as
+practicable*, and geographic considerations and continuity likewise. That phrase does
+enormous work — it is a statutory admission that these goals sometimes cannot be met,
+and that when they conflict someone has to decide which gives way. Every argument you
+will ever hear about a boundary review is really an argument about how that discretion
+was used.
+:::
+
+:::{div} cothrom-full
 None of that was optional tinkering. Under the Electoral Reform Act 2022, a review
 has to observe a fixed list of conditions, and the reason redistricting is difficult
 is hidden in how that list is written. Some of the conditions are stated as absolutes.
@@ -66,6 +125,7 @@ reasonably can. That phrase, "as far as practicable", is doing enormous work. It
 statutory admission that these goals sometimes cannot be met, and that when they
 conflict, someone has to decide which one gives way. Every argument you will ever hear
 about a boundary review is really an argument about how that discretion was used.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="2">
@@ -76,13 +136,34 @@ about a boundary review is really an argument about how that discretion was used
 </div>
 ```
 
+:::{div} cothrom-full
 The three sections that follow take the rules one at a time, starting with the one
 that is never bent.
+:::
 
 ---
 
 ## Rule one: a constituency has to be in one piece
 
+:::{div} cothrom-concise
+A constituency made of one north Dublin suburb and one west Cork parish, with two
+hundred kilometres in between, would be illegal even with exactly the right
+population: you could not travel from one half to the other without leaving it. That
+is **contiguity**. Formally, if every
+<span class="cothrom-term" data-def="The small building-block area — a few thousand people — that constituencies are assembled from; the subject of the previous lesson.">Electoral Division</span>
+is a tile and two tiles are joined wherever they share a border, a constituency is
+contiguous when all its tiles form one connected group. Every final map satisfies
+this everywhere, with no exceptions bargained away for better population numbers.
+
+The interesting case is the coast. Ireland's inhabited islands — the Aran Islands,
+Achill and others — cannot touch the mainland along a land border, so an island goes
+in the constituency its ferry sails from and the sea crossing counts as a connection.
+
+For each candidate map below, decide whether it is a single legal piece before you
+check.
+:::
+
+:::{div} cothrom-full
 Picture a proposed constituency made of one busy suburb in north Dublin and one
 parish in west Cork, with two hundred kilometres of other people's constituencies in
 between. It could be drawn to have exactly the right population. It would still be
@@ -107,6 +188,7 @@ able to reach the rest of their own constituency.
 Before reading on, try the three cases below. For each candidate map, decide whether
 it is a single legal piece before you check — the tool scores your judgement against
 the rule.
+:::
 
 ```{warning}
 **Illustrative data.** The maps in the tool below are simplified teaching shapes, not
@@ -125,16 +207,46 @@ for the actual constituency maps.
 </div>
 ```
 
+:::{div} cothrom-concise
+Why so strictly? Because a detached fragment has no real political existence: an ED
+stranded inside a constituency centred fifty kilometres away has a TD with no reason
+to know its roads or its flooding. Contiguity keeps a constituency a *place* rather
+than a spreadsheet of convenient population totals.
+:::
+
+:::{div} cothrom-full
 Why insist on this so strictly? Because a detached fragment has no real political
 existence. If your Electoral Division were stranded inside a constituency centred fifty
 kilometres away, your TD would have no reason to know your roads, your school places or
 your flooding, and no natural way to reach you. Contiguity is the rule that keeps a
 constituency a *place* rather than a spreadsheet of convenient population totals.
+:::
 
 ---
 
 ## Rule two: no shapes that reach too far
 
+:::{div} cothrom-concise
+In 1812 the governor of Massachusetts, Elbridge Gerry, signed off on an electoral
+district so contorted — bending around the edge of the state to gather the right
+voters — that a cartoonist drew it as a salamander and called it a "Gerry-mander".
+Legal, connected, and a giveaway: no honest attempt to group a community produces an
+outline like that.
+
+Hence the second rule, **compactness**. A gerrymander betrays itself through its
+shape, so preferring rounded constituencies and rejecting ones that snake across the
+map on thin tendrils makes manipulation much harder to hide. To reject a shape you
+have to score it, and the common way is to compare a constituency to its *convex
+hull* — the tightest band you could stretch around it, as if with an elastic. A blob
+that nearly fills its band scores close to 1; a shape wandering inside a much larger
+band scores far lower. The formula matters less than the instinct it puts numbers on:
+does this look like a place, or like a shape drawn around a result?
+
+Each pair below shows two shapes; pick the one you think is *more* compact before the
+scores appear.
+:::
+
+:::{div} cothrom-full
 In 1812 the governor of Massachusetts, Elbridge Gerry, signed off on an electoral
 district so contorted — bending around the edge of the state to gather up the right
 voters — that a newspaper cartoonist drew it as a salamander and called it a
@@ -157,6 +269,7 @@ shape drawn around a result?
 
 Test that instinct now. Each pair below shows two shapes; pick the one you think is
 *more* compact before the scores appear.
+:::
 
 ```{warning}
 **Illustrative data.** The shapes and compactness scores in the tool below are teaching
@@ -174,6 +287,15 @@ examples, not measurements of real constituencies.
 </div>
 ```
 
+:::{div} cothrom-concise
+A low compactness score is a reason to look harder, not a conviction. A constituency
+that follows a jagged coastline or bends to keep an awkward county whole scores below
+a perfect circle — not because anyone cheated, but because the real geography is not
+round. That is precisely why compactness is written as a goal to pursue rather than a
+threshold to clear, and the first hint that the rules disagree with each other.
+:::
+
+:::{div} cothrom-full
 A low compactness score is a reason to
 look harder, not a conviction. A constituency that faithfully follows a jagged coastline
 or bends to keep an awkward county whole will score below a perfect circle — not because
@@ -181,11 +303,34 @@ anyone cheated, but because the real geography is not round. Compactness has to 
 weighed against the other rules, which is precisely why it is written as a goal to pursue
 rather than a threshold to clear. Hold that thought: it is the first hint that the rules
 disagree with each other.
+:::
 
 ---
 
 ## Rule three: don't cut a county unless you must
 
+:::{div} cothrom-concise
+Return to Laois and Offaly. For years the two shared a single constituency, and that
+pairing never sat right with a lot of people: someone from Portlaoise would say
+plainly that they were *from Laois* even as their ballot lumped them in with Offaly.
+When a constituency crosses a county line — a **county breach** — it asks voters on
+one side to share their most local contest with people they may feel little in common
+with.
+
+The law recognises this: county boundaries are among the things a review must respect,
+though only "as far as practicable". So the Commission counts breaches and keeps the
+count down, but may cut a county when the sums leave no realistic alternative. The
+2023 review repaired seven of the ten breaches on the old map, separating Laois from
+Offaly among them — but not all ten. Sligo–Leitrim and Cavan–Monaghan remain stitched
+across county lines, and the review created a new cross-county seat, Wicklow–Wexford,
+because the population arithmetic in that corner did not add up any other way.
+
+The panel below sets the Laois–Offaly sums out side by side: hold the two counties
+together and the population per TD drifts outside the old ±5% band, split them and it
+fits. Both options are defensible; decide which you would back before reading on.
+:::
+
+:::{div} cothrom-full
 Return to Laois and Offaly. For years the two shared a single constituency, and to a lot
 of people that pairing never sat right: someone from Portlaoise would say plainly that
 they were *from Laois*, even as their ballot lumped them in with Offaly. County is one of
@@ -209,6 +354,7 @@ county breach looks like — none, one, or several — then sets the Laois–Off
 side by side: hold the two counties together and the population per TD drifts outside the
 old ±5% band, split them and it fits. Both options are defensible; decide which you would
 back before reading on.
+:::
 
 ```{warning}
 **Illustrative data.** The scenarios in the tool below use simplified teaching figures,
@@ -239,6 +385,32 @@ not official Electoral Commission numbers.
 
 ## Why the rules can't all win
 
+:::{div} cothrom-concise
+Specific pairs of rules are in direct tension, so satisfying one *costs* you the other.
+Two matter most.
+
+**Equal representation pulls against keeping counties whole.** Recall
+<span class="cothrom-term" data-def="How far a constituency's people-per-TD sits from the national average; the official gauge of representational fairness.">variance</span>
+— how far a constituency's population per TD strays from the national average. The
+Commission traditionally held every constituency within about ±5% of it, but the
+tighter that band, the fewer ways there are to arrange whole counties inside it: a
+county of the wrong size has to be split to hit a narrow population target. In 2023
+the Commission could not both absorb a decade of growth and put county lines back
+together inside ±5%, so it widened its working tolerance to roughly ±8%, with the most
+stretched constituency, Clare, about 8% above the national average (Irish Times,
+2023). Laois–Offaly is that tension made concrete.
+
+**Stability pulls against equal representation, too.** People value continuity, and the
+law asks the Commission to have regard to it — but Dublin and the commuter counties
+keep growing while other areas shrink, so a map perfectly balanced at one census is out
+of balance by the next. Honour continuity and representation drifts unequal; restore
+equal representation and you must move the lines again. The map is never finished.
+
+Try steering between the goals yourself: push one slider up and watch what the tool is
+forced to give up elsewhere.
+:::
+
+:::{div} cothrom-full
 You now have the pieces to see the thing this whole course turns on. The rules are not
 just numerous; specific pairs of them are in direct tension, so satisfying one *costs*
 you the other. Two of those tensions matter most.
@@ -270,6 +442,7 @@ finished.
 
 Try steering between the goals yourself. As you push one slider up, watch what the tool is
 forced to give up elsewhere — there is no position that scores full marks on everything.
+:::
 
 ```{warning}
 **Illustrative data.** The tool below is a simplified teaching model of the trade-offs, not
@@ -296,16 +469,42 @@ official Electoral Commission figures.
 </div>
 ```
 
+:::{div} cothrom-concise
+Later modules make each criterion precise, but the shape of the problem never changes:
+there is no perfect map, only a defensible balance of competing goods. Even "restoring"
+a county boundary, which sounds purely virtuous, spends something — a little population
+equality, a settled political community — somewhere else.
+:::
+
+:::{div} cothrom-full
 This is the idea to carry forward. Later modules will make each of these criteria precise
 and even put a single map through them all at once, but the shape of the problem never
 changes: there is no perfect map, only a defensible balance of competing goods. Even
 "restoring" a county boundary, which sounds purely virtuous, spends something — a little
 population equality, a settled political community — somewhere else.
+:::
 
 ---
 
 ## So will your area move?
 
+:::{div} cothrom-concise
+Some Electoral Divisions are far more exposed than others. An ED on the edge of its
+constituency is the easiest to reassign — a jigsaw piece on the rim, handed to a neighbour
+without disturbing the interior — whereas one buried in the middle is expensive to move.
+Exposure rises if your constituency already sits far from the national average, since those
+are rebalanced first; if your area is building fast, because new estates can push it over
+the line within a single census; if it is stitched across a county boundary; and if it is a
+three-seater, since small constituencies are easier to reconfigure than five-seat ones.
+
+One caution: even a constituency with textbook-perfect population can be redrawn because a
+*neighbour* had to be fixed. Moving EDs out of an overfull constituency pushes them into the
+one next door, which may then shed some of its own, and the adjustment travels.
+
+The estimator below turns these factors into a rough exposure score.
+:::
+
+:::{div} cothrom-full
 Because the map is redrawn to chase a moving population, some Electoral Divisions are far
 more exposed than others, and you can reason about your own. An ED sitting on the edge of
 its constituency is the easiest kind to reassign — like a jigsaw piece on the rim, it can
@@ -328,6 +527,7 @@ guarantee of a quiet review.
 The estimator below turns exactly these factors — edge or interior, balanced or stretched,
 fast-growing or steady, small or large constituency, county-crossing or not — into a rough
 exposure score. Answer the questions for your own area to see where it lands.
+:::
 
 ```{warning}
 **Illustrative data.** The estimator weighs a few plain questions about your own area, not
@@ -349,6 +549,20 @@ official figures, so its score is a way to reason about exposure, not a predicti
 
 ## Having your say
 
+:::{div} cothrom-concise
+The Constitution requires constituencies to be revised at least once every twelve years, and
+in practice the Commission reviews them after most censuses; with the next census due in 2027,
+another review around 2028–2029 is a reasonable expectation. Reviews open a public submission
+window in which anyone — an individual, a residents' association, a county council — can argue
+in writing for how the lines in their area should be drawn.
+
+This lesson gives you the vocabulary to make a submission that lands. A plea to "keep our area
+together" is easy to set aside; an argument that a proposed line breaches a county boundary
+that could be respected within the population tolerance, or that a shape is needlessly
+non-compact, speaks the language the Commission has to answer in.
+:::
+
+:::{div} cothrom-full
 The next review is not far off. The Constitution requires the constituencies to be revised
 at least once every twelve years, and in practice the Commission reviews them after most
 censuses; with the next census due in 2027, another review around 2028–2029 is a reasonable
@@ -361,6 +575,7 @@ our area together" is easy to set aside; an argument that a proposed line breach
 boundary that could be respected within the population tolerance, or that a shape is needlessly
 non-compact, speaks the same language the Commission has to answer in. Knowing which rules are
 hard and which can bend tells you which arguments are worth making.
+:::
 
 ---
 

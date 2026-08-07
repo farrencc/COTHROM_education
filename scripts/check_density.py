@@ -68,6 +68,7 @@ RAW_HTML_RE = re.compile(r"^```\{raw\}[ \t]+html\b.*?^```[ \t]*$", re.S | re.M)
 FIGURE_RE = re.compile(r"[±+-]?\d[\d,]*(?:\.\d+)?%?")
 YEAR_RE = re.compile(r"^(19|20)\d{2}$")
 
+TAG_RE = re.compile(r"<[^>]+>")
 TERM_RE = re.compile(r'class="cothrom-term"[^>]*>([^<]+)</span>')
 # Bold routinely wraps across the 80-column hard wrap, so it has to span lines;
 # matches are whitespace-normalised before comparison.
@@ -115,7 +116,13 @@ def prose(text: str) -> str:
 
 
 def words(text: str) -> int:
-    return len(prose(text).split())
+    """Count what a reader actually reads.
+
+    Inline glossary spans carry their whole definition in a data-def
+    attribute, which no one reads on the page; counting it would inflate every
+    figure here and the reading estimate with it.
+    """
+    return len(TAG_RE.sub("", prose(text)).split())
 
 
 def figures(text: str) -> set[str]:
@@ -221,6 +228,19 @@ def main() -> int:
         print("-" * 80)
         ratio = f"{total_c / total_f:.0%}" if total_f else "—"
         print(f"{'TOTAL':<44} {total_c:>8} {total_f:>8} {ratio:>7}")
+
+        # Headings, admonition banners, key takeaways and sources are shared,
+        # so they set a floor on the whole-page ratio. Report the paired prose
+        # separately — that is the part compression can actually act on.
+        shared = sum(words(p.shared) for p in pages if p.paired)
+        pc = sum(words(p.concise) for p in pages if p.paired) - shared
+        pf = sum(words(p.full) for p in pages if p.paired) - shared
+        print()
+        print(
+            f"Paired prose alone: {pc} vs {pf} words ({pc / pf:.0%}); a further "
+            f"{shared} words\nof headings, banners, takeaways and sources are "
+            f"shared by both paths."
+        )
         print()
 
     if failures:
