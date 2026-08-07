@@ -1,5 +1,13 @@
 # Why your vote might not weigh the same as your neighbour's
 
+:::{div} cothrom-concise
+Two people vote in the same election, on the same day. One quietly gets more say
+over who sits in the Dáil — not through fraud, but because of where a line was
+drawn on a map years earlier. By the end of this lesson you will be able to
+measure that gap for your own constituency.
+:::
+
+:::{div} cothrom-full
 Two people vote in the same general election, on the same day, with the same
 biro. One of them quietly gets more say over who sits in the Dáil than the
 other — not through fraud, not through any choice either of them made, but
@@ -7,6 +15,7 @@ because of where a line was drawn on a map years earlier. That is the puzzle
 this lesson is about, and by the end of it you will be able to measure it for
 your own constituency and say, in numbers, how fair your slice of the Dáil
 actually is.
+:::
 
 ```{raw} html
 <div class="cothrom-keyterms">
@@ -26,6 +35,19 @@ actually is.
 
 ## A tale of two constituencies
 
+:::{div} cothrom-concise
+Two illustrative constituencies: **Ardville**, busy and growing, at roughly
+**38,000 people per TD**, and **Baytown**, losing population for a decade, at
+about **25,000 people** per TD.
+
+A vote's weight runs *opposite* to the people packed behind each TD — the fewer
+share a seat, the larger the slice each voter commands. So Baytown holds the
+stronger vote, by one people-per-TD figure over the other: 38,000 ÷ 25,000, or
+**roughly one and a half times** an Ardville vote. Neither voter earned that. A
+boundary handed it to them.
+:::
+
+:::{div} cothrom-full
 Picture two places. They are illustrative — invented to make the idea land
 cleanly before we turn to real figures — so call them **Ardville** and
 **Baytown**.
@@ -46,11 +68,26 @@ edge is simply one people-per-TD figure over the other: 38,000 ÷ 25,000, or
 Neither voter did anything to earn that difference. It was handed to them by a
 boundary. The rest of this lesson is about how large that gap really is in
 Ireland, how we measure it, and why it is worth caring about.
+:::
 
 ---
 
 ## The promise your vote is supposed to keep
 
+:::{div} cothrom-concise
+Ireland elects its Dáil by **proportional representation**: parliament should
+mirror how the country voted, so a party with a third of the votes wins roughly a
+third of the seats. That only holds if every vote starts from the same place. Pack
+more people behind each TD in one constituency and those votes are watered down
+*before a single ballot is counted* — the count can be scrupulously fair and the
+outcome still lopsided.
+
+Nor is this only an ideal. The Constitution requires the ratio of population to
+TDs to be, so far as it is practicable, **the same across the whole country**,
+with the map revised as people move (Article 16).
+:::
+
+:::{div} cothrom-full
 Before we can call that gap unfair, we have to say what "fair" would even mean.
 Start with the anchor we already have: the Baytown voter getting one and a half
 votes' worth of weight while the Ardville voter gets one. Is that just how it
@@ -72,6 +109,7 @@ population and TDs be, so far as it is practicable, **the same across the whole
 country**, and that the map be revised as people move (Article 16). "One person,
 one vote" is really shorthand for "one person, one *equal* vote" — and equality
 here is a matter of arithmetic, not good intentions.
+:::
 
 ```{note}
 This is not a claim about town versus country, or rich versus poor. A crowded
@@ -89,14 +127,25 @@ others, and the Constitution says they are not supposed to.
 </div>
 ```
 
+:::{div} cothrom-full
 So the question worth measuring is not "is the count honest?" — it usually is —
 but "did every vote start from the same line?" To answer that, we need a
 yardstick.
+:::
 
 ---
 
 ## The yardstick: one fair share of a TD
 
+:::{div} cothrom-concise
+Two numbers carry every fairness judgement here: Ireland's population at Census
+2022, **5,149,139**, and the **174 TDs** the Electoral Commission's 2023 review
+settled on. Share those people evenly across those seats and each TD answers to
+the same slice. That slice is the **National Ratio** — the population that
+entitles a place to exactly one TD.
+:::
+
+:::{div} cothrom-full
 Here is the whole country in two numbers. Ireland's population at Census 2022 was
 **5,149,139**, and after the Electoral Commission's 2023 review the Dáil is made
 up of **174 TDs**. Those are the two figures every fairness judgement in this
@@ -107,13 +156,22 @@ same slice of the population. That slice is just the total divided up equally �
 share 5,149,139 people across 174 TDs and see how many fall to each. We call the
 result the **National Ratio**: the number of people that entitles a place to
 exactly one TD.
+:::
 
 $$\text{National Ratio} = \frac{\text{Total population}}{\text{Total TDs}} = \frac{5{,}149{,}139}{174} \approx 29{,}593 \text{ people per TD}$$
 
+:::{div} cothrom-concise
+So the national standard is roughly **29,593 people for every TD**. A place with
+far more than that behind each TD is under-represented; a place with far fewer is
+over-represented.
+:::
+
+:::{div} cothrom-full
 So the national standard is roughly **29,593 people for every TD** (Census 2022
 population over the 174-seat Dáil set by the 2023 review). That is the line every
 constituency is measured against. A place with far more than 29,593 people behind
 each TD is under-represented; a place with far fewer is over-represented.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="0">
@@ -124,14 +182,30 @@ each TD is under-represented; a place with far fewer is over-represented.
 </div>
 ```
 
+:::{div} cothrom-concise
+Once you know the fair share, you can ask of any constituency: how many TDs does
+its population actually earn?
+:::
+
+:::{div} cothrom-full
 The National Ratio matters because it turns a vague sense of unfairness into
 something you can check with a calculator. Once you know the fair share, you can
 ask of any constituency: how many TDs does its population actually earn?
+:::
 
 ---
 
 ## Seat Equivalent Representation: the seats a place has earned
 
+:::{div} cothrom-concise
+Take a real constituency. **Clare** had a population of about **127,980** at the
+last census — illustrative teaching data, not an official return, so treat the
+digits lightly; the national constants are the sourced ones. At one TD per 29,593
+people, how many has that earned? That question has a name: **Seat Equivalent
+Representation**, or SER — population measured in units of the National Ratio.
+:::
+
+:::{div} cothrom-full
 Take a real constituency now. **Clare** had a population of about **127,980** at
 the last census. (That per-constituency figure is illustrative teaching data —
 approximate, not an official return — so treat the exact digits lightly; the
@@ -141,6 +215,7 @@ per 29,593 people, how many TDs has a population that size earned?
 That question has a name: **Seat Equivalent Representation**, or SER. It is simply
 a constituency's population measured in units of the National Ratio — how many
 "fair shares" of a TD its people add up to.
+:::
 
 $$\text{SER} = \frac{\text{Constituency population}}{\text{National Ratio}}$$
 
@@ -157,17 +232,39 @@ five?
 </div>
 ```
 
+:::{div} cothrom-concise
+Working it through: $\dfrac{127{,}980}{29{,}593} \approx 4.32$. Clare has earned
+**4.32 TDs** — more than four, not quite four and a half. The rest of the lesson
+turns on the gap between that and what Clare can actually be given.
+:::
+
+:::{div} cothrom-full
 Working it through: $\dfrac{127{,}980}{29{,}593} \approx 4.32$. Clare's people
 have earned **4.32 TDs** at the national rate. That decimal is the point of SER —
 it says, in a single number, that Clare's population deserves rather more than
 four TDs and not quite four and a half. Hold onto the 4.32; the whole rest of the
 lesson turns on the gap between what Clare has earned and what it can actually be
 given.
+:::
 
 ---
 
 ## Why 4.32 becomes 4: seat magnitude
 
+:::{div} cothrom-concise
+You cannot elect 4.32 TDs. A constituency's **seat magnitude** — the number of
+TDs it elects — can only ever be **three, four or five**, fixed in law: the
+Constitution sets the floor at three, the Electoral Reform Act 2022 the working
+range at three to five. (Whether five should be the ceiling is exactly the kind
+of rule a project like COTHROM can put to the test.)
+
+So Clare's 4.32 was rounded down to **4**, and about **0.32 of a TD's worth of
+representation** quietly went missing. That is where the fairness leaks out:
+127,980 people across only 4 TDs is nearly **31,995 people per TD**, well above
+the 29,593 standard.
+:::
+
+:::{div} cothrom-full
 You cannot elect 4.32 TDs. A constituency returns whole people to the Dáil, and
 Irish law is stricter still: a constituency's **seat magnitude** — the number of
 TDs it elects — can only ever be **three, four or five**. That range is fixed in
@@ -183,6 +280,7 @@ is exactly where the fairness leaks out. Clare earned 4.32 and got 4, so about
 **0.32 of a TD's worth of representation** has quietly gone missing. Its people are
 pushed above the national rate: 127,980 shared across only 4 TDs works out at
 nearly **31,995 people per TD**, well above the 29,593 standard.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="1">
@@ -193,15 +291,31 @@ nearly **31,995 people per TD**, well above the 29,593 standard.
 </div>
 ```
 
+:::{div} cothrom-concise
+Whole-seat rounding is unavoidable, so perfect equality is impossible even in
+principle. The realistic goal is to keep every constituency's gap small — which
+means measuring it.
+:::
+
+:::{div} cothrom-full
 Whole-seat rounding is unavoidable — you genuinely cannot post a third of a TD to
 Leinster House — but it means perfect equality is impossible even in principle.
 The realistic goal is to keep every constituency's gap small. To do that, you
 first have to measure it.
+:::
 
 ---
 
 ## Variance: putting a number on the gap
 
+:::{div} cothrom-concise
+Is 0.32 of a seat out of 4 worse than 0.4 out of 5? To compare constituencies of
+different sizes you turn the gap into a percentage: the **variance**. The formula
+the Constituency Commissions have long used measures the gap against the seats a
+constituency was actually assigned:
+:::
+
+:::{div} cothrom-full
 Clare's shortfall of 0.32 of a seat is concrete, but on its own it does not
 travel. Is 0.32 of a seat out of 4 worse than 0.4 out of 5? To compare
 constituencies of different sizes you turn the gap into a percentage. That
@@ -209,14 +323,24 @@ percentage is the **variance**.
 
 The formula the Constituency Commissions have long used measures the gap against
 the seats a constituency was actually assigned:
+:::
 
 $$\text{Variance} = \frac{\text{SER} - \text{Assigned seats}}{\text{Assigned seats}} \times 100\%$$
 
+:::{div} cothrom-concise
+For Clare that is $\dfrac{4.32 - 4}{4} \times 100 \approx +8.1\%$. The sign
+carries the meaning: positive means the constituency earned *more* than it got —
+under-represented, over the national rate. Clare sits about **8.1% over**.
+Negative would mean over-represented.
+:::
+
+:::{div} cothrom-full
 For Clare that is $\dfrac{4.32 - 4}{4} \times 100 \approx +8.1\%$. The plus sign
-matters and carries the meaning on its own: a positive variance means the
-constituency earned *more* than it got — it is under-represented, over the
-national rate. Clare sits about **8.1% over**. A negative variance would mean a
-constituency earned fewer seats than it holds, and is over-represented.
+carries the meaning on its own: a positive variance means the constituency earned
+*more* than it got — it is under-represented, over the national rate. Clare sits
+about **8.1% over**. A negative variance would mean a constituency earned fewer
+seats than it holds, and is over-represented.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="0">
@@ -227,24 +351,54 @@ constituency earned fewer seats than it holds, and is over-represented.
 </div>
 ```
 
+:::{div} cothrom-concise
+Variance is the number the Electoral Commission actually works to: its target is
+to keep every constituency within a tight band of the national average.
+:::
+
+:::{div} cothrom-full
 Variance is the number the Electoral Commission actually works to. Its target is
 to keep every constituency within a tight band of the national average, so that no
 one's vote strays too far from equal weight. We will see in a moment just how tight
 that band is.
+:::
 
 ---
 
 ## A fairer denominator: the COTHROM variance
 
-The traditional formula has a quiet flaw, and it is worth seeing because it is
-where the **COTHROM** project — *cothrom* is Irish for fairness, and the project
-behind this site, run by The Problem Solving Association — makes its whole pitch.
-Look again at what the formula divides by: the *assigned* seats, the very quantity
-we already know is a compromised, rounded figure. COTHROM proposes dividing by the
-SER instead — the seats a constituency truly *earned*, which does not move:
+:::{div} cothrom-concise
+The traditional formula has a quiet flaw, and it is where the **COTHROM**
+project — *cothrom* is Irish for fairness, and it is the project behind this site,
+run by The Problem Solving Association — makes its pitch. It divides by the
+*assigned* seats, which we know is a rounded compromise. COTHROM divides by the
+SER instead, the seats truly *earned*, which does not move:
+:::
+
+:::{div} cothrom-full
+The traditional formula has a quiet flaw, and it is where the **COTHROM**
+project — *cothrom* is Irish for fairness, and the project behind this site, run
+by The Problem Solving Association — makes its whole pitch. Look at what the
+formula divides by: the *assigned* seats, the very quantity we already know is a
+compromised, rounded figure. COTHROM proposes dividing by the SER instead — the
+seats a constituency truly *earned*, which does not move:
+:::
 
 $$\text{Variance} = \frac{\text{SER} - \text{Assigned seats}}{\text{SER}} \times 100\%$$
 
+:::{div} cothrom-concise
+For Clare that is $\dfrac{4.32 - 4}{4.32} \times 100 \approx +7.5\%$: the *same
+reality*, still short by a third of a seat, reported as +7.5% rather than +8.1%.
+Only the denominator changed.
+
+It earns its keep because +7.5% is a quantity you can feel. A Clare vote's weight
+is the National Ratio over Clare's 31,995 people per TD:
+$29{,}593 \div 31{,}995 \approx 0.925$ — a vote worth 7.5% less than a full one.
+Dividing the seat gap by SER gives *exactly* the fraction of a vote each Clare
+voter has lost; the traditional +8.1% lines up with no such per-voter figure.
+:::
+
+:::{div} cothrom-full
 For Clare that is $\dfrac{4.32 - 4}{4.32} \times 100 \approx +7.5\%$. It describes
 the *same reality* — Clare is still under-represented, still short by a third of a
 seat — but reports it as +7.5% rather than +8.1%; nothing about Clare changed, only
@@ -259,6 +413,7 @@ the fraction of a vote each Clare voter has lost. The traditional +8.1%, measure
 against the rounded seat count, lines up with no such per-voter figure. That is the
 sense in which COTHROM's denominator is fairer — its percentage is the vote-weight
 loss each person there actually carries.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="2">
@@ -269,13 +424,26 @@ loss each person there actually carries.
 </div>
 ```
 
+:::{div} cothrom-full
 Keep both formulas in mind — the calculator below shows them side by side, so you
 can watch the number shift while the underlying fairness stays put.
+:::
 
 ---
 
 ## Check it for yourself
 
+:::{div} cothrom-concise
+The tool below does by machine what you have just done by hand: population ÷
+National Ratio for SER, compare with the assigned seats, express the gap as
+variance and vote weight. It asks you to predict first, on purpose — lock in what
+you expect for Clare, then try a constituency you *haven't* worked out. Its
+per-constituency populations are simplified teaching figures, so a few show gaps
+wider than anything in the real post-2023 map, where the extremes stay within
+about ±8% and Clare is the genuine outlier.
+:::
+
+:::{div} cothrom-full
 You have now done, by hand, everything the tool below does: take a population,
 divide by the National Ratio to get SER, compare it to the assigned seats, and
 express the gap as variance and as vote weight. Use it to pin down Clare and then
@@ -290,6 +458,7 @@ constituencies in the tool show gaps wider than anything in the real post-2023 m
 where the extremes stay within about ±8% and Clare is the genuine outlier. Read the
 calculator for how the metrics move, not for any one constituency's exact real-world
 standing.
+:::
 
 ```{warning}
 **Illustrative data.** The per-constituency populations in the tool below are
@@ -932,6 +1101,25 @@ follow the Electoral Commission's 2023 review, but always check the official
 
 ## What the 2023 review actually changed
 
+:::{div} cothrom-concise
+Clare's gap is smaller than it might once have been. In August 2023 **An Coimisiún
+Toghcháin (the Electoral Commission)** published its first constituency review:
+the Dáil grew from 160 TDs to **174**, constituencies from 39 to **43**, and the
+average population behind each TD fell from about 32,182 to the **29,593** we have
+been using.
+
+Two design choices explain the gap that remains. Earlier reviews aimed to hold
+every constituency within about **±5%** of the national average people-per-TD;
+absorbing a decade of uneven growth while repairing the map forced the 2023
+Commission to a looser band of around **±8%**, which is why Clare's +8.1% is the
+largest gap rather than an oversight. The second was to put **county boundaries
+back**: previous maps sliced across county lines in ten places and the review
+repaired seven, splitting the long-combined Laois–Offaly constituency into
+single-county seats among them. The two goals pull against each other, and the
+Commission loosened the percentage to protect the counties.
+:::
+
+:::{div} cothrom-full
 Clare's gap is smaller than it might once have been, because the map was recently
 redrawn. In August 2023 **An Coimisiún Toghcháin (the Electoral Commission)**
 published its first constituency review, and the changes were substantial: the
@@ -957,6 +1145,7 @@ That trade-off — equal numbers versus intact communities — is the real textu
 redistricting, and it is why "just make every constituency exactly average" is not
 an option on the table. You will meet the county side of that bargain properly in
 the next two lessons.
+:::
 
 ```{raw} html
 <div class="cothrom-quiz" data-answer="0">
@@ -971,6 +1160,24 @@ the next two lessons.
 
 ## Why this is a genuinely hard problem
 
+:::{div} cothrom-concise
+It is tempting to read this as the Commission doing a sloppy job. It is not. The
+country is not redrawn freehand; it is assembled from several thousand small,
+fixed building blocks — Electoral Divisions, the subject of the next lesson —
+grouped into constituencies without being split. Every grouping must satisfy
+several rules at once: three, four or five TDs and no other number; population per
+TD as close to the national average as possible; the area connected as one piece;
+and, where it can, county lines respected. Tighten one and you loosen another, and
+no human working by hand can examine more than a sliver of the possibilities.
+
+That is the gap the **COTHROM** project sets out to close: not taking the decision
+away from people, but letting a computer generate and score thousands of legal
+maps, measure the SER and variance of each, and lay the trade-offs out in the open,
+so the human choice at the end — is keeping this county whole worth two percentage
+points of variance? — is made in full view of the alternatives.
+:::
+
+:::{div} cothrom-full
 It is tempting to read all this as the Commission doing a sloppy job. It is not.
 The Commission is solving a puzzle with constraints that fight each other, and the
 number of ways to arrange the map is astronomically large.
@@ -995,11 +1202,26 @@ human choice at the end — is keeping this county whole worth two percentage po
 of variance? — is made in full view of the alternatives rather than against the
 first workable option anyone happened to find. The judgement stays human; the
 search for options stops being a bottleneck.
+:::
 
 ---
 
 ## So what — this is your vote
 
+:::{div} cothrom-concise
+Baytown and Ardville were illustrative, but Clare is real. Its +8.1% gap, read as
+the thing you hold in the ballot box, is a vote worth about **0.925** of an
+average Irish vote — **7.5% less** — purely because of how the map divides. Small,
+but not zero, and not something you chose.
+
+The next review is due after the 2027 census, likely around 2028–2029, running
+through public consultations, Commission hearings and a Dáil vote. Someone who can
+work out that their area is being left a third of a seat short, and say so in the
+Commission's own language of variance, is a citizen the process has to answer to.
+Someone who cannot is left trusting that it all came out fair.
+:::
+
+:::{div} cothrom-full
 Return to where we started. The Baytown voter and the Ardville voter were
 illustrative, but Clare is real. Its headline gap is +8.1% on the Commission's
 traditional formula; read as the thing you actually hold in the ballot box, that
@@ -1014,6 +1236,7 @@ look at a proposed map and work out that their area is being left a third of a s
 short — and say so, in the Commission's own language of variance — is a citizen the
 process has to answer to. Someone who cannot is left trusting that it all came out
 fair. This lesson was about becoming the first kind.
+:::
 
 ---
 
