@@ -16,6 +16,19 @@ background assumed, and no party's case being made.
 
 ## The problem in one paragraph
 
+:::{div} cothrom-concise
+The Constitution requires constituencies to be redrawn at least once every
+twelve years, so representation keeps pace as people move. After Census 2022
+counted 5,149,139 people, the 2023 review settled on 174 TDs across 43
+constituencies — a national average of 29,593 people per TD. But an average is
+not a promise: voters in constituencies above it carry slightly less weight than
+voters in those below. Redistricting is the work of keeping that gap small while
+also keeping counties intact, communities together and every constituency in one
+connected piece — goals that pull against one another, so no single map
+satisfies them all.
+:::
+
+:::{div} cothrom-full
 The Constitution requires that constituencies be redrawn at least once every
 twelve years, so that representation keeps pace as people are born, die, and
 move house. After the 2022 Census counted a population of 5,149,139, the 2023
@@ -26,11 +39,30 @@ weight than voters in the sparse ones. Redistricting is the work of keeping that
 gap small — while also keeping counties intact, communities together, and every
 constituency in one connected piece. Those goals pull against one another, and
 no single map satisfies all of them at once.
+:::
 
 ## What this resource walks you through
 
 The story has a natural order, and the modules follow it.
 
+:::{div} cothrom-concise
+It starts with **why the lines move**: every census resets the population
+picture, people do not spread themselves evenly, and so some TDs end up speaking
+for far more constituents than others — which is why the 2023 review raised the
+Dáil from 160 to 174 TDs and reinstated county boundaries earlier maps had cut
+across. Next, **how a constituency is built**: not freehand around a coastline
+but assembled from thousands of small, indivisible CSO counting areas, grouped
+until each cluster holds roughly the right population. That is where most of the
+real choices are made. Then **how fairness is measured**: you can put a number
+on how far each constituency sits from equal representation and weigh it against
+how many county lines a map breaks or how awkward its shapes are — and
+reasonable people, given the same data, will strike that balance differently.
+Finally, **who sets the instructions**: because the number of possible groupings
+is astronomically large, computers now search for good maps, and an algorithm
+optimises for whatever its designers told it to value.
+:::
+
+:::{div} cothrom-full
 It starts with why the lines move at all. Every census resets the population
 picture, and because people do not spread themselves evenly, some TDs end up
 speaking for far more constituents than others. The 2023 review responded by
@@ -55,6 +87,7 @@ large, computers are now used to search for good maps. But an algorithm is not
 neutral: it optimises for whatever its designers told it to value. Understanding
 what those instructions are — and who gets to set them — is becoming part of
 what it means to be an informed voter.
+:::
 
 ## Start here
 

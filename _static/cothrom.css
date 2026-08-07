@@ -14,6 +14,9 @@
   --cothrom-accent-dark: #3c096c;   /* gradient partner */
   --cothrom-red: #e74c3c;
   --cothrom-amber: #f59e0b;         /* medium-risk / caution accent */
+  /* Text drawn on top of a solid brand-colour fill. The brand colours do not
+     invert in dark mode, so this does not either. */
+  --cothrom-on-brand: #ffffff;
 
   /* --- Text / neutral --- */
   --cothrom-ink: #2c3e50;           /* headings, primary text */
@@ -217,3 +220,88 @@ html[data-theme="dark"] .cothrom-quiz .cothrom-opt { background: #141a22; }
   background: var(--cothrom-surface);
 }
 .cothrom-embed iframe { display: block; width: 100%; }
+
+/* ---------- Reading density (Concise / Full) ----------
+   Lessons author two renderings of the same material: .cothrom-concise and
+   .cothrom-full. Headings, quizzes, widgets and sources sit outside both and
+   are shared, so the concept order is identical on either path.
+
+   The default below — full visible, concise hidden — is what a reader with
+   JavaScript disabled gets: the complete lesson, exactly as before this
+   feature existed. cothrom.js runs in <head> and sets data-density="concise"
+   before first paint, so a reader with JS still lands on the concise path. */
+.cothrom-concise { display: none; }
+html[data-density="concise"] .cothrom-concise { display: block; }
+html[data-density="concise"] .cothrom-full { display: none; }
+
+/* Paper has no toggle, so print the full argument whatever is on screen. */
+@media print {
+  .cothrom-concise { display: none !important; }
+  .cothrom-full { display: block !important; }
+  .cothrom-density { display: none !important; }
+}
+
+.cothrom-density {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 1.75rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--cothrom-border);
+  border-left: 4px solid var(--cothrom-accent);
+  border-radius: 10px;
+  background: var(--cothrom-surface);
+}
+.cothrom-density-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cothrom-muted);
+}
+.cothrom-density-group {
+  display: flex;
+  border: 1px solid var(--cothrom-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--cothrom-panel);
+}
+.cothrom-density-btn {
+  border: 0;
+  padding: 0.4rem 0.85rem;
+  background: transparent;
+  color: var(--cothrom-ink-2);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.cothrom-density-btn + .cothrom-density-btn { border-left: 1px solid var(--cothrom-border); }
+.cothrom-density-btn:hover { background: var(--cothrom-tint-green); }
+.cothrom-density-btn:focus-visible {
+  outline: 3px solid var(--cothrom-accent);
+  outline-offset: -3px;
+}
+/* Selected state carries a tick as well as colour, so colour is never the
+   only signal (and aria-pressed carries it for assistive tech). */
+.cothrom-density-btn[aria-pressed="true"] {
+  background: var(--cothrom-green);
+  color: var(--cothrom-on-brand);
+}
+.cothrom-density-btn[aria-pressed="true"]::before { content: "\2713\00a0"; }
+.cothrom-density-time { font-weight: 400; opacity: 0.85; }
+.cothrom-density-hint {
+  flex: 1 1 14rem;
+  min-width: 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--cothrom-muted);
+  margin: 0;
+}
+
+@media (max-width: 460px) {
+  .cothrom-density { flex-direction: column; align-items: stretch; }
+  .cothrom-density-group { width: 100%; }
+  .cothrom-density-btn { flex: 1 1 50%; text-align: center; }
+}

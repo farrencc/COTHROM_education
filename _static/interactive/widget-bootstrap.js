@@ -1,16 +1,27 @@
 /* COTHROM widget bootstrap — shared by every interactive embedded via iframe.
  *
- * Makes a widget inherit the host page's light/dark theme. The widgets link
- * ../cothrom.css, which already carries dark token values under
- * html[data-theme="dark"]; all this needs to do is mirror the parent's
- * data-theme onto the widget's own <html> so those overrides activate.
+ * Makes a widget inherit two things from the host page: its light/dark theme
+ * and its Concise/Full reading density. The widgets link ../cothrom.css,
+ * which already carries the dark token values under html[data-theme="dark"]
+ * and the density rules under html[data-density="concise"]; all this needs to
+ * do is mirror the parent's data-theme and data-density onto the widget's own
+ * <html> so those rules activate.
  *
  * Widgets are served from the same origin as the pages, so the iframe can
  * read the parent DOM directly. Fallbacks cover standalone viewing and any
  * cross-origin embed (via postMessage).
+ *
+ * Jupyter Book adds every .js file under _static/ to html_js_files, so this
+ * script is also pulled into the lesson pages themselves, where it must do
+ * nothing at all — the lesson pages own their data-theme (pydata) and
+ * data-density (cothrom.js), and mirroring would clobber both. Widget
+ * documents opt in with <html data-cothrom-widget>; everything else exits
+ * here.
  */
 (function () {
   var docEl = document.documentElement;
+
+  if (!docEl.hasAttribute("data-cothrom-widget")) return;
 
   function resolveTheme() {
     // 1) Same-origin parent: mirror the theme pydata resolves onto <html>.
@@ -29,18 +40,33 @@
       : "light";
   }
 
+  function resolveDensity() {
+    // 1) Same-origin parent: mirror the density cothrom.js resolved onto <html>.
+    try {
+      if (window.parent && window.parent !== window) {
+        var pd = window.parent.document.documentElement.getAttribute("data-density");
+        if (pd === "concise" || pd === "full") return pd;
+      }
+    } catch (e) {
+      /* cross-origin — fall through to the default */
+    }
+    // 2) Standalone / cross-origin: the same default the pages use.
+    return "concise";
+  }
+
   function apply() {
     docEl.setAttribute("data-theme", resolveTheme() === "dark" ? "dark" : "light");
+    docEl.setAttribute("data-density", resolveDensity());
   }
 
   apply();
 
-  // Live-update when the parent toggles theme (same-origin only).
+  // Live-update when the parent toggles theme or reading length (same-origin).
   try {
     if (window.parent && window.parent !== window) {
       new MutationObserver(apply).observe(
         window.parent.document.documentElement,
-        { attributes: true, attributeFilter: ["data-theme"] }
+        { attributes: true, attributeFilter: ["data-theme", "data-density"] }
       );
     }
   } catch (e) {
@@ -54,11 +80,16 @@
     else if (mq.addListener) mq.addListener(apply);
   }
 
-  // Cross-origin fallback: host can post {type:"cothrom-theme", theme:"dark"}.
+  // Cross-origin fallback: the host can post {type:"cothrom-theme", theme:"dark"}
+  // or {type:"cothrom-density", density:"full"}.
   window.addEventListener("message", function (ev) {
     var d = ev && ev.data;
-    if (d && d.type === "cothrom-theme" && (d.theme === "dark" || d.theme === "light")) {
+    if (!d) return;
+    if (d.type === "cothrom-theme" && (d.theme === "dark" || d.theme === "light")) {
       docEl.setAttribute("data-theme", d.theme);
+    }
+    if (d.type === "cothrom-density" && (d.density === "concise" || d.density === "full")) {
+      docEl.setAttribute("data-density", d.density);
     }
   });
 
