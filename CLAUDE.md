@@ -153,11 +153,46 @@ scaffolding ("What you'll learn", "Let's begin your journey") — is not accepta
   definition the reader has no reason to care about yet.
 - One idea per paragraph; short paragraphs over long ones.
 
+**Reading density.** Every lesson ships at two lengths and the reader switches
+between them. **Concise is what a first-time reader lands on**; the choice is
+remembered. Prose that differs is authored as a pair:
+
+```markdown
+## Shared heading
+
+Prose identical in both versions stays outside the blocks.
+
+:::{div} cothrom-concise
+The same claim in about half the words.
+:::
+
+:::{div} cothrom-full
+Anchor, intuition and worked example at full length.
+:::
+```
+
+Everything structural is **shared** — headings, the key-terms box, knowledge
+checks, embedded widgets and their illustrative-data banners, display maths, key
+takeaways, sources. Only connective prose is paired, so the concept order is
+identical whichever path a reader takes.
+
+The rule that makes this safe: **no concept, glossary term, formula, figure or
+source may have its only appearance inside a `cothrom-full` block.** The concise
+version is shorter, never thinner — it is a rewrite, not a truncation. Write the
+full version first, compress second. `python scripts/check_density.py` enforces
+figure, term and source parity and fails the build if compression dropped
+something; run it alongside `jupyter-book build`.
+
+Expect roughly 65% of the full word count, not 50%. Carrying every figure and
+worked result sets a floor, and headings, banners, takeaways and sources are
+shared and cannot compress at all. Do not buy a better ratio by dropping
+content.
+
 **Learner red-team.** Before a lesson is considered done, it must survive a
 cold read: simulate a non-specialist voter reading it with no prior context and
 log every unexplained term, every unjustified leap, and every "so what?"
 moment. Revise against that log. The author cannot see these gaps; a fresh
-reader can.
+reader can. **Red-team the concise path** — it is the one most readers will see.
 
 ---
 
@@ -195,7 +230,13 @@ reader can.
   iframe** with a relative `src`. Share styling and behaviour through a common
   widget stylesheet/bootstrap rather than copying CSS between widgets. Widgets
   must auto-report their height to the parent, inherit dark mode, and show the
-  illustrative-data banner.
+  illustrative-data banner. A widget document declares itself with
+  `<html data-cothrom-widget>`; `widget-bootstrap.js` exits without it, because
+  Jupyter Book pulls every `_static/**/*.js` into the lesson pages too, where
+  mirroring would clobber the page's own theme and reading density. Widgets
+  inherit `data-density` alongside `data-theme`, so long-form prose inside one
+  uses the same `cothrom-concise`/`cothrom-full` pair as the lessons — but keep
+  widget text to instructions and labels; exposition belongs in the lesson.
 - **This is a static site — keep interactives client-side and deterministic.**
   GitHub Pages has no backend, so do not add anything that needs a server or an
   API key. Do not introduce build steps or heavy dependencies; widgets should
@@ -219,6 +260,7 @@ reader can.
 ## 9. Definition of done (a change is not finished until all are true)
 
 - [ ] Builds clean with `jupyter-book build --all .`; no new warnings.
+- [ ] `python scripts/check_density.py` passes; both densities render and switch.
 - [ ] Renders correctly in the *served* site, including every iframe, at ~360px
       and desktop widths.
 - [ ] New pages are registered in `_toc.yml`.
@@ -228,7 +270,7 @@ reader can.
 - [ ] No orphaned/thin bullet lists; conceptual content is reasoned prose.
 - [ ] Each taught concept has a predict-and-check beat.
 - [ ] Keyboard-accessible; AA contrast; colour never the sole signal.
-- [ ] Lesson has survived a cold learner red-team pass.
+- [ ] Lesson has survived a cold learner red-team pass, on the concise path.
 
 ---
 

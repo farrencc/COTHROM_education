@@ -44,7 +44,23 @@ answers.
 
 <!-- 2. INTUITION: the idea in plain language, before any formalism. -->
 
-<!-- 3. STATEMENT: the precise definition or formula. Use $...$ / $$...$$ (dollarmath). -->
+<!-- READING DENSITY (CLAUDE.md §6). Prose that differs between the two versions
+     is authored as a pair; everything structural stays outside and is shared.
+     Write the full version first, then compress it — the concise version is a
+     rewrite, not a truncation, and it must carry every figure, term, worked
+     result and attribution the full one does. Prose identical in both versions
+     needs no pair: leave it outside the blocks. -->
+
+:::{div} cothrom-concise
+<!-- The same claim, argued in about half the words. -->
+:::
+
+:::{div} cothrom-full
+<!-- Anchor, intuition and worked example at full length. -->
+:::
+
+<!-- 3. STATEMENT: the precise definition or formula. Use $...$ / $$...$$ (dollarmath).
+     Shared — display maths sits outside both density blocks. -->
 
 <!-- 4. WORKED EXAMPLE: apply the statement to real data, step by step. Every
      number here must trace to references.bib. Cite the source in prose. -->
@@ -142,6 +158,8 @@ data, not official figures. Check the
 <!--
 DONE CHECK (mirror of CLAUDE.md §9 — verify before commit):
 [ ] Concept order matches the Ontology; nothing used before it is introduced.
+[ ] Both reading densities present; `python scripts/check_density.py` passes.
+[ ] Cold red-team read done on the CONCISE path — it is the default.
 [ ] Every number traces to references.bib; unsourceable claims flagged.
 [ ] No thin/orphaned bullets outside "Key takeaways".
 [ ] Each concept has a predict-and-check beat.
