@@ -98,7 +98,8 @@ observe a fixed list of conditions, and the reason redistricting is difficult is
 in how that list is written. Some conditions are absolutes: the Act fixed the Dáil at
 between 171 and 181 members — a range reset in law from time to time, which is why the
 total could climb from 160 to 174 — every constituency must elect three, four or five
-TDs, and every constituency must be contiguous, in one connected piece.
+TDs, and every constituency must be contiguous, in one connected piece. The Commission
+never publishes a map that breaks them.
 
 The rest carries an escape hatch: county boundaries are to be respected *as far as
 practicable*, and geographic considerations and continuity likewise. That phrase does
@@ -494,7 +495,8 @@ constituency is the easiest to reassign — a jigsaw piece on the rim, handed to
 without disturbing the interior — whereas one buried in the middle is expensive to move.
 Exposure rises if your constituency already sits far from the national average, since those
 are rebalanced first; if your area is building fast, because new estates can push it over
-the line within a single census; if it is stitched across a county boundary; and if it is a
+the line within a single census; if it is stitched across a county boundary, because each
+review asks whether this is finally the time to reunite the counties; and if it is a
 three-seater, since small constituencies are easier to reconfigure than five-seat ones.
 
 One caution: even a constituency with textbook-perfect population can be redrawn because a

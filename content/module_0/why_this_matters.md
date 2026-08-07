@@ -75,6 +75,7 @@ Ireland, how we measure it, and why it is worth caring about.
 ## The promise your vote is supposed to keep
 
 :::{div} cothrom-concise
+Baytown's edge over Ardville is a broken promise, and it helps to know whose.
 Ireland elects its Dáil by **proportional representation**: parliament should
 mirror how the country voted, so a party with a third of the votes wins roughly a
 third of the seats. That only holds if every vote starts from the same place. Pack
@@ -82,7 +83,7 @@ more people behind each TD in one constituency and those votes are watered down
 *before a single ballot is counted* — the count can be scrupulously fair and the
 outcome still lopsided.
 
-Nor is this only an ideal. The Constitution requires the ratio of population to
+This is not merely an ideal. The Constitution requires the ratio of population to
 TDs to be, so far as it is practicable, **the same across the whole country**,
 with the map revised as people move (Article 16).
 :::
@@ -1168,7 +1169,8 @@ grouped into constituencies without being split. Every grouping must satisfy
 several rules at once: three, four or five TDs and no other number; population per
 TD as close to the national average as possible; the area connected as one piece;
 and, where it can, county lines respected. Tighten one and you loosen another, and
-no human working by hand can examine more than a sliver of the possibilities.
+with thousands of blocks to combine no human working by hand can examine more than
+a sliver of the possibilities.
 
 That is the gap the **COTHROM** project sets out to close: not taking the decision
 away from people, but letting a computer generate and score thousands of legal

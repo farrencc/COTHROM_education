@@ -14,9 +14,12 @@
   --cothrom-accent-dark: #3c096c;   /* gradient partner */
   --cothrom-red: #e74c3c;
   --cothrom-amber: #f59e0b;         /* medium-risk / caution accent */
-  /* Text drawn on top of a solid brand-colour fill. The brand colours do not
-     invert in dark mode, so this does not either. */
-  --cothrom-on-brand: #ffffff;
+  /* Selected segment of a control: a solid brand-family fill with text on top.
+     --cothrom-green itself is too light to carry white text at AA (2.9:1), so
+     this pair is defined for contrast rather than reused from the palette, and
+     it inverts in dark mode where the fill has to lighten. */
+  --cothrom-selected-bg: #1a7a44;
+  --cothrom-selected-fg: #ffffff;
 
   /* --- Text / neutral --- */
   --cothrom-ink: #2c3e50;           /* headings, primary text */
@@ -73,6 +76,8 @@ html[data-theme="dark"] {
   --cothrom-tooltip-fg: #e6e9ef;
   --cothrom-tint-green: #14251c;
   --cothrom-tint-accent: #1e1530;
+  --cothrom-selected-bg: #5fd08a;
+  --cothrom-selected-fg: #0f2018;
   --cothrom-warn: #f0c674;
   --cothrom-warn-bg: #3a2f14;
   --cothrom-warn-border: #6b5626;
@@ -258,7 +263,8 @@ html[data-density="concise"] .cothrom-full { display: none; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--cothrom-muted);
+  /* ink-2 rather than muted: muted only reaches 3.4:1 on the surface tint. */
+  color: var(--cothrom-ink-2);
 }
 .cothrom-density-group {
   display: flex;
@@ -286,17 +292,18 @@ html[data-density="concise"] .cothrom-full { display: none; }
 /* Selected state carries a tick as well as colour, so colour is never the
    only signal (and aria-pressed carries it for assistive tech). */
 .cothrom-density-btn[aria-pressed="true"] {
-  background: var(--cothrom-green);
-  color: var(--cothrom-on-brand);
+  background: var(--cothrom-selected-bg);
+  color: var(--cothrom-selected-fg);
 }
 .cothrom-density-btn[aria-pressed="true"]::before { content: "\2713\00a0"; }
-.cothrom-density-time { font-weight: 400; opacity: 0.85; }
+/* No opacity here: fading text over the selected fill drops it to 2.9:1. */
+.cothrom-density-time { font-weight: 400; }
 .cothrom-density-hint {
   flex: 1 1 14rem;
   min-width: 0;
   font-size: 0.82rem;
   line-height: 1.4;
-  color: var(--cothrom-muted);
+  color: var(--cothrom-ink-2);
   margin: 0;
 }
 
@@ -304,4 +311,7 @@ html[data-density="concise"] .cothrom-full { display: none; }
   .cothrom-density { flex-direction: column; align-items: stretch; }
   .cothrom-density-group { width: 100%; }
   .cothrom-density-btn { flex: 1 1 50%; text-align: center; }
+  /* The 14rem basis is a width in a row and would become a height here,
+     leaving a tall empty block under the hint. */
+  .cothrom-density-hint { flex: 0 1 auto; }
 }
